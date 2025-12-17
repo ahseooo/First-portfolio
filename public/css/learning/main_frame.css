@@ -1,0 +1,97 @@
+/* Play_on, Play_off, sign_in, sign_up 페이지 헤더 */
+* {
+    margin: 0;
+    padding: 0;
+    /* box-sizing: border-box; */
+    font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+body {
+    background: linear-gradient(90deg, #FFF5D7, #FFF6D6);
+    /* height: 100vh; */
+    color: #2d3748;
+    /* overflow: hidden; */
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+li{
+    list-style: none;
+}
+
+/* ========== 헤더 ========== */
+header {
+    background: var(--header-bg, rgba(255, 255, 255, 0.95));
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+    padding: 10px 30px;
+    position: sticky;
+    top: 0;
+    /* z-index: 100; */
+    height: 65px;
+}
+
+.header-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-container h1 {
+    background: var(--header-gradient, linear-gradient(135deg, #667eea 0%, #764ba2 100%));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.header-container button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+nav ul {
+    display: flex;
+    gap: 15px;
+}
+
+nav button {
+    background: transparent;
+    border: 2px solid transparent;
+    padding: 10px 20px;
+    border-radius: 12px;
+    color: var(--header-text, #2d3748);
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+nav button:hover {
+    background: var(--header-gradient, linear-gradient(135deg, #667eea 0%, #764ba2 100%));
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+nav button#btn_logout {
+    background: rgba(102, 126, 234, 0.1);
+    border: 2px solid #667eea;
+    color: #667eea;
+}
+
+nav button#btn_logout:hover {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}

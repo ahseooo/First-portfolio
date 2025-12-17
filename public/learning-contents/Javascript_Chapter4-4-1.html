@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Chapter 4-4</title>
+    <link rel="stylesheet" type="text/css" href="/css/learning/Javascript_Chapter4-4-1.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <header id="main-frame"></header>
+
+    <section class="home-section">
+        <div class="learning-card">
+
+            <button class="question-button" onclick="openQuestionBox()">
+                <i class="fa-solid fa-question"></i>
+            </button>
+
+            <div class="intro-header">
+                <h1>🖱️ 요소 콕 집어서 바꾸기 (선택과 조작)</h1>
+            </div>
+
+            <div class="speech-bubble">
+                자바스크립트야, 저기 있는 <strong>빨간 버튼</strong> 좀 눌러줄래? 👉🔴<br>
+                원하는 요소를 <strong>찾고(선택)</strong>, 내 마음대로 <strong>바꾸는(조작)</strong> 방법을 배워보자!
+            </div>
+
+            <p class="chapter-desc">
+                웹페이지를 살아 움직이게 하려면, 먼저 바꿀 대상을 <strong>정확히 선택</strong>해야 해요.<br>
+                그 다음 글자를 바꾸거나, 색을 칠하거나, 숨길 수 있죠.
+            </p>
+
+            <div class="topic-section">
+                <h2>1. 요소 선택하기 (Finding Elements)</h2>
+                <p class="topic-desc">HTML 태그에 이름표(ID, Class)를 붙여서 찾을 수 있어요.</p>
+
+                <div class="selection-grid">
+                    <div class="selection-card">
+                        <div class="card-badge id-badge">#ID</div>
+                        <h3>getElementById()</h3>
+                        <p>주민등록번호처럼 <strong>딱 하나</strong>만 있는 요소를 찾을 때 써요.</p>
+                        <div class="code-box small">
+                            <code>document.<span class="method">getElementById</span>(<span class="string">"title"</span>)</code>
+                        </div>
+                    </div>
+
+                    <div class="selection-card highlight">
+                        <div class="card-badge query-badge">CSS 선택자</div>
+                        <h3>querySelector()</h3>
+                        <p>CSS처럼 <code>#id</code>나 <code>.class</code>로 자유롭게 찾을 수 있어요. (추천! 👍)</p>
+                        <div class="code-box small">
+                            <code>document.<span class="method">querySelector</span>(<span class="string">".box"</span>)</code>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="divider">
+
+            <div class="topic-section">
+                <h2>2. 요소 바꾸기 (Manipulating)</h2>
+                <p class="topic-desc">찾은 요소를 마음대로 변신시켜 볼까요?</p>
+
+                <div class="manipulation-list">
+                    <div class="manip-item">
+                        <div class="manip-icon">✏️</div>
+                        <div class="manip-info">
+                            <strong>textContent</strong>
+                            <p>글자 내용을 바꿔요.</p>
+                        </div>
+                        <div class="manip-code">el.textContent = "바뀜!";</div>
+                    </div>
+                    <div class="manip-item">
+                        <div class="manip-icon">🎨</div>
+                        <div class="manip-info">
+                            <strong>style</strong>
+                            <p>색상, 크기 등 디자인을 바꿔요.</p>
+                        </div>
+                        <div class="manip-code">el.style.color = "red";</div>
+                    </div>
+                    <div class="manip-item">
+                        <div class="manip-icon">👻</div>
+                        <div class="manip-info">
+                            <strong>display</strong>
+                            <p>보이거나 숨길 수 있어요.</p>
+                        </div>
+                        <div class="manip-code">el.style.display = "none";</div>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="divider">
+
+            <div class="topic-section">
+                <h2>3. 실전 연습: 버튼 누르면 변신! 🦸‍♂️</h2>
+                
+                <div class="code-preview-container">
+                    <div class="code-side">
+                        <div class="code-header">
+                            <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
+                            <span>JavaScript</span>
+                        </div>
+                        <pre class="code-box"><code><span class="keyword">let</span> text = <span class="object">document</span>.<span class="method">querySelector</span>(<span class="string">"#msg"</span>);
+<span class="keyword">let</span> btn = <span class="object">document</span>.<span class="method">querySelector</span>(<span class="string">"#btn"</span>);
+
+btn.<span class="method">addEventListener</span>(<span class="string">"click"</span>, <span class="keyword">function</span>() {
+  text.<span class="property">textContent</span> = <span class="string">"변신 완료! ✨"</span>;
+  text.<span class="property">style</span>.<span class="property">color</span> = <span class="string">"purple"</span>;
+  text.<span class="property">style</span>.<span class="property">fontSize</span> = <span class="string">"24px"</span>;
+});</code></pre>
+                    </div>
+                    <div class="preview-side">
+                        <div class="preview-header">
+                            <i class="fa-solid fa-gamepad"></i> Interactive Demo
+                        </div>
+                        <div class="preview-content center-content">
+                            <p id="demo-msg" style="font-size: 18px; margin-bottom: 20px;">버튼을 눌러보세요!</p>
+                            <button id="demo-btn" class="action-btn">변신하기! ⚡</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="fact-box">
+                <div class="fact-title">
+                    <i class="fa-solid fa-list-check"></i> 핵심 3단계
+                </div>
+                <div class="step-process">
+                    <div class="step-card">
+                        <div class="step-num">1</div>
+                        <div class="step-text"><strong>찾기 (Select)</strong><br><code>querySelector</code></div>
+                    </div>
+                    <div class="step-arrow">➡</div>
+                    <div class="step-card">
+                        <div class="step-num">2</div>
+                        <div class="step-text"><strong>듣기 (Listen)</strong><br><code>addEventListener</code></div>
+                    </div>
+                    <div class="step-arrow">➡</div>
+                    <div class="step-card">
+                        <div class="step-num">3</div>
+                        <div class="step-text"><strong>바꾸기 (Change)</strong><br><code>style, textContent</code></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="navigation">
+                <button class="prev-btn" onclick="goToPreviousPage()"><i class="fa-solid fa-chevron-left"></i> 이전 (DOM 기초)</button>
+
+                <div class="dots">
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot active"></span> </div>
+
+                <button class="next-btn" id="nextPageBtn" onclick="goToNextPage()">
+                    챕터 4 완료! (다음 챕터로) <i class="fa-solid fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="progress-card">
+            <h3><i class="fa-solid fa-cube"></i> 챕터 4: DOM과 웹 브라우저</h3>
+
+            <div class="progress-row">
+                <div class="progress-item">
+                    <div class="progress-label">객체기초</div>
+                    <div class="progress-bar"><div class="fill" style="width: 100%;"></div></div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">메서드</div>
+                    <div class="progress-bar"><div class="fill" style="width: 100%;"></div></div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">DOM이해</div>
+                    <div class="progress-bar"><div class="fill" style="width: 100%;"></div></div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">DOM조작</div>
+                    <div class="progress-bar">
+                        <div class="fill" style="width: 100%;"></div> </div>
+                </div>
+            </div>
+            <div class="progress-bar-text">4 / 4 완료 (수고하셨습니다!)</div>
+        </div>
+    </section>
+
+    <div id="question-modal" class="question-modal hidden">
+        <div class="question-content">
+            <h3>선생님 질문이 있어요!</h3>
+            <textarea placeholder="여기에 질문을 입력하세요"></textarea>
+            <div class="question-buttons">
+                <button onclick="submitQuestion()">보내기</button>
+                <button onclick="closeQuestionBox()">닫기</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/javascript/InnerHTML.js"></script>
+    <script src="/javascript/learning/Javascript_Chapter4-4-1.js"></script>
+</body>
+</html>

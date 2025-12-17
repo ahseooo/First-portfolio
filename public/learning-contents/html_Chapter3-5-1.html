@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML3-5-1</title>
+    <link rel="stylesheet" type="text/css" href="/css/learning/html_Chapter3-5-1.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <header id="main-frame"></header>
+
+    <section class="home-section">
+        <div class="learning-card">
+
+            <button class="question-button" onclick="openQuestionBox()">
+                <i class="fa-solid fa-question"></i>
+            </button>
+
+            <div class="intro-header">
+                <h1>📂 파일 경로 이해하기 (Path)</h1>
+            </div>
+
+            <div class="speech-bubble">
+                이미지가 안 나오고 엑박(X)이 뜬다면?<br>
+                99%는 <strong>파일 경로(주소)</strong>를 잘못 적어서 그래! 📍
+            </div>
+
+            <p class="chapter-desc">
+                HTML 파일이 <strong>"사진이나 다른 파일이 어디 있는지"</strong> 찾을 수 있도록 주소를 적는 방법이에요.<br>
+                크게 <strong>상대 경로</strong>와 <strong>절대 경로</strong>로 나뉩니다.
+            </p>
+
+            <div class="topic-section">
+                <h2>1. 상대 경로 (Relative Path)</h2>
+                <p class="topic-desc"><strong>"현재 내 위치(HTML 파일)"</strong>를 기준으로 파일이 어디 있는지 찾아가는 방법이에요.</p>
+
+                <div class="path-case">
+                    <div class="case-header"><span class="badge">Case 1</span> 같은 폴더에 있을 때</div>
+                    <div class="folder-visual-box">
+                        <div class="folder-tree">
+                            <div class="tree-item folder-root"><i class="fa-solid fa-folder-open"></i> 프로젝트_폴더</div>
+                            <div class="tree-children">
+                                <div class="tree-item current-file"><i class="fa-brands fa-html5"></i> index.html <span class="me-badge">나(Here)</span></div>
+                                <div class="tree-item target-file"><i class="fa-solid fa-image"></i> cat.jpg</div>
+                            </div>
+                        </div>
+                        <div class="code-snippet">
+                            <code>src="<span class="highlight">cat.jpg</span>"</code>
+                        </div>
+                    </div>
+                    <p class="case-desc">가장 쉬워요! 그냥 <strong>파일 이름</strong>만 적으면 됩니다.</p>
+                </div>
+
+                <div class="path-case">
+                    <div class="case-header"><span class="badge">Case 2</span> 하위(아래) 폴더에 있을 때</div>
+                    <div class="folder-visual-box">
+                        <div class="folder-tree">
+                            <div class="tree-item folder-root"><i class="fa-solid fa-folder-open"></i> 프로젝트_폴더</div>
+                            <div class="tree-children">
+                                <div class="tree-item current-file"><i class="fa-brands fa-html5"></i> index.html <span class="me-badge">나(Here)</span></div>
+                                <div class="tree-item folder-sub"><i class="fa-solid fa-folder"></i> images (폴더)</div>
+                                <div class="tree-children">
+                                    <div class="tree-item target-file"><i class="fa-solid fa-image"></i> cat.jpg</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="code-snippet">
+                            <code>src="<span class="highlight">images/</span>cat.jpg"</code>
+                        </div>
+                    </div>
+                    <p class="case-desc"><strong>폴더이름/파일이름</strong> 순서로 적어요. (<code>/</code>는 '안에 있다'는 뜻)</p>
+                </div>
+
+                <div class="path-case">
+                    <div class="case-header"><span class="badge warning">Case 3</span> 상위(위) 폴더에 있을 때</div>
+                    <div class="folder-visual-box">
+                        <div class="folder-tree">
+                            <div class="tree-item folder-root"><i class="fa-solid fa-folder-open"></i> 프로젝트_폴더</div>
+                            <div class="tree-children">
+                                <div class="tree-item target-file"><i class="fa-solid fa-image"></i> cat.jpg</div>
+                                <div class="tree-item folder-sub"><i class="fa-solid fa-folder"></i> pages (폴더)</div>
+                                <div class="tree-children">
+                                    <div class="tree-item current-file"><i class="fa-brands fa-html5"></i> index.html <span class="me-badge">나(Here)</span></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="code-snippet">
+                            <code>src="<span class="highlight">../</span>cat.jpg"</code>
+                        </div>
+                    </div>
+                    <p class="case-desc"><strong><code>../</code></strong>는 "상위 폴더로 나가라!"는 명령이에요.</p>
+                </div>
+            </div>
+
+            <hr class="divider">
+
+            <div class="topic-section">
+                <h2>2. 절대 경로 (Absolute Path)</h2>
+                <p class="topic-desc">내 위치와 상관없이 <strong>고유한 주소(URL)</strong>를 사용하는 방법이에요.</p>
+
+                <div class="code-preview-container">
+                    <div class="code-side">
+                        <div class="code-header">
+                            <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
+                            <span>HTML Code</span>
+                        </div>
+                        <pre class="code-box"><code><span class="tag">&lt;img</span> <span class="attr">src</span>=<span class="string">"https://site.com/logo.png"</span><span class="tag">&gt;</span></code></pre>
+                    </div>
+                    <div class="preview-side">
+                        <div class="preview-header">
+                            <i class="fa-solid fa-globe"></i> 설명
+                        </div>
+                        <div class="preview-content">
+                            <p><strong>http://</strong> 또는 <strong>https://</strong>로 시작하는 인터넷 주소를 그대로 복사해서 넣으면 됩니다.</p>
+                            <p class="note">⚠️ 단, 원본 사이트에서 이미지를 삭제하면 우리 사이트에서도 안 보여요!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="fact-box">
+                <div class="fact-title">
+                    <i class="fa-solid fa-scale-balanced"></i> 언제 무엇을 쓸까요?
+                </div>
+                <ul class="fact-list">
+                    <li>
+                        <div class="icon-box">🏠</div>
+                        <div class="text-box">
+                            <strong>상대 경로 (추천!)</strong><br>
+                            내 컴퓨터에서 작업할 때, 나중에 서버에 올릴 때도 <em>경로가 유지되므로 가장 많이 써요.</em>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="icon-box">🌏</div>
+                        <div class="text-box">
+                            <strong>절대 경로</strong><br>
+                            다른 웹사이트(구글, 네이버 등)에 있는 이미지를 가져올 때만 주로 사용해요.
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="navigation">
+                <button class="prev-btn" onclick="goToPreviousPage()"><i class="fa-solid fa-chevron-left"></i> 이전</button>
+
+                <div class="dots">
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span> 
+                    <span class="dot active"></span> </div>
+
+                <button class="next-btn" id="nextPageBtn" onclick="goToNextPage()">
+                    챕터 완료! 🎉
+                </button>
+            </div>
+        </div>
+
+        <div class="progress-card">
+            <h3><i class="fa-solid fa-trophy"></i> 챕터 3: 텍스트 꾸미기</h3>
+
+            <div class="progress-row">
+                <div class="progress-item">
+                    <div class="progress-label">글자 꾸미기</div>
+                    <div class="progress-bar"><div class="fill" style="width: 100%;"></div></div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">이미지 넣기</div>
+                    <div class="progress-bar"><div class="fill" style="width: 100%;"></div></div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">링크 걸기</div>
+                    <div class="progress-bar"><div class="fill" style="width: 100%;"></div></div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">목록 만들기</div>
+                    <div class="progress-bar"><div class="fill" style="width: 100%;"></div></div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">경로 이해</div>
+                    <div class="progress-bar">
+                        <div class="fill" style="width: 100%;"></div> </div>
+                </div>
+            </div>
+            <div class="progress-bar-text">5 / 5 완료 (축하해요!)</div>
+        </div>
+    </section>
+
+    <div id="question-modal" class="question-modal hidden">
+        <div class="question-content">
+            <h3>선생님 질문이 있어요!</h3>
+            <textarea placeholder="여기에 질문을 입력하세요"></textarea>
+            <div class="question-buttons">
+                <button onclick="submitQuestion()">보내기</button>
+                <button onclick="closeQuestionBox()">닫기</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/javascript/InnerHTML.js"></script>
+    <script src="/javascript/learning/html_Chapter3-5-1.js"></script>
+</body>
+</html>

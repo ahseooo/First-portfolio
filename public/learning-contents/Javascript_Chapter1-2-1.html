@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS1-2-1</title>
+    <link rel="stylesheet" type="text/css" href="/css/learning/Javascript_Chapter1-2-1.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <header id="main-frame"></header>
+
+    <section class="home-section">
+        <div class="learning-card">
+
+            <button class="question-button" onclick="openQuestionBox()">
+                <i class="fa-solid fa-question"></i>
+            </button>
+
+            <div class="intro-header">
+                <h1>💡 자바스크립트의 특징</h1>
+            </div>
+
+            <div class="speech-bubble">
+                자바스크립트는 다른 언어랑 뭐가 다를까? 🤔<br>
+                <strong>바로 실행되고, 자유롭고, 어디서든 쓰이는</strong> 매력이 있어!
+            </div>
+
+            <p class="chapter-desc">
+                자바스크립트가 가진 특별한 성격들을 알아볼까요?<br>
+                이 특징들 덕분에 웹 개발이 훨씬 재미있고 강력해진답니다.
+            </p>
+
+            <div class="feature-grid-box">
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🚀</div>
+                    <div class="feature-content">
+                        <h3>1. 바로 실행돼요! (인터프리터)</h3>
+                        <p>
+                            코드를 작성하면 컴퓨터가 한 줄씩 바로 읽고 실행해요.<br>
+                            따로 '번역(컴파일)'하는 시간이 필요 없어서 결과를 빨리 볼 수 있죠.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🎭</div>
+                    <div class="feature-content">
+                        <h3>2. 변수는 자유로워요! (동적 타입)</h3>
+                        <p>
+                            숫자였다가 글자가 될 수도 있어요!<br>
+                            자바스크립트는 <em>"아~ 이건 숫자구나!"</em> 하고 스스로 알아챈답니다.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">💻</div>
+                    <div class="feature-content">
+                        <h3>3. 브라우저에서 돌아요!</h3>
+                        <p>
+                            서버까지 갔다 올 필요 없이,<br>
+                            여러분의 컴퓨터(브라우저) 안에서 바로바로 실행돼요.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">📦</div>
+                    <div class="feature-content">
+                        <h3>4. 모든 게 '객체'예요!</h3>
+                        <p>
+                            사람, 자동차, 버튼... 모든 것을 <strong>객체(Object)</strong>로 다뤄요.<br>
+                            객체는 여러 정보를 담는 보물상자 같아요.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🖱️</div>
+                    <div class="feature-content">
+                        <h3>5. 클릭하면 움직여요!</h3>
+                        <p>
+                            사용자가 클릭하거나 입력하는 순간을 감지해요.<br>
+                            <em>"앗! 마우스가 움직였네?"</em> 하고 즉시 반응하죠.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🎨</div>
+                    <div class="feature-content">
+                        <h3>6. 자유로운 코딩 스타일</h3>
+                        <p>
+                            순서대로 짜도 되고, 함수로 묶어도 되고!<br>
+                            여러 가지 방식으로 유연하게 코드를 작성할 수 있어요.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="navigation">
+                <button class="prev-btn" onclick="goToPreviousPage()"><i class="fa-solid fa-chevron-left"></i> 이전 (JS란?)</button>
+
+                <div class="dots">
+                    <span class="dot"></span>
+                    <span class="dot active"></span> <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+
+                <button class="next-btn" id="nextPageBtn" onclick="goToNextPage()">
+                    다음 (실습 준비하기) <i class="fa-solid fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="progress-card">
+            <h3><i class="fa-solid fa-bolt"></i> 챕터 1: 자바스크립트의 시작</h3>
+
+            <div class="progress-row">
+                <div class="progress-item">
+                    <div class="progress-label">JS란?</div>
+                    <div class="progress-bar"><div class="fill" style="width: 100%;"></div></div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">특징</div>
+                    <div class="progress-bar">
+                        <div class="fill" style="width: 50%;"></div> </div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">실습준비</div>
+                    <div class="progress-bar"><div class="fill" style="width: 0%;"></div></div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">에러해결</div>
+                    <div class="progress-bar"><div class="fill" style="width: 0%;"></div></div>
+                </div>
+            </div>
+            <div class="progress-bar-text">2 / 4 진행중</div>
+        </div>
+    </section>
+
+    <div id="question-modal" class="question-modal hidden">
+        <div class="question-content">
+            <h3>선생님 질문이 있어요!</h3>
+            <textarea placeholder="여기에 질문을 입력하세요"></textarea>
+            <div class="question-buttons">
+                <button onclick="submitQuestion()">보내기</button>
+                <button onclick="closeQuestionBox()">닫기</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/javascript/InnerHTML.js"></script>
+    <script src="/javascript/learning/Javascript_Chapter1-2-1.js"></script>
+</body>
+</html>

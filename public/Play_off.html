@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coding Monster</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" /> <!-- integrity 값 변경 -->
+    <link rel="stylesheet" href="/css/play.css">
+</head>
+
+<body>
+    <header id="main-frame"></header> <!--상단 헤더 부분-->
+
+    <div class="home-section">
+        <div class="notice-banner">
+            <div class="notice-content">
+                <span class="notice-icon"><i class="fas fa-bullhorn"></i> NOTICE</span>
+                <div class="notice-scroll-wrapper">
+                    <span class="notice-text">📢 이번 주 서버 점검 안내: 12.06(토) 00:00 ~ 04:00 (안정적인 서비스를 위해 점검이 진행됩니다.)</span>
+                </div>
+            </div>
+            <!-- <a href="#" class="notice-more">더보기 <i class="fas fa-chevron-right"></i></a> -->
+        </div>
+
+        <div class="grid-container">
+            <div class="home-wrapper">
+                <div class="event-box dashboard-event-widget">
+                    <div class="event-header">
+                        <div class="header-title-group">
+                            <span class="event-badge">EVENT</span>
+                            <h3>진행 중인 이벤트</h3>
+                        </div>
+                        <input type="text" class="event-search" placeholder="이벤트 검색" />
+                    </div>
+
+                    <div class="event-list">
+                        <div class="event-item">
+                            <span>오늘 출석 체크하기 (0/1)</span>
+                            <button class="reward-btn disabled" disabled>보상받기</button>
+                        </div>
+                        <div class="event-item">
+                            <span>코딩 문제 풀기 챌린지 (0/3)</span>
+                            <button class="reward-btn disabled" disabled>보상받기</button>
+                        </div>
+                        <div class="event-item">
+                            <span>커뮤니티에 글 작성 (0/1)</span>
+                            <button class="reward-btn disabled" disabled>보상받기</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="sidebar">
+                    <div class="tabs" id="curriculum-tabs"></div>
+
+                    <div id="curriculum-content"></div>
+                </div>
+            </div>
+
+            <div class="home-wrapper">
+                <div class="profile-card">
+                    <div class="profile-header">
+                        <div class="profile-info">
+                            <div class="rank-badge">0위</div>
+                            <div class="nickname">닉네임</div>
+                        </div>
+                    </div>
+                    <div class="level-container">
+                        <div class="level-info">
+                            <span>Lv.1</span>
+                            <span>45 / 100 XP</span>
+                        </div>
+                        <div class="level-bar">
+                            <div class="level-progress"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="calendar">
+                    <div class="header">
+                        <button onclick="prevMonth()"><i class="fas fa-chevron-left"></i></button>
+                        <div id="monthYear"></div>
+                        <button onclick="nextMonth()"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>일</th>
+                                <th>월</th>
+                                <th>화</th>
+                                <th>수</th>
+                                <th>목</th>
+                                <th>금</th>
+                                <th>토</th>
+                            </tr>
+                        </thead>
+                        <tbody id="calendarBody">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="memoModal" class="modal">
+        <div class="modal-content">
+            <span id="closeMemoBtn" style="float:right; cursor:pointer;">×</span>
+            <h3 id="memoDate">날짜</h3>
+            <textarea id="memoContent" placeholder="오늘의 기록을 입력하세요..."></textarea>
+            <button onclick="saveMemo()">저장</button>
+            <button onclick="deleteMemo()" class="delete-memo-btn">삭제</button>
+
+        </div>
+    </div>
+
+    <script type="text/javascript" src="/javascript/InnerHTML.js"></script>
+    <script type="text/javascript" src="/javascript/Calendar.js"></script>
+    <script type="text/javascript" src="/javascript/curriculum-chapter.js"></script>
+</body>
+
+</html>

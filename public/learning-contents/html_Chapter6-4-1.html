@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML6-4-1</title>
+    <link rel="stylesheet" type="text/css" href="/css/learning/html_Chapter6-4-1.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <header id="main-frame"></header>
+
+    <section class="home-section">
+        <div class="learning-card">
+
+            <button class="question-button" onclick="openQuestionBox()">
+                <i class="fa-solid fa-question"></i>
+            </button>
+
+            <div class="intro-header">
+                <h1>📅 미니 프로젝트: 나만의 시간표 만들기</h1>
+            </div>
+
+            <div class="speech-bubble">
+                학교 시간표를 웹페이지로 만들어보자! 🏫<br>
+                <strong>표(Table)</strong> 태그를 사용해서 깔끔하게 정리해볼까?
+            </div>
+
+            <p class="chapter-desc">
+                <code>&lt;table&gt;</code> 태그와 <code>&lt;tr&gt;</code>, <code>&lt;td&gt;</code>, <code>&lt;th&gt;</code>를 활용해서<br>
+                일주일 수업 시간표를 만들어봅시다.
+            </p>
+
+            <div class="mission-section">
+                <h3>📋 오늘의 미션</h3>
+                <div class="mission-grid">
+                    <div class="mission-item">
+                        <span class="mission-num">1</span>
+                        <div class="mission-text">
+                            <strong>제목과 표 만들기</strong><br>
+                            <code>h1</code> 태그로 제목을 쓰고, <code>table</code> 태그로 표를 만드세요.
+                        </div>
+                    </div>
+                    <div class="mission-item">
+                        <span class="mission-num">2</span>
+                        <div class="mission-text">
+                            <strong>요일 행(Header) 만들기</strong><br>
+                            첫 번째 줄은 <code>th</code> 태그를 써서 월~금 요일을 표시하세요.
+                        </div>
+                    </div>
+                    <div class="mission-item">
+                        <span class="mission-num">3</span>
+                        <div class="mission-text">
+                            <strong>교시별 수업 채우기</strong><br>
+                            1교시부터 4교시까지 각 시간에 맞는 과목을 <code>td</code>에 적어보세요.
+                        </div>
+                    </div>
+                    <div class="mission-item">
+                        <span class="mission-num">4</span>
+                        <div class="mission-text">
+                            <strong>쉬는 시간/점심 시간 (병합)</strong><br>
+                            <code>colspan="5"</code>를 써서 가로로 긴 점심시간 칸을 만들어보세요.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="divider">
+
+            <div class="editor-container">
+                <div class="editor-pane">
+                    <div class="pane-header">
+                        <i class="fa-solid fa-code"></i> HTML 코드 작성
+                        <button class="reset-btn" onclick="resetCode()">초기화 ↺</button>
+                    </div>
+                    <textarea id="code" spellcheck="false" placeholder=""></textarea>
+                    <button class="run-btn" onclick="runCode()">실행하기 ▶</button>
+                </div>
+
+                <div class="preview-pane">
+                    <div class="pane-header">
+                        <i class="fa-solid fa-desktop"></i> 결과 미리보기
+                    </div>
+                    <div class="iframe-wrapper">
+                        <iframe id="result" title="결과 화면"></iframe>
+                    </div>
+                </div>
+            </div>
+
+            <div class="navigation">
+                <button class="prev-btn" onclick="goToPreviousPage()"><i class="fa-solid fa-chevron-left"></i> 이전 (설문조사)</button>
+
+                <div class="dots">
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot active"></span> </div>
+
+                <button class="next-btn" id="nextPageBtn" onclick="goToNextPage()">
+                    다음 (최종 퀴즈) <i class="fa-solid fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <div id="question-modal" class="question-modal hidden">
+        <div class="question-content">
+            <h3>선생님 질문이 있어요!</h3>
+            <textarea placeholder="여기에 질문을 입력하세요"></textarea>
+            <div class="question-buttons">
+                <button onclick="submitQuestion()">보내기</button>
+                <button onclick="closeQuestionBox()">닫기</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/javascript/InnerHTML.js"></script>
+    <script src="/javascript/learning/html_Chapter6-4-1.js"></script>
+</body>
+</html>

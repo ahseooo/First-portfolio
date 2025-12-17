@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML 챕터 1</title>
+    <link rel="stylesheet" type="text/css" href="/css/learning/html_Chapter1-2-1.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <header id="main-frame"></header>
+
+    <section class="home-section">
+        <div class="learning-card">
+
+            <button class="question-button" onclick="openQuestionBox()">
+                <i class="fa-solid fa-question"></i>
+            </button>
+
+            <div class="intro-header">
+                <h1>✨ HTML이 알려주는 웹페이지의 비밀 🤫</h1>
+            </div>
+
+            <div class="speech-bubble">
+                우리가 보는 웹페이지 뒤에는<br>
+                HTML의 6가지 비밀이 숨어있어!
+            </div>
+
+            <p class="chapter-desc">
+                HTML은 혼자서 일하지 않아요.<br>
+                친구들과 함께 어울리며, 정해진 규칙대로 화면을 보여준답니다.
+            </p>
+
+            <div class="fact-box">
+                <div class="fact-title">
+                    <i class="fa-solid fa-list-check"></i> HTML의 6가지 특징
+                </div>
+                <ul class="fact-list">
+                    <li>
+                        <div class="icon-box"><i class="fa-solid fa-bone"></i></div>
+                        <div class="text-box">
+                            <strong>1. 웹사이트의 뼈대</strong><br>
+                            제목, 글, 사진이 <em>어디에 위치할지</em> 구조를 잡아요.
+                        </div>
+                    </li>
+                    <li>
+                        <div class="icon-box"><i class="fa-solid fa-tags"></i></div>
+                        <div class="text-box">
+                            <strong>2. 태그(Tag)로 명령</strong><br>
+                            <code>&lt;h1&gt;</code>, <code>&lt;img&gt;</code> 처럼 괄호 안에 명령어를 담아 대화해요.
+                        </div>
+                    </li>
+                    <li>
+                        <div class="icon-box"><i class="fa-solid fa-arrow-down-long"></i></div>
+                        <div class="text-box">
+                            <strong>3. 위에서 아래로 (순서)</strong><br>
+                            우리가 글을 쓰는 순서대로 브라우저가 하나씩 보여줘요.
+                        </div>
+                    </li>
+                    <li>
+                        <div class="icon-box"><i class="fa-solid fa-palette"></i></div>
+                        <div class="text-box">
+                            <strong>4. 짝꿍: CSS (꾸미기)</strong><br>
+                            HTML이 뼈대라면, CSS는 <em>옷을 입히고 예쁘게 꾸며줘요.</em>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="icon-box"><i class="fa-solid fa-bolt"></i></div>
+                        <div class="text-box">
+                            <strong>5. 짝꿍: JavaScript (동작)</strong><br>
+                            움직이거나 반응하는 기능은 자바스크립트가 도와줘요.
+                        </div>
+                    </li>
+                    <li>
+                        <div class="icon-box"><i class="fa-solid fa-image"></i></div>
+                        <div class="text-box">
+                            <strong>6. 정적인 언어</strong><br>
+                            HTML은 눈에 보이는 것만 만들어요. (움직임은 친구 담당!)
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="navigation">
+                <button class="prev-btn"><i class="fa-solid fa-chevron-left"></i> 이전</button>
+
+                <div class="dots">
+                    <span class="dot active"></span> <span class="dot active"></span> <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+
+                <button class="next-btn" id="nextPageBtn">
+                    다음 <i class="fa-solid fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="progress-card">
+            <h3><i class="fa-solid fa-trophy"></i> 학습 진행 상황</h3>
+
+            <div class="progress-row">
+                <div class="progress-item">
+                    <div class="progress-label">HTML이란?</div>
+                    <div class="progress-bar">
+                        <div class="fill" style="width: 100%;"></div>
+                    </div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">HTML 특징</div>
+                    <div class="progress-bar">
+                        <div class="fill" style="width: 50%;"></div> </div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">태그와 속성</div>
+                    <div class="progress-bar"><div class="fill" style="width: 0%;"></div></div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">텍스트 태그</div>
+                    <div class="progress-bar"><div class="fill" style="width: 0%;"></div></div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">링크 만들기</div>
+                    <div class="progress-bar"><div class="fill" style="width: 0%;"></div></div>
+                </div>
+            </div>
+            <div class="progress-bar-text">2 / 5 진행중</div>
+        </div>
+    </section>
+
+    <div id="question-modal" class="question-modal hidden">
+        <div class="question-content">
+            <h3>선생님 질문이 있어요!</h3>
+            <textarea placeholder="여기에 질문을 입력하세요"></textarea>
+            <div class="question-buttons">
+                <button onclick="submitQuestion()">보내기</button>
+                <button onclick="closeQuestionBox()">닫기</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/javascript/InnerHTML.js"></script>
+    <script src="/javascript/learning/html_Chapter1-2-1.js"></script>
+</body>
+</html>

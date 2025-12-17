@@ -1,0 +1,1511 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap");
+@import url("./sub_frame.css");
+
+:root {
+    --primary-color: #667eea;
+    --primary-light: #a5b4fc;
+    --primary-dark: #5a67d8;
+    --secondary-color: #48bb78;
+    --secondary-light: #9ae6b4;
+    --accent-color: #ed8936;
+    --accent-light: #fbb660;
+    --text-primary: #2d3748;
+    --text-secondary: #4a5568;
+    --text-muted: #718096;
+    --bg-primary: #ffffff;
+    --bg-secondary: #f7fafc;
+    --bg-tertiary: #edf2f7;
+    --bg-code: #1a202c;
+    --border-light: #e2e8f0;
+    --border-medium: #cbd5e1;
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+    --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1);
+    --radius-sm: 6px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --radius-xl: 16px;
+}
+
+html,
+body {
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+}
+
+.home-section {
+    background: #2c3e50;
+}
+
+/* 퀘스트 컨테이너 */
+.quest-container {
+    display: grid;
+    grid-template-columns: 4fr 6fr;
+    grid-template-rows: auto 1fr 1fr auto;
+    grid-template-areas:
+        "qheader qheader"
+        "qdescription editor-area"
+        "qdescription result-area"
+        "qbuttons qbuttons";
+    gap: 16px;
+    /* padding: 32px 55px; */
+    width: 100%;
+    height: 100%;
+    /* margin: 0 auto; */
+    box-sizing: border-box;
+    padding: 16px 30px;
+}
+
+/* 퀘스트 헤더 */
+.quest-header {
+    grid-area: qheader;
+    /* background-color: #f5f5f5; */
+    /* border: 1px solid #ddd; */
+    /* border-radius: 8px; */
+    justify-content: center;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    /* margin-bottom: 32px; */
+}
+
+.quest-header-box {
+    background-color: rgba(255, 255, 255, 0.4);
+    border: 2px solid var(--border-light);
+    border-radius: var(--radius-xl);
+    /* padding: 20px 40px; */
+    padding: 12px 16px;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--text-primary);
+    box-shadow: var(--shadow-lg);
+    position: relative;
+    overflow: hidden;
+    width: 15%;
+    text-align: center;
+    height: 100%;
+    min-width: 250px;
+}
+
+.quest-header-box::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg,
+            var(--primary-color),
+            var(--secondary-color),
+            var(--accent-color));
+    border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+}
+
+/* 영역별 제목 스타일 */
+.quest-description::before,
+.editor-area::before,
+.result-area::before {
+    content: attr(data-title);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 10px 20px;
+    background: rgba(255, 255, 255, 0.4);
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--text-secondary);
+    /* border: 1px solid var(--border-light); */
+    z-index: 1;
+}
+
+/* 문제 설명 영역 */
+.quest-description {
+    grid-area: qdescription;
+    position: relative;
+    padding: 42px 0 0 0;
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-md);
+    /* background: linear-gradient(180deg,
+            var(--bg-primary) 0%,
+            var(--bg-secondary) 100%); */
+    /* border-right: 1px solid var(--border-light); */
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--text-primary);
+    height: 100%;
+    /* width: 100%; */
+    overflow: hidden;
+}
+
+.quest-description pre {
+    background: var(--bg-code);
+    /* background: var(--bg-secondary); */
+    color: #e2e8f0;
+    /* color: var(--bg-code); */
+    padding: 20px 16px;
+    font-family: "Consolas", "Monaco", "Courier New", monospace;
+    font-size: 16px;
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+    overflow-y: auto;
+    /* border: 1px solid var(--border-medium); */
+    height: 100%;
+
+    
+    /* -webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none; */
+}
+
+.quest-description pre img{
+    border: 1px solid #ccc;
+    max-width: auto;
+    max-height: 300px;
+    object-fit: contain;
+}
+.quest-description pre img:hover {
+    position: fixed;
+    bottom: 100px;
+    max-width: 1000px;
+    max-height: 600px;
+    z-index: 1000;
+}
+
+/* 코드 작성 영역 */
+.editor-area {
+    grid-area: editor-area;
+    position: relative;
+    padding: 42px 0 0 0;
+    /* padding: 20px; */
+    /* background: var(--bg-primary); */
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    /* height: 100%;
+    width: 100%; */
+}
+
+#editor {
+    width: 100%;
+    height: 100%;
+}
+
+/* 실행 결과 영역 */
+.result-area {
+    grid-area: result-area;
+    position: relative;
+    /* position: relative; */
+    padding: 42px 0 0 0;
+    /* background: #1e1e1e; */
+    /* height: 100%;
+    width: 100%; */
+    color: #00ff00;
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-md);
+    overflow-y: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.result-area .output {
+    width: 100%;
+    height: 100%;
+    resize: none;
+    border: none;
+    outline: none;
+    padding: 16px 20px;
+    font-family: "Consolas", "Monaco", "Courier New", monospace;
+    font-size: 16px;
+    line-height: 1.5;
+    background: #1e1e1e;
+    /* color: var(--text-primary); */
+    color: #00ff00;
+    transition: all 0.2s ease;
+    box-sizing: border-box;
+    overflow-y: auto;
+    white-space: pre-wrap;
+}
+
+.html-output {
+    width: 100%;
+    height: 100%;
+    resize: none;
+    border: none;
+    outline: none;
+    font-family: "Consolas", "Monaco", "Courier New", monospace;
+    font-size: 16px;
+    line-height: 1.5;
+    background: #1e1e1e;
+    color: #00ff00;
+    transition: all 0.2s ease;
+    box-sizing: border-box;
+    overflow-y: auto;
+    white-space: pre-wrap;
+}
+
+.loading {
+    display: none;
+    resize: none;
+    border: none;
+    outline: none;
+    font-family: "Consolas", "Monaco", "Courier New", monospace;
+    font-size: 16px;
+    line-height: 1.5;
+    text-align: center;
+    padding: 20px;
+    color: #666;
+    transition: all 0.2s ease;
+    box-sizing: border-box;
+    background-color: #1e1e1e;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.spinner {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #3498db;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.quest-description,
+.editor-area,
+.result-area {
+    min-width: 0;
+}
+
+/* 버튼 영역 */
+.quest-buttons {
+    grid-area: qbuttons;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* padding: 12px 20px; */
+    padding: 10px 20px;
+    background: rgba(255, 255, 255, 0.4);
+    border-top: 1px solid var(--border-light);
+    border-radius: var(--radius-md);
+    height: 100%;
+}
+
+.left-buttons,
+.right-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+/* 기본 버튼 스타일 */
+.quest-buttons button {
+    /* padding: 12px 24px; */
+    padding: 10px 20px;
+    border: none;
+    border-radius: var(--radius-md);
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+}
+
+.quest-buttons button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg,
+            transparent,
+            rgba(255, 255, 255, 0.2),
+            transparent);
+    transition: left 0.5s;
+}
+
+.quest-buttons button:hover::before {
+    left: 100%;
+}
+
+.quest-buttons button:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.quest-buttons button:active {
+    transform: translateY(0);
+}
+
+/* 힌트 버튼 */
+.left-buttons button {
+    background: linear-gradient(135deg, var(--text-muted) 0%, #4a5568 100%);
+    color: white;
+}
+
+.left-buttons button:hover {
+    background: linear-gradient(135deg, #4a5568 0%, #2d3748 100%);
+}
+
+/* 초기화 버튼 */
+.right-buttons button:first-child {
+    background: linear-gradient(135deg,
+            var(--text-secondary) 0%,
+            var(--text-primary) 100%);
+    color: white;
+}
+
+.right-buttons button:first-child:hover {
+    background: linear-gradient(135deg, var(--text-primary) 0%, #1a202c 100%);
+}
+
+/* 코드실행 버튼 */
+.right-buttons button:nth-child(2) {
+    background: linear-gradient(135deg, var(--secondary-color) 0%, #38a169 100%);
+    color: white;
+}
+
+.right-buttons button:nth-child(2):hover {
+    background: linear-gradient(135deg, #38a169 0%, #2f855a 100%);
+}
+
+/* 제출 버튼 */
+.right-buttons button:nth-child(3) {
+    background: linear-gradient(135deg, var(--accent-color) 0%, #dd6b20 100%);
+    color: white;
+}
+
+.right-buttons button:nth-child(3):hover {
+    background: linear-gradient(135deg, #dd6b20 0%, #c05621 100%);
+}
+
+/* .submit-btn {
+    background: linear-gradient(135deg, var(--accent-color) 0%, #dd6b20 100%);
+    color: white;
+} */
+
+/* .submit-btn:hover:not(:disabled) {
+	background: linear-gradient(135deg, #dd6b20 0%, #c05621 100%);
+} */
+
+.right-buttons button:nth-child(3).graded {
+	background: #2563eb;
+}
+
+.right-buttons button:nth-child(3).graded:hover:not(:disabled) {
+	background: #1d4ed8;
+}
+
+.right-buttons button:nth-child(3):disabled {
+	background: #9ca3af;
+	cursor: not-allowed;
+}
+
+/* 다음 문제 버튼 */
+.right-buttons button:last-child {
+    background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);
+    color: white;
+}
+
+.right-buttons button:last-child:hover {
+    background: linear-gradient(135deg, #6d28d9 0%, #5b21b6 100%);
+}
+
+/* 반응형 디자인 */
+@media (max-width: 1200px) {
+    .quest-content-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto auto;
+    }
+
+    .quest-description {
+        grid-row: 1;
+        grid-column: 1;
+        border-right: none;
+        border-bottom: 1px solid var(--border-light);
+        max-height: 300px;
+    }
+
+    .editor-area {
+        grid-row: 2;
+        border-bottom: 1px solid var(--border-light);
+    }
+
+    .result-area {
+        grid-row: 3;
+    }
+
+    .quest-buttons {
+        grid-row: 4;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .left-buttons,
+    .right-buttons {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .quest-container {
+        padding: 16px;
+    }
+
+    .language-buttons {
+        flex-wrap: wrap;
+        gap: 6px;
+    }
+
+    .lang-btn {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+
+    .header-content .title {
+        font-size: 20px;
+    }
+
+    .quest-buttons button {
+        padding: 10px 18px;
+        font-size: 14px;
+    }
+}
+
+/* 로딩 애니메이션 */
+@keyframes shimmer {
+    0% {
+        transform: translateX(-100%);
+    }
+
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+.loading-shimmer::before {
+    animation: shimmer 1.5s infinite;
+}
+
+/* 포커스 링 제거 및 접근성 */
+button:focus,
+textarea:focus {
+    outline: none;
+}
+
+button:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+/* 다크모드 대응 (추후 확장 가능) */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --text-primary: #f7fafc;
+        --text-secondary: #e2e8f0;
+        --text-muted: #a0aec0;
+        --bg-primary: #2d3748;
+        --bg-secondary: #1a202c;
+        --bg-tertiary: #4a5568;
+    }
+}
+
+
+
+.loading-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 3000;
+}
+
+.loading-spinner {
+    width: 60px;
+    height: 60px;
+    border: 4px solid #e5e7eb;
+    border-top: 4px solid #2563eb;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.loading-text {
+    margin-top: 1.5rem;
+    color: white;
+    font-size: 1.125rem;
+    font-weight: 600;
+}
+
+.loading-subtext {
+    margin-top: 0.5rem;
+    color: #d1d5db;
+    font-size: 0.875rem;
+}
+
+/* ========== AI 피드백 모달 (사이버 펑크) ========== */
+/* ========== AI 피드백 모달 (System Interface Style) ========== */
+
+/* 1. 배경 오버레이 (승급 모달과 동일한 그리드 패턴) */
+.feedback-modal-overlay {
+    position: fixed;
+    inset: 0;
+    /* 배경: 아주 짙은 남색 + 사이버 그리드 */
+    background-color: rgba(26, 32, 44, 0.95);
+    background-image: 
+        linear-gradient(rgba(102, 126, 234, 0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(102, 126, 234, 0.1) 1px, transparent 1px);
+    background-size: 50px 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    z-index: 2000;
+    backdrop-filter: blur(5px);
+}
+
+/* 2. 모달 메인 박스 (각진 형태 + 스캔라인) */
+.feedback-modal {
+    position: relative;
+    background: #1a202c; /* --dark-bg-color */
+    width: 100%;
+    max-width: 800px;
+    max-height: 85vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    
+    /* 사이버 펑크 형태 (모서리 깎임) */
+    clip-path: polygon(
+        20px 0, 100% 0, 
+        100% calc(100% - 20px), calc(100% - 20px) 100%, 
+        0 100%, 0 20px
+    );
+    
+    /* 네온 테두리 효과 (border 대신 box-shadow inset 사용) */
+    box-shadow: inset 0 0 0 2px var(--neon-blue), 0 0 50px rgba(0, 255, 255, 0.2);
+    
+    color: #f0f0f0;
+    animation: cyberOpen 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* 배경 스캔라인 효과 (가상 요소) */
+.feedback-modal::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0, 255, 255, 0.03) 3px
+    );
+    pointer-events: none;
+    z-index: 0; /* 콘텐츠 뒤로 */
+}
+
+/* 시스템 장식 텍스트 */
+.feedback-modal::before {
+    content: "SYSTEM_ANALYSIS // CODE_REVIEW";
+    position: absolute;
+    top: 15px;
+    left: 25px;
+    font-family: 'Consolas', monospace;
+    font-size: 10px;
+    color: var(--text-muted);
+    letter-spacing: 2px;
+    z-index: 2;
+}
+
+/* 3. 모달 헤더 */
+.feedback-modal-header {
+    position: relative;
+    z-index: 2;
+    padding: 40px 30px 20px 30px; /* 상단 여백 확보 */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(0, 255, 255, 0.3);
+}
+
+.feedback-modal-header h2 {
+    margin: 0;
+    font-family: 'Consolas', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #ffffff;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 0px var(--neon-blue);
+    letter-spacing: 1px;
+}
+
+/* 상단 닫기 버튼 (X) */
+.feedback-close-btn {
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.feedback-close-btn:hover {
+    color: var(--neon-red);
+    text-shadow: 0 0 10px var(--neon-red);
+    transform: scale(1.2);
+}
+
+/* 4. 콘텐츠 영역 */
+.feedback-modal-content {
+    position: relative;
+    z-index: 2;
+    padding: 30px;
+}
+
+.feedback-section {
+    margin-bottom: 2.5rem;
+}
+
+/* 요약 박스 (터미널 스타일) */
+.feedback-summary {
+    background: rgba(0, 255, 255, 0.05);
+    border: 1px solid var(--neon-blue);
+    border-left: 5px solid var(--neon-blue);
+    padding: 20px;
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.feedback-summary svg {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    color: var(--neon-blue);
+    filter: drop-shadow(0 0 5px var(--neon-blue));
+    margin-top: 2px;
+}
+
+.feedback-summary p {
+    color: #ffffff;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin: 0;
+    font-weight: 500;
+}
+
+/* 리스트 스타일 */
+.feedback-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 15px;
+}
+
+.feedback-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 12px;
+    padding: 10px 15px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    color: #cbd5e1; /* 밝은 회색 */
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 1rem;
+    line-height: 1.5;
+    transition: all 0.3s ease;
+}
+
+.feedback-list li:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    transform: translateX(5px);
+}
+
+.feedback-list li svg,
+.feedback-list li span.emoji {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    margin-top: 2px;
+}
+
+/* 섹션 헤더 (Consolas 폰트 + 네온 컬러) */
+.feedback-section h4 {
+    font-family: 'Consolas', monospace;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 8px;
+}
+
+/* 👍 잘한 점 (Green) */
+.strengths-section h4 {
+    color: var(--neon-green);
+    text-shadow: 0 0 8px rgba(0, 255, 0, 0.4);
+    border-bottom-color: var(--neon-green);
+}
+.strengths-section svg { color: var(--neon-green); }
+
+/* 💪 개선점 (Orange/Yellow) */
+.improvements-section h4 {
+    color: #ed8936; /* 승급 모달 Accent Color */
+    text-shadow: 0 0 8px rgba(237, 137, 54, 0.4);
+    border-bottom-color: #ed8936;
+}
+.improvements-section svg { color: #ed8936; }
+
+/* 💡 제안점 (Blue/Purple) */
+.suggestions-section h4 {
+    color: #a5b4fc; /* 승급 모달 Light Color */
+    text-shadow: 0 0 8px rgba(165, 180, 252, 0.4);
+    border-bottom-color: #a5b4fc;
+}
+
+/* 5. 푸터 버튼 (승급 모달 버튼 스타일) */
+.feedback-modal-footer {
+    position: relative;
+    z-index: 2;
+    padding: 20px 30px 40px 30px;
+    border-top: 1px solid rgba(0, 255, 255, 0.2);
+    display: flex;
+    justify-content: center;
+}
+
+.feedback-modal-footer .feedback-close {
+    width: 100%;
+    max-width: 200px;
+    background: transparent;
+    color: var(--neon-blue);
+    border: 2px solid var(--neon-blue);
+    padding: 12px 0;
+    border-radius: 4px;
+    font-family: 'Consolas', monospace;
+    font-size: 1.1rem;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.feedback-modal-footer .feedback-close:hover {
+    background: rgba(0, 255, 255, 0.15);
+    color: #ffffff;
+    box-shadow: 0 0 20px var(--neon-blue);
+    transform: translateY(-2px);
+}
+
+.hidden {
+	display: none;
+}
+
+
+@keyframes slideUp {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes shake {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-10px);
+    }
+
+    75% {
+        transform: translateX(10px);
+    }
+}
+
+.shake {
+    animation: shake 0.5s ease;
+}
+
+/* 전체 스크롤바 너비 */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+/* 스크롤바 트랙 (배경) - 투명하게 */
+::-webkit-scrollbar-track {
+    background: transparent;
+    margin-block: 4px; /* 위아래 여백을 주어 둥근 모서리와 겹치지 않게 */
+}
+
+/* 스크롤바 핸들 (움직이는 부분) */
+::-webkit-scrollbar-thumb {
+    background: rgba(160, 174, 192, 0.4); /* 부드러운 회색, 반투명 */
+    border-radius: 4px;
+    transition: background 0.2s ease;
+}
+
+/* 호버 시 조금 더 진하게 */
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(160, 174, 192, 0.7);
+}
+
+/* 코너 부분 (가로/세로 스크롤바 만나는 곳) */
+::-webkit-scrollbar-corner {
+    background: transparent;
+}
+
+/* 티어 디스플레이 */
+.tier-display {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: 20px;
+    padding: 8px 15px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+}
+
+.tier-image {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    transition: all 0.3s ease;
+}
+
+.tier-name {
+    font-weight: bold;
+    font-size: 14px;
+    color: #fff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    transition: opacity 0.3s ease;
+}
+
+
+
+/* 애니메이션 */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes bounceIn {
+    0% {
+        transform: scale(0.3);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    70% {
+        transform: scale(0.9);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes rotateIn {
+    from {
+        transform: rotate(-200deg) scale(0);
+        opacity: 0;
+    }
+    to {
+        transform: rotate(0) scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+
+.upgrade-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* 배경: 아주 짙은 남색 + 그리드 */
+    background-color: rgba(26, 32, 44, 0.95); /* --bg-code 색상 기반 */
+    background-image: 
+        linear-gradient(rgba(102, 126, 234, 0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(102, 126, 234, 0.1) 1px, transparent 1px);
+    background-size: 50px 50px;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    backdrop-filter: blur(8px);
+}
+
+.upgrade-modal-overlay.show {
+    display: flex;
+}
+
+.upgrade-modal {
+    position: relative;
+    width: 520px;
+    padding: 2px; /* 테두리 두께 */
+    
+    /* 조화로운 컬러: 메인 퍼플(#667eea) & 액센트 오렌지(#ed8936) */
+    background: linear-gradient(135deg, #667eea 0%, #a5b4fc 50%, #ed8936 100%);
+    
+    /* 형태: 모서리가 깎인 사각형 (유지) */
+    clip-path: polygon(
+        15px 0, 100% 0, 
+        100% calc(100% - 15px), calc(100% - 15px) 100%, 
+        0 100%, 0 15px
+    );
+    
+    /* 은은한 퍼플 글로우 */
+    box-shadow: 0 0 50px rgba(102, 126, 234, 0.4);
+    
+    animation: cyberOpen 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* 내부 콘텐츠 박스 */
+.upgrade-content {
+    background: #1a202c; /* --bg-code 색상 사용 (이질감 제거) */
+    padding: 50px 30px;
+    
+    /* 내부도 같은 모양으로 깎음 */
+    clip-path: polygon(
+        15px 0, 100% 0, 
+        100% calc(100% - 15px), calc(100% - 15px) 100%, 
+        0 100%, 0 15px
+    );
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* 장식 텍스트: 너무 튀지 않는 색상으로 */
+.upgrade-content::before {
+    content: "QUEST_COMPLETE // SYSTEM_UPGRADE";
+    position: absolute;
+    top: 15px;
+    left: 20px;
+    font-family: 'Consolas', monospace;
+    font-size: 11px;
+    color: #718096; /* --text-muted */
+    letter-spacing: 2px;
+}
+
+.upgrade-content::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(165, 180, 252, 0.05) 3px /* --primary-light 아주 연하게 */
+    );
+    pointer-events: auto;
+    z-index: 10;
+}
+
+/* 타이틀: 메인 테마색 글리치 */
+.upgrade-title {
+    font-family: 'Consolas', sans-serif;
+    font-size: 46px;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    position: relative;
+    letter-spacing: 1px;
+    /* 글리치 색상을 사이트 테마(오렌지/퍼플)로 변경 */
+    text-shadow: 2px 2px 0px #ed8936, -2px -2px 0px #667eea;
+    animation: glitchTextHarmonized 4s infinite;
+}
+
+/* 티어 이미지 영역 */
+.upgrade-tier-display {
+    position: relative;
+    margin: 20px 0 40px;
+    z-index: 11;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 홀로그램 원판: 메인 퍼플 색상 */
+.upgrade-tier-display::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200px;
+    height: 200px;
+    border: 1px dashed rgba(165, 180, 252, 0.5); /* --primary-light */
+    border-radius: 50%;
+    box-shadow: 0 0 30px rgba(102, 126, 234, 0.2);
+    animation: spinSlow 12s linear infinite;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.upgrade-tier-image {
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 20px rgba(102, 126, 234, 0.6));
+    animation: floatHologram 3s ease-in-out infinite alternate;
+}
+
+/* 메시지 스타일 */
+.upgrade-message {
+    font-family: 'Noto Sans KR', sans-serif; /* 본문 폰트 유지하여 가독성 확보 */
+    font-size: 18px;
+    color: #cbd5e1; /* --border-medium 보다 밝게 */
+    margin-bottom: 40px;
+    z-index: 11;
+}
+
+.upgrade-message strong {
+    color: #fbb660; /* --accent-light (부드러운 오렌지) */
+    font-family: 'Consolas', monospace; /* 강조만 코딩 폰트 */
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing:  -2px;
+    margin: 8px 2px 0 2px;
+    text-shadow: 0 0 15px rgba(237, 137, 54, 0.4);
+}
+
+.upgrade-message b {
+    color: #fbb660; /* --accent-light (부드러운 오렌지) */
+    font-family: 'Consolas', monospace; /* 강조만 코딩 폰트 */
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing:  -2px;
+    margin: 8px 2px 0 2px;
+    text-shadow: 0 0 15px rgba(237, 137, 54, 0.4);
+}
+
+/* 버튼 스타일: 테마에 맞는 아웃라인 버튼 */
+.upgrade-close-btn {
+    background: transparent;
+    color: #a5b4fc; /* --primary-light */
+    border: 2px solid #a5b4fc;
+    padding: 14px 45px;
+    font-family: 'Consolas', monospace;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 12;
+    border-radius: 4px; /* 살짝만 둥글게 */
+}
+
+.upgrade-close-btn:hover {
+    background: rgba(102, 126, 234, 0.15);
+    color: #fff;
+    border-color: #667eea;
+    box-shadow: 0 0 20px rgba(102, 126, 234, 0.4);
+    transform: translateY(-2px);
+}
+
+.upgrade-close-btn:active {
+    transform: translateY(0);
+}
+
+/* ================= 애니메이션 ================= */
+
+@keyframes cyberOpen {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+        clip-path: polygon(0 50%, 100% 50%, 100% 50%, 0 50%);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+}
+
+@keyframes glitchTextHarmonized {
+    0% { text-shadow: 2px 2px 0px #ed8936, -2px -2px 0px #667eea; }
+    2% { text-shadow: -2px 2px 0px #ed8936, 2px -2px 0px #667eea; transform: translate(1px, 0); }
+    4% { text-shadow: 2px -2px 0px #ed8936, -2px 2px 0px #667eea; transform: translate(-1px, 0); }
+    6% { text-shadow: 2px 2px 0px #ed8936, -2px -2px 0px #667eea; transform: translate(0, 0); }
+    100% { text-shadow: 2px 2px 0px #ed8936, -2px -2px 0px #667eea; }
+}
+
+@keyframes floatHologram {
+    from { 
+        transform: translateY(0); 
+        filter: drop-shadow(0 0 15px rgba(102, 126, 234, 0.5));
+    }
+    to { 
+        transform: translateY(-10px); 
+        filter: drop-shadow(0 0 25px rgba(165, 180, 252, 0.7));
+    }
+}
+
+@keyframes spinSlow {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+
+/* 1. 부모 요소인 quest-header가 기준점이 되도록 설정 (이미 있지만 확인) */
+.quest-header {
+    /* 기존 속성 유지 */
+    grid-area: qheader;
+    display: flex;
+    justify-content: center; /* 중앙 정렬 유지 */
+    position: relative;      /* 중요: 절대 위치의 기준점 */
+    align-items: center;     /* 수직 중앙 정렬 */
+}
+
+/* 2. 티어 컨테이너 위치 잡기 (우측 고정) */
+#quest-header-tier-container {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    padding-right: 20px; /* 여백을 조금 더 줌 */
+    z-index: 10;
+}
+
+.tier-display {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 20px;
+    
+    /* 핵심 디자인 변경 */
+    background: rgba(255, 255, 255, 0.6); /* 은은한 입체감 */
+    border: 2px solid #fbbf24;  /* 진한 금색 테두리 */
+    border-radius: 25px;        /* 둥근 캡슐 모양 */
+    
+    /* 그림자로 붕 뜬 느낌과 빛나는 효과 */
+    box-shadow: 
+        0 4px 6px rgba(0, 0, 0, 0.05),     /* 기본 그림자 */
+        0 0 15px rgba(251, 191, 36, 0.3);  /* 금색 후광 효과 */
+    
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.tier-display:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 
+        0 10px 20px rgba(0, 0, 0, 0.1),
+        0 0 20px rgba(251, 191, 36, 0.5); /* 호버시 더 강하게 빛남 */
+    border-color: #f59e0b;
+}
+
+.tier-image {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 2px rgba(0,0,0,0.1));
+}
+
+.tier-name {
+    font-weight: 800;
+    font-size: 16px;
+    color: #333333; /* 진한 회색 텍스트 */
+    font-family: 'Montserrat', sans-serif; /* 영문 폰트 추천 (없으면 기본) */
+    letter-spacing: 0.5px;
+}
+
+/* 점수 표시 스타일 (승급 모달의 티어 이미지 자리에 점수 표시) */
+.score-display {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 8px;
+    animation: floatHologram 3s ease-in-out infinite alternate;
+    
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 20px;
+    
+    
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.score-plus {
+    font-size: 32px;
+    color: #ed8936;
+    font-weight: bold;
+    font-family: 'Consolas', monospace;
+}
+
+.score-text {
+    font-family: 'Consolas', monospace;
+    font-size: 72px;
+    font-weight: 800;
+    color: #ffffff;
+    text-shadow: 2px 2px 0px #ed8936, -2px -2px 0px #667eea;
+    animation: glitchTextHarmonized 4s infinite;
+}
+
+.score-unit {
+    font-size: 24px;
+    color: #a5b4fc;
+    font-weight: 600;
+    font-family: 'Consolas', monospace;
+}
+
+/* 점수 모달 메시지 스타일 */
+#scoreModal .upgrade-message {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 18px;
+    color: #cbd5e1;
+    margin-bottom: 40px;
+}
+
+/* 점수 획득 버튼 스타일 (승급 모달과 동일) */
+#scoreModal .upgrade-close-btn {
+    background: transparent;
+    color: #a5b4fc;
+    border: 2px solid #a5b4fc;
+    padding: 14px 45px;
+    font-family: 'Consolas', monospace;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 12;
+    border-radius: 4px;
+}
+
+#scoreModal .upgrade-close-btn:hover {
+    background: rgba(102, 126, 234, 0.15);
+    color: #fff;
+    border-color: #667eea;
+    box-shadow: 0 0 20px rgba(102, 126, 234, 0.4);
+    transform: translateY(-2px);
+}
+
+#scoreModal .upgrade-close-btn:active {
+    transform: translateY(0);
+}
+
+/* 내부 콘텐츠 박스 */
+.score-content {
+    background: #1a202c; /* 다크 테마 배경 */
+    padding: 25px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    gap: 10px;
+    
+    /* 내부도 동일하게 깎음 */
+    clip-path: polygon(
+        15px 0, 100% 0, 
+        100% calc(100% - 15px), calc(100% - 15px) 100%, 
+        0 100%, 0 15px
+    );
+    
+    position: relative;
+    overflow: hidden;
+}
+
+/* 배경 장식 패턴 */
+.score-content::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(165, 180, 252, 0.03) 3px
+    );
+    pointer-events: auto;
+}
+
+/* 상단 작은 텍스트 */
+.score-header {
+    font-family: 'Consolas', monospace;
+    font-size: 14px;
+    color: #667eea;
+    letter-spacing: 2px;
+    font-weight: bold;
+}
+
+/* 점수 영역 */
+.score-body {
+    display: flex;
+    align-items: baseline;
+    gap: 5px;
+    /* 승급 모달의 글리치 효과 적용 */
+    animation: glitchTextHarmonized 2s infinite; 
+}
+
+.score-plus {
+    font-size: 24px;
+    color: #ed8936;
+    font-weight: bold;
+}
+
+.score-text {
+    font-family: 'Consolas', monospace;
+    font-size: 48px;
+    font-weight: 800;
+    color: #ffffff;
+    /* 텍스트 그림자로 입체감 */
+    text-shadow: 2px 2px 0px #ed8936;
+}
+
+.score-unit {
+    font-size: 18px;
+    color: #a5b4fc;
+    font-weight: 600;
+    font-family: 'Consolas', monospace;
+}
+
+/* 하단 장식 텍스트 */
+.score-footer {
+    font-size: 10px;
+    color: #718096;
+    letter-spacing: 1px;
+    font-family: 'Consolas', monospace;
+    border-top: 1px solid rgba(113, 128, 150, 0.3);
+    padding: 8px 0;
+    width: 80%;
+}
+
+/* 등장 및 퇴장 애니메이션 시퀀스 */
+@keyframes scorePopupSequence {
+    /* 0% ~ 10%: 등장 (Cyber Open) */
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -40%) scale(0.8);
+        clip-path: polygon(0 50%, 100% 50%, 100% 50%, 0 50%); /* 납작했다가 */
+    }
+    10% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); /* 펼쳐짐 */
+    }
+    
+    /* 10% ~ 80%: 유지 (약간의 부유 효과) */
+    45% {
+        transform: translate(-50%, -52%) scale(1);
+    }
+    80% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+        filter: blur(0);
+    }
+
+    /* 80% ~ 100%: 퇴장 (Glitch Out) */
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -60%) scale(1.1);
+        filter: blur(10px); /* 흐려지면서 사라짐 */
+    }
+}
+
+.badge-img-wrapper {
+    /* 이 컨테이너는 이미지 크기를 제한하는 역할 */
+    width: 120px; /* 기존 아이콘 크기와 맞춤 */
+    height: 120px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+}
+
+.badge-img-wrapper img {
+    /* DB에서 불러온 이미지 태그 스타일 */
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    /* 필터 효과 등 필요하면 추가 */
+    filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.8)); 
+}
+
+.badge-image-style {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    /* 이미지에 그림자 효과 추가 */
+    filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.8)); 
+}

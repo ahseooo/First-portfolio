@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zxx">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE-edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>CodingMonster</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" /> <!-- integrity 값 변경 -->
+        <link rel="stylesheet" href="/css/sign_up.css">
+    </head>
+    <body>
+        <header id="main-frame"></header>   <!--상단 헤더 부분-->
+        <section class="section-contents">
+            <div class="signup-container">
+                <h2>회원가입</h2>
+                <div class="wrap">
+                    <input id="nickname" type="text" placeholder="닉네임(10자 이내)" maxlength="10">
+                    <button class="send-btn" id="nickname_confirm">중복확인</button>
+                </div>
+                <div class="text">
+                    <input class="text_" id="email" type="email" placeholder="이메일">
+                </div>
+                <div class="wrap02">
+                    <button class="verify-btn" id="email-auth">이메일 인증</button>
+                    <div class="timer" id="emailTimer"></div>
+                </div>
+                <div class="wrap">
+                    <input id="code" type="text" placeholder="인증코드 6자리 입력" maxlength="6">
+                    <button class="send-btn" id="verify-code">인증 확인</button>
+                </div>
+                <div class="text">
+                    <input class="text_" id="password" type="password" placeholder="비밀번호">
+                    <input class="text_" id="password_confirm" type="password" placeholder="비밀번호 확인">
+                </div>
+    
+                <div class="service-policy">
+                    <ul>
+                        <li>
+                            <label>
+                                <span>전체 동의</span>
+                            </label>
+                            <input id="agree-all" type="checkbox">
+                        </li>
+                        <li>
+                            <label>
+                                <span>만 10세 이상입니다. (필수)</span>
+                            </label>
+                            <input class="agree-each" id="agree-age" type="checkbox">
+                        </li>
+                        <li>
+                            <label>
+                                <span>서비스 이용약관 동의 (필수)</span>
+                            </label>
+                            <input class="agree-each" id="agree-service" type="checkbox">
+                        </li>
+                        <li>
+                            <label>
+                                <span>개인정보 수집 및 이용 동의 (필수)</span>
+                            </label>
+                            <input class="agree-each" id="agree-privacy" type="checkbox">
+                        </li>
+                    </ul>
+                </div>
+    
+                <button class="join-btn" id="join">회원가입</button>
+            </div>
+        </section>
+        
+        <script src="/javascript/InnerHTML.js"></script>
+        <script type="text/javascript" src="/javascript/general_signup.js"></script>
+
+    </body>
+</html>

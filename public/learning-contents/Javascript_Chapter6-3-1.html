@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Chapter 6-3</title>
+    <link rel="stylesheet" type="text/css" href="/css/learning/Javascript_Chapter6-3-1.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <header id="main-frame"></header>
+
+    <section class="home-section">
+        <div class="learning-card">
+
+            <button class="question-button" onclick="openQuestionBox()">
+                <i class="fa-solid fa-question"></i>
+            </button>
+
+            <div class="intro-header">
+                <h1>🎰 미니 프로젝트: 랜덤 이름 추첨기</h1>
+            </div>
+
+            <div class="speech-bubble">
+                오늘 청소 당번은 누구? 점심 메뉴는 뭐 먹지? 🤔<br>
+                결정하기 힘들 때 <strong>랜덤으로 뽑아주는 기계</strong>를 만들어보자!
+            </div>
+
+            <p class="chapter-desc">
+                배열에 후보들을 넣고, 버튼을 누르면 그중 하나를 무작위로 뽑아서 보여주는 프로그램을 만듭니다.<br>
+                
+            </p>
+
+            <hr class="divider">
+
+            <div class="topic-section">
+                <h2>1. 오늘의 미션 📋</h2>
+                <div class="mission-grid">
+                    <div class="mission-item">
+                        <span class="mission-num">1</span>
+                        <p><strong>후보 준비:</strong> 이름 목록(배열) 만들기<br>(예: "철수", "영희", "민수")</p>
+                    </div>
+                    <div class="mission-item">
+                        <span class="mission-num">2</span>
+                        <p><strong>화면 구성:</strong> "추첨하기" 버튼 만들기</p>
+                    </div>
+                    <div class="mission-item">
+                        <span class="mission-num">3</span>
+                        <p><strong>랜덤 로직:</strong> 배열 길이(length) 안에서 랜덤 숫자 뽑기</p>
+                    </div>
+                    <div class="mission-item">
+                        <span class="mission-num">4</span>
+                        <p><strong>결과 표시:</strong> 뽑힌 이름을 화면에 크게 보여주기</p>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="divider">
+
+            <div class="topic-section">
+                <h2>2. 코드 작성하기 ⌨️</h2>
+                <p class="topic-desc">왼쪽 에디터에 코드를 작성하고 실행해 보세요.</p>
+
+                <div class="playground-container">
+                    <div class="editor-pane">
+                        <div class="pane-header">
+                            <span><i class="fa-brands fa-html5"></i> HTML + <i class="fa-brands fa-js"></i> JS</span>
+                        </div>
+                        <textarea id="code-input" spellcheck="false" placeholder="<h1>🎉 행운의 주인공은?</h1>
+<h2 id='winner'>???</h2>
+<button onclick='pickWinner()'>추첨하기</button>
+
+<script>
+  // 1. 후보 목록 만들기
+  let names = ['철수', '영희', '민수', '지수', '호동'];
+
+  function pickWinner() {
+    // 2. 랜덤 숫자 뽑기 (0 ~ 배열길이-1)
+    let randomIndex = Math.floor(Math.random() * names.length);
+    
+    // 3. 당첨자 이름 가져오기
+    let winnerName = names[randomIndex];
+
+    // 4. 화면에 보여주기
+    document.getElementById('winner').innerText = winnerName + '님 축하해요!';
+    document.getElementById('winner').style.color = 'blue';
+  }
+</script>"></textarea>
+                        <button class="run-btn" onclick="runCode()">실행하기 ▶</button>
+                    </div>
+
+                    <div class="preview-pane">
+                        <div class="pane-header">
+                            <span><i class="fa-solid fa-desktop"></i> 결과 화면</span>
+                        </div>
+                        <iframe id="preview-frame"></iframe>
+                    </div>
+                </div>
+                
+                <div class="hint-box">
+                    <div class="hint-title"><i class="fa-solid fa-lightbulb"></i> 핵심 코드</div>
+                    <p><code>배열[Math.floor(Math.random() * 배열.length)]</code><br>
+                    이 공식 하나면 뭐든지 랜덤으로 뽑을 수 있어요!</p>
+                </div>
+            </div>
+
+            <div class="navigation">
+                <button class="prev-btn" onclick="goToPreviousPage()"><i class="fa-solid fa-chevron-left"></i> 이전 (숫자 게임)</button>
+
+                <button class="next-btn" id="nextPageBtn" onclick="goToNextPage()">
+                    다음 (최종 퀴즈) <i class="fa-solid fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <div id="question-modal" class="question-modal hidden">
+        <div class="question-content">
+            <h3>선생님 질문이 있어요!</h3>
+            <textarea placeholder="여기에 질문을 입력하세요"></textarea>
+            <div class="question-buttons">
+                <button onclick="submitQuestion()">보내기</button>
+                <button onclick="closeQuestionBox()">닫기</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/javascript/InnerHTML.js"></script>
+    <script src="/javascript/learning/Javascript_Chapter6-3-1.js"></script>
+</body>
+</html>

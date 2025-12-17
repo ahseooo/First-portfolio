@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Python_Chapter1-3-3</title>
+
+    <link rel="stylesheet" href="/css/learning/Python_Chapter1-3-3.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+</head>
+
+<body>
+    <header id="main-frame"></header> <!--상단 헤더 부분-->
+
+    <section class="home-section">
+
+        <div class="content-card">
+
+            <!-- 제목 -->
+            <div class="intro-header">
+                <h1 id="mainTitle">🔎 설치 확인하기</h1>
+            </div>
+
+            <div class="step-dots" id="stepDots">
+                <div class="dot active">1</div>
+                <div class="dot">2</div>
+            </div>
+
+            <div class="step-box">
+
+                <h2 class="step-title" id="slideTitle">1. 명령 프롬프트 실행하기</h2>
+
+                <div class="info-box" id="infoBox">
+                    시작 메뉴 검색창에 <strong>cmd</strong> 또는 <strong>명령</strong>을 입력한 후  
+                    나타나는 <strong>명령 프롬프트</strong>를 실행하세요.
+                </div>
+
+                <!-- 이미지 박스 -->
+                <div class="image-box">
+                    <img id="slideImage" src="./img/Python5.png" style="width:100%; border-radius:10px;">
+                </div>
+
+                <!-- 사진 넘기는 버튼 -->
+                <div class="slide-buttons">
+                    <button id="imgPrev" class="img-nav-btn">
+                        <i class="fa-solid fa-chevron-left"></i>
+                    </button>
+                    <button id="imgNext" class="img-nav-btn">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </button>
+                </div>
+
+                <div class="tip-box" id="tipBox">
+                    <strong>💡 TIP:</strong> ‘명령’을 입력해도 cmd가 자동으로 검색됩니다.
+                </div>
+
+            </div>
+
+            <!-- 네비게이션 -->
+            <div class="navigation inside">
+
+                <!-- 이전 페이지 이동 -->
+                <button class="prev-btn" id="pagePrev">
+                    <i class="fa-solid fa-chevron-left"></i> 이전
+                </button>
+
+                <div class="dots" id="pagerDots">
+                    <span class="dot"></span>
+                    <span class="dot active"></span>
+                    <span class="dot"></span>
+                </div>
+
+                <!-- 다음 페이지 이동 -->
+                <button class="next-btn" id="pageNext">
+                    다음<i class="fa-solid fa-chevron-right"></i>
+                </button>
+
+            </div>
+        </div>
+
+        <!-- 학습 상황 -->
+        <div class="progress-card">
+            <h3><i class="fa-solid fa-trophy"></i> 학습 진행 상황</h3>
+
+            <div class="progress-row">
+                <div class="progress-item">
+                    <div class="progress-label">파이썬 인터프리터가 뭐야?</div>
+                    <div class="progress-bar"><div class="fill" style="width: 100%;"></div></div>
+                </div>
+
+                <div class="progress-item">
+                    <div class="progress-label">파이썬 설치하기</div>
+                    <div class="progress-bar"><div class="fill" style="width:100%;"></div></div>
+                </div>
+
+                <div class="progress-item">
+                    <div class="progress-label">설치 확인하기</div>
+                    <div class="progress-bar"><div id="progressJdk" class="fill" style="width:50%;"></div></div>
+                </div>
+            </div>
+
+            <div id="progressText" class="progress-bar-text">3 / 3  진행 중</div>
+        </div>
+
+    </section>
+
+    <script src="/javascript/learning/Python_Chapter1-3-3.js"></script>
+    <script src="/javascript/InnerHTML.js"></script>
+</body>
+
+</html>

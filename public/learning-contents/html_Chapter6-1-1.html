@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML6-1-1</title>
+    <link rel="stylesheet" type="text/css" href="/css/learning/html_Chapter6-1-1.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <header id="main-frame"></header>
+
+    <section class="home-section">
+        <div class="learning-card">
+
+            <button class="question-button" onclick="openQuestionBox()">
+                <i class="fa-solid fa-question"></i>
+            </button>
+
+            <div class="intro-header">
+                <h1>🏆 미니 프로젝트: 나만의 프로필 만들기</h1>
+            </div>
+
+            <div class="speech-bubble">
+                지금까지 배운 모든 내용을 총동원할 시간이야! 🔥<br>
+                세상에 하나뿐인 <strong>나의 자기소개 페이지</strong>를 만들어보자!
+            </div>
+
+            <p class="chapter-desc">
+                아래 미션을 하나씩 따라 하면서 코드를 작성해보세요.<br>
+                작성한 코드는 오른쪽(모바일은 아래) 화면에서 바로 확인할 수 있어요.
+            </p>
+
+            <div class="mission-section">
+                <h3>📋 오늘의 미션</h3>
+                <div class="mission-grid">
+                    <div class="mission-item">
+                        <span class="mission-num">1</span>
+                        <div class="mission-text">
+                            <strong>기본 뼈대 만들기</strong><br>
+                            <code>!DOCTYPE</code>, <code>html</code>, <code>head</code>, <code>body</code>를 작성하세요.
+                        </div>
+                    </div>
+                    <div class="mission-item">
+                        <span class="mission-num">2</span>
+                        <div class="mission-text">
+                            <strong>제목 달기</strong><br>
+                            <code>h1</code> 태그로 내 이름을 크게 적어보세요.
+                        </div>
+                    </div>
+                    <div class="mission-item">
+                        <span class="mission-num">3</span>
+                        <div class="mission-text">
+                            <strong>소개글 작성</strong><br>
+                            <code>p</code>, <code>ul/li</code> 태그로 학교, 취미, 특기를 적어보세요.
+                        </div>
+                    </div>
+                    <div class="mission-item">
+                        <span class="mission-num">4</span>
+                        <div class="mission-text">
+                            <strong>꾸미기 (선택)</strong><br>
+                            <code>style</code>을 이용해서 글자 색이나 배경색을 바꿔보세요.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="divider">
+
+            <div class="editor-container">
+                <div class="editor-pane">
+                    <div class="pane-header">
+                        <i class="fa-solid fa-code"></i> HTML 코드 작성
+                        <button class="reset-btn" onclick="resetCode()">초기화 ↺</button>
+                    </div>
+                    <textarea id="code" spellcheck="false" placeholder="<!DOCTYPE html>
+<html>
+<body>
+  <h1>나의 프로필</h1>
+  <p>안녕하세요!</p>
+</body>
+</html>"></textarea>
+                    <button class="run-btn" onclick="runCode()">실행하기 ▶</button>
+                </div>
+
+                <div class="preview-pane">
+                    <div class="pane-header">
+                        <i class="fa-solid fa-desktop"></i> 결과 미리보기
+                    </div>
+                    <div class="iframe-wrapper">
+                        <iframe id="result" title="결과 화면"></iframe>
+                    </div>
+                </div>
+            </div>
+
+            <div class="navigation">
+                <button class="prev-btn" onclick="goToPreviousPage()"><i class="fa-solid fa-chevron-left"></i> 이전</button>
+
+                <div class="dots">
+                    <span class="dot active"></span> <span class="dot"></span>
+                </div>
+
+                <button class="next-btn" id="nextPageBtn" onclick="goToNextPage()">
+                    다음 (퀴즈 풀러 가기) <i class="fa-solid fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <div id="question-modal" class="question-modal hidden">
+        <div class="question-content">
+            <h3>선생님 질문이 있어요!</h3>
+            <textarea placeholder="여기에 질문을 입력하세요"></textarea>
+            <div class="question-buttons">
+                <button onclick="submitQuestion()">보내기</button>
+                <button onclick="closeQuestionBox()">닫기</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/javascript/InnerHTML.js"></script>
+    <script src="/javascript/learning/html_Chapter6-1-1.js"></script>
+</body>
+</html>

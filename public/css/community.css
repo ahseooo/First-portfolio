@@ -1,0 +1,568 @@
+/* ==========================================================================
+   1. 초기화 및 변수 (Base & Variables)
+   ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
+@import url("./sub_frame.css");
+
+/* 사이버 펑크 테마 변수 재정의 및 설정 */
+:root {
+    --neon-blue: #00FFFF;
+    --neon-green: #00FF00; 
+    --neon-red: #FF3131;
+    --dark-bg-color: #1a1a1a; /* 메인 콘텐츠 배경 */
+    --dark-bg-card: rgba(30, 30, 30, 0.7); /* 카드, 컨테이너 배경 */
+    --text-primary: #f0f0f0; /* 밝은 텍스트 */
+    --text-secondary: #00FF00; /* 네온 그린 (강조 텍스트) */
+    --text-muted: #00FFFF; /* 네온 블루 (보조 텍스트) */
+    --bg-primary: #0d0d0d; /* 전체 바디 배경 */
+    --bg-secondary: #252525; /* 댓글 리스트, 입력 배경 */
+    --bg-tertiary: #353535; /* 답글 배경 */
+
+    --border-neon-blue: 1px solid var(--neon-blue);
+    --border-neon-green: 1px solid var(--neon-green);
+    --shadow-neon-blue: 0 0 10px rgba(0, 255, 255, 0.4);
+    --shadow-neon-green: 0 0 10px rgba(0, 255, 0, 0.4);
+
+    /* 기존 Glassmorphism 변수는 사용하지 않음 */
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --radius-xl: 16px;
+}
+
+html,
+body {
+    color: var(--text-primary);
+    background: var(--bg-primary);
+}
+
+/* ==========================================================================
+   3. 공통 컴포넌트 (Common Components)
+   ========================================================================== */
+
+/* --- Glass Container (보드, 글쓰기, 상세보기 공통) --- */
+.board,
+#writeSection,
+#postDetailSection {
+    /* Glassmorphism 제거 및 사이버 펑크 컨테이너 적용 */
+    background: var(--dark-bg-card); 
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border-radius: var(--radius-xl);
+    border: 2px solid var(--neon-green);
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.2);
+    width: 100%;
+    max-width: 1200px;
+    height: auto;
+    max-height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+/* 컨테이너별 배경 투명도 차별화 */
+.board {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    overflow: hidden;
+}
+
+#writeSection,
+#postDetailSection {
+    display: none;
+    background: var(--dark-bg-card);
+    padding: 20px;
+    animation: fadeIn 0.3s ease;
+    overflow-y: auto;
+    margin-top: 20px;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* --- 버튼 시스템 (Button System) --- */
+/* 공통 기본 스타일 */
+.write-btn,
+.submit-btn,
+.delete-btn,
+.close-btn,
+#addCommentBtn,
+.reply-btn,
+.delete-comment-btn,
+.submit-reply-btn {
+    /* 네온 그린 배경 및 그림자 */
+    background: var(--neon-green);
+    color: var(--dark-bg-color); /* 글씨를 어둡게 */
+    border: none;
+    border-radius: var(--radius-md);
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: var(--shadow-neon-green);
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 16px;
+    font-size: 14px;
+}
+
+/* 호버 효과 */
+.write-btn:hover,
+.submit-btn:hover,
+.delete-btn:hover,
+#addCommentBtn:hover,
+.reply-btn:hover,
+.delete-comment-btn:hover,
+.submit-reply-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 15px var(--neon-green);
+}
+
+/* 클릭 효과 */
+.write-btn:active,
+.submit-btn:active,
+.delete-btn:active,
+#addCommentBtn:active {
+    transform: translateY(0);
+}
+
+/* 삭제/특수 버튼 */
+.delete-btn {
+    background: var(--neon-red);
+    box-shadow: 0 0 10px rgba(255, 49, 49, 0.5);
+    color: var(--dark-bg-color);
+}
+
+.delete-btn:hover {
+    box-shadow: 0 0 15px var(--neon-red);
+}
+
+/* 크기: 작은 버튼 (댓글, 답글 등) */
+.delete-btn.small,
+.reply-btn,
+.delete-comment-btn,
+.submit-reply-btn {
+    padding: 4px 8px;
+    font-size: 12px;
+    box-shadow: 0 0 5px var(--neon-green);
+}
+
+/* 특수 버튼: 닫기 (원형) */
+.close-btn {
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    font-size: 18px;
+    border-radius: 50%;
+    background: var(--dark-bg-color);
+    color: var(--neon-blue);
+    border: 2px solid var(--neon-blue);
+    box-shadow: 0 0 8px rgba(0, 255, 255, 0.3);
+}
+
+.close-btn:hover {
+    background: var(--neon-blue);
+    color: var(--dark-bg-color);
+    transform: rotate(90deg);
+    box-shadow: var(--shadow-neon-blue);
+}
+
+/* --- 입력 폼 (Inputs) --- */
+textarea,
+.title-input,
+.content-input,
+#commentInput {
+    width: 100%;
+    padding: 16px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: var(--radius-lg);
+    font-size: 15px;
+    font-family: inherit;
+    transition: all 0.3s ease;
+    background: #252525; /* 어두운 입력 필드 */
+    color: var(--text-primary);
+}
+
+textarea:focus,
+.title-input:focus,
+.content-input:focus,
+#commentInput:focus {
+    outline: none;
+    border-color: var(--neon-green);
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+    background: var(--dark-bg-color);
+}
+
+/* ==========================================================================
+   4. 페이지별 상세 스타일 (Specifics)
+   ========================================================================== */
+
+/* --- 메인 게시판 (Board) --- */
+.board-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 2px solid var(--neon-blue);
+    flex-shrink: 0;
+}
+
+.board-header h2 {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--neon-blue);
+    text-shadow: 0 0 5px var(--neon-blue);
+    letter-spacing: -0.5px;
+}
+
+/* 테이블 스타일 */
+.board-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 4px;
+    table-layout: fixed;
+}
+
+.board-table thead th {
+    color: var(--text-muted); /* 네온 블루 */
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 12px 16px;
+    text-align: center;
+    white-space: nowrap;
+}
+
+/* 컬럼 너비 (원본 유지) */
+.board-table th:nth-child(1) {
+    width: 8%;
+}
+
+.board-table th:nth-child(2) {
+    width: 40%;
+}
+
+.board-table th:nth-child(3) {
+    width: 15%;
+}
+
+.board-table th:nth-child(4) {
+    width: 25%;
+}
+
+.board-table th:nth-child(5) {
+    width: 12%;
+}
+
+.board-table tbody tr {
+    background: rgba(30, 30, 30, 0.8); /* 어두운 배경 */
+    transition: all 0.2s ease;
+    border: 1px solid transparent;
+}
+
+.board-table tbody tr:hover {
+    background: rgba(0, 255, 0, 0.1);
+    transform: translateX(4px);
+    border-color: var(--neon-green);
+    box-shadow: 0 0 5px var(--neon-green);
+}
+
+.board-table tbody td {
+    padding: 18px 16px;
+    text-align: center;
+    color: var(--text-primary);
+    font-size: 14px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.board-table tbody td:first-child {
+    border-radius: var(--radius-md) 0 0 var(--radius-md);
+}
+
+.board-table tbody td:last-child {
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+}
+
+.board-table .post-title {
+    color: var(--neon-blue);
+    font-weight: 600;
+    cursor: pointer;
+    transition: color 0.2s ease;
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.board-table .post-title:hover {
+    color: var(--neon-green);
+    text-decoration: underline;
+}
+
+/* 페이지네이션 */
+.pagination {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    flex-shrink: 0;
+    padding-bottom: 10px;
+}
+
+.pagination button {
+    background: var(--dark-bg-color);
+    border: 2px solid var(--neon-blue);
+    color: var(--neon-blue);
+    padding: 0;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    min-width: 40px;
+    height: 40px;
+}
+
+.pagination button:hover {
+    background: var(--neon-blue);
+    color: var(--dark-bg-color);
+    border-color: var(--neon-blue);
+}
+
+.pagination button.active {
+    background: var(--neon-green);
+    color: var(--dark-bg-color);
+    border-color: var(--neon-green);
+    box-shadow: 0 0 10px var(--neon-green);
+}
+
+/* --- 글쓰기 섹션 (Write Section) --- */
+.write-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.title-input {
+    flex: 1;
+    font-weight: 600;
+}
+
+.content-input {
+    min-height: 400px;
+    resize: vertical;
+    line-height: 1.6;
+}
+
+.submit-btn {
+    margin-top: 20px;
+    display: block;
+    margin-left: auto;
+}
+
+/* --- 게시글 상세 (Detail Section) --- */
+#postDetailSection>div:first-child {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding-bottom: 24px;
+    margin-bottom: 24px;
+    border-bottom: 2px solid var(--neon-blue);
+}
+
+#postDetailSection>div:first-child>div {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+#detailTitle {
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--neon-green);
+    text-shadow: 0 0 3px var(--neon-green);
+    line-height: 1.3;
+    word-break: break-all;
+}
+
+#detailContent {
+    margin-top: 24px;
+    font-size: 16px;
+    color: var(--text-primary);
+    line-height: 1.8;
+    min-height: 200px;
+    white-space: pre-wrap;
+    word-break: break-all;
+}
+
+#detailInfo {
+    font-size: 13px;
+    color: var(--text-muted); /* 네온 블루 */
+    margin-top: 16px;
+    padding: 16px;
+    background: var(--bg-secondary);
+    border-radius: var(--radius-md);
+    border-left: 4px solid var(--neon-green);
+    box-shadow: inset 0 0 5px rgba(0, 255, 0, 0.2);
+}
+
+/* --- 댓글 섹션 (Comment Section) --- */
+#commentSection {
+    margin-top: 40px;
+    padding-top: 40px;
+    border-top: 2px solid var(--neon-blue);
+}
+
+#commentInput {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.comment-submit-wrap {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 12px;
+}
+
+#commentList {
+    margin-top: 30px;
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+#commentList li {
+    background: var(--bg-secondary);
+    padding: 20px;
+    border-radius: var(--radius-lg);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.2s ease;
+}
+
+#commentList li:hover {
+    border-color: var(--neon-blue);
+    box-shadow: 0 0 5px var(--neon-blue);
+}
+
+#commentList strong {
+    color: var(--neon-green);
+    font-size: 15px;
+    text-shadow: 0 0 2px var(--neon-green);
+}
+
+#commentList small {
+    color: var(--text-muted);
+    font-size: 12px;
+    margin-left: 8px;
+}
+
+#commentList p {
+    margin-top: 10px;
+    color: var(--text-primary);
+    line-height: 1.6;
+    word-break: break-all;
+}
+
+/* 답글 UI */
+[id^="replyInput-"] {
+    margin-top: 12px;
+    padding: 16px;
+    background: var(--bg-tertiary);
+    border-radius: var(--radius-md);
+}
+
+[id^="replyText-"] {
+    margin-bottom: 12px;
+    width: 100%;
+}
+
+[id^="replies-"]>div {
+    margin-left: 24px;
+    margin-top: 12px;
+    padding: 16px;
+    background: var(--bg-tertiary);
+    border-radius: var(--radius-md);
+    border-left: 3px solid var(--neon-blue);
+    box-shadow: inset 0 0 5px rgba(0, 255, 255, 0.2);
+}
+
+[id^="replies-"] strong {
+    font-size: 14px;
+    color: var(--neon-blue);
+}
+
+[id^="replies-"] p {
+    margin-top: 8px;
+    font-size: 14px;
+    word-break: break-all;
+}
+
+/* 전체 스크롤바 너비 */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+/* 스크롤바 트랙 (배경) - 투명하게 */
+::-webkit-scrollbar-track {
+    background: transparent;
+    margin-block: 4px;
+}
+
+/* 스크롤바 핸들 (움직이는 부분) */
+::-webkit-scrollbar-thumb {
+    background: rgba(0, 255, 0, 0.4); /* 네온 그린 계열 */
+    border-radius: 4px;
+}
+
+/* 호버 시 조금 더 진하게 */
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 255, 0, 0.7);
+}
+
+/* 코너 부분 (가로/세로 스크롤바 만나는 곳) */
+::-webkit-scrollbar-corner {
+    background: transparent;
+}
+
+#editPostBtn {
+    /* 네온 오렌지 색상으로 정의 */
+    background: #FF9900; 
+    color: var(--dark-bg-color);
+    border: none;
+    border-radius: var(--radius-md);
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 0 10px rgba(255, 153, 0, 0.5); /* 오렌지 그림자 */
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 16px;
+    font-size: 14px;
+}
+
+#editPostBtn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 15px #FF9900; /* 호버 시 네온 효과 강화 */
+}
+
+#editPostBtn:active {
+    transform: translateY(0);
+}

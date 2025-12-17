@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>마이 랭킹</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="/css/MyRanking.css" />
+    
+</head>
+<body>
+    <div class="sidebar" id="side-bar"></div>
+
+    <header class="header-section">
+        <div class="header-content">
+            <i class="fa-solid fa-bars"></i>
+            <span class="title">마이 랭킹</span>
+        </div>
+    </header>
+
+    <section class="home-section">
+        <div class="profile-container">
+            <!-- 프로필 카드 -->
+            <div class="profile-card">
+                <div class="profile-header">
+                    <div class="profile-info">
+                        <div class="rank-badge">Lv. 20</div>
+                        <div class="nickname">코코몽</div>
+                    </div>
+                </div>
+                <div class="level-container">
+                    <div class="level-info">
+                        <span>Lv. 21</span>
+                        <span>46%</span>
+                    </div>
+                    <div class="level-bar">
+                        <div class="level-progress" style="width: 46%"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="total-ranking-section">
+                <div class="lang-card total-card" data-lang="total" data-progress-id="">
+                    <div class="lang-header">
+                        <div class="lang-title">
+                            <div class="lang-rank">Unranked</div>
+                            <div class="lang-name">종합 랭크</div>
+                        </div>
+                        <button class="edit-btn">
+                            <i class="fa-solid fa-pen"></i>
+                            <span>편집</span>
+                        </button>
+                    </div>
+                    
+                    <div class="total-content-wrapper">
+                        <div class="progress-section">
+                            <div class="progress-info">
+                                <span class="progress-label">퀘스트 종합 달성률</span>
+                                <span class="progress-value">1%</span>
+                            </div>
+                            <div class="progress-bar-container">
+                                <div class="progress-bar-fill" style="width: 1%"></div>
+                            </div>
+                        </div>
+                        <div class="badge-section">
+                            <div class="badge-title">대표 뱃지</div>
+                            <div class="badge-grid">
+                                <div class="badge"></div>
+                                <div class="badge"></div>
+                                <div class="badge"></div>
+                                <div class="badge"></div>
+                                <div class="badge"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="language-profile">
+                <div class="section-title">
+                    <i class="fa-solid fa-chart-line"></i>
+                    언어 진행률
+                </div>
+
+                <div class="language-grid">
+                    <div class="lang-card" data-lang="java" data-progress-id="">
+                        <div class="lang-header">
+                            <div class="lang-title">
+                                <div class="lang-rank">Unranked</div>
+                                <div class="lang-name">JAVA</div>
+                            </div>
+                            <button class="edit-btn">
+                                <i class="fa-solid fa-pen"></i>
+                                <span>편집</span>
+                            </button>
+                        </div>
+                        <div class="progress-section">
+                            <div class="progress-info">
+                                <span class="progress-label">퀘스트 진행률</span>
+                                <span class="progress-value">0%</span>
+                            </div>
+                            <div class="progress-bar-container">
+                                <div class="progress-bar-fill" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        <div class="badge-section">
+                            <div class="badge-title">대표 뱃지</div>
+                            <div class="badge-grid">
+                                <div class="badge"></div>
+                                <div class="badge"></div>
+                                <div class="badge"></div>
+                                <div class="badge"></div>
+                                <div class="badge"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PYTHON 카드 -->
+                    <div class="lang-card" data-lang="python" data-progress-id="">
+                        <div class="lang-header">
+                            <div class="lang-title">
+                                <div class="lang-rank">Unranked</div>
+                                <div class="lang-name">PYTHON</div>
+                            </div>
+                            <button class="edit-btn">
+                                <i class="fa-solid fa-pen"></i>
+                                <span>편집</span>
+                            </button>
+                        </div>
+                        <div class="progress-section">
+                            <div class="progress-info">
+                                <span class="progress-label">퀘스트 진행률</span>
+                                <span class="progress-value">0%</span>
+                            </div>
+                            <div class="progress-bar-container">
+                                <div class="progress-bar-fill" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        <div class="badge-section">
+                            <div class="badge-title">대표 뱃지</div>
+                            <div class="badge-grid">
+                                <div class="badge"></div>
+                                <div class="badge"></div>
+                                <div class="badge"></div>
+                                <div class="badge"></div>
+                                <div class="badge"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- JAVASCRIPT 카드 -->
+                    <div class="lang-card" data-lang="javascript" data-progress-id="">
+                        <div class="lang-header">
+                            <div class="lang-title">
+                                <div class="lang-rank">Unranked</div>
+                                <div class="lang-name">JAVASCRIPT</div>
+                            </div>
+                            <button class="edit-btn">
+                                <i class="fa-solid fa-pen"></i>
+                                <span>편집</span>
+                            </button>
+                        </div>
+                        <div class="progress-section">
+                            <div class="progress-info">
+                                <span class="progress-label">퀘스트 진행률</span>
+                                <span class="progress-value">0%</span>
+                            </div>
+                            <div class="progress-bar-container">
+                                <div class="progress-bar-fill" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        <div class="badge-section">
+                            <div class="badge-title">대표 뱃지</div>
+                            <div class="badge-grid">
+                                <div class="badge"></div>
+                                <div class="badge"></div>
+                                <div class="badge"></div>
+                                <div class="badge"></div>
+                                <div class="badge"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- HTML 카드 -->
+                    <div class="lang-card" data-lang="html" data-progress-id="">
+                        <div class="lang-header">
+                            <div class="lang-title">
+                                <div class="lang-rank">Unranked</div>
+                                <div class="lang-name">HTML</div>
+                            </div>
+                            <button class="edit-btn">
+                                <i class="fa-solid fa-pen"></i>
+                                <span>편집</span>
+                            </button>
+                        </div>
+                        <div class="progress-section">
+                            <div class="progress-info">
+                                <span class="progress-label">퀘스트 진행률</span>
+                                <span class="progress-value">0%</span>
+                            </div>
+                            <div class="progress-bar-container">
+                                <div class="progress-bar-fill" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        <div class="badge-section">
+                            <div class="badge-title">대표 뱃지</div>
+                            <div class="badge-grid">
+                                <div class="badge"></div>
+                                <div class="badge"></div>
+                                <div class="badge"></div>
+                                <div class="badge"></div>
+                                <div class="badge"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 뱃지 선택 모달 -->
+    <div id="badgeModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>뱃지 선택</h2>
+                <span class="close-btn">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="badge-selection-grid" id="badgeSelectionGrid">
+                    <!-- 뱃지 이미지들이 동적으로 추가됩니다 -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="confirm-btn">저장</button>
+                <button class="cancel-btn">취소</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- <script src="/javascript/ThemeLoader.js"></script> -->
+    <script src="/javascript/InnerHTML.js"></script>
+    <script src="/javascript/MyRanking.js"></script>
+</body>
+</html>

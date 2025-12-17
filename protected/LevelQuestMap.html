@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>레벨 퀘스트 - 언어 선택</title>
+    <link rel="stylesheet" type="text/css" href="/css/LevelQuest_map.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="sidebar" id="side-bar"></div>   <!-- 사이드바 -->
+
+    <!-- 헤더 -->
+    <header class="header-section">
+        <div class="header-content">
+            <i class="fa-solid fa-bars"></i>
+            <span class="title">레벨 퀘스트</span>
+        </div>
+    </header>
+
+    <section class="home-section">
+        <div class="map-container">
+            <h1>🗺️ 코딩 세계로의 모험</h1>
+            <p class="subtitle">당신의 모험을 시작할 언어를 선택하세요.</p>
+
+            <div class="world-map">
+                <div class="continent" data-lang="java">
+                    <span class="continent-icon"><i class="fab fa-java"></i></span>
+                    <div class="continent-name">JAVA</div>
+                    <div class="continent-desc">임포스터<br>: 붉은 계승자</div>
+                </div>
+
+                <div class="continent" data-lang="python">
+                    <span class="continent-icon"><i class="fab fa-python"></i></span>
+                    <div class="continent-name">PYTHON</div>
+                    <div class="continent-desc">System Reboot<br>: 다시 쓰는 운명</div>
+                </div>
+
+                <div class="continent" data-lang="javascript">
+                    <span class="continent-icon"><i class="fab fa-js"></i></span>
+                    <div class="continent-name">JAVASCRIPT</div>
+                    <div class="continent-desc">라그나로크<br>: 늑대의 봉인</div>
+                </div>
+
+                <div class="continent" data-lang="html">
+                    <span class="continent-icon"><i class="fab fa-html5"></i></span>
+                    <div class="continent-name">HTML</div>
+                    <div class="continent-desc">WANTED<br>: 그림자 늑대</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 프롤로그 모달 -->
+    <div class="prologue-modal" id="prologueModal">
+        <div class="prologue-content">
+            <div class="prologue-header">
+                <div class="prologue-icon" id="prologueIcon"></div>
+                <h2 class="prologue-title" id="prologueTitle"></h2>
+                <p class="prologue-subtitle" id="prologueSubtitle"></p>
+            </div>
+            <div class="prologue-story" id="prologueStory"></div>
+            <div class="prologue-buttons">
+                <button class="btn btn-start" id="btnStart">모험 시작하기</button>
+                <button class="btn btn-cancel" id="btnCancel">다시 선택</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- <script src="/javascript/ThemeLoader.js"></script> -->
+    <script src="/javascript/InnerHTML.js"></script>
+    <script src="/javascript/levelquest-map.js" defer></script>
+</body>
+</html>

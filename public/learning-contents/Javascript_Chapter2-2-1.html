@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Chapter 2-2</title>
+    <link rel="stylesheet" type="text/css" href="/css/learning/Javascript_Chapter2-2-1.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <header id="main-frame"></header>
+
+    <section class="home-section">
+        <div class="learning-card">
+
+            <button class="question-button" onclick="openQuestionBox()">
+                <i class="fa-solid fa-question"></i>
+            </button>
+
+            <div class="intro-header">
+                <h1>🔢 자료형 (Data Type)</h1>
+            </div>
+
+            <div class="speech-bubble">
+                상자(변수) 안에 무엇을 담을 수 있을까? 🎁<br>
+                <strong>숫자, 글자, 참/거짓</strong> 등 다양한 종류가 있어!
+            </div>
+
+            <p class="chapter-desc">
+                자료형은 <strong>데이터의 종류</strong>를 말해요.<br>
+                자바스크립트가 데이터를 어떻게 처리할지 결정하는 중요한 기준이 됩니다.
+            </p>
+
+            <div class="topic-section">
+                <h2>1. 숫자형 (Number)</h2>
+                <p class="topic-desc">나이, 키, 점수처럼 <strong>계산할 수 있는 숫자</strong>예요.</p>
+
+                <div class="code-preview-container">
+                    <div class="code-side">
+                        <div class="code-header">
+                            <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
+                            <span>JavaScript</span>
+                        </div>
+                        <pre class="code-box"><code><span class="keyword">let</span> age = <span class="number">10</span>;
+<span class="keyword">let</span> height = <span class="number">130.5</span>;
+<span class="js-func">console.log</span>(age + 5); <span class="comment">// 덧셈 가능</span></code></pre>
+                    </div>
+                    <div class="preview-side">
+                        <div class="preview-header">
+                            <i class="fa-solid fa-calculator"></i> Result
+                        </div>
+                        <div class="preview-content center-content">
+                            <p class="result-number">15</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="analogy-box">
+                    <div class="analogy-icon">🔢</div>
+                    <div class="analogy-text">
+                        <strong>비유:</strong> 수학 시간에 쓰는 <strong>숫자 카드</strong> 상자예요.
+                    </div>
+                </div>
+            </div>
+
+            <hr class="divider">
+
+            <div class="topic-section">
+                <h2>2. 문자열 (String)</h2>
+                <p class="topic-desc">이름, 메시지 같은 <strong>글자</strong>예요. 반드시 따옴표(<code>""</code> 또는 <code>''</code>)로 감싸야 해요.</p>
+
+                <div class="code-preview-container">
+                    <div class="code-side">
+                        <div class="code-header">
+                            <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
+                            <span>JavaScript</span>
+                        </div>
+                        <pre class="code-box"><code><span class="keyword">let</span> name = <span class="string">"코딩몬스터"</span>;
+<span class="keyword">let</span> hi = <span class="string">'안녕!'</span>;
+<span class="js-func">console.log</span>(hi + " " + name);</code></pre>
+                    </div>
+                    <div class="preview-side">
+                        <div class="preview-header">
+                            <i class="fa-solid fa-font"></i> Result
+                        </div>
+                        <div class="preview-content center-content">
+                            <p class="result-string">"안녕! 코딩몬스터"</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="analogy-box">
+                    <div class="analogy-icon">📝</div>
+                    <div class="analogy-text">
+                        <strong>비유:</strong> 문장을 만드는 <strong>글자 스티커</strong> 상자예요.
+                    </div>
+                </div>
+            </div>
+
+            <hr class="divider">
+
+            <div class="topic-section">
+                <h2>3. 불리언 (Boolean)</h2>
+                <p class="topic-desc"><strong>참(true)</strong> 또는 <strong>거짓(false)</strong> 딱 두 가지 값만 있어요.</p>
+
+                <div class="code-preview-container">
+                    <div class="code-side">
+                        <div class="code-header">
+                            <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
+                            <span>JavaScript</span>
+                        </div>
+                        <pre class="code-box"><code><span class="keyword">let</span> isStudent = <span class="boolean">true</span>; <span class="comment">// 학생이다</span>
+<span class="keyword">let</span> isAdult = <span class="boolean">false</span>;  <span class="comment">// 어른이 아니다</span>
+<span class="js-func">console.log</span>(isStudent);</code></pre>
+                    </div>
+                    <div class="preview-side">
+                        <div class="preview-header">
+                            <i class="fa-solid fa-toggle-on"></i> Result
+                        </div>
+                        <div class="preview-content center-content">
+                            <div class="toggle-switch on">ON (true)</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="analogy-box">
+                    <div class="analogy-icon">💡</div>
+                    <div class="analogy-text">
+                        <strong>비유:</strong> 켜거나 끄는 <strong>스위치(ON/OFF)</strong>와 같아요.
+                    </div>
+                </div>
+            </div>
+
+            <div class="fact-box">
+                <div class="fact-title">
+                    <i class="fa-solid fa-table-list"></i> 자료형 총정리
+                </div>
+                <table class="summary-table">
+                    <thead>
+                        <tr>
+                            <th>자료형</th>
+                            <th>설명</th>
+                            <th>예시</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="type-tag num">Number</span></td>
+                            <td>숫자 (계산 가능)</td>
+                            <td><code>10</code>, <code>3.14</code></td>
+                        </tr>
+                        <tr>
+                            <td><span class="type-tag str">String</span></td>
+                            <td>글자 (따옴표 필수)</td>
+                            <td><code>"안녕"</code>, <code>'JS'</code></td>
+                        </tr>
+                        <tr>
+                            <td><span class="type-tag bool">Boolean</span></td>
+                            <td>참/거짓 (논리)</td>
+                            <td><code>true</code>, <code>false</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="navigation">
+                <button class="prev-btn" onclick="goToPreviousPage()"><i class="fa-solid fa-chevron-left"></i> 이전 (변수 선언)</button>
+
+                <div class="dots">
+                    <span class="dot"></span>
+                    <span class="dot active"></span> <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+
+                <button class="next-btn" id="nextPageBtn" onclick="goToNextPage()">
+                    다음 (연산자) <i class="fa-solid fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="progress-card">
+            <h3><i class="fa-solid fa-bolt"></i> 챕터 2: 변수와 자료형</h3>
+
+            <div class="progress-row">
+                <div class="progress-item">
+                    <div class="progress-label">변수선언</div>
+                    <div class="progress-bar"><div class="fill" style="width: 100%;"></div></div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">자료형</div>
+                    <div class="progress-bar">
+                        <div class="fill" style="width: 50%;"></div> </div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">연산자</div>
+                    <div class="progress-bar"><div class="fill" style="width: 0%;"></div></div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">형변환</div>
+                    <div class="progress-bar"><div class="fill" style="width: 0%;"></div></div>
+                </div>
+            </div>
+            <div class="progress-bar-text">2 / 4 진행중</div>
+        </div>
+    </section>
+
+    <div id="question-modal" class="question-modal hidden">
+        <div class="question-content">
+            <h3>선생님 질문이 있어요!</h3>
+            <textarea placeholder="여기에 질문을 입력하세요"></textarea>
+            <div class="question-buttons">
+                <button onclick="submitQuestion()">보내기</button>
+                <button onclick="closeQuestionBox()">닫기</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/javascript/InnerHTML.js"></script>
+    <script src="/javascript/learning/Javascript_Chapter2-2-1.js"></script>
+</body>
+</html>

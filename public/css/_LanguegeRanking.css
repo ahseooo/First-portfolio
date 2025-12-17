@@ -1,0 +1,567 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap");
+@import url("./sub_frame.css");
+
+:root {
+    --primary-color: #667eea;
+    --primary-light: #a5b4fc;
+    --primary-dark: #5a67d8;
+    --secondary-color: #48bb78;
+    --secondary-light: #9ae6b4;
+    --accent-color: #ed8936;
+    --accent-light: #fbb660;
+    --text-primary: #2d3748;
+    --text-secondary: #4a5568;
+    --text-muted: #718096;
+    --bg-primary: #ffffff;
+    --bg-secondary: #f7fafc;
+    --bg-tertiary: #edf2f7;
+    --bg-code: #1a202c;
+    --border-light: #e2e8f0;
+    --border-medium: #cbd5e1;
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+    --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1);
+    --radius-sm: 6px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --radius-xl: 16px;
+    /* --fs-body: clamp(0.95rem, 0.9rem + 0.3vw, 1.1rem); */
+    /* --fs-h1: clamp(1.5rem, 1rem + 1.5vw, 2rem); */
+    font-size: 16px;
+    --content-width: 1200px;
+    --content-hpad: 65px;
+    --content-vpad: 32px;
+    --topbar-h: 60px;
+
+    --glass-bg: rgba(255, 255, 255, 0.15);
+    --glass-border: rgba(255, 255, 255, 0.2);
+    --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    --text-white: #ffffff;
+    --text-blue-100: #dbeafe;
+    --accent-gold: #ffd700;
+    --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --bg-color: #f3f4f6;
+    /* 전체 페이지 배경색 (연한 회색) */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Noto Sans KR", -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+    /* background: var(--bg-secondary); */
+    color: var(--text-primary);
+}
+
+/* 헤더 */
+.header-section {
+    position: relative;
+    left: 255px;
+    width: calc(100% - 255px);
+    height: 60px;
+    background: linear-gradient(135deg,
+            var(--primary-color) 0%,
+            var(--primary-dark) 100%);
+    transition: all 0.3s ease;
+}
+
+.sidebar.close~.header-section {
+    left: 75px;
+    width: calc(100% - 75px);
+    transition: all 0.3s ease;
+    transition-delay: 0s;
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    padding: 0 24px;
+    height: 100%;
+    gap: 20px;
+}
+
+.header-content .fa-bars {
+    color: #ffffff;
+    font-size: 22px;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.header-content .fa-bars:hover {
+    /* background: rgba(255, 255, 255, 0.15); */
+    transform: scale(1.15);
+    box-shadow: 0 2px 8px rgba(255, 255, 255, 0.2);
+}
+
+.header-content .title {
+    color: #ffffff;
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.home-section {
+    position: relative;
+    left: 255px;
+    width: calc(100vw - 255px);
+    height: calc(100vh - 60px);
+    transition: all 0.3s ease;
+    /* background: var(--bg-secondary); */
+    padding: 30px;
+    display: flex;
+    /* align-items: flex-start; */
+    justify-content: center;
+    overflow: hidden;
+}
+
+.sidebar.close~.home-section {
+    left: 75px;
+    width: calc(100% - 75px);
+}
+
+/* 랭킹 컨테이너 - 여기에 그라데이션 적용 */
+.ranking-container {
+    background: var(--primary-gradient);
+    /* 배경 그라데이션 이동 */
+    border-radius: 24px;
+    /* 둥근 모서리 추가 */
+    padding: 20px;
+    /* 내부 여백 추가 */
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    max-width: 1200px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    animation: fadeIn 0.8s ease-out;
+    color: var(--text-white);
+    /* 컨테이너 내부 텍스트는 흰색으로 설정 */
+    border: 1px solid var(--glass-border);
+    height: 100%;
+    overflow-y: auto;
+}
+
+.ranking-container::-webkit-scrollbar {
+    width: 8px;
+    /* 스크롤바 너비 */
+}
+
+.ranking-container::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    /* 트랙 배경 (투명하게) */
+    border-radius: 4px;
+    margin: 20px;
+    /* 위아래 여백 */
+}
+
+.ranking-container::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    /* 스크롤바 막대 색상 (반투명 흰색) */
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    /* 경계선 추가로 입체감 */
+}
+
+.ranking-container::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.4);
+    /* 호버 시 더 밝게 */
+}
+
+/* --- 내 랭킹 카드 (Glass Card) --- */
+.my-rank-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: var(--glass-shadow);
+    display: flex;
+    flex-direction: column;
+}
+
+@media (min-width: 768px) {
+    .my-rank-card {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+}
+
+.profile-section {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.character {
+    width: 60px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.1);
+    padding: 5px;
+}
+
+.character img {
+    width: 100%;
+    height: fit-content;
+}
+
+.profile-label {
+    font-size: 0.8rem;
+    color: var(--text-blue-100);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.profile-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.level-badge {
+    font-size: 0.8rem;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 0.2rem 0.6rem;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.stats-section {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 1rem 1.5rem;
+    border-radius: 12px;
+    justify-content: space-around;
+    flex-grow: 1;
+    max-width: 600px;
+}
+
+.stat-item {
+    text-align: center;
+    flex: 1;
+}
+
+.stat-label {
+    font-size: 0.75rem;
+    color: var(--text-blue-100);
+    margin-bottom: 0.2rem;
+}
+
+.stat-value {
+    font-size: 1.25rem;
+    font-weight: 700;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.stat-unit {
+    font-size: 0.8rem;
+    font-weight: 400;
+    margin-left: 2px;
+    opacity: 0.8;
+}
+
+.stat-divider {
+    width: 1px;
+    height: 30px;
+    background: rgba(255, 255, 255, 0.2);
+    margin: 0 1rem;
+}
+
+/* --- 테이블 (Glass Table) --- */
+.table-container {
+    background: var(--glass-bg);
+    /* backdrop-filter: blur(12px); */
+    /* -webkit-backdrop-filter: blur(12px); */
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    box-shadow: var(--glass-shadow);
+    box-shadow: var(--glass-shadow);
+    flex-grow: 1;
+    /* 남은 공간 차지 */
+    display: flex;
+    flex-direction: column;
+}
+
+.table-wrapper {
+    overflow-x: auto;
+}
+
+.ranking-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    table-layout: fixed;
+}
+
+.ranking-table .col-rank { width: 10%; }      /* 순위 */
+.ranking-table .col-nickname { width: 30%; }  /* 닉네임 */
+.ranking-table .col-badges { width: 20%; }    /* 뱃지 */
+.ranking-table .col-level { width: 10%; }     /* 레벨 */
+.ranking-table .col-exp { width: 15%; }       /* 경험치 */
+.ranking-table .col-activity { width: 15%; }  /* 점수 */
+
+.ranking-table th {
+    background: rgba(255, 255, 255, 0.15);
+    color: var(--text-blue-100);
+    padding: 12px;
+    text-align: center;
+    font-weight: 600;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    overflow: hidden;
+}
+
+.ranking-table th:first-child {
+    border-top-left-radius: 16px;
+}
+
+.ranking-table th:last-child {
+    border-top-right-radius: 16px;
+}
+
+.ranking-table td {
+    padding: 16px;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    color: white;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.ranking-table td.badges-cell {
+    text-align: left;
+}
+
+.ranking-table td.badges-cell .badges-container {
+    display: flex;
+    gap: 30px;
+}
+
+.ranking-table tbody tr:last-child td:first-child {
+    border-bottom-left-radius: 16px;
+}
+
+.ranking-table tbody tr:last-child td:last-child {
+    border-bottom-right-radius: 16px;
+}
+
+.ranking-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* .ranking-table tr {
+    overflow: hidden;
+} */
+
+.ranking-table tbody tr:hover td {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateX(3px);
+    transition: all 0.15s;
+}
+
+.ranking-table tbody tr:hover td:first-child {
+    box-shadow: inset 4px 0 0 0 var(--glass-border);
+}
+
+/* 내 랭킹 하이라이트 행 */
+.ranking-table tbody tr.my-rank-row td {
+    background: rgba(255, 215, 0, 0.2);
+}
+
+.ranking-table tbody tr.my-rank-row:hover td {
+    background: rgba(255, 215, 0, 0.25);
+}
+
+.ranking-table tbody tr.my-rank-row td:first-child {
+    box-shadow: inset 4px 0 0 0 var(--accent-gold);
+}
+
+.user-character {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;       /* 원형으로 만들기 */
+    object-fit: cover;        /* 비율 유지하며 꽉 채우기 */
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    flex-shrink: 0;           /* 찌그러짐 방지 */
+}
+
+.nickname-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    justify-content: flex-start;
+    padding-left: 1rem;
+}
+
+.me-badge {
+    display: none;
+    /* 기본 숨김 */
+    background: var(--accent-gold);
+    color: #5a4a00;
+    font-size: 0.65rem;
+    font-weight: 800;
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+.my-rank-row .me-badge {
+    display: inline-block;
+}
+
+.my-rank-row .user-nickname {
+    font-weight: 600;
+    font-size: 18px;
+    /* color: var(--accent-gold); */
+}
+
+.rank-medal {
+    font-size: 36px;
+    filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.3));
+}
+
+.rank-number {
+    font-weight: bold;
+    color: #e2e8f0;
+}
+
+.activity-value {
+    font-weight: bold;
+    color: #60a5fa;
+    /* bright blue */
+}
+
+/* --- 페이지네이션 --- */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.pagination-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pagination-btn:hover:not(:disabled) {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+}
+
+.pagination-btn:disabled {
+    opacity: 0.3;
+    cursor: default;
+}
+
+.page_number {
+    font-weight: bold;
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+}
+
+/* 애니메이션 */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 반응형 숨김 처리 */
+@media (max-width: 768px) {
+    .col-badges,
+    .badges-cell,
+    .col-exp,
+    .exp-cell {
+        display: none;
+    }
+}
+
+.tab-menu {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+    flex-wrap: wrap; /* 모바일에서 줄바꿈 허용 */
+}
+
+.tab-btn {
+    padding: 10px 24px;
+    border-radius: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-blue-100);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    backdrop-filter: blur(5px);
+}
+
+.tab-btn i {
+    font-size: 1.1rem;
+}
+
+/* 탭 호버 효과 */
+.tab-btn:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-2px);
+}
+
+/* 활성화된 탭 (선택됨) */
+.tab-btn.active {
+    background: var(--primary-color); /* 테마색 사용 또는 #fff */
+    background: linear-gradient(135deg, #ffd700 0%, #ffb900 100%); /* 금색 그라데이션 강조 */
+    color: #5a4a00; /* 어두운 글자색 */
+    border-color: transparent;
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+    transform: scale(1.05);
+}
+
+/* 모바일 대응 */
+@media (max-width: 768px) {
+    .tab-menu {
+        gap: 8px;
+    }
+    .tab-btn {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+    }
+}

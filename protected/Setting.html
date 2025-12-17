@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>설정</title>
+    <link rel="stylesheet" href="/css/Setting.css" />
+    <link rel="stylesheet" href="/css/Service.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        crossorigin="anonymous" />
+</head>
+
+<body>
+    <div class="sidebar" id="side-bar"></div>
+
+    <!-- 헤더 -->
+    <header class="header-section">
+        <div class="header-content">
+            <i class="fa-solid fa-bars"></i>
+            <span class="title">설정</span>
+
+            <div class="svc-buttons" id="svc">
+                <button class="service-btn" id="goToService">
+                    <i class="fa-solid fa-headset"></i>
+                    <span>고객센터</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <section class="home-section">
+        <div class="setting-container">
+            <div class="settings-header">
+                <h1>
+                    <i class="fa-solid fa-gear"></i>
+                    <span>사용자 지정 설정</span>
+                </h1>
+            </div>
+
+            <div class="settings-content">
+                <!-- 테마 설정 -->
+                <div class="setting-section">
+                    <div class="section-title">
+                        <i class="fa-solid fa-palette"></i>
+                        <span>테마 선택</span>
+                    </div>
+                    <div class="theme-grid">
+                        <label for="light1" class="theme-option">
+                            <input type="radio" name="theme" id="light1" />
+                            <div class="theme-card">
+                                <div class="color-circle color-light1"></div>
+                                <div class="theme-label">화이트</div>
+                                <div class="theme-type">라이트</div>
+                            </div>
+                        </label>
+                        <label for="light2" class="theme-option">
+                            <input type="radio" name="theme" id="light2" />
+                            <div class="theme-card">
+                                <div class="color-circle color-light2"></div>
+                                <div class="theme-label">라벤더</div>
+                                <div class="theme-type">라이트</div>
+                            </div>
+                        </label>
+                        <label for="light3" class="theme-option">
+                            <input type="radio" name="theme" id="light3" />
+                            <div class="theme-card">
+                                <div class="color-circle color-light3"></div>
+                                <div class="theme-label">옐로우</div>
+                                <div class="theme-type">라이트</div>
+                            </div>
+                        </label>
+                        <label for="light4" class="theme-option">
+                            <input type="radio" name="theme" id="light4" />
+                            <div class="theme-card">
+                                <div class="color-circle color-light4"></div>
+                                <div class="theme-label">민트</div>
+                                <div class="theme-type">라이트</div>
+                            </div>
+                        </label>
+                        <label for="dark1" class="theme-option">
+                            <input type="radio" name="theme" id="dark1" />
+                            <div class="theme-card">
+                                <div class="color-circle color-dark1"></div>
+                                <div class="theme-label">퍼플</div>
+                                <div class="theme-type">다크</div>
+                            </div>
+                        </label>
+                        <label for="dark2" class="theme-option">
+                            <input type="radio" name="theme" id="dark2" />
+                            <div class="theme-card">
+                                <div class="color-circle color-dark2"></div>
+                                <div class="theme-label">블루</div>
+                                <div class="theme-type">다크</div>
+                            </div>
+                        </label>
+                        <label for="dark3" class="theme-option">
+                            <input type="radio" name="theme" id="dark3" />
+                            <div class="theme-card">
+                                <div class="color-circle color-dark3"></div>
+                                <div class="theme-label">시안</div>
+                                <div class="theme-type">다크</div>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- 액션 버튼 -->
+                <div class="action-buttons">
+                    <button class="btn btn-save" id="saveBtn">
+                        <i class="fa-solid fa-check"></i>
+                        <span>저장</span>
+                    </button>
+                    <button class="btn btn-cancel" id="cancelBtn">
+                        <i class="fa-solid fa-xmark"></i>
+                        <span>취소</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 고객센터 모달 -->
+    <div class="modal-overlay" id="serviceModal">
+        <div class="settings-modal">
+            <button id="closeServiceBtn" class="close-service-btn">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <h2 class="service-title">고객센터</h2>
+
+            <!-- 메인 화면 -->
+            <div id="mainContent" class="main-content">
+                <div class="inquiry-area" id="inquiryArea">
+                    <p>문의사항이 있으신가요?</p>
+                    <button class="inquiry-button" id="openInquiryFormBtn">
+                        문의하기
+                    </button>
+                </div>
+
+                <div class="inquiry-form" id="inquiryForm">
+                    <input type="text" id="inquiryTitle" placeholder="문의 제목을 입력하세요." />
+                    <textarea id="inquiryContent" placeholder="문의 내용을 입력하세요."></textarea>
+                    <div class="form-buttons">
+                        <button class="inquiry-button" id="submitInquiryBtn">
+                            문의 제출
+                        </button>
+                        <button class="inquiry-button cancel" id="cancelInquiryBtn">
+                            취소
+                        </button>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="section-button" id="toggleFaqBtn">
+                        <span>자주 묻는 질문</span>
+                        <span class="arrow">➤</span>
+                    </div>
+                    <div id="faqList" class="faq-content">
+                        <div class="faq-item" data-answer-id="answer1">
+                            <p class="faq-question">
+                                비밀번호를 잊어버렸어요 어떻게 재설정 하나요?
+                            </p>
+                            <p class="faq-answer" id="answer1">
+                                로그인 화면에서 비밀번호 재설정이 가능합니다.
+                            </p>
+                        </div>
+                        <div class="faq-item" data-answer-id="answer2">
+                            <p class="faq-question">문제 힌트를 볼 수 있나요?</p>
+                            <p class="faq-answer" id="answer2">
+                                문제 아래에 힌트 보기를 누르시면 힌트를 보실 수 있습니다.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact">
+                    고객센터 문의처<br />codingmonster.official@gmail.com
+                </div>
+
+                <div class="section">
+                    <div class="section-button" id="changePasswordBtn">
+                        <i class="fa-solid fa-key"></i>
+                        <span>비밀번호 변경</span>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="section-button danger" id="withdrawBtn">
+                        <i class="fa-solid fa-user-slash"></i>
+                        <span>회원 탈퇴</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 문의 상세 페이지 -->
+            <div class="inquiry-history" id="inquiryDetailPage">
+                <h2 class="service-title">문의 상세</h2>
+                <p><strong>작성일:</strong> <span id="detailDate"></span></p>
+                <p><strong>제목:</strong> <span id="detailTitle"></span></p>
+                <p><strong>내용:</strong> <span id="detailContent"></span></p>
+                <div class="inquiry-detail-center">
+                    <div class="answer-box">
+                        <h4>고객센터 답변</h4>
+                        <p id="answerContent"></p>
+                    </div>
+                    <button class="inquiry-button" id="backToInquiryHistoryBtn">
+                        문의 내역으로
+                    </button>
+                </div>
+            </div>
+
+            <!-- 문의 내역 페이지 -->
+            <div class="inquiry-history" id="inquiryHistoryPage">
+                <h2 class="service-title">문의 내역</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>제목</th>
+                            <th>작성일</th>
+                            <th>상태</th>
+                        </tr>
+                    </thead>
+                    <tbody id="inquiryHistoryList"></tbody>
+                </table>
+                <div class="inquiry-history-back">
+                    <button class="inquiry-button" id="backToMainBtn">돌아가기</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="passwordModal" class="password-modal">
+        <div class="password-modal-content">
+            <h2>비밀번호 변경</h2>
+
+            <div class="password-input-group">
+                <label>현재 비밀번호</label>
+                <input type="password" id="currentPassword" placeholder="현재 비밀번호">
+            </div>
+
+            <div class="password-input-group">
+                <label>새 비밀번호</label>
+                <input type="password" id="newPassword" placeholder="새 비밀번호">
+            </div>
+
+            <div class="password-input-group">
+                <label>비밀번호 확인</label>
+                <input type="password" id="confirmPassword" placeholder="비밀번호 확인">
+            </div>
+
+            <p id="passwordMessage" class="password-message"></p>
+
+            <div class="password-modal-buttons">
+                <button id="confirmPasswordBtn" class="btn-primary">변경하기</button>
+                <button id="cancelPasswordBtn" class="btn-cancel">취소</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 회원 탈퇴 확인 모달 -->
+    <div id="withdrawModal" class="withdraw-modal">
+        <div class="withdraw-modal-content">
+            <h2>회원 탈퇴</h2>
+            <p class="warning-text">정말 회원 탈퇴를 진행하시겠습니까?</p>
+            <p class="info-text">
+                모든 학습 데이터와 계정 정보가 영구적으로 삭제됩니다.
+            </p>
+
+            <div class="withdraw-modal-buttons">
+                <button id="confirmWithdrawBtn" class="btn-danger">탈퇴하기</button>
+                <button id="cancelWithdrawBtn" class="btn-cancel">취소</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 스크립트 연결 -->
+    <!-- <script src="/javascript/ThemeLoader.js"></script> -->
+    <script src="/javascript/InnerHTML.js"></script>
+    <script src="/javascript/Service.js"></script>
+    <script src="/javascript/Setting.js"></script>
+</body>
+
+</html>

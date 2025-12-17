@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Chapter 4-2</title>
+    <link rel="stylesheet" type="text/css" href="/css/learning/Javascript_Chapter4-2-1.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <header id="main-frame"></header>
+
+    <section class="home-section">
+        <div class="learning-card">
+
+            <button class="question-button" onclick="openQuestionBox()">
+                <i class="fa-solid fa-question"></i>
+            </button>
+
+            <div class="intro-header">
+                <h1>🏃‍♂️ 객체 메서드 (Method)</h1>
+            </div>
+
+            <div class="speech-bubble">
+                객체는 정보만 담는 게 아니야! 🙅‍♂️<br>
+                <strong>스스로 행동할 수 있는 능력(함수)</strong>도 가질 수 있어.
+            </div>
+
+            <p class="chapter-desc">
+                메서드(Method)는 <strong>객체 안에 들어있는 함수</strong>를 말해요.<br>
+                강아지가 짖거나, 자동차가 달리는 것처럼 객체의 행동을 정의할 수 있어요.
+            </p>
+
+            <div class="topic-section">
+                <h2>1. 메서드 만들기 (행동 추가)</h2>
+                <p class="topic-desc">강아지 객체에 <code>bark</code>(짖기)라는 행동을 넣어볼까요?</p>
+
+                <div class="code-preview-container">
+                    <div class="code-side">
+                        <div class="code-header">
+                            <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
+                            <span>JavaScript</span>
+                        </div>
+                        <pre class="code-box"><code><span class="keyword">let</span> dog = {
+  <span class="key">name</span>: <span class="string">"초코"</span>,
+  <span class="key">bark</span>: <span class="keyword">function</span>() {
+    <span class="js-func">console.log</span>(<span class="string">"멍멍! 🐶"</span>);
+  }
+};
+
+dog.<span class="js-func">bark</span>(); <span class="comment">// 실행!</span></code></pre>
+                    </div>
+                    <div class="preview-side">
+                        <div class="preview-header">
+                            <i class="fa-solid fa-terminal"></i> Console Result
+                        </div>
+                        <div class="preview-content center-content">
+                            <div class="action-visual">
+                                <span class="dog-emoji">🐕</span> 💨 "멍멍!"
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="analogy-box">
+                    <div class="analogy-icon">🎭</div>
+                    <div class="analogy-text">
+                        <strong>비유:</strong> <code>name</code>은 강아지의 <strong>이름표</strong>이고,<br>
+                        <code>bark</code>는 강아지가 할 수 있는 <strong>개인기</strong>예요!
+                    </div>
+                </div>
+            </div>
+
+            <hr class="divider">
+
+            <div class="topic-section">
+                <h2>2. 자기 자신 가리키기 (this)</h2>
+                <p class="topic-desc">메서드 안에서 <strong>내 정보(속성)</strong>를 쓰고 싶을 땐 <code>this</code>를 써요.</p>
+
+                <div class="code-preview-container">
+                    <div class="code-side">
+                        <div class="code-header">
+                            <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
+                            <span>JavaScript</span>
+                        </div>
+                        <pre class="code-box"><code><span class="keyword">let</span> dog = {
+  <span class="key">name</span>: <span class="string">"초코"</span>,
+  <span class="key">sayHello</span>: <span class="keyword">function</span>() {
+    <span class="js-func">console.log</span>(<span class="string">"안녕! 난 "</span> + <span class="keyword">this</span>.name);
+  }
+};
+
+dog.<span class="js-func">sayHello</span>();</code></pre>
+                    </div>
+                    <div class="preview-side">
+                        <div class="preview-header">
+                            <i class="fa-solid fa-comment-dots"></i> Result
+                        </div>
+                        <div class="preview-content center-content">
+                            <div class="speech-bubble-dog">
+                                안녕! 난 <strong>초코</strong>
+                            </div>
+                            <div class="dog-face">🐶</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="this-card">
+                    <div class="this-icon">👈</div>
+                    <div class="this-content">
+                        여기서 <code class="this-highlight">this</code>는 <strong>"나 자신(dog 객체)"</strong>을 가리켜요.<br>
+                        <code>this.name</code>은 곧 <code>dog.name</code>과 같아요!
+                    </div>
+                </div>
+            </div>
+
+            <hr class="divider">
+
+            <div class="topic-section">
+                <h2>3. 여러 가지 행동 넣기</h2>
+                <p class="topic-desc">하나의 객체에 여러 개의 메서드를 넣을 수 있어요.</p>
+
+                <div class="method-grid">
+                    <div class="method-card">
+                        <div class="method-name">dog.bark()</div>
+                        <div class="method-action">🐶 멍멍!</div>
+                    </div>
+                    <div class="method-card">
+                        <div class="method-name">dog.sleep()</div>
+                        <div class="method-action">💤 쿨쿨...</div>
+                    </div>
+                    <div class="method-card">
+                        <div class="method-name">dog.run()</div>
+                        <div class="method-action">🏃‍♂️ 다다다!</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="fact-box">
+                <div class="fact-title">
+                    <i class="fa-solid fa-list-check"></i> 핵심 포인트
+                </div>
+                <ul class="fact-list">
+                    <li>
+                        <div class="icon-box">⚙️</div>
+                        <div class="text-box">
+                            <strong>메서드 (Method)</strong><br>
+                            객체 속에 들어있는 함수. (객체의 행동)
+                        </div>
+                    </li>
+                    <li>
+                        <div class="icon-box">👆</div>
+                        <div class="text-box">
+                            <strong>this</strong><br>
+                            메서드가 속해 있는 <strong>객체 자신</strong>을 가리키는 키워드.
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="navigation">
+                <button class="prev-btn" onclick="goToPreviousPage()"><i class="fa-solid fa-chevron-left"></i> 이전 (객체 만들기)</button>
+
+                <div class="dots">
+                    <span class="dot"></span>
+                    <span class="dot active"></span> <span class="dot"></span>
+                </div>
+
+                <button class="next-btn" id="nextPageBtn" onclick="goToNextPage()">
+                    다음 (클래스) <i class="fa-solid fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="progress-card">
+            <h3><i class="fa-solid fa-cube"></i> 챕터 4: 메서드와 클래스</h3>
+
+            <div class="progress-row">
+                <div class="progress-item">
+                    <div class="progress-label">객체기초</div>
+                    <div class="progress-bar"><div class="fill" style="width: 100%;"></div></div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">메서드</div>
+                    <div class="progress-bar">
+                        <div class="fill" style="width: 50%;"></div> </div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">클래스</div>
+                    <div class="progress-bar"><div class="fill" style="width: 0%;"></div></div>
+                </div>
+            </div>
+            <div class="progress-bar-text">2 / 3 진행중</div>
+        </div>
+    </section>
+
+    <div id="question-modal" class="question-modal hidden">
+        <div class="question-content">
+            <h3>선생님 질문이 있어요!</h3>
+            <textarea placeholder="여기에 질문을 입력하세요"></textarea>
+            <div class="question-buttons">
+                <button onclick="submitQuestion()">보내기</button>
+                <button onclick="closeQuestionBox()">닫기</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/javascript/InnerHTML.js"></script>
+    <script src="/javascript/learning/Javascript_Chapter4-2-1.js"></script>
+</body>
+</html>

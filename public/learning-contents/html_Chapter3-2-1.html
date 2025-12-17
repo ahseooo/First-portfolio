@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML3-2-1</title>
+    <link rel="stylesheet" type="text/css" href="/css/learning/html_Chapter3-2-1.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <header id="main-frame"></header>
+
+    <section class="home-section">
+        <div class="learning-card">
+
+            <button class="question-button" onclick="openQuestionBox()">
+                <i class="fa-solid fa-question"></i>
+            </button>
+
+            <div class="intro-header">
+                <h1>🔗 하이퍼링크 (Hyperlink)</h1>
+            </div>
+
+            <div class="speech-bubble">
+                클릭하면 다른 페이지로 슝~ 이동하는 마법! ✨<br>
+                <strong>앵커(Anchor)</strong>의 약자인 <code>&lt;a&gt;</code> 태그를 써보자.
+            </div>
+
+            <p class="chapter-desc">
+                웹(Web)이 거미줄처럼 연결될 수 있는 건 바로 링크 덕분이에요.<br>
+                다른 사이트로 가거나, 내가 만든 다른 파일로 이동해봅시다.
+            </p>
+
+            <div class="topic-section">
+                <h2>1. 기본 사용법 (href)</h2>
+                <p class="topic-desc"><code>href</code> 속성에 이동할 주소를 적어주세요. (href = Hypertext Reference)</p>
+
+                <div class="tag-anatomy-box">
+                    <div class="anatomy-label">링크 태그 해부하기 🔍</div>
+                    <div class="anatomy-visual">
+                        <span class="part tag">&lt;a</span>
+                        <div class="part-group">
+                            <span class="part attr">href</span>
+                            <span class="part eq">=</span>
+                            <span class="part val">"https://naver.com"</span>
+                            <span class="tooltip">이동할 주소</span>
+                        </div>
+                        <span class="part tag">&gt;</span>
+                        <span class="part content">네이버로 가기</span>
+                        <span class="part tag">&lt;/a&gt;</span>
+                    </div>
+                </div>
+
+                <div class="code-preview-container">
+                    <div class="code-side">
+                        <div class="code-header">
+                            <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
+                            <span>HTML Code</span>
+                        </div>
+                        <pre class="code-box"><code><span class="tag">&lt;a</span> <span class="attr">href</span>=<span class="string">"https://www.naver.com"</span><span class="tag">&gt;</span>
+  네이버로 가기
+<span class="tag">&lt;/a&gt;</span></code></pre>
+                    </div>
+                    <div class="preview-side">
+                        <div class="preview-header">
+                            <i class="fa-solid fa-globe"></i> Browser Result
+                        </div>
+                        <div class="preview-content">
+                            <p>아래 링크를 눌러보세요:</p>
+                            <a href="https://www.naver.com" class="demo-link">네이버로 가기</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="divider">
+
+            <div class="topic-section">
+                <h2>2. 새 탭에서 열기 (target)</h2>
+                <p class="topic-desc"><code>target="_blank"</code>를 추가하면 현재 페이지는 그대로 두고 새 창을 열어요.</p>
+
+                <div class="code-preview-container">
+                    <div class="code-side">
+                        <div class="code-header">
+                            <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
+                            <span>HTML Code</span>
+                        </div>
+                        <pre class="code-box"><code><span class="tag">&lt;a</span> <span class="attr">href</span>=<span class="string">"https://google.com"</span> <span class="attr">target</span>=<span class="string">"_blank"</span><span class="tag">&gt;</span>
+  구글 (새 탭)
+<span class="tag">&lt;/a&gt;</span></code></pre>
+                    </div>
+                    <div class="preview-side">
+                        <div class="preview-header">
+                            <i class="fa-solid fa-globe"></i> Browser Result
+                        </div>
+                        <div class="preview-content">
+                            <a href="https://google.com" target="_blank" class="demo-link new-tab">구글 (새 탭) <i class="fa-solid fa-up-right-from-square"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="fact-box">
+                    <div class="fact-title">
+                        <i class="fa-solid fa-window-restore"></i> 창이 어떻게 열리나요?
+                    </div>
+                    <ul class="fact-list">
+                        <li>
+                            <div class="icon-box">📄</div>
+                            <div class="text-box">
+                                <strong>기본값 (속성 없음)</strong><br>
+                                현재 보고 있는 창이 바뀌어요. (뒤로가기 눌러야 함)
+                            </div>
+                        </li>
+                        <li>
+                            <div class="icon-box">📑</div>
+                            <div class="text-box">
+                                <strong>target="_blank"</strong><br>
+                                탭이 하나 더 생겨요. (원래 페이지 유지)
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <hr class="divider">
+
+            <div class="topic-section">
+                <h2>3. 내 파일끼리 이동하기</h2>
+                <p class="topic-desc">같은 폴더에 있는 다른 HTML 파일로 이동할 때는 <strong>파일 이름</strong>만 적으면 돼요.</p>
+
+                <div class="folder-visual-box">
+                    <h3>📂 프로젝트 폴더 구조</h3>
+                    <div class="folder-tree">
+                        <div class="tree-item folder-root"><i class="fa-solid fa-folder-open"></i> 내_웹사이트</div>
+                        <div class="tree-children">
+                            <div class="tree-item current-file">
+                                <i class="fa-brands fa-html5"></i> index.html <span class="badge">현재 위치</span>
+                            </div>
+                            <div class="tree-item target-file">
+                                <i class="fa-brands fa-html5"></i> about.html <span class="badge green">이동할 곳</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="arrow-down">⬇️ 코드는 이렇게 작성해요 ⬇️</div>
+                    <div class="code-snippet">
+                        <code><span class="tag">&lt;a</span> <span class="attr">href</span>=<span class="string">"about.html"</span><span class="tag">&gt;</span>소개 페이지<span class="tag">&lt;/a&gt;</span></code>
+                    </div>
+                </div>
+            </div>
+
+            <div class="navigation">
+                <button class="prev-btn" onclick="goToPreviousPage()"><i class="fa-solid fa-chevron-left"></i> 이전</button>
+
+                <div class="dots">
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot active"></span> <span class="dot"></span>
+                </div>
+
+                <button class="next-btn" id="nextPageBtn" onclick="goToNextPage()">
+                    다음 <i class="fa-solid fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="progress-card">
+            <h3><i class="fa-solid fa-trophy"></i> 챕터 3: 텍스트 꾸미기</h3>
+
+            <div class="progress-row">
+                <div class="progress-item">
+                    <div class="progress-label">글자 꾸미기</div>
+                    <div class="progress-bar"><div class="fill" style="width: 100%;"></div></div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">이미지 넣기</div>
+                    <div class="progress-bar"><div class="fill" style="width: 100%;"></div></div> </div>
+                <div class="progress-item">
+                    <div class="progress-label">링크 걸기</div>
+                    <div class="progress-bar">
+                        <div class="fill" style="width: 50%;"></div> </div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">목록 만들기</div>
+                    <div class="progress-bar"><div class="fill" style="width: 0%;"></div></div>
+                </div>
+            </div>
+            <div class="progress-bar-text">3 / 4 진행중</div>
+        </div>
+    </section>
+
+    <div id="question-modal" class="question-modal hidden">
+        <div class="question-content">
+            <h3>선생님 질문이 있어요!</h3>
+            <textarea placeholder="여기에 질문을 입력하세요"></textarea>
+            <div class="question-buttons">
+                <button onclick="submitQuestion()">보내기</button>
+                <button onclick="closeQuestionBox()">닫기</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/javascript/InnerHTML.js"></script>
+    <script src="/javascript/learning/html_Chapter3-2-1.js"></script>
+</body>
+</html>

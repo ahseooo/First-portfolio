@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Java_Chapter1-4-3</title>
+
+    <link rel="stylesheet" href="/css/learning/Java_Chapter1-4-3.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+</head>
+
+<body>
+    <header id="main-frame"></header> <!--상단 헤더 부분-->
+
+    <section class="home-section">
+
+        <div class="content-card">
+
+            <!-- 제목 -->
+            <div class="intro-header">
+                <h1>🖥️ 이클립스 화면 구성</h1>
+            </div>
+
+            <div class="description-box">
+                이클립스 화면이 어떻게 구성되어 있는지 알아보자!
+            </div>
+
+            <!-- 메인 이미지 -->
+            <div class="main-image-box">
+                <img src="/images/learning/Eclipse6.png" class="main-eclipse-img">
+            </div>
+
+            <!-- 각 영역 설명 -->
+            <div class="section-title">🗂️ 각 영역 자세히 알아보기</div>
+
+            <div class="grid-area">
+
+                <div class="area-card">
+                    <h3>📁 Package Explorer<br>(왼쪽)</h3>
+                    <ul>
+                        <li>프로젝트와 파일 목록</li>
+                        <li>폴더 구조 확인</li>
+                        <li>파일 클릭으로 열기</li>
+                        <li>새 프로젝트/파일 생성</li>
+                    </ul>
+                </div>
+
+                <div class="area-card">
+                    <h3>✏️ Editor Area<br>(중앙)</h3>
+                    <ul>
+                        <li>코드 작성 영역</li>
+                        <li>자동 완성 기능</li>
+                        <li>문법 색상 표시</li>
+                        <li>오류 빨간 줄 표시</li>
+                    </ul>
+                </div>
+
+                <div class="area-card">
+                    <h3>🖥️ Console<br>(하단)</h3>
+                    <ul>
+                        <li>실행 결과 표시</li>
+                        <li>오류 메시지 확인</li>
+                        <li>System.out.println() 출력</li>
+                        <li>프로그램 실행 상태 확인</li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="tip-box">
+                <strong>📝 알아두면 좋아요!</strong><br><br>
+                <strong>화면 영역 변경하기:</strong><br>
+                각 영역의 경계선을 드래그하여 크기를 조절할 수 있어!<br>
+                화면이 사라졌다면 메뉴의 Window → Show View에서 다시 불러올 수 있어!<br><br>
+
+                <strong>처음으로 되돌리기:</strong><br>
+                Window → Perspective → Reset Perspective 를 선택하면 기본 화면 구성으로 돌아가!
+            </div>
+
+            <!-- 네비게이션 -->
+            <div class="navigation inside">
+
+                <!-- 이전 페이지 이동 -->
+                <button class="prev-btn" id="pagePrev">
+                    <i class="fa-solid fa-chevron-left"></i> 이전
+                </button>
+
+                <!-- 페이지 내부 점 -->
+                <div class="dots" id="pagerDots">
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot active"></span>
+                    <span class="dot"></span>
+                </div>
+
+                <!-- 다음 페이지 이동 -->
+                <button class="next-btn" id="pageNext">
+                    다음<i class="fa-solid fa-chevron-right"></i>
+                </button>
+
+            </div>
+        </div>
+
+        <!-- 학습 상황 -->
+        <div class="progress-card">
+            <h3><i class="fa-solid fa-trophy"></i> 학습 진행 상황</h3>
+
+            <div class="progress-row">
+                <div class="progress-item">
+                    <div class="progress-label">이클립스가 뭐야?</div>
+                    <div class="progress-bar">
+                        <div class="fill" style="width: 100%;"></div>
+                    </div>
+                </div>
+
+                <div class="progress-item">
+                    <div class="progress-label">이클립스 설치하기</div>
+                    <div class="progress-bar">
+                        <div class="fill" style="width:100%;"></div>
+                    </div>
+                </div>
+
+                <div class="progress-item">
+                    <div class="progress-label">이클립스 화면구성</div>
+                    <div class="progress-bar">
+                        <div class="fill" style="width:50%;"></div>
+                    </div>
+                </div>
+
+                <div class="progress-item">
+                    <div class="progress-label">첫 프로젝트 만들기</div>
+                    <div class="progress-bar">
+                        <div id="progressJdk" class="fill" style="width:0%;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="progressText" class="progress-bar-text">3 / 4  진행 중</div>
+        </div>
+    </section>
+
+    <script src="/javascript/learning/Java_Chapter1-4-3.js"></script>
+    <script src="/javascript/InnerHTML.js"></script>
+</body>
+
+</html>

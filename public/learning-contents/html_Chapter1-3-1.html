@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML 챕터 1</title>
+    <link rel="stylesheet" type="text/css" href="/css/learning/html_Chapter1-3-1.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <header id="main-frame"></header>
+
+    <section class="home-section">
+        <div class="learning-card">
+
+            <button class="question-button" onclick="openQuestionBox()">
+                <i class="fa-solid fa-question"></i>
+            </button>
+
+            <div class="intro-header">
+                <h1>💾 VS Code 설치하기</h1>
+            </div>
+
+            <div class="speech-bubble">
+                코딩을 하려면 도구가 필요해!<br>
+                우리는 <strong>VS Code</strong>라는 멋진 프로그램을 쓸 거야.
+            </div>
+
+            <p class="chapter-desc">
+                VS Code(비주얼 스튜디오 코드)는 전 세계 개발자들이 가장 많이 사용하는 무료 에디터예요.<br>
+                아래 몬스터를 클릭해서 설치 페이지로 이동해보세요!
+            </p>
+
+            <div class="install-box">
+                <div class="install-guide">
+                    <h3><i class="fa-solid fa-download"></i> 설치 방법</h3>
+                    <ol>
+                        <li>오른쪽의 <strong>몬스터를 클릭</strong>하세요.</li>
+                        <li>공식 홈페이지가 열리면 <strong>[Download for Windows]</strong> 버튼을 누르세요.</li>
+                        <li>다운로드된 파일을 실행하고 <strong>[다음]</strong>만 계속 누르면 끝!</li>
+                    </ol>
+                </div>
+                
+                <a href="https://code.visualstudio.com/" target="_blank" class="character-link">
+                    <img src="/images/Logo.png" class="character-img" alt="VS Code 다운로드 하러가기" />
+                    <span class="click-hint">나를 클릭해! 👆</span>
+                </a>
+            </div>
+
+            <div class="navigation">
+                <button class="prev-btn" onclick="goToPreviousPage()"><i class="fa-solid fa-chevron-left"></i> 이전</button>
+
+                <div class="dots">
+                    <span class="dot active"></span>
+                    <span class="dot active"></span>
+                    <span class="dot active"></span> <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+
+                <button class="next-btn" id="nextPageBtn" onclick="goToNextPage()">
+                    다음 <i class="fa-solid fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="progress-card">
+            <h3><i class="fa-solid fa-trophy"></i> 학습 진행 상황</h3>
+
+            <div class="progress-row">
+                <div class="progress-item">
+                    <div class="progress-label">HTML이란?</div>
+                    <div class="progress-bar"><div class="fill" style="width: 100%;"></div></div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">HTML 특징</div>
+                    <div class="progress-bar"><div class="fill" style="width: 100%;"></div></div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">VS Code 설치</div>
+                    <div class="progress-bar">
+                        <div class="fill" style="width: 50%;"></div> </div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">Live Server</div>
+                    <div class="progress-bar"><div class="fill" style="width: 0%;"></div></div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">에러 해결</div>
+                    <div class="progress-bar"><div class="fill" style="width: 0%;"></div></div>
+                </div>
+            </div>
+            <div class="progress-bar-text">3 / 5 진행중</div>
+        </div>
+    </section>
+
+    <div id="question-modal" class="question-modal hidden">
+        <div class="question-content">
+            <h3>선생님 질문이 있어요!</h3>
+            <textarea placeholder="여기에 질문을 입력하세요"></textarea>
+            <div class="question-buttons">
+                <button onclick="submitQuestion()">보내기</button>
+                <button onclick="closeQuestionBox()">닫기</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/javascript/InnerHTML.js"></script>
+    <script src="/javascript/learning/html_Chapter1-3-1.js"></script>
+</body>
+</html>

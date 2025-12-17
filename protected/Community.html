@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Coding Monster - Board</title>
+    <link rel="stylesheet" type="text/css" href="/css/community.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <div class="sidebar" id="side-bar"></div>       <!-- 사이드바 -->
+
+    <header class="header-section">
+        <div class="header-content">
+            <i class="fa-solid fa-bars"></i>
+            <span class="title">커뮤니티</span>
+        </div>
+    </header>
+
+    <section class="home-section">
+        <div class="board">
+            <div class="board-header">
+                <h2>커뮤니티 게시판</h2>
+                <div class="board-header-btn-wrap">
+                    <button id="writeBtn" class="write-btn">글쓰기</button>
+                </div>
+            </div>
+            <!-- 글쓰기 화면 -->
+            <div id="writeSection">
+                <div class="write-top">
+                    <input id="postTitle" type="text" placeholder="제목을 입력하세요" class="title-input" />
+                    <button id="closeWriteBtn" class="close-btn"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+
+                <textarea id="postContent" placeholder="내용을 입력하세요" class="content-input"></textarea>
+                <button id="submitPostBtn" class="submit-btn">올리기</button>
+            </div>
+
+            <!-- 글 상세 보기 -->
+            <div id="postDetailSection">
+                <div>
+                    <h3 id="detailTitle">제목</h3>
+                    <div>
+                        <button id="editPostBtn" class="delete-btn">수정</button>
+                        <button id="deletePostBtn" class="delete-btn">삭제</button>
+                        <button id="closeDetailBtn" class="close-btn"><i class="fa-solid fa-xmark"></i></button>
+                    </div>
+                </div>
+                <p id="detailContent"></p>
+                <p id="detailInfo"></p>
+
+                <div id="commentSection">
+                    <textarea id="commentInput" placeholder="댓글을 입력하세요"></textarea>
+                    <div class="comment-submit-wrap">
+                        <button id="addCommentBtn">댓글 작성</button>
+                    </div>
+                    <ul id="commentList">
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 게시판 목록 (테이블 포함) -->
+            <div id="boardSection">
+                <div id="postList"></div>
+
+                <table class="board-table">
+                    <thead>
+                        <tr>
+                            <th>번호</th>
+                            <th>제목</th>
+                            <th>작성자</th>
+                            <th>날짜</th>
+                            <th>조회수</th>
+                        </tr>
+                    </thead>
+                    <tbody id="board-body">
+                        <!-- 게시글 데이터가 들어갈 부분 -->
+                    </tbody>
+                </table>
+
+                <div id="pagination" class="pagination"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- <script src="/javascript/ThemeLoader.js"></script> -->
+    <script src="/javascript/InnerHTML.js"></script>
+    <script src="/javascript/Community.js"></script>
+</body>
+
+</html>

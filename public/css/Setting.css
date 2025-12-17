@@ -1,0 +1,417 @@
+/* Setting.css */
+/* ===== 폰트 및 기본 설정 ===== */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap");
+@import url("./sub_frame.css");
+
+/* 사이버 펑크 테마 변수 재정의 및 설정 */
+:root {
+    --neon-blue: #00FFFF;
+    --neon-green: #00FF00;
+    --neon-red: #FF3131;
+    --neon-yellow: #FFFF00;
+
+    --dark-bg-color: #1a1a1a; /* 헤더 및 주요 배경 */
+    --dark-bg-card: rgba(30, 30, 30, 0.7); /* 설정 컨테이너 배경 */
+    --bg-primary: #0d0d0d; /* 전체 바디 배경 */
+    
+    --text-primary: #f0f0f0;
+    --text-secondary: var(--neon-green);
+    --text-muted: var(--neon-blue);
+
+    --shadow-neon-blue: 0 0 10px rgba(0, 255, 255, 0.4);
+    --shadow-neon-green: 0 0 10px rgba(0, 255, 0, 0.4);
+
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --radius-xl: 16px;
+}
+
+html,
+body {
+    color: var(--text-primary);
+    background: var(--bg-primary);
+}
+
+.header-content {
+    justify-content: space-between;
+}
+
+.svc-buttons {
+    display: flex;
+    gap: 8px;
+    margin-left: auto;
+}
+
+.service-btn {
+    /* 고객센터 버튼 스타일 */
+    background: rgba(0, 255, 255, 0.15);
+    border: 1px solid var(--neon-blue);
+    color: var(--neon-blue);
+    padding: 8px 20px;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.service-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    /* 네온 샤인 효과 */
+    background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.3), transparent);
+    transition: left 0.5s;
+}
+
+.service-btn:hover::before {
+    left: 100%;
+}
+
+.service-btn:hover {
+    background: var(--neon-blue);
+    color: var(--dark-bg-color);
+    border-color: var(--neon-blue);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-neon-blue);
+}
+
+/* ===== 메인 영역 ===== */
+.home-section {
+    padding: 50px;
+    background: var(--bg-primary);
+}
+
+/* ===== 설정 컨테이너 ===== */
+.setting-container {
+    background: var(--dark-bg-card);
+    backdrop-filter: blur(5px);
+    border-radius: var(--radius-xl);
+    box-shadow: 0 0 30px rgba(0, 255, 0, 0.2);
+    border: 2px solid var(--neon-green);
+    width: 100%;
+    max-width: 1200px;
+    height: 100%;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+/* ===== 설정 헤더 ===== */
+.settings-header {
+    background: var(--dark-bg-color);
+    padding: 10px 30px;
+    color: var(--text-primary);
+    border-bottom: 1px solid var(--neon-blue);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 10%;
+    box-sizing: border-box;
+}
+
+.settings-header h1 {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--neon-blue);
+    text-shadow: 0 0 5px var(--neon-blue);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.settings-header h1 i {
+    color: var(--neon-green);
+}
+
+/* ===== 설정 컨텐츠 영역 ===== */
+.settings-content {
+    padding: 30px;
+    width: 100%;
+    height: 90%;
+    overflow-y: auto;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+/* ===== 설정 섹션 ===== */
+.setting-section {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.section-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--neon-green);
+    text-shadow: 0 0 3px var(--neon-green);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.section-title i {
+    color: var(--neon-blue);
+}
+
+/* ===== 테마 그리드 ===== */
+.theme-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px 50px;
+    width: 100%;
+    height: 90%;
+}
+
+.theme-option {
+    position: relative;
+    transition: all 0.3s ease;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.theme-option input {
+    display: none;
+}
+
+.theme-card {
+    /* 테마 카드 배경 */
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: var(--radius-lg);
+    padding: 16px;
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 3px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.theme-option .theme-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 0 15px var(--neon-blue);
+    border-color: var(--neon-blue);
+}
+
+.theme-option input:checked+.theme-card {
+    border-color: var(--neon-green);
+    box-shadow: 0 0 20px var(--neon-green);
+}
+
+.theme-option input:checked+.theme-card::after {
+    content: "\f00c";
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: var(--neon-green);
+    color: var(--dark-bg-color);
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+}
+
+.color-circle {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin: 0 auto 10px;
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+    flex-shrink: 0;
+}
+
+.theme-label {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.theme-type {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-top: 4px;
+}
+
+/* ===== 액션 버튼 영역 ===== */
+.action-buttons {
+    display: flex;
+    justify-content: flex-end;
+    border-top: 1px solid var(--neon-blue);
+    padding-top: 30px;
+    gap: 15px;
+    width: 100%;
+}
+
+.btn {
+    flex: 1;
+    padding: 14px;
+    border: none;
+    border-radius: var(--radius-lg);
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    height: 50px;
+    max-width: 140px;
+}
+
+.btn-save {
+    /* 저장 버튼: 네온 그린 */
+    background: var(--neon-green);
+    color: var(--dark-bg-color);
+    box-shadow: var(--shadow-neon-green);
+}
+
+.btn-save:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 15px var(--neon-green);
+}
+
+.btn-cancel {
+    /* 취소 버튼: 일반 텍스트/어두운 배경 */
+    background: var(--dark-bg-color);
+    color: var(--text-muted);
+    border: 1px solid var(--neon-blue);
+}
+
+.btn-cancel:hover {
+    background: var(--neon-red);
+    color: var(--dark-bg-color);
+    box-shadow: 0 0 15px var(--neon-red);
+}
+
+/* ===== 테마 색상 클래스 (색상 자체는 유지) ===== */
+.color-dark1 { background-color: #2a2d56; }
+.color-dark2 { background-color: #2c3e50; }
+.color-dark3 { background-color: #244b56; }
+.color-light1 { background-color: #f7fafc; }
+.color-light2 { background-color: #e5dff7; }
+.color-light3 { background-color: #fffef3; }
+.color-light4 { background-color: #ebf7f3; }
+
+/* ===== 고객센터 모달 오버레이 (Setting.css에 포함되어 있으나, Service.css에서 모달 콘텐츠를 담당함) ===== */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.3s ease;
+}
+
+.modal-overlay.active {
+    display: flex;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* ===== 스크롤바 커스터마이징 ===== */
+.settings-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.settings-content::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+}
+
+.settings-content::-webkit-scrollbar-thumb {
+    background: rgba(0, 255, 0, 0.4);
+    border-radius: 4px;
+    transition: background 0.2s ease;
+}
+
+.settings-content::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 255, 0, 0.7);
+}
+
+/* ===== 반응형 디자인 (원본 유지) ===== */
+@media (max-width: 768px) {
+    .home-section {
+        padding: 10px;
+    }
+
+    .settings-header {
+        padding: 16px 20px;
+        height: 70px;
+        min-height: 70px;
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+
+    .settings-header h1 {
+        font-size: 20px;
+    }
+
+    .service-btn {
+        padding: 6px 16px;
+        font-size: 12px;
+    }
+
+    .settings-content {
+        padding: 20px;
+        height: calc(100% - 70px);
+        gap: 24px;
+    }
+
+    .theme-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .action-buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .btn {
+        width: 100%;
+        height: 46px;
+    }
+}

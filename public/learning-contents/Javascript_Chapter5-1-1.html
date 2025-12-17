@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Chapter 5-1</title>
+    <link rel="stylesheet" type="text/css" href="/css/learning/Javascript_Chapter5-1-1.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <header id="main-frame"></header>
+
+    <section class="home-section">
+        <div class="learning-card">
+
+            <button class="question-button" onclick="openQuestionBox()">
+                <i class="fa-solid fa-question"></i>
+            </button>
+
+            <div class="intro-header">
+                <h1>⚡ 브라우저 이벤트 (Browser Events)</h1>
+            </div>
+
+            <div class="speech-bubble">
+                클릭! 🖱️ 키보드 타닥! ⌨️<br>
+                사용자가 무언가 할 때, <strong>"짠!" 하고 반응하게</strong> 만들어볼까?
+            </div>
+
+            <p class="chapter-desc">
+                이벤트(Event)는 웹페이지에서 일어나는 모든 사건을 말해요.<br>
+                HTML 태그에 <strong>"이 일이 일어나면 이거 해!"</strong>라고 붙이는 마법 스위치예요. 🪄
+            </p>
+
+            <div class="topic-section">
+                <h2>1. 자주 쓰는 이벤트 종류</h2>
+                <div class="event-grid">
+                    <div class="event-card">
+                        <div class="event-icon">🖱️</div>
+                        <div class="event-name">onClick</div>
+                        <div class="event-desc">클릭하면 동작</div>
+                    </div>
+                    <div class="event-card">
+                        <div class="event-icon">🔄</div>
+                        <div class="event-name">onChange</div>
+                        <div class="event-desc">값이 바뀌면 동작</div>
+                    </div>
+                    <div class="event-card">
+                        <div class="event-icon">⌨️</div>
+                        <div class="event-name">onInput</div>
+                        <div class="event-desc">입력할 때마다 동작</div>
+                    </div>
+                    <div class="event-card">
+                        <div class="event-icon">👆</div>
+                        <div class="event-name">onMouseOver</div>
+                        <div class="event-desc">마우스 올리면 동작</div>
+                    </div>
+                    <div class="event-card">
+                        <div class="event-icon">🎹</div>
+                        <div class="event-name">onKeyDown</div>
+                        <div class="event-desc">키 누르면 동작</div>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="divider">
+
+            <div class="topic-section">
+                <h2>2. onClick (클릭했을 때)</h2>
+                <p class="topic-desc">버튼이나 이미지를 클릭했을 때 실행돼요.</p>
+
+                <div class="code-preview-container">
+                    <div class="code-side">
+                        <pre class="code-box"><code><span class="tag">&lt;button</span> <span class="attr">onclick</span>=<span class="string">"alert('눌렀다!')"</span><span class="tag">&gt;</span>
+  눌러봐!
+<span class="tag">&lt;/button&gt;</span></code></pre>
+                    </div>
+                    <div class="preview-side">
+                        <div class="preview-header">
+                            <i class="fa-solid fa-play"></i> Demo
+                        </div>
+                        <div class="preview-content center-content">
+                            <button class="demo-btn" onclick="alert('띠링! 🔔 초인종이 울렸어요!')">눌러봐! 👇</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="analogy-box">
+                    <div class="analogy-icon">🔔</div>
+                    <div class="analogy-text">
+                        <strong>비유:</strong> 초인종을 눌렀더니 <strong>"띠링!"</strong> 하고 벨이 울리는 것과 같아요.
+                    </div>
+                </div>
+            </div>
+
+            <hr class="divider">
+
+            <div class="topic-section">
+                <h2>3. onChange (값이 바뀔 때)</h2>
+                <p class="topic-desc">선택창(Select)이나 체크박스의 값이 변경되면 실행돼요.</p>
+
+                <div class="code-preview-container">
+                    <div class="code-side">
+                        <pre class="code-box"><code><span class="tag">&lt;select</span> <span class="attr">onchange</span>=<span class="string">"alert('바뀌었어!')"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;option&gt;</span>사과<span class="tag">&lt;/option&gt;</span>
+  <span class="tag">&lt;option&gt;</span>바나나<span class="tag">&lt;/option&gt;</span>
+<span class="tag">&lt;/select&gt;</span></code></pre>
+                    </div>
+                    <div class="preview-side">
+                        <div class="preview-header">
+                            <i class="fa-solid fa-play"></i> Demo
+                        </div>
+                        <div class="preview-content center-content">
+                            <select class="demo-select" onchange="alert('선택이 바뀌었습니다! 🍎🍌')">
+                                <option>사과</option>
+                                <option>바나나</option>
+                                <option>포도</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="analogy-box">
+                    <div class="analogy-icon">🥤</div>
+                    <div class="analogy-text">
+                        <strong>비유:</strong> 자판기에서 음료를 <strong>선택하는 순간</strong> 불이 들어오는 것과 같아요.
+                    </div>
+                </div>
+            </div>
+
+            <hr class="divider">
+
+            <div class="topic-section">
+                <h2>4. onMouseOver (마우스 올렸을 때)</h2>
+                <p class="topic-desc">요소 위에 마우스 커서가 올라가면 실행돼요.</p>
+
+                <div class="code-preview-container">
+                    <div class="code-side">
+                        <pre class="code-box"><code><span class="tag">&lt;div</span> <span class="attr">onmouseover</span>=<span class="string">"..."</span><span class="tag">&gt;</span>
+  상자
+<span class="tag">&lt;/div&gt;</span></code></pre>
+                    </div>
+                    <div class="preview-side">
+                        <div class="preview-header">
+                            <i class="fa-solid fa-play"></i> Demo
+                        </div>
+                        <div class="preview-content center-content">
+                            <div class="demo-hover-box" 
+                                 onmouseover="this.style.background='orange'; this.innerText='올라왔다! 😲'" 
+                                 onmouseout="this.style.background='#81ecec'; this.innerText='마우스를 올려보세요'">
+                                마우스를 올려보세요
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="analogy-box">
+                    <div class="analogy-icon">💡</div>
+                    <div class="analogy-text">
+                        <strong>비유:</strong> 센서등 근처만 가도 자동으로 <strong>불이 켜지는 것</strong>과 같아요.
+                    </div>
+                </div>
+            </div>
+
+            <div class="fact-box">
+                <div class="fact-title">
+                    <i class="fa-solid fa-list-check"></i> 이벤트 정리
+                </div>
+                <table class="summary-table">
+                    <thead>
+                        <tr>
+                            <th>이벤트</th>
+                            <th>발생 시점</th>
+                            <th>비유</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>onClick</code></td>
+                            <td>클릭할 때</td>
+                            <td>🔔 초인종 누르기</td>
+                        </tr>
+                        <tr>
+                            <td><code>onChange</code></td>
+                            <td>값이 바뀔 때</td>
+                            <td>🎛 채널 돌리기</td>
+                        </tr>
+                        <tr>
+                            <td><code>onInput</code></td>
+                            <td>입력할 때</td>
+                            <td>✍️ 실시간 메모</td>
+                        </tr>
+                        <tr>
+                            <td><code>onMouseOver</code></td>
+                            <td>마우스 올릴 때</td>
+                            <td>💡 센서등 켜짐</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="navigation">
+                <button class="prev-btn" onclick="goToPreviousPage()"><i class="fa-solid fa-chevron-left"></i> 이전 (이벤트 기초)</button>
+
+                <div class="dots">
+                    <span class="dot active"></span> <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+
+                <button class="next-btn" id="nextPageBtn" onclick="goToNextPage()">
+                    다음 (고급 기능) <i class="fa-solid fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="progress-card">
+            <h3><i class="fa-solid fa-wand-magic-sparkles"></i> 챕터 5: 고급 기능</h3>
+
+            <div class="progress-row">
+                <div class="progress-item">
+                    <div class="progress-label">이벤트</div>
+                    <div class="progress-bar">
+                        <div class="fill" style="width: 50%;"></div> </div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">비동기</div>
+                    <div class="progress-bar"><div class="fill" style="width: 0%;"></div></div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">API</div>
+                    <div class="progress-bar"><div class="fill" style="width: 0%;"></div></div>
+                </div>
+            </div>
+            <div class="progress-bar-text">1 / 3 진행중</div>
+        </div>
+    </section>
+
+    <div id="question-modal" class="question-modal hidden">
+        <div class="question-content">
+            <h3>선생님 질문이 있어요!</h3>
+            <textarea placeholder="여기에 질문을 입력하세요"></textarea>
+            <div class="question-buttons">
+                <button onclick="submitQuestion()">보내기</button>
+                <button onclick="closeQuestionBox()">닫기</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/javascript/InnerHTML.js"></script>
+    <script src="/javascript/learning/Javascript_Chapter5-1-1.js"></script>
+</body>
+</html>

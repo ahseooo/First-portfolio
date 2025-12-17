@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Python_Chapter1-5-1</title>
+
+    <link rel="stylesheet" href="/css/learning/Python_Chapter1-5-1.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+</head>
+
+<body>
+    <header id="main-frame"></header> <!--상단 헤더 부분-->
+
+    <section class="home-section">
+
+        <div class="java-feature-card">
+
+            <div class="intro-header">
+                <h1>자주 발생하는 에러와 해결방법</h1>
+            </div>
+
+            <!-- 말풍선 -->
+            <div class="error-top-banner">
+                <div>
+                    <p>
+                        프로그래밍을 하다 보면 에러는 자연스러운 일이니 너무 걱정하지 마!<br>
+                        대부분의 에러는 간단하게 해결할 수 있어. 가장 자주 발생하는 에러와 해결 방법을 알아볼까?
+                    </p>
+                </div>
+            </div>
+
+            <!-- 에러 박스들 -->
+            <div class="error-grid">
+
+                <!-- 1. 들여쓰기 에러 -->
+                <div class="error-card">
+                    <div class="error-title pink">📁 들여쓰기 에러</div>
+                    <p class="error-desc">들여쓰기가 잘못 사용되었을 때 발생하는 에러야!</p>
+
+                    <div class="error-example wrong">
+                        <div class="label">잘못된 예</div>
+                        <pre>
+if x > 10:
+print("큰 수입니다")  # 들여쓰기 에러 발생
+</pre>
+                    </div>
+
+                    <div class="error-example correct">
+                        <div class="label">올바른 예</div>
+                        <pre>
+if x > 10:
+    print("큰 수입니다")
+</pre>
+                    </div>
+
+                    <div class="solution-box">
+                        파이썬(Python)은 들여쓰기로 블록을 구분해!
+                        들여쓰기를 제대로 하지 않으면 <strong>IndentationError</strong> 또는 <strong>unexpected indent</strong> 에러가
+                        발생해!<br><br>
+                        <strong>if, for, while, def 뒤에 오는 줄은 스페이스 4칸 또는 Tab 1번</strong> 들여쓰기 해줘야 해!
+                    </div>
+                </div>
+
+                <!-- 2. 따옴표 / 괄호 누락 -->
+                <div class="error-card">
+                    <div class="error-title red">🔤 따옴표 / 괄호 누락</div>
+                    <p class="error-desc">따옴표나 괄호가 빠졌을 때 발생해!</p>
+
+                    <div class="error-example wrong">
+                        <div class="label">잘못된 예</div>
+                        <pre>
+print("Hello)      # 닫는 따옴표 누락
+print("Python!"    # 닫는 괄호 누락
+</pre>
+                    </div>
+
+                    <div class="error-example correct">
+                        <div class="label">올바른 예</div>
+                        <pre>
+print("Hello")
+print("Python!")
+</pre>
+                    </div>
+
+                    <div class="solution-box">
+                        따옴표나 괄호가 잘 열리거나 닫히지 않으면 <strong>SyntaxError</strong>가 발생해!<br><br>
+                        문자열은 <strong>"…"</strong>, <strong>'…'</strong> 처럼 짝을 맞춰서 써야 해!
+                        괄호 <strong>(</strong> 를 열었으면 반드시 <strong>)</strong> 로 닫아줘야 해!
+                    </div>
+                </div>
+
+                <!-- 3. 변수 이름 오타 -->
+                <div class="error-card">
+                    <div class="error-title orange">🔠 변수 이름 오타</div>
+                    <p class="error-desc">변수 이름을 잘못 썼을 때 발생하는 에러야!</p>
+
+                    <div class="error-example wrong">
+                        <div class="label">잘못된 예</div>
+                        <pre>
+age = 10
+print(agge)   # 변수 이름 오타
+</pre>
+                    </div>
+
+                    <div class="error-example correct">
+                        <div class="label">올바른 예</div>
+                        <pre>
+age = 10
+print(age)
+</pre>
+                    </div>
+
+                    <div class="solution-box">
+                        변수 이름이 다르면
+                        <strong>NameError: name 'agge' is not defined</strong> 오류가 발생해!<br><br>
+                        변수를 사용할 때는 <strong>처음 만든 이름과 똑같이</strong> 써야 해!
+                        파이썬은 대소문자를 구분하니까
+                        <strong>Age, AGE, age</strong>는 전부 다른 변수야!
+                    </div>
+                </div>
+
+                <!-- 4. 자료형 혼용(TypeError) -->
+                <div class="error-card">
+                    <div class="error-title purple">🔧 자료형 혼용 에러</div>
+                    <p class="error-desc">숫자와 문자열을 잘못 섞어서 사용할 때 발생해!</p>
+
+                    <div class="error-example wrong">
+                        <div class="label">잘못된 예</div>
+                        <pre>
+age = 10
+text = "살입니다"
+print(age + text)
+</pre>
+                    </div>
+
+                    <div class="error-example correct">
+                        <div class="label">올바른 예</div>
+                        <pre>
+age = 10
+text = "살입니다"
+print(str(age) + text)   # 10살입니다
+
+# 또는
+print(age, text)         # 10 살입니다
+</pre>
+                    </div>
+
+                    <div class="solution-box">
+                        숫자(int)와 문자열(str)을 그대로 더하려고 하면
+                        <strong>TypeError: can only concatenate str (not "int") to str</strong> 에러가 발생해!<br><br>
+                        숫자는 <strong>str()</strong>로 문자열로 변환한 뒤 사용해야 해!
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- 하단 팁 박스 -->
+            <div class="tip-box">
+                <h3><i class="fa-solid fa-lightbulb"></i> 에러 해결 꿀팁!</h3>
+                <ul>
+                    <li><strong>에러 메시지를 무시하면 안돼!</strong> 가장 중요한 힌트야.</li>
+                    <li>에러가 표시된 줄 번호부터 확인하기.</li>
+                    <li>Ctrl + S 로 자주 저장하기.</li>
+                    <li>문제가 해결되지 않으면 구글 검색으로 빠르게 해결!</li>
+                </ul>
+            </div>
+
+            <div class="navigation inside">
+                <button class="prev-btn" id="pagePrev">
+                    <i class="fa-solid fa-chevron-left"></i> 이전
+                </button>
+
+                <div class="dots">
+                    <span class="dot active"></span>
+                </div>
+
+                <button class="next-btn" id="pageNext">
+                    챕터 완료! 🎉
+                </button>
+            </div>
+
+
+        </div>
+
+        <!-- 진행 상황 -->
+        <div class="progress-card">
+            <h3><i class="fa-solid fa-trophy"></i> 학습 진행 상황</h3>
+
+            <div class="progress-row">
+
+                <div class="progress-item">
+                    <div class="progress-label">에러 및 해결방법</div>
+                    <div class="progress-bar">
+                        <div class="fill" style="width: 50%;"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="progress-bar-text">1 / 1 진행 중</div>
+
+    </section>
+
+    <script src="/javascript/learning/Python_Chapter1-5-1.js"></script>
+    <script src="/javascript/InnerHTML.js"></script>
+
+</body>
+
+</html>

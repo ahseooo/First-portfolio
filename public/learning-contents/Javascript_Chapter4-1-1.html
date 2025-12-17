@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Chapter 4-1</title>
+    <link rel="stylesheet" type="text/css" href="/css/learning/Javascript_Chapter4-1-1.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <header id="main-frame"></header>
+
+    <section class="home-section">
+        <div class="learning-card">
+
+            <button class="question-button" onclick="openQuestionBox()">
+                <i class="fa-solid fa-question"></i>
+            </button>
+
+            <div class="intro-header">
+                <h1>📦 객체 (Object) 만들기</h1>
+            </div>
+
+            <div class="speech-bubble">
+                이름, 나이, 사는 곳... 📝<br>
+                관련된 정보를 <strong>한 상자(객체)</strong>에 깔끔하게 담아보자!
+            </div>
+
+            <p class="chapter-desc">
+                객체는 여러 개의 데이터(속성)를 <code>키: 값</code> 형태로 묶어서 관리하는 자료형이에요.<br>
+                마치 사람의 <strong>프로필 카드</strong>와 같죠!
+            </p>
+
+            <div class="topic-section">
+                <h2>1. 객체 만들기 ({ })</h2>
+                <p class="topic-desc">중괄호 <code>{ }</code>를 열고 정보를 담아요.</p>
+
+                <div class="code-preview-container">
+                    <div class="code-side">
+                        <div class="code-header">
+                            <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
+                            <span>JavaScript</span>
+                        </div>
+                        <pre class="code-box"><code><span class="keyword">let</span> dog = {
+  <span class="key">name</span>: <span class="string">"초코"</span>,
+  <span class="key">age</span>: <span class="number">3</span>,
+  <span class="key">color</span>: <span class="string">"갈색"</span>
+};</code></pre>
+                    </div>
+                    <div class="preview-side">
+                        <div class="preview-header">
+                            <i class="fa-solid fa-id-card"></i> Object Info
+                        </div>
+                        <div class="preview-content center-content">
+                            <div class="profile-card">
+                                <div class="card-img">🐕</div>
+                                <div class="card-info">
+                                    <p><strong>이름:</strong> 초코</p>
+                                    <p><strong>나이:</strong> 3살</p>
+                                    <p><strong>색상:</strong> 갈색</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="analogy-box">
+                    <div class="analogy-icon">🗂️</div>
+                    <div class="analogy-text">
+                        <strong>비유:</strong> 변수가 하나씩 따로 노는 낱장 종이라면,<br>
+                        객체는 정보를 모아놓은 <strong>파일철</strong>이에요!
+                    </div>
+                </div>
+            </div>
+
+            <hr class="divider">
+
+            <div class="topic-section">
+                <h2>2. 정보 꺼내기 (. 또는 [])</h2>
+                <p class="topic-desc">점(<code>.</code>)을 찍거나 대괄호(<code>[]</code>)를 써서 원하는 정보를 가져와요.</p>
+
+                <div class="code-preview-container">
+                    <div class="code-side">
+                        <div class="code-header">
+                            <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
+                            <span>JavaScript</span>
+                        </div>
+                        <pre class="code-box"><code><span class="js-func">console.log</span>(dog.<span class="property">name</span>);
+<span class="js-func">console.log</span>(dog[<span class="string">"age"</span>]);</code></pre>
+                    </div>
+                    <div class="preview-side">
+                        <div class="preview-header">
+                            <i class="fa-solid fa-terminal"></i> Console Result
+                        </div>
+                        <div class="preview-content center-content">
+                            <ul class="result-list">
+                                <li>"초코"</li>
+                                <li>3</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="divider">
+
+            <div class="topic-section">
+                <h2>3. 정보 추가하고 수정하기</h2>
+                <p class="topic-desc">새로운 정보를 넣거나, 기존 정보를 바꿀 수 있어요.</p>
+
+                <div class="code-preview-container">
+                    <div class="code-side">
+                        <div class="code-header">
+                            <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
+                            <span>JavaScript</span>
+                        </div>
+                        <pre class="code-box"><code>dog.<span class="property">age</span> = <span class="number">4</span>; <span class="comment">// 나이 수정</span>
+dog.<span class="property">sound</span> = <span class="string">"멍멍!"</span>; <span class="comment">// 소리 추가</span>
+
+<span class="js-func">console.log</span>(dog);</code></pre>
+                    </div>
+                    <div class="preview-side">
+                        <div class="preview-header">
+                            <i class="fa-solid fa-pen-to-square"></i> Updated Object
+                        </div>
+                        <div class="preview-content center-content">
+                            <div class="profile-card updated">
+                                <div class="card-img">🐕</div>
+                                <div class="card-info">
+                                    <p><strong>이름:</strong> 초코</p>
+                                    <p><strong>나이:</strong> <span class="highlight-change">4살</span></p>
+                                    <p><strong>색상:</strong> 갈색</p>
+                                    <p><strong>소리:</strong> <span class="highlight-new">멍멍!</span></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="fact-box">
+                <div class="fact-title">
+                    <i class="fa-solid fa-list-check"></i> 객체 사용법
+                </div>
+                <table class="summary-table">
+                    <thead>
+                        <tr>
+                            <th>동작</th>
+                            <th>방법</th>
+                            <th>예시</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>만들기</td>
+                            <td><code>{ 키: 값 }</code></td>
+                            <td><code>let a = { x: 10 }</code></td>
+                        </tr>
+                        <tr>
+                            <td>꺼내기</td>
+                            <td><code>.</code> 또는 <code>[""]</code></td>
+                            <td><code>a.x</code> 또는 <code>a["x"]</code></td>
+                        </tr>
+                        <tr>
+                            <td>수정/추가</td>
+                            <td><code>객체.키 = 값</code></td>
+                            <td><code>a.x = 20</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="navigation">
+                <button class="prev-btn" onclick="goToPreviousPage()"><i class="fa-solid fa-chevron-left"></i> 이전 (배열 함수)</button>
+
+                <div class="dots">
+                    <span class="dot active"></span> <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+
+                <button class="next-btn" id="nextPageBtn" onclick="goToNextPage()">
+                    다음 (메서드) <i class="fa-solid fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="progress-card">
+            <h3><i class="fa-solid fa-cube"></i> 챕터 4: 메서드와 클래스</h3>
+
+            <div class="progress-row">
+                <div class="progress-item">
+                    <div class="progress-label">객체기초</div>
+                    <div class="progress-bar">
+                        <div class="fill" style="width: 50%;"></div> </div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">메서드</div>
+                    <div class="progress-bar"><div class="fill" style="width: 0%;"></div></div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">클래스</div>
+                    <div class="progress-bar"><div class="fill" style="width: 0%;"></div></div>
+                </div>
+            </div>
+            <div class="progress-bar-text">1 / 3 진행중</div>
+        </div>
+    </section>
+
+    <div id="question-modal" class="question-modal hidden">
+        <div class="question-content">
+            <h3>선생님 질문이 있어요!</h3>
+            <textarea placeholder="여기에 질문을 입력하세요"></textarea>
+            <div class="question-buttons">
+                <button onclick="submitQuestion()">보내기</button>
+                <button onclick="closeQuestionBox()">닫기</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/javascript/InnerHTML.js"></script>
+    <script src="/javascript/learning/Javascript_Chapter4-1-1.js"></script>
+</body>
+</html>

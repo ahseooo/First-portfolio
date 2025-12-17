@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML6-3-1</title>
+    <link rel="stylesheet" type="text/css" href="/css/learning/html_Chapter6-3-1.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <header id="main-frame"></header>
+
+    <section class="home-section">
+        <div class="learning-card">
+
+            <button class="question-button" onclick="openQuestionBox()">
+                <i class="fa-solid fa-question"></i>
+            </button>
+
+            <div class="intro-header">
+                <h1>📝 미니 프로젝트: 설문조사 만들기</h1>
+            </div>
+
+            <div class="speech-bubble">
+                친구들의 취향을 조사해볼까? 🔍<br>
+                이름, 나이, 좋아하는 것을 물어보는 <strong>설문조사 페이지</strong>를 만들어보자!
+            </div>
+
+            <p class="chapter-desc">
+                <code>&lt;form&gt;</code> 태그와 다양한 입력 요소들을 사용해서<br>
+                사용자에게 정보를 입력받는 양식을 만들어봅시다.
+            </p>
+
+            <div class="mission-section">
+                <h3>📋 오늘의 미션</h3>
+                <div class="mission-grid">
+                    <div class="mission-item">
+                        <span class="mission-num">1</span>
+                        <div class="mission-text">
+                            <strong>제목과 이름 입력</strong><br>
+                            설문 제목(<code>h1</code>)과 이름 입력칸(<code>input type="text"</code>)을 만드세요.
+                        </div>
+                    </div>
+                    <div class="mission-item">
+                        <span class="mission-num">2</span>
+                        <div class="mission-text">
+                            <strong>학년 입력 (숫자)</strong><br>
+                            학년은 숫자만 들어가야 해요. <code>type="number"</code>를 써보세요.
+                        </div>
+                    </div>
+                    <div class="mission-item">
+                        <span class="mission-num">3</span>
+                        <div class="mission-text">
+                            <strong>좋아하는 과목 (다중 선택)</strong><br>
+                            여러 개 고를 수 있는 <code>checkbox</code>를 사용하세요. (국어, 수학, 체육 등)
+                        </div>
+                    </div>
+                    <div class="mission-item">
+                        <span class="mission-num">4</span>
+                        <div class="mission-text">
+                            <strong>점심 메뉴 (단일 선택)</strong><br>
+                            하나만 고를 수 있는 <code>radio</code> 버튼을 만드세요. (급식, 도시락)
+                        </div>
+                    </div>
+                    <div class="mission-item">
+                        <span class="mission-num">5</span>
+                        <div class="mission-text">
+                            <strong>제출 버튼</strong><br>
+                            마지막에 <code>button</code>을 만들어 설문을 완성하세요!
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="divider">
+
+            <div class="editor-container">
+                <div class="editor-pane">
+                    <div class="pane-header">
+                        <i class="fa-solid fa-code"></i> HTML 코드 작성
+                        <button class="reset-btn" onclick="resetCode()">초기화 ↺</button>
+                    </div>
+                    <textarea id="code" spellcheck="false" placeholder=""></textarea>
+                    <button class="run-btn" onclick="runCode()">실행하기 ▶</button>
+                </div>
+
+                <div class="preview-pane">
+                    <div class="pane-header">
+                        <i class="fa-solid fa-desktop"></i> 결과 미리보기
+                    </div>
+                    <div class="iframe-wrapper">
+                        <iframe id="result" title="결과 화면"></iframe>
+                    </div>
+                </div>
+            </div>
+
+            <div class="navigation">
+                <button class="prev-btn" onclick="goToPreviousPage()"><i class="fa-solid fa-chevron-left"></i> 이전 (일기장 만들기)</button>
+
+                <div class="dots">
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot active"></span> </div>
+
+                <button class="next-btn" id="nextPageBtn" onclick="goToNextPage()">
+                    다음 (최종 퀴즈) <i class="fa-solid fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <div id="question-modal" class="question-modal hidden">
+        <div class="question-content">
+            <h3>선생님 질문이 있어요!</h3>
+            <textarea placeholder="여기에 질문을 입력하세요"></textarea>
+            <div class="question-buttons">
+                <button onclick="submitQuestion()">보내기</button>
+                <button onclick="closeQuestionBox()">닫기</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/javascript/InnerHTML.js"></script>
+    <script src="/javascript/learning/html_Chapter6-3-1.js"></script>
+</body>
+</html>

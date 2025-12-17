@@ -1,0 +1,392 @@
+/* ==========================================================================
+   파일명: Javascript_Chapter6-4-1.css
+   ========================================================================== */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap");
+@import url("./main_frame.css");
+
+:root {
+    --primary-color: #F7DF1E;
+    /* JS 옐로우 */
+    --primary-light: #FFF9C4;
+    --primary-dark: #F0DB4F;
+    --text-primary: #323330;
+    --bg-secondary: #f9f9f9;
+    --bg-code: #282a36;
+
+    /* 프로젝트 테마 4 (To-Do) */
+    --project-color: #ff9f43;
+    /* 오렌지 */
+    --accent-color: #ffbe76;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    font-family: "Noto Sans KR", sans-serif;
+    height: 100%;
+    width: 100%;
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+/* ========== 메인 레이아웃 ========== */
+.home-section {
+    position: relative;
+    height: calc(100vh - 65px);
+    width: 100%;
+    padding: 40px 70px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.learning-card {
+    width: 100%;
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 40px;
+    position: relative;
+    max-width: 1500px;
+}
+
+.intro-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 35px;
+    background-color: #323330;
+    border-radius: 15px;
+    color: var(--primary-color);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.intro-header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    padding: 20px;
+    margin: 0;
+}
+
+.speech-bubble {
+    padding: 20px;
+    border-radius: 12px;
+    border: 2px solid var(--project-color);
+    font-size: 18px;
+    margin-bottom: 20px;
+    background-color: #fff3e0;
+    position: relative;
+}
+
+.speech-bubble::after {
+    content: '';
+    position: absolute;
+    left: 30px;
+    bottom: -12px;
+    border: 12px solid transparent;
+    border-top-color: #fff3e0;
+    border-bottom: 0;
+}
+
+.chapter-desc {
+    font-size: 17px;
+    color: #444;
+    margin-left: 20px;
+    margin-bottom: 30px;
+}
+
+.topic-desc {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 20px;
+    padding-left: 20px;
+}
+
+/* ========== 미션 그리드 ========== */
+.mission-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.mission-item {
+    background: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    transition: transform 0.2s;
+}
+
+.mission-item:hover {
+    transform: translateY(-3px);
+    border-color: var(--project-color);
+    background: #fff3e0;
+}
+
+.mission-num {
+    background: var(--project-color);
+    color: white;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 14px;
+    flex-shrink: 0;
+}
+
+.mission-item p {
+    margin: 0;
+    font-size: 14px;
+    color: #555;
+    line-height: 1.4;
+}
+
+/* ========== 코드 플레이그라운드 ========== */
+.playground-container {
+    display: flex;
+    gap: 20px;
+    height: 500px;
+    margin-bottom: 20px;
+}
+
+/* 에디터 (왼쪽) */
+.editor-pane {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ddd;
+}
+
+.pane-header {
+    background: #eee;
+    padding: 10px 15px;
+    font-weight: bold;
+    font-size: 14px;
+    color: #555;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#code-input {
+    flex: 1;
+    background: var(--bg-code);
+    color: #f8f8f2;
+    padding: 15px;
+    border: none;
+    resize: none;
+    font-family: 'Fira Code', monospace;
+    font-size: 14px;
+    line-height: 1.5;
+    outline: none;
+}
+
+.run-btn {
+    width: 100%;
+    padding: 12px;
+    background: var(--project-color);
+    color: white;
+    border: none;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.run-btn:hover {
+    background: #e67e22;
+}
+
+/* 미리보기 (오른쪽) */
+.preview-pane {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ddd;
+    background: white;
+}
+
+#preview-frame {
+    flex: 1;
+    border: none;
+    width: 100%;
+    height: 100%;
+    background: white;
+}
+
+/* 힌트 박스 */
+.hint-box {
+    background: #fff9c4;
+    border-left: 5px solid #fbc02d;
+    padding: 15px;
+    border-radius: 4px;
+    color: #333;
+    margin-top: 10px;
+}
+
+.hint-title {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: #f57f17;
+}
+
+.hint-box p code {
+    background: rgba(255, 255, 255, 0.5);
+    padding: 2px 4px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.divider {
+    border: 0;
+    height: 1px;
+    background: #ddd;
+    margin: 40px 0;
+}
+
+/* ========== 네비게이션 & 진행바 ========== */
+.navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.prev-btn,
+.next-btn {
+    background: #f8f8f8;
+    border: 1px solid #ddd;
+    padding: 12px 20px;
+    border-radius: 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 15px;
+    transition: all 0.2s;
+}
+
+.next-btn {
+    background: #323330;
+    border: none;
+    color: var(--primary-color);
+}
+
+.prev-btn:hover,
+.next-btn:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+}
+
+/* 모달 및 질문 버튼 */
+.question-button {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    background: var(--primary-color);
+    border: none;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    color: #323330;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    transition: transform 0.3s;
+}
+
+.question-button:hover {
+    transform: scale(1.1);
+}
+
+.question-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.question-modal.hidden {
+    display: none;
+}
+
+.question-content {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 500px;
+}
+
+.question-content textarea {
+    width: 100%;
+    height: 120px;
+    padding: 15px;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    resize: vertical;
+}
+
+.question-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.question-buttons button {
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    border: none;
+}
+
+.question-buttons button:first-child {
+    background: var(--primary-color);
+    color: #323330;
+}
+
+/* 모바일 대응 */
+@media (max-width: 768px) {
+    .playground-container {
+        flex-direction: column;
+        height: 750px;
+    }
+}

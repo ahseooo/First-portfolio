@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>코딩몬스터 로그인</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" /> <!-- integrity 값 변경 -->
+    <link rel="stylesheet" type="text/css" href="/css/sign_in.css">
+    <script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js"
+        charset="utf-8"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.1.min.js"></script>
+    <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+    <script src="https://accounts.google.com/gsi/client" defer></script>
+</head>
+
+<body>
+    <header id="main-frame"></header> <!--상단 헤더 부분-->
+    <section class="section-contents">
+        <div class="signin-container">
+            <h2>Login</h2>
+            <input id="user_id" type="text" placeholder="Email" required>
+            <input id="user_pw" type="password" placeholder="Password" required>
+            <button id="login_btn" class="general">Login</button>
+            
+            <div class="login-options">
+                <a id="forgot_pw_link" class="forgot-link">비밀번호 찾기</a>
+            </div>
+            <p>계정이 없으신가요? <a href="/sign_up">회원가입</a></p>
+
+            <p>또는 아래 소셜 계정으로 로그인</p>
+            <div class="social-login">
+                <div class="google-wrap">
+                    <div id="google-login-btn" class="google"></div>
+                </div>
+
+                <div id="naverIdLogin" class="naver"></div>
+                <a id="kakao-login-btn" class="kakao" href="javascript:loginWithKakao()">
+                    <img src="/images/kakaotalk.png" alt="카카오 로그인 버튼" />
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 닉네임 생성 모달 -->
+    <div id="nicknameModal" class="nickname-modal">
+        <div class="nickname-modal-content">
+            <h2>닉네임을 설정해주세요</h2>
+            <p>소셜 로그인으로 가입하신 신규 회원입니다.</p>
+
+            <div class="nickname-input-group">
+                <input type="text" id="socialNickname" placeholder="닉네임 입력" maxlength="10">
+                <button id="checkNicknameBtn" type="button">중복확인</button>
+            </div>
+
+            <p id="nicknameMessage" class="nickname-message"></p>
+
+            <div class="nickname-modal-buttons">
+                <button id="confirmNicknameBtn" type="button" disabled>완료</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 비밀번호 찾기 모달 -->
+    <div id="passwordResetModal" class="find-modal-overlay">
+        <div class="reset-modal-content">
+            <button id="closeResetModalBtn" class="close-modal-btn">&times;</button>
+            <h2>비밀번호 찾기</h2>
+
+            <div id="resetMessage" class="reset-message"></div>
+            
+            <div id="step1" class="reset-step active">
+                <div class="input-group">
+                    <label for="resetEmail">가입한 이메일 주소를 입력해 주세요.</label>
+                    <input type="email" id="resetEmail" class="reset-input" placeholder="이메일 입력">
+                </div>
+                <button id="sendCodeBtn" class="reset-btn">인증코드 전송</button>
+            </div>
+            
+            <div id="step2" class="reset-step">
+                <div class="input-group">
+                    <label for="verifyCode">인증코드</label>
+                    <input type="text" id="verifyCode" class="reset-input" placeholder="6자리 인증코드" maxlength="6">
+                    <div class="timer" id="resetTimer"></div>
+                </div>
+                <button id="verifyCodeBtn" class="reset-btn">인증코드 확인</button>
+                <button id="resendCodeBtn" class="reset-btn reset-btn-secondary">인증코드 재전송</button>
+            </div>
+
+            <div id="step3" class="reset-step">
+                <div class="input-group">
+                    <label for="newPassword">새 비밀번호</label>
+                    <input type="password" id="newPassword" class="reset-input" placeholder="새 비밀번호 (6자 이상)">
+                </div>
+                <div class="input-group">
+                    <label for="confirmPassword">비밀번호 확인</label>
+                    <input type="password" id="confirmPassword" class="reset-input" placeholder="비밀번호 재입력">
+                </div>
+                <button id="resetPasswordBtn" class="reset-btn">비밀번호 변경</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="messageModal" class="find-modal-overlay">
+        <div class="reset-modal-content" style="max-width: 300px;">
+            <h3 id="messageTitle">알림</h3>
+            <p id="messageContent" class="msg-text" style="font-size: 16px; margin: 20px 0;"></p>
+            <button id="closeMessageModalBtn" class="custom-btn btn-blue">확인</button>
+        </div>
+    </div>
+    
+    <script src="/javascript/InnerHTML.js"></script>
+    <script type="text/javascript" src="/javascript/config.js"></script>
+    <script type="text/javascript" src="/javascript/LoginManager.js"></script>
+</body>
+
+</html>

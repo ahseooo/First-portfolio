@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이벤트</title>
+    <link rel="stylesheet" type="text/css" href="/css/Event.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- 여기에 css 추가 -->
+</head>
+
+<body>
+
+    <!-- 사이드바 -->
+    <div class="sidebar" id="side-bar"></div>   <!-- 사이드바 -->
+    <!-- 헤더 -->
+    <header class="header-section">
+        <div class="header-content">
+            <i class="fa-solid fa-bars"></i>
+            <span class="title">이벤트</span>
+        </div>
+    </header>
+
+    <!-- 메인 콘텐츠 -->
+    <section class="home-section">
+        <div class="event-container">
+            <div class="event-box">
+                <div class="event-header">
+                    <h2>이벤트 목록</h2>
+                    <input type="text" class="event-search" placeholder="이벤트 검색" />
+                </div>
+
+                <div class="event-list">
+                    <div class="event-item">
+                        <span>코딩 문제 풀기 챌린지 (0/3)</span>
+                        <button class="reward-btn disabled" disabled>보상받기</button>
+                    </div>
+                    <div class="event-item">
+                        <span>챕터 도장 깨기 (5/5)</span>
+                        <button class="reward-btn" onclick="claimReward(this)">보상받기</button>
+                    </div>
+                    <div class="event-item">
+                        <span>커뮤니티에 글 작성 (0/1)</span>
+                        <button class="reward-btn disabled" disabled>보상받기</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    
+    <!-- <script src="/javascript/ThemeLoader.js"></script> -->
+    <script src="/javascript/InnerHTML.js"></script>
+    <script src="/javascript/Event.js"></script>
+
+</body>
+
+</html>

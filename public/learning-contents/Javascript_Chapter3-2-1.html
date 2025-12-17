@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Chapter 3-2</title>
+    <link rel="stylesheet" type="text/css" href="/css/learning/Javascript_Chapter3-2-1.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <header id="main-frame"></header>
+
+    <section class="home-section">
+        <div class="learning-card">
+
+            <button class="question-button" onclick="openQuestionBox()">
+                <i class="fa-solid fa-question"></i>
+            </button>
+
+            <div class="intro-header">
+                <h1>📬 매개변수와 반환 (Parameter & Return)</h1>
+            </div>
+
+            <div class="speech-bubble">
+                로봇에게 <strong>재료</strong>를 주면 <strong>완성품</strong>을 만들어줘! 🤖<br>
+                함수랑 데이터를 주고받는 방법을 배워보자.
+            </div>
+
+            <p class="chapter-desc">
+                함수는 단순히 명령만 실행하는 게 아니라,<br>
+                외부에서 값을 받아(매개변수) 처리하고, 그 결과를 돌려줄(반환) 수도 있어요.
+            </p>
+
+            <div class="topic-section">
+                <h2>1. 재료 주기 (매개변수)</h2>
+                <p class="topic-desc">함수를 실행할 때 필요한 값을 전달해요.</p>
+
+                <div class="code-preview-container">
+                    <div class="code-side">
+                        <div class="code-header">
+                            <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
+                            <span>JavaScript</span>
+                        </div>
+                        <pre class="code-box"><code><span class="keyword">function</span> <span class="js-func">makeJuice</span>(<span class="param">fruit</span>) {
+  <span class="js-func">console.log</span>(<span class="param">fruit</span> + <span class="string">" 주스 완성! 🍹"</span>);
+}
+
+<span class="js-func">makeJuice</span>(<span class="string">"사과"</span>);
+<span class="js-func">makeJuice</span>(<span class="string">"딸기"</span>);</code></pre>
+                    </div>
+                    <div class="preview-side">
+                        <div class="preview-header">
+                            <i class="fa-solid fa-blender"></i> Mixer Result
+                        </div>
+                        <div class="preview-content center-content">
+                            <div class="result-box">
+                                <div class="juice-item">🍎 → 사과 주스 완성! 🍹</div>
+                                <div class="juice-item">🍓 → 딸기 주스 완성! 🍹</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="analogy-box">
+                    <div class="analogy-icon">🍎</div>
+                    <div class="analogy-text">
+                        <strong>비유:</strong> 믹서기(함수)에 <strong>과일(매개변수)</strong>을 넣는 것과 같아요.<br>
+                        무엇을 넣느냐에 따라 결과가 달라지죠!
+                    </div>
+                </div>
+            </div>
+
+            <hr class="divider">
+
+            <div class="topic-section">
+                <h2>2. 결과 받기 (return)</h2>
+                <p class="topic-desc">함수가 계산한 <strong>최종 결과값</strong>을 밖으로 꺼내요.</p>
+
+                <div class="code-preview-container">
+                    <div class="code-side">
+                        <div class="code-header">
+                            <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
+                            <span>JavaScript</span>
+                        </div>
+                        <pre class="code-box"><code><span class="keyword">function</span> <span class="js-func">add</span>(<span class="param">a</span>, <span class="param">b</span>) {
+  <span class="keyword">return</span> <span class="param">a</span> + <span class="param">b</span>;
+}
+
+<span class="keyword">let</span> result = <span class="js-func">add</span>(<span class="number">3</span>, <span class="number">4</span>);
+<span class="js-func">console.log</span>(result); <span class="comment">// 7</span></code></pre>
+                    </div>
+                    <div class="preview-side">
+                        <div class="preview-header">
+                            <i class="fa-solid fa-calculator"></i> Calculation
+                        </div>
+                        <div class="preview-content center-content">
+                            <div class="calc-visual">
+                                <span class="calc-input">3</span>
+                                <span class="calc-op">+</span>
+                                <span class="calc-input">4</span>
+                                <span class="calc-arrow">➞</span>
+                                <span class="calc-result">7</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="analogy-box">
+                    <div class="analogy-icon">📤</div>
+                    <div class="analogy-text">
+                        <strong>비유:</strong> 자판기에 동전을 넣으면(매개변수), 음료수(반환값)가 <strong>툭!</strong> 하고 나오는 것과 같아요.
+                    </div>
+                </div>
+            </div>
+
+            <div class="fact-box">
+                <div class="fact-title">
+                    <i class="fa-solid fa-table-list"></i> 용어 정리
+                </div>
+                <table class="summary-table">
+                    <thead>
+                        <tr>
+                            <th>용어</th>
+                            <th>설명</th>
+                            <th>예시</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>매개변수<br>(Parameter)</td>
+                            <td>함수가 받는 변수 이름</td>
+                            <td><code>(fruit)</code></td>
+                        </tr>
+                        <tr>
+                            <td>인자<br>(Argument)</td>
+                            <td>실제로 넣어주는 값</td>
+                            <td><code>"사과"</code></td>
+                        </tr>
+                        <tr>
+                            <td>반환<br>(Return)</td>
+                            <td>함수가 돌려주는 결과</td>
+                            <td><code>return a + b;</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="navigation">
+                <button class="prev-btn" onclick="goToPreviousPage()"><i class="fa-solid fa-chevron-left"></i> 이전 (함수 기초)</button>
+
+                <div class="dots">
+                    <span class="dot"></span>
+                    <span class="dot active"></span> <span class="dot"></span>
+                </div>
+
+                <button class="next-btn" id="nextPageBtn" onclick="goToNextPage()">
+                    다음 (화살표 함수) <i class="fa-solid fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="progress-card">
+            <h3><i class="fa-solid fa-layer-group"></i> 챕터 3: 함수와 배열</h3>
+
+            <div class="progress-row">
+                <div class="progress-item">
+                    <div class="progress-label">함수기초</div>
+                    <div class="progress-bar"><div class="fill" style="width: 100%;"></div></div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">매개변수</div>
+                    <div class="progress-bar">
+                        <div class="fill" style="width: 50%;"></div> </div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">화살표함수</div>
+                    <div class="progress-bar"><div class="fill" style="width: 0%;"></div></div>
+                </div>
+            </div>
+            <div class="progress-bar-text">2 / 3 진행중</div>
+        </div>
+    </section>
+
+    <div id="question-modal" class="question-modal hidden">
+        <div class="question-content">
+            <h3>선생님 질문이 있어요!</h3>
+            <textarea placeholder="여기에 질문을 입력하세요"></textarea>
+            <div class="question-buttons">
+                <button onclick="submitQuestion()">보내기</button>
+                <button onclick="closeQuestionBox()">닫기</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/javascript/InnerHTML.js"></script>
+    <script src="/javascript/learning/Javascript_Chapter3-2-1.js"></script>
+</body>
+</html>

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Java_Chapter1-4-1</title>
+
+    <link rel="stylesheet" href="/css/learning/Java_Chapter1-4-1.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+</head>
+
+<body>
+    <header id="main-frame"></header> <!--상단 헤더 부분-->
+
+    <section class="home-section">
+
+        <div class="content-card">
+
+            <!-- 제목 -->
+            <div class="intro-header">
+                <h1 id="mainTitle">💻 이클립스(Eclipse) 설치하기</h1>
+            </div>
+
+            <!-- IDE 설명 -->
+            <div class="info-section">
+
+                <div class="story-bubble">
+                    IDE는 Integrated Development Environment(통합 개발 환경)의 약자야.<br><br>
+                    메모장으로도 코딩할 수 있지만, IDE를 쓰면 훨씬 빠르고 편하게 개발할 수 있어.<br>
+                    자바에서는 이클립스(Eclipse)를 가장 많이 사용해!
+                </div>
+            </div>
+
+            <!-- IDE가 해주는 것들 -->
+            <div class="feature-section">
+
+                <h2 class="section-title">📌 IDE가 해주는 것들</h2>
+
+                <div class="feature-grid">
+
+                    <div class="feature-card">
+                        <div class="emoji">📝</div>
+                        <div class="card-title">코드 작성 도움</div>
+                        <div class="card-desc">
+                            자동 완성: Sysout → System.out.println() 자동으로 완성!<br>
+                            코드 하이라이트: 필터링, 색상 표시로 코드 흐름을 쉽게 이해!<br>
+                            자동 정렬: 보기 쉽게 코드 자동 정렬!
+                        </div>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="emoji">🔍</div>
+                        <div class="card-title">오류 찾기</div>
+                        <div class="card-desc">
+                            오류 표시: 빨간 줄로 오류를 알려줘!<br>
+                            오류 위치로 자동 이동!<br>
+                            오류 원인: 어떤 문제가 있는지 설명까지 제공!
+                        </div>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="emoji">▶️</div>
+                        <div class="card-title">실행과 디버깅</div>
+                        <div class="card-desc">
+                            버튼 클릭한 번으로 실행!<br>
+                            디버깅: 코드가 한 줄씩 어떻게 실행되는지 확인 가능!<br>
+                            에러 위치 즉시 확인 & 변수 값 확인!
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- 다양한 IDE 종류 -->
+            <div class="ide-section">
+
+                <h2 class="section-title">📌 다양한 IDE 종류</h2>
+
+                <div class="ide-grid">
+
+                    <div class="ide-card recommended">
+                        <div class="rec-badge">추천</div>
+                        <div class="emoji">🌙</div>
+                        <div class="ide-title">Eclipse</div>
+                        <div class="ide-desc">
+                            자바(Java) 개발에 가장 널리 쓰이는 IDE<br>
+                            큰 프로젝트도 다루는 데 특화!
+                        </div>
+                    </div>
+
+                    <div class="ide-card">
+                        <div class="emoji">🖥️</div>
+                        <div class="ide-title">Visual Studio</div>
+                        <div class="ide-desc">
+                            마이크로소프트에서 만든 IDE<br>
+                            C#이나 .NET 개발에서 많이 사용.
+                        </div>
+                    </div>
+
+                    <div class="ide-card">
+                        <div class="emoji">💙</div>
+                        <div class="ide-title">Visual Studio Code</div>
+                        <div class="ide-desc">
+                            가볍고 빠른 IDE<br>
+                            다양한 언어와 플러그인을 지원해서 누구나 쉽게 쓸 수 있어.
+                        </div>
+                    </div>
+
+                    <div class="ide-card">
+                        <div class="emoji">🧠</div>
+                        <div class="ide-title">IntelliJ IDEA</div>
+                        <div class="ide-desc">
+                            자동 완성과 기능이 매우 강력한 IDE<br>
+                            자바, 코틀린(Kotlin) 개발에 특화되어 있어.
+                        </div>
+                    </div>
+
+                    <div class="ide-card">
+                        <div class="emoji">🐍</div>
+                        <div class="ide-title">PyCharm</div>
+                        <div class="ide-desc">
+                            파이썬(Python) 전용 IDE<br>
+                            파이썬 개발자들이 가장 많이 사용하는 도구야.
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- 네비게이션 -->
+            <div class="navigation inside">
+
+                <button class="prev-btn" id="pagePrev">
+                    <i class="fa-solid fa-chevron-left"></i> 이전
+                </button>
+
+                <div class="dots" id="pagerDots">
+                    <span class="dot active"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+
+                <button class="next-btn" id="pageNext">
+                    다음 <i class="fa-solid fa-chevron-right"></i>
+                </button>
+
+            </div>
+        </div>
+
+        <!-- 학습 상황 -->
+        <div class="progress-card">
+            <h3><i class="fa-solid fa-trophy"></i> 학습 진행 상황</h3>
+
+            <div class="progress-row">
+                <div class="progress-item">
+                    <div class="progress-label">이클립스가 뭐야?</div>
+                    <div class="progress-bar">
+                        <div class="fill" style="width: 50%;"></div>
+                    </div>
+                </div>
+
+                <div class="progress-item">
+                    <div class="progress-label">이클립스 설치하기</div>
+                    <div class="progress-bar">
+                        <div class="fill" style="width:0%;"></div>
+                    </div>
+                </div>
+
+                <div class="progress-item">
+                    <div class="progress-label">이클립스 화면구성</div>
+                    <div class="progress-bar">
+                        <div class="fill" style="width:0%;"></div>
+                    </div>
+                </div>
+
+                <div class="progress-item">
+                    <div class="progress-label">첫 프로젝트 만들기</div>
+                    <div class="progress-bar">
+                        <div id="progressJdk" class="fill" style="width:0%;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="progressText" class="progress-bar-text">1 / 4  진행 중</div>
+        </div>
+
+    </section>
+
+    <script src="/javascript/learning/Java_Chapter1-4-1.js"></script>
+    <script src="/javascript/InnerHTML.js"></script>
+
+</body>
+
+</html>

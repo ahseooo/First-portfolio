@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Chapter 5-5</title>
+    <link rel="stylesheet" type="text/css" href="/css/learning/Javascript_Chapter5-5-1.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <header id="main-frame"></header>
+
+    <section class="home-section">
+        <div class="learning-card">
+
+            <button class="question-button" onclick="openQuestionBox()">
+                <i class="fa-solid fa-question"></i>
+            </button>
+
+            <div class="intro-header">
+                <h1>⏳ 시간 다루기 (setTimeout, setInterval)</h1>
+            </div>
+
+            <div class="speech-bubble">
+                "3초 뒤에 알려줘!" 또는 "1초마다 계속 실행해!" ⏰<br>
+                자바스크립트로 <strong>시간을 지배하는 방법</strong>을 배워보자!
+            </div>
+
+            <p class="chapter-desc">
+                코드를 바로 실행하지 않고 <strong>기다렸다가 실행</strong>하거나,<br>
+                <strong>일정한 간격으로 반복</strong>해서 실행할 때 사용하는 함수들이에요.
+            </p>
+
+            <div class="topic-section">
+                <h2>1. setTimeout (한 번만 기다리기)</h2>
+                <p class="topic-desc">정해진 시간이 지나면 <strong>딱 한 번</strong> 실행해요.</p>
+
+                <div class="code-preview-container">
+                    <div class="code-side">
+                        <div class="code-header">JavaScript</div>
+                        <pre class="code-box"><code><span class="function">setTimeout</span>(<span class="keyword">function</span>() {
+  <span class="js-func">console.log</span>(<span class="string">"3초 지났어요! ⏰"</span>);
+}, <span class="number">3000</span>); <span class="comment">// 3000ms = 3초</span></code></pre>
+                    </div>
+                    <div class="preview-side">
+                        <div class="preview-header">
+                            <i class="fa-solid fa-hourglass-half"></i> Demo
+                        </div>
+                        <div class="preview-content center-content">
+                            <div id="timeout-box" class="timer-box">대기 중...</div>
+                            <button class="action-btn" onclick="runTimeout()">3초 타이머 시작!</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="analogy-box">
+                    <div class="analogy-icon">⏲️</div>
+                    <div class="analogy-text">
+                        <strong>비유:</strong> 전자레인지 타이머와 같아요.<br>
+                        "3분 뒤에 땡!" 하고 한 번 울리고 끝나죠?
+                    </div>
+                </div>
+            </div>
+
+            <hr class="divider">
+
+            <div class="topic-section">
+                <h2>2. setInterval (계속 반복하기)</h2>
+                <p class="topic-desc">정해진 시간 간격마다 <strong>계속해서</strong> 실행해요.</p>
+
+                <div class="code-preview-container">
+                    <div class="code-side">
+                        <div class="code-header">JavaScript</div>
+                        <pre class="code-box"><code><span class="keyword">let</span> count = <span class="number">0</span>;
+
+<span class="function">setInterval</span>(<span class="keyword">function</span>() {
+  count++;
+  <span class="js-func">console.log</span>(count + <span class="string">"초 경과"</span>);
+}, <span class="number">1000</span>); <span class="comment">// 1초마다 실행</span></code></pre>
+                    </div>
+                    <div class="preview-side">
+                        <div class="preview-header">
+                            <i class="fa-solid fa-stopwatch"></i> Demo
+                        </div>
+                        <div class="preview-content center-content">
+                            <div class="digital-clock" id="interval-box">0</div>
+                            <div class="btn-group">
+                                <button class="action-btn start" onclick="startInterval()">시작 ▶</button>
+                                <button class="action-btn stop" onclick="stopInterval()">정지 ⏹</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="analogy-box">
+                    <div class="analogy-icon">💓</div>
+                    <div class="analogy-text">
+                        <strong>비유:</strong> 심장 박동이나 시계 초침과 같아요.<br>
+                        "똑-딱-똑-딱" 일정하게 계속 반복되죠!
+                    </div>
+                </div>
+            </div>
+
+            <hr class="divider">
+
+            <div class="topic-section">
+                <h2>3. 타이머 멈추기 (clear)</h2>
+                <p class="topic-desc">실행 중인 타이머를 취소할 수 있어요.</p>
+
+                <div class="stop-grid">
+                    <div class="stop-card">
+                        <h3>clearTimeout()</h3>
+                        <p><code>setTimeout</code> 취소</p>
+                        <div class="code-box small">
+                            <code><span class="function">clearTimeout</span>(timerId);</code>
+                        </div>
+                    </div>
+                    <div class="stop-card">
+                        <h3>clearInterval()</h3>
+                        <p><code>setInterval</code> 취소</p>
+                        <div class="code-box small">
+                            <code><span class="function">clearInterval</span>(timerId);</code>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="fact-box">
+                <div class="fact-title">
+                    <i class="fa-solid fa-table-list"></i> 차이점 정리
+                </div>
+                <table class="summary-table">
+                    <thead>
+                        <tr>
+                            <th>함수</th>
+                            <th>반복 횟수</th>
+                            <th>비유</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>setTimeout</code></td>
+                            <td><strong>1번</strong> (지연 실행)</td>
+                            <td>⏲️ 오븐 타이머</td>
+                        </tr>
+                        <tr>
+                            <td><code>setInterval</code></td>
+                            <td><strong>무한 반복</strong> (주기적 실행)</td>
+                            <td>🕰️ 시계 초침</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="navigation">
+                <button class="prev-btn" onclick="goToPreviousPage()"><i class="fa-solid fa-chevron-left"></i> 이전 (로컬 스토리지)</button>
+
+                <div class="dots">
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span> 
+                    <span class="dot active"></span> </div>
+
+                <button class="next-btn" id="nextPageBtn" onclick="goToNextPage()">
+                    챕터 5 완료! (다음 단계) <i class="fa-solid fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="progress-card">
+            <h3><i class="fa-solid fa-wand-magic-sparkles"></i> 챕터 5: 고급 기능</h3>
+
+            <div class="progress-row">
+                <div class="progress-item">
+                    <div class="progress-label">이벤트</div>
+                    <div class="progress-bar"><div class="fill" style="width: 100%;"></div></div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">데이터구조</div>
+                    <div class="progress-bar"><div class="fill" style="width: 100%;"></div></div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">저장소</div>
+                    <div class="progress-bar"><div class="fill" style="width: 100%;"></div></div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">시간제어</div>
+                    <div class="progress-bar">
+                        <div class="fill" style="width: 100%;"></div> </div>
+                </div>
+            </div>
+            <div class="progress-bar-text">4 / 4 완료 (수고하셨습니다!)</div>
+        </div>
+    </section>
+
+    <div id="question-modal" class="question-modal hidden">
+        <div class="question-content">
+            <h3>선생님 질문이 있어요!</h3>
+            <textarea placeholder="여기에 질문을 입력하세요"></textarea>
+            <div class="question-buttons">
+                <button onclick="submitQuestion()">보내기</button>
+                <button onclick="closeQuestionBox()">닫기</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/javascript/InnerHTML.js"></script>
+    <script src="/javascript/learning/Javascript_Chapter5-5-1.js"></script>
+</body>
+</html>

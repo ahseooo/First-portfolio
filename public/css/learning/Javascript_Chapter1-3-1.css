@@ -1,0 +1,552 @@
+/* ========== 1. 기본 설정 (JS Theme) ========== */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap");
+@import url("./main_frame.css");
+
+:root {
+    --primary-color: #F7DF1E;
+    /* JS 옐로우 */
+    --primary-light: #FFF9C4;
+    --primary-dark: #F0DB4F;
+    --text-primary: #323330;
+    --bg-secondary: #f9f9f9;
+    --bg-code: #282a36;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    font-family: "Noto Sans KR", sans-serif;
+    height: 100%;
+    width: 100%;
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+}
+
+/* ========== 2. 메인 레이아웃 ========== */
+.home-section {
+    position: relative;
+    height: calc(100vh - 65px);
+    width: 100%;
+    padding: 40px 70px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.learning-card {
+    width: 100%;
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 40px;
+    max-width: 1500px;
+    position: relative;
+}
+
+.intro-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 35px;
+    background-color: #323330;
+    border-radius: 15px;
+    color: var(--primary-color);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.intro-header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    padding: 20px;
+    margin: 0;
+}
+
+.speech-bubble {
+    padding: 20px;
+    border-radius: 12px;
+    border: 2px solid var(--primary-color);
+    font-size: 18px;
+    margin-bottom: 20px;
+    background-color: #fffde7;
+    position: relative;
+}
+
+.speech-bubble::after {
+    content: '';
+    position: absolute;
+    left: 30px;
+    bottom: -12px;
+    border: 12px solid transparent;
+    border-top-color: #fffde7;
+    border-bottom: 0;
+}
+
+.chapter-desc {
+    font-size: 17px;
+    color: #444;
+    line-height: 1.6;
+    margin-left: 20px;
+    margin-bottom: 30px;
+}
+
+/* ========== 3. 코드 & 미리보기 ========== */
+.code-preview-container {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.code-side {
+    flex: 1;
+    background: var(--bg-code);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.code-header {
+    background: #1e1f29;
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 1px solid #444;
+    color: #888;
+    font-size: 12px;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.red {
+    background: #ff5f56;
+}
+
+.yellow {
+    background: #ffbd2e;
+}
+
+.green {
+    background: #27c93f;
+}
+
+.code-box {
+    padding: 20px;
+    color: #f8f8f2;
+    font-family: 'Fira Code', monospace;
+    line-height: 1.6;
+    overflow-x: auto;
+}
+
+.tag {
+    color: #ff79c6;
+}
+
+.attr {
+    color: #50fa7b;
+}
+
+.string {
+    color: #f1fa8c;
+}
+
+.comment {
+    color: #6272a4;
+}
+
+.js-func {
+    color: #8be9fd;
+}
+
+.preview-side {
+    flex: 1;
+    background: #fff;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+}
+
+.preview-header {
+    background: #f1f5f9;
+    padding: 10px 15px;
+    font-weight: bold;
+    color: #555;
+    border-bottom: 1px solid #eee;
+}
+
+.preview-content {
+    padding: 20px;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.demo-btn {
+    background: var(--primary-color);
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #333;
+    transition: transform 0.2s;
+}
+
+.demo-btn:hover {
+    transform: scale(1.05);
+}
+
+/* ========== 4. 파일 구조 시각화 ========== */
+.file-structure-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    background: #f8f9fa;
+    padding: 30px;
+    border-radius: 12px;
+    border: 1px dashed #ccc;
+    margin-bottom: 30px;
+}
+
+.file-card {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    width: 180px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.file-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    margin: 0 auto 10px;
+    font-size: 18px;
+}
+
+.js-file {
+    background: #f7df1e;
+    color: #323330;
+}
+
+.html-file {
+    background: #e44d26;
+    color: white;
+}
+
+.file-name {
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.file-content {
+    background: #282a36;
+    color: #f8f8f2;
+    padding: 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    text-align: left;
+    font-family: 'Fira Code', monospace;
+}
+
+.connection-arrow {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #555;
+    font-size: 14px;
+}
+
+.connection-arrow i {
+    font-size: 24px;
+    color: var(--primary-dark);
+    margin-bottom: 5px;
+}
+
+/* ========== 5. 이벤트 데모 ========== */
+.interaction-demo {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.demo-box {
+    text-align: center;
+}
+
+.demo-box p {
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #666;
+}
+
+.action-btn {
+    background: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.action-btn:hover {
+    background: #2980b9;
+}
+
+.color-box {
+    width: 120px;
+    height: 50px;
+    background: #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    transition: 0.3s;
+    margin: 0 auto;
+    cursor: default;
+}
+
+.color-box:hover {
+    background: #e74c3c;
+    color: white;
+}
+
+.center-code {
+    background: #282a36;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    color: #f8f8f2;
+    font-family: 'Fira Code', monospace;
+}
+
+/* ========== 6. 네비게이션 & 모달 (공통) ========== */
+.navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.prev-btn,
+.next-btn {
+    background: #f8f8f8;
+    border: 1px solid #ddd;
+    padding: 12px 20px;
+    border-radius: 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 15px;
+    transition: all 0.2s;
+}
+
+.next-btn {
+    background: #323330;
+    border: none;
+    color: var(--primary-color);
+}
+
+.prev-btn:hover,
+.next-btn:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+}
+
+.dots {
+    display: flex;
+    gap: 10px;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    background: #ddd;
+    border-radius: 50%;
+}
+
+.dot.active {
+    background: var(--primary-color);
+}
+
+.progress-card {
+    width: 100%;
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: var(--shadow-lg);
+    margin-bottom: 40px;
+    max-width: 1500px;
+}
+
+.progress-card h3 {
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: var(--text-primary);
+}
+
+.progress-row {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.progress-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 23%;
+    text-align: center;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background: #e6e9f1;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 8px;
+}
+
+.progress-bar .fill {
+    height: 100%;
+    background: var(--primary-color);
+    border-radius: 10px;
+}
+
+.progress-bar-text {
+    text-align: center;
+    font-size: 16px;
+    color: #444;
+}
+
+/* 질문 모달 */
+.question-button {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    background: var(--primary-color);
+    border: none;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    color: #323330;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    transition: transform 0.3s;
+}
+
+.question-button:hover {
+    transform: scale(1.1);
+}
+
+.question-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.question-modal.hidden {
+    display: none;
+}
+
+.question-content {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 500px;
+}
+
+.question-content h3 {
+    margin-top: 0;
+    font-size: 24px;
+    color: var(--text-primary);
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.question-content textarea {
+    width: 100%;
+    height: 120px;
+    padding: 15px;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    resize: vertical;
+}
+
+.question-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.question-buttons button {
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    border: none;
+}
+
+.question-buttons button:first-child {
+    background: var(--primary-color);
+    color: #323330;
+}
+
+.question-buttons button:last-child {
+    background: #eee;
+    color: #555;
+}
+
+/* 모바일 대응 */
+@media (max-width: 768px) {
+    .code-preview-container {
+        flex-direction: column;
+    }
+
+    .file-structure-box {
+        flex-direction: column;
+    }
+
+    .connection-arrow {
+        transform: rotate(90deg);
+        margin: 10px 0;
+    }
+}

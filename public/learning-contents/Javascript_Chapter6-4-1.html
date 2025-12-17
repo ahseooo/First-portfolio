@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Chapter 6-4</title>
+    <link rel="stylesheet" type="text/css" href="/css/learning/Javascript_Chapter6-4-1.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <header id="main-frame"></header>
+
+    <section class="home-section">
+        <div class="learning-card">
+
+            <button class="question-button" onclick="openQuestionBox()">
+                <i class="fa-solid fa-question"></i>
+            </button>
+
+            <div class="intro-header">
+                <h1>📝 미니 프로젝트: To-Do 리스트</h1>
+            </div>
+
+            <div class="speech-bubble">
+                할 일을 자꾸 까먹는다고? 😅<br>
+                직접 <strong>할 일 목록(To-Do List)</strong>을 만들어서 관리해보자!
+            </div>
+
+            <p class="chapter-desc">
+                입력창에 할 일을 적고 추가하면 목록에 나타나고,<br>
+                완료된 일은 삭제할 수 있는 기능을 구현합니다.
+                [Image of Simple To-Do List Application UI]
+            </p>
+
+            <hr class="divider">
+
+            <div class="topic-section">
+                <h2>1. 오늘의 미션 📋</h2>
+                <div class="mission-grid">
+                    <div class="mission-item">
+                        <span class="mission-num">1</span>
+                        <p><strong>입력창:</strong> 할 일을 적을 <code>&lt;input&gt;</code> 태그 만들기</p>
+                    </div>
+                    <div class="mission-item">
+                        <span class="mission-num">2</span>
+                        <p><strong>추가 버튼:</strong> 클릭하면 목록에 추가하는 버튼 만들기</p>
+                    </div>
+                    <div class="mission-item">
+                        <span class="mission-num">3</span>
+                        <p><strong>리스트 생성:</strong> JS로 <code>&lt;li&gt;</code> 태그를 만들어서 <code>&lt;ul&gt;</code>에 붙이기</p>
+                    </div>
+                    <div class="mission-item">
+                        <span class="mission-num">4</span>
+                        <p><strong>삭제 기능:</strong> 항목 옆에 "삭제" 버튼을 만들어 지우기</p>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="divider">
+
+            <div class="topic-section">
+                <h2>2. 코드 작성하기 ⌨️</h2>
+                <p class="topic-desc">왼쪽 에디터에 코드를 작성하고 실행해 보세요.</p>
+
+                <div class="playground-container">
+                    <div class="editor-pane">
+                        <div class="pane-header">
+                            <span><i class="fa-brands fa-html5"></i> HTML + <i class="fa-brands fa-js"></i> JS</span>
+                        </div>
+                        <textarea id="code-input" spellcheck="false" placeholder="<h1>오늘의 할 일</h1>
+<input type='text' id='todoInput' placeholder='할 일을 입력하세요'>
+<button onclick='addTodo()'>추가</button>
+<ul id='todoList'></ul>
+
+<script>
+  function addTodo() {
+    // 1. 입력값 가져오기
+    let input = document.getElementById('todoInput');
+    let text = input.value;
+    
+    // 2. 새로운 리스트 아이템(li) 만들기
+    let li = document.createElement('li');
+    li.textContent = text;
+    
+    // 3. 삭제 버튼 추가하기 (심화)
+    // let delBtn = document.createElement('button');
+    // delBtn.textContent = '삭제';
+    // delBtn.onclick = function() { li.remove(); };
+    // li.appendChild(delBtn);
+
+    // 4. 목록(ul)에 붙이기
+    document.getElementById('todoList').appendChild(li);
+    
+    // 5. 입력창 비우기
+    input.value = '';
+  }
+</script>"></textarea>
+                        <button class="run-btn" onclick="runCode()">실행하기 ▶</button>
+                    </div>
+
+                    <div class="preview-pane">
+                        <div class="pane-header">
+                            <span><i class="fa-solid fa-desktop"></i> 결과 화면</span>
+                        </div>
+                        <iframe id="preview-frame"></iframe>
+                    </div>
+                </div>
+                
+                <div class="hint-box">
+                    <div class="hint-title"><i class="fa-solid fa-lightbulb"></i> 힌트: 요소 만들기</div>
+                    <p>
+                        새로운 태그를 만들 땐 <code>document.createElement('태그이름')</code>,<br>
+                        부모 태그 안에 넣을 땐 <code>부모.appendChild(자식)</code>을 사용해요!
+                    </p>
+                </div>
+            </div>
+
+            <div class="navigation">
+                <button class="prev-btn" onclick="goToPreviousPage()"><i class="fa-solid fa-chevron-left"></i> 이전 (랜덤 추첨기)</button>
+
+                <button class="next-btn" id="nextPageBtn" onclick="goToNextPage()">
+                    다음 (최종 점검) <i class="fa-solid fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <div id="question-modal" class="question-modal hidden">
+        <div class="question-content">
+            <h3>선생님 질문이 있어요!</h3>
+            <textarea placeholder="여기에 질문을 입력하세요"></textarea>
+            <div class="question-buttons">
+                <button onclick="submitQuestion()">보내기</button>
+                <button onclick="closeQuestionBox()">닫기</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/javascript/InnerHTML.js"></script>
+    <script src="/javascript/learning/Javascript_Chapter6-4-1.js"></script>
+</body>
+</html>

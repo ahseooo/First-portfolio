@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML2-1-1</title>
+    <link rel="stylesheet" type="text/css" href="/css/learning/html_Chapter2-1-1.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <header id="main-frame"></header>
+
+    <section class="home-section">
+        <div class="learning-card">
+
+            <button class="question-button" onclick="openQuestionBox()">
+                <i class="fa-solid fa-question"></i>
+            </button>
+
+            <div class="intro-header">
+                <h1>🦴 HTML 문서의 기본 구조</h1>
+            </div>
+
+            <div class="speech-bubble">
+                건물을 지을 때 설계도가 필요하듯이,<br>
+                HTML 문서도 항상 <strong>정해진 기본 틀</strong>이 있어!
+            </div>
+
+            <p class="chapter-desc">
+                사람에게 뼈와 살이 있듯이 HTML도 구조가 나뉘어 있어요.<br>
+                아래 코드가 <strong>가장 기본적인 HTML의 모습</strong>이에요.
+            </p>
+
+            <div class="code-section">
+                <div class="code-header">
+                    <div class="dot red"></div>
+                    <div class="dot yellow"></div>
+                    <div class="dot green"></div>
+                    <span>index.html</span>
+                </div>
+                <pre class="code-box"><code><span class="tag-doctype">&lt;!DOCTYPE html&gt;</span>
+<span class="tag">&lt;html&gt;</span>
+  <span class="tag">&lt;head&gt;</span>
+    <span class="tag">&lt;title&gt;</span><span class="text">내 첫 웹페이지</span><span class="tag">&lt;/title&gt;</span>
+  <span class="tag">&lt;/head&gt;</span>
+  <span class="tag">&lt;body&gt;</span>
+    <span class="tag">&lt;h1&gt;</span><span class="text">안녕! 나는 HTML이야.</span><span class="tag">&lt;/h1&gt;</span>
+    <span class="tag">&lt;p&gt;</span><span class="text">이건 문단이에요.</span><span class="tag">&lt;/p&gt;</span>
+  <span class="tag">&lt;/body&gt;</span>
+<span class="tag">&lt;/html&gt;</span></code></pre>
+            </div>
+
+            <div class="guide-section">
+                
+                <div class="step-card">
+                    <div class="step-icon">📢</div>
+                    <div class="step-text">
+                        <h3>&lt;!DOCTYPE html&gt;</h3>
+                        <p><strong>"이건 HTML 문서야!"</strong> 하고 선언하는 첫 줄이에요.<br>브라우저에게 이 파일의 정체를 알려줍니다.</p>
+                    </div>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-icon">📦</div>
+                    <div class="step-text">
+                        <h3>&lt;html&gt; ~ &lt;/html&gt;</h3>
+                        <p><strong>가장 큰 상자</strong>예요. 웹페이지의 시작과 끝을 감싸고 있어요.</p>
+                    </div>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-icon">🧠</div>
+                    <div class="step-text">
+                        <h3>&lt;head&gt; ~ &lt;/head&gt; (머리)</h3>
+                        <p><strong>정보를 담는 곳</strong>이에요. 제목(Title), 스타일, 설정 등 <strong>눈에 보이지 않는 중요한 정보</strong>가 들어가요.</p>
+                    </div>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-icon">🏷️</div>
+                    <div class="step-text">
+                        <h3>&lt;title&gt; (제목)</h3>
+                        <p>웹브라우저 <strong>탭(Tab)에 보이는 이름</strong>이에요.</p>
+                        <div class="browser-tab-preview">
+                            <i class="fa-solid fa-earth-americas"></i> 내 첫 웹페이지 <span class="close-x">×</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-icon">🏃</div>
+                    <div class="step-text">
+                        <h3>&lt;body&gt; ~ &lt;/body&gt; (몸통)</h3>
+                        <p><strong>화면에 보이는 모든 것</strong>이 들어가요.<br>우리가 보는 글자, 이미지, 버튼은 모두 body 안에 있어요!</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="fact-box">
+                <div class="fact-title">
+                    <i class="fa-solid fa-person"></i> 사람으로 비유하면?
+                </div>
+                <ul class="fact-list">
+                    <li>
+                        <div class="icon-box">🧠</div>
+                        <div class="text-box">
+                            <strong>HEAD (머리)</strong><br>생각, 지식, 정보 (눈에 안 보임)
+                        </div>
+                    </li>
+                    <li>
+                        <div class="icon-box">💪</div>
+                        <div class="text-box">
+                            <strong>BODY (몸)</strong><br>얼굴, 팔, 다리 (눈에 보이는 모습)
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="navigation">
+                <button class="prev-btn"><i class="fa-solid fa-chevron-left"></i> 챕터 1 복습</button>
+
+                <div class="dots">
+                    <span class="dot active"></span> <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+
+                <button class="next-btn" id="nextPageBtn">
+                    다음 <i class="fa-solid fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="progress-card">
+            <h3><i class="fa-solid fa-trophy"></i> 챕터 2: 문서 구조</h3>
+
+            <div class="progress-row">
+                <div class="progress-item">
+                    <div class="progress-label">기본 구조</div>
+                    <div class="progress-bar">
+                        <div class="fill" style="width: 50%;"></div> </div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">부모와 자식</div>
+                    <div class="progress-bar"><div class="fill" style="width: 0%;"></div></div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">블록 vs 인라인</div>
+                    <div class="progress-bar"><div class="fill" style="width: 0%;"></div></div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">주석 달기</div>
+                    <div class="progress-bar"><div class="fill" style="width: 0%;"></div></div>
+                </div>
+            </div>
+            <div class="progress-bar-text">1 / 4 진행중</div>
+        </div>
+    </section>
+
+    <div id="question-modal" class="question-modal hidden">
+        <div class="question-content">
+            <h3>선생님 질문이 있어요!</h3>
+            <textarea placeholder="여기에 질문을 입력하세요"></textarea>
+            <div class="question-buttons">
+                <button onclick="submitQuestion()">보내기</button>
+                <button onclick="closeQuestionBox()">닫기</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/javascript/InnerHTML.js"></script>
+    <script src="/javascript/learning/html_Chapter2-1-1.js"></script>
+</body>
+</html>

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Chapter 3-5</title>
+    <link rel="stylesheet" type="text/css" href="/css/learning/Javascript_Chapter3-5-1.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <header id="main-frame"></header>
+
+    <section class="home-section">
+        <div class="learning-card">
+
+            <button class="question-button" onclick="openQuestionBox()">
+                <i class="fa-solid fa-question"></i>
+            </button>
+
+            <div class="intro-header">
+                <h1>📚 문자열과 배열 함수 총정리</h1>
+            </div>
+
+            <div class="speech-bubble">
+                글자나 배열을 내 마음대로 <strong>자르고, 바꾸고, 합치는</strong> 마법 도구들을 소개할게! ✨
+            </div>
+
+            <p class="chapter-desc">
+                자바스크립트에는 문자열(String)과 배열(Array)을 다루는 유용한 내장 함수들이 아주 많아요.<br>
+                자주 쓰이는 것들을 하나씩 알아볼까요?
+            </p>
+
+            <div class="topic-section">
+                <h2>1. 문자열 함수 (String Methods)</h2>
+                <div class="section-badge string-badge">📝 글자 다루기</div>
+
+                <div class="function-grid">
+                    
+                    <div class="func-card">
+                        <div class="func-header">length</div>
+                        <div class="func-desc">글자 수 세기</div>
+                        <div class="func-code">"Apple".length</div>
+                        <div class="func-result">➡ 5</div>
+                    </div>
+
+                    <div class="func-card">
+                        <div class="func-header">toUpperCase()</div>
+                        <div class="func-desc">대문자로 변환</div>
+                        <div class="func-code">"hi".toUpperCase()</div>
+                        <div class="func-result">➡ "HI"</div>
+                    </div>
+
+                    <div class="func-card">
+                        <div class="func-header">toLowerCase()</div>
+                        <div class="func-desc">소문자로 변환</div>
+                        <div class="func-code">"HI".toLowerCase()</div>
+                        <div class="func-result">➡ "hi"</div>
+                    </div>
+
+                    <div class="func-card">
+                        <div class="func-header">slice(start, end)</div>
+                        <div class="func-desc">글자 자르기</div>
+                        <div class="func-code">"Hello".slice(0,2)</div>
+                        <div class="func-result">➡ "He"</div>
+                    </div>
+
+                    <div class="func-card">
+                        <div class="func-header">replace(old, new)</div>
+                        <div class="func-desc">글자 바꾸기</div>
+                        <div class="func-code">"Hi JS".replace("JS","World")</div>
+                        <div class="func-result">➡ "Hi World"</div>
+                    </div>
+
+                    <div class="func-card highlight">
+                        <div class="func-header">split(separator)</div>
+                        <div class="func-desc">문자열 ➡ 배열</div>
+                        <div class="func-code">"A,B".split(",")</div>
+                        <div class="func-result">➡ ["A", "B"]</div>
+                    </div>
+
+                </div>
+            </div>
+
+            <hr class="divider">
+
+            <div class="topic-section">
+                <h2>2. 배열 함수 (Array Methods)</h2>
+                <div class="section-badge array-badge">📦 상자 다루기</div>
+
+                <div class="function-grid">
+                    
+                    <div class="func-card">
+                        <div class="func-header">push(item)</div>
+                        <div class="func-desc">맨 뒤에 추가 ➕</div>
+                        <div class="func-code">arr.push("C")</div>
+                        <div class="func-result">➡ ["A", "B", "C"]</div>
+                    </div>
+
+                    <div class="func-card">
+                        <div class="func-header">pop()</div>
+                        <div class="func-desc">맨 뒤 제거 ➖</div>
+                        <div class="func-code">arr.pop()</div>
+                        <div class="func-result">➡ ["A"]</div>
+                    </div>
+
+                    <div class="func-card">
+                        <div class="func-header">unshift(item)</div>
+                        <div class="func-desc">맨 앞에 추가 ➕</div>
+                        <div class="func-code">arr.unshift("Z")</div>
+                        <div class="func-result">➡ ["Z", "A", "B"]</div>
+                    </div>
+
+                    <div class="func-card">
+                        <div class="func-header">shift()</div>
+                        <div class="func-desc">맨 앞 제거 ➖</div>
+                        <div class="func-code">arr.shift()</div>
+                        <div class="func-result">➡ ["B"]</div>
+                    </div>
+
+                    <div class="func-card highlight">
+                        <div class="func-header">join(separator)</div>
+                        <div class="func-desc">배열 ➡ 문자열</div>
+                        <div class="func-code">["A","B"].join("-")</div>
+                        <div class="func-result">➡ "A-B"</div>
+                    </div>
+
+                    <div class="func-card full-width">
+                        <div class="func-header">forEach(function)</div>
+                        <div class="func-desc">하나씩 꺼내서 실행 (반복)</div>
+                        <div class="func-code">
+                            arr.forEach(item => console.log(item));
+                        </div>
+                        <div class="func-result">➡ A, B (차례대로 출력)</div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="fact-box">
+                <div class="fact-title">
+                    <i class="fa-solid fa-star"></i> 기억해두면 좋은 짝꿍!
+                </div>
+                <div class="pair-grid">
+                    <div class="pair-card">
+                        <div class="pair-icon">↔️</div>
+                        <div class="pair-text">
+                            <strong>split vs join</strong><br>
+                            문자열을 쪼개면(split) 배열이 되고,<br>
+                            배열을 합치면(join) 문자열이 돼요!
+                        </div>
+                    </div>
+                    <div class="pair-card">
+                        <div class="pair-icon">➕➖</div>
+                        <div class="pair-text">
+                            <strong>push/pop vs unshift/shift</strong><br>
+                            뒤에서 넣고 빼기(push/pop)가<br>
+                            앞에서 하기(unshift/shift)보다 빨라요!
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="navigation">
+                <button class="prev-btn" onclick="goToPreviousPage()"><i class="fa-solid fa-chevron-left"></i> 이전 (배열 조작)</button>
+
+                <div class="dots">
+                    <span class="dot active"></span> </div>
+
+                <button class="next-btn" id="nextPageBtn" onclick="goToNextPage()">
+                    챕터 3 완료! (다음 챕터로) <i class="fa-solid fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <div id="question-modal" class="question-modal hidden">
+        <div class="question-content">
+            <h3>선생님 질문이 있어요!</h3>
+            <textarea placeholder="여기에 질문을 입력하세요"></textarea>
+            <div class="question-buttons">
+                <button onclick="submitQuestion()">보내기</button>
+                <button onclick="closeQuestionBox()">닫기</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/javascript/InnerHTML.js"></script>
+    <script src="/javascript/learning/Javascript_Chapter3-5-1.js"></script>
+</body>
+</html>

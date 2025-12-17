@@ -1,0 +1,449 @@
+/* ==========================================================================
+   1. 기본 설정 및 변수 (JS Theme)
+   ========================================================================== */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap");
+@import url("./main_frame.css");
+/* 공통 프레임 */
+
+:root {
+    --primary-color: #F7DF1E;
+    /* JS 옐로우 */
+    --primary-light: #FFF9C4;
+    --primary-dark: #F0DB4F;
+    --text-primary: #323330;
+    /* JS 블랙 */
+    --text-secondary: #555;
+    --bg-secondary: #f9f9f9;
+    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    font-family: "Noto Sans KR", sans-serif;
+    height: 100%;
+    width: 100%;
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+}
+
+/* ==========================================================================
+   2. 메인 레이아웃 (Layout)
+   ========================================================================== */
+.home-section {
+    position: relative;
+    height: calc(100vh - 65px);
+    width: 100%;
+    padding: 40px 70px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.learning-card {
+    width: 100%;
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: var(--shadow-lg);
+    margin-bottom: 40px;
+    position: relative;
+    max-width: 1500px;
+}
+
+/* 헤더 스타일 (JS 테마) */
+.intro-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 35px;
+    background-color: #323330;
+    /* 검정 배경 */
+    border-radius: 15px;
+    color: var(--primary-color);
+    /* 노란 글씨 */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.intro-header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    padding: 20px;
+    margin: 0;
+}
+
+/* 말풍선 */
+.speech-bubble {
+    padding: 20px;
+    border-radius: 12px;
+    border: 2px solid var(--primary-color);
+    font-size: 18px;
+    margin-bottom: 20px;
+    background-color: #fffde7;
+    position: relative;
+}
+
+.speech-bubble::after {
+    /* 말풍선 꼬리 */
+    content: '';
+    position: absolute;
+    left: 30px;
+    bottom: -12px;
+    border: 12px solid transparent;
+    border-top-color: #fffde7;
+    border-bottom: 0;
+}
+
+/* ==========================================================================
+   3. 콘텐츠 섹션 (Content)
+   ========================================================================== */
+.topic-section h2 {
+    margin-bottom: 20px;
+    color: var(--text-primary);
+    border-left: 5px solid var(--primary-color);
+    padding-left: 15px;
+    font-size: 22px;
+}
+
+.topic-desc {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 20px;
+    padding-left: 20px;
+}
+
+/* 정보 카드 (Info Card) */
+.info-card {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s;
+}
+
+.info-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--primary-color);
+}
+
+.card-icon {
+    font-size: 40px;
+}
+
+.card-text p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #444;
+    margin: 0;
+}
+
+.card-text strong {
+    background: #fdf2f8;
+    color: #d63384;
+    padding: 2px 5px;
+    border-radius: 4px;
+}
+
+.divider {
+    border: 0;
+    height: 1px;
+    background: #ddd;
+    margin: 40px 0;
+}
+
+/* 특징 그리드 (Feature Grid) */
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.feature-item {
+    background: #f8f9fa;
+    padding: 25px;
+    border-radius: 12px;
+    text-align: center;
+    border: 1px solid #eee;
+    transition: all 0.2s;
+}
+
+.feature-item:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary-color);
+    box-shadow: 0 5px 15px rgba(247, 223, 30, 0.15);
+}
+
+.feature-icon {
+    font-size: 32px;
+    margin-bottom: 15px;
+}
+
+.feature-item h4 {
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: var(--text-primary);
+}
+
+.feature-item p {
+    font-size: 14px;
+    color: #666;
+}
+
+/* 장점 리스트 (Pros List) */
+.pros-box {
+    background: #fff;
+    border: 2px solid var(--primary-light);
+    border-radius: 15px;
+    padding: 25px;
+}
+
+.pros-list {
+    list-style: none;
+    padding: 0;
+}
+
+.pros-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    margin-bottom: 15px;
+    font-size: 16px;
+    color: #444;
+}
+
+.pros-list li i {
+    color: #F5B041;
+    font-size: 20px;
+    margin-top: 3px;
+}
+
+.pros-list li strong {
+    color: var(--text-primary);
+    background: linear-gradient(120deg, #fff9c4 0%, #fff9c4 100%);
+    padding: 0 4px;
+}
+
+/* ==========================================================================
+   4. 네비게이션 & 모달 (Navigation & Modal)
+   ========================================================================== */
+.navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.prev-btn,
+.next-btn {
+    background: #f8f8f8;
+    border: 1px solid #ddd;
+    padding: 12px 20px;
+    border-radius: 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 15px;
+    transition: all 0.2s;
+}
+
+/* JS 테마 적용 버튼 */
+.next-btn {
+    background: #323330;
+    border: none;
+    color: var(--primary-color);
+}
+
+.prev-btn:hover,
+.next-btn:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+}
+
+.dots {
+    display: flex;
+    gap: 10px;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    background: #ddd;
+    border-radius: 50%;
+}
+
+.dot.active {
+    background: var(--primary-color);
+}
+
+/* 진행바 (JS 테마) */
+.progress-card {
+    width: 100%;
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: var(--shadow-lg);
+    margin-bottom: 40px;
+    max-width: 1500px;
+}
+
+.progress-card h3 {
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: var(--text-primary);
+}
+
+.progress-row {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.progress-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 23%;
+    text-align: center;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background: #e6e9f1;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 8px;
+}
+
+.progress-bar .fill {
+    height: 100%;
+    background: var(--primary-color);
+    border-radius: 10px;
+}
+
+.progress-bar-text {
+    text-align: center;
+    font-size: 16px;
+    color: #444;
+}
+
+/* 질문 버튼 */
+.question-button {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    background: var(--primary-color);
+    border: none;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    color: #323330;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    transition: transform 0.3s;
+}
+
+.question-button:hover {
+    transform: scale(1.1);
+}
+
+/* 모달 */
+.question-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.question-modal.hidden {
+    display: none;
+}
+
+.question-content {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 500px;
+}
+
+.question-content h3 {
+    margin-top: 0;
+    font-size: 24px;
+    color: var(--text-primary);
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.question-content textarea {
+    width: 100%;
+    height: 120px;
+    padding: 15px;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    resize: vertical;
+}
+
+.question-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.question-buttons button {
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    border: none;
+    font-weight: 600;
+}
+
+.question-buttons button:first-child {
+    background: var(--primary-color);
+    color: #323330;
+}
+
+.question-buttons button:last-child {
+    background: #eee;
+    color: #555;
+}
+
+/* 모바일 반응형 */
+@media (max-width: 768px) {
+    .feature-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .progress-row {
+        flex-wrap: wrap;
+    }
+
+    .progress-item {
+        width: 45%;
+        margin-bottom: 10px;
+    }
+}

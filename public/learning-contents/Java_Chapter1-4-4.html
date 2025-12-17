@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Java_Chapter1-4-4</title>
+
+    <link rel="stylesheet" href="/css/learning/Java_Chapter1-4-4.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+</head>
+
+<body>
+    <header id="main-frame"></header> <!--상단 헤더 부분-->
+
+    <section class="home-section">
+
+        <div class="content-card">
+
+            <!-- 제목 -->
+            <div class="intro-header">
+                <h1 id="mainTitle">🔧 첫 자바 프로젝트 만들기</h1>
+            </div>
+
+            <!-- STEP NAV -->
+            <div class="step-dots" id="stepDots">
+                <div class="dot active">1</div>
+                <div class="dot">2</div>
+                <div class="dot">3</div>
+                <div class="dot">4</div>
+                <div class="dot">5</div>
+            </div>
+
+            <!-- 본문 -->
+            <div class="step-box">
+
+                <h2 class="step-title" id="slideTitle">1. 새 프로젝트 만들기</h2>
+
+                <div class="info-box" id="infoBox">
+                    메뉴에서 선택하기
+                </div>
+
+                <!-- 이미지 박스 -->
+                <div class="image-box">
+                    <img id="slideImage" src="/images/learning/Eclipse7.png" style="width:100%; border-radius:10px;">
+                </div>
+
+                <!-- 사진 넘기는 버튼 -->
+                <div class="slide-buttons">
+                    <button id="imgPrev" class="img-nav-btn">
+                        <i class="fa-solid fa-chevron-left"></i>
+                    </button>
+                    <button id="imgNext" class="img-nav-btn">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </button>
+                </div>
+
+                <div class="tip-box" id="tipBox">
+                    <strong>💡 TIP:</strong> [Download]는 Eclipse 공식 페이지 내 좌측 상단에 있습니다.
+                </div>
+
+            </div>
+
+            <!-- 네비게이션 -->
+            <div class="navigation inside">
+
+                <!-- 이전 페이지 이동 -->
+                <button class="prev-btn" id="pagePrev">
+                    <i class="fa-solid fa-chevron-left"></i> 이전
+                </button>
+
+                <!-- 페이지 내부 점 -->
+                <div class="dots" id="pagerDots">
+                    <span class="dot active"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+
+                <!-- 다음 페이지 이동 -->
+                <button class="next-btn" id="pageNext">
+                    다음<i class="fa-solid fa-chevron-right"></i>
+                </button>
+
+            </div>
+        </div>
+
+        <!-- 학습 상황 -->
+        <div class="progress-card">
+            <h3><i class="fa-solid fa-trophy"></i> 학습 진행 상황</h3>
+
+            <div class="progress-row">
+                <div class="progress-item">
+                    <div class="progress-label">이클립스가 뭐야?</div>
+                    <div class="progress-bar">
+                        <div class="fill" style="width: 100%;"></div>
+                    </div>
+                </div>
+
+                <div class="progress-item">
+                    <div class="progress-label">이클립스 설치하기</div>
+                    <div class="progress-bar">
+                        <div class="fill" style="width:100%;"></div>
+                    </div>
+                </div>
+
+                <div class="progress-item">
+                    <div class="progress-label">이클립스 화면구성</div>
+                    <div class="progress-bar">
+                        <div class="fill" style="width:100%;"></div>
+                    </div>
+                </div>
+
+                <div class="progress-item">
+                    <div class="progress-label">첫 프로젝트 만들기</div>
+                    <div class="progress-bar">
+                        <div id="progressJdk" class="fill" style="width:50%;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="progressText" class="progress-bar-text">4 / 4  진행 중</div>
+        </div>
+    </section>
+
+    <script src="/javascript/learning/Java_Chapter1-4-4.js"></script>
+    <script src="/javascript/InnerHTML.js"></script>
+</body>
+
+</html>

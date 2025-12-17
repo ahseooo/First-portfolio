@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML4-3-1</title>
+    <link rel="stylesheet" type="text/css" href="/css/learning/html_Chapter4-3-1.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <header id="main-frame"></header>
+
+    <section class="home-section">
+        <div class="learning-card">
+
+            <button class="question-button" onclick="openQuestionBox()">
+                <i class="fa-solid fa-question"></i>
+            </button>
+
+            <div class="intro-header">
+                <h1>📝 폼(Form) 만들기</h1>
+            </div>
+
+            <div class="speech-bubble">
+                회원가입이나 로그인 창은 어떻게 만들까? 🤔<br>
+                사용자에게 정보를 입력받는 <strong>폼(Form)</strong>을 만들어보자!
+            </div>
+
+            <p class="chapter-desc">
+                폼은 사용자가 입력한 정보를 서버로 보내기 위한 양식이에요.<br>
+                다양한 입력 도구들을 모아서 하나의 세트로 만들죠.
+            </p>
+
+            <div class="topic-section">
+                <h2>1. 폼의 기본 구조 (&lt;form&gt;)</h2>
+                <p class="topic-desc"><code>&lt;form&gt;</code> 태그는 입력 요소들을 감싸는 <strong>가방 역할</strong>을 해요.</p>
+
+                <div class="code-preview-container">
+                    <div class="code-side">
+                        <div class="code-header">
+                            <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
+                            <span>HTML Code</span>
+                        </div>
+                        <pre class="code-box"><code><span class="tag">&lt;form</span> <span class="attr">action</span>=<span class="string">"/login"</span> <span class="attr">method</span>=<span class="string">"POST"</span><span class="tag">&gt;</span>
+  <span class="comment">&lt;!-- 여기에 입력 칸들을 넣어요 --&gt;</span>
+<span class="tag">&lt;/form&gt;</span></code></pre>
+                    </div>
+                    <div class="preview-side">
+                        <div class="preview-header">
+                            <i class="fa-solid fa-info-circle"></i> 속성 설명
+                        </div>
+                        <div class="preview-content">
+                            <ul class="attr-list">
+                                <li><strong>action</strong>: 입력 정보를 보낼 <em>목적지(주소)</em></li>
+                                <li><strong>method</strong>: 정보를 보내는 <em>방법(GET/POST)</em></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="divider">
+
+            <div class="topic-section">
+                <h2>2. 다양한 입력 태그들</h2>
+                <p class="topic-desc">상황에 맞는 도구를 골라 써보세요.</p>
+
+                <div class="input-grid">
+                    
+                    <div class="input-card">
+                        <div class="card-header">
+                            <span class="tag-badge">&lt;input type="text"&gt;</span>
+                        </div>
+                        <div class="card-body">
+                            <label>한 줄 입력 (이름 등)</label>
+                            <input type="text" placeholder="이름을 입력하세요" class="demo-input">
+                        </div>
+                    </div>
+
+                    <div class="input-card">
+                        <div class="card-header">
+                            <span class="tag-badge">&lt;input type="password"&gt;</span>
+                        </div>
+                        <div class="card-body">
+                            <label>비밀번호 (가려짐)</label>
+                            <input type="password" placeholder="비밀번호" class="demo-input">
+                        </div>
+                    </div>
+
+                    <div class="input-card full-width">
+                        <div class="card-header">
+                            <span class="tag-badge">&lt;textarea&gt;</span>
+                        </div>
+                        <div class="card-body">
+                            <label>여러 줄 입력 (자기소개, 댓글)</label>
+                            <textarea rows="3" class="demo-textarea" placeholder="내용을 입력하세요..."></textarea>
+                        </div>
+                    </div>
+
+                    <div class="input-card">
+                        <div class="card-header">
+                            <span class="tag-badge">&lt;select&gt;</span>
+                        </div>
+                        <div class="card-body">
+                            <label>목록 선택 (드롭다운)</label>
+                            <select class="demo-select">
+                                <option>선택하세요</option>
+                                <option>학생</option>
+                                <option>선생님</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="input-card">
+                        <div class="card-header">
+                            <span class="tag-badge">&lt;input type="checkbox"&gt;</span>
+                        </div>
+                        <div class="card-body">
+                            <label>체크박스 (다중 선택)</label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox"> 동의함</label>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <hr class="divider">
+
+            <div class="topic-section">
+                <h2>3. 완성된 폼 예제</h2>
+                <p class="topic-desc">모든 요소를 합쳐서 회원가입 폼을 만들어볼까요? (직접 입력해보세요!)</p>
+
+                <div class="full-demo-box">
+                    <form class="complete-form" onsubmit="handleDemoSubmit(event)">
+                        <div class="form-group">
+                            <label>이름</label>
+                            <input type="text" placeholder="홍길동" required>
+                        </div>
+                        <div class="form-group">
+                            <label>비밀번호</label>
+                            <input type="password" placeholder="****" required>
+                        </div>
+                        <div class="form-group">
+                            <label>학년</label>
+                            <select>
+                                <option>1학년</option>
+                                <option>2학년</option>
+                                <option>3학년</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>하고 싶은 말</label>
+                            <textarea rows="3"></textarea>
+                        </div>
+                        <button type="submit" class="submit-button">제출하기</button>
+                    </form>
+                    <div id="form-result" class="form-result hidden">
+                        ✅ 제출되었습니다! (실제로는 서버로 전송돼요)
+                    </div>
+                </div>
+            </div>
+
+            <div class="navigation">
+                <button class="prev-btn" onclick="goToPreviousPage()"><i class="fa-solid fa-chevron-left"></i> 이전</button>
+
+                <div class="dots">
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot active"></span> <span class="dot"></span>
+                </div>
+
+                <button class="next-btn" id="nextPageBtn" onclick="goToNextPage()">
+                    다음 <i class="fa-solid fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="progress-card">
+            <h3><i class="fa-solid fa-trophy"></i> 챕터 4: 표와 폼</h3>
+
+            <div class="progress-row">
+                <div class="progress-item">
+                    <div class="progress-label">표 만들기</div>
+                    <div class="progress-bar"><div class="fill" style="width: 100%;"></div></div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">표 병합</div>
+                    <div class="progress-bar"><div class="fill" style="width: 100%;"></div></div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">폼 만들기</div>
+                    <div class="progress-bar">
+                        <div class="fill" style="width: 50%;"></div> </div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">입력 요소</div>
+                    <div class="progress-bar"><div class="fill" style="width: 0%;"></div></div>
+                </div>
+            </div>
+            <div class="progress-bar-text">3 / 4 진행중</div>
+        </div>
+    </section>
+
+    <div id="question-modal" class="question-modal hidden">
+        <div class="question-content">
+            <h3>선생님 질문이 있어요!</h3>
+            <textarea placeholder="여기에 질문을 입력하세요"></textarea>
+            <div class="question-buttons">
+                <button onclick="submitQuestion()">보내기</button>
+                <button onclick="closeQuestionBox()">닫기</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/javascript/InnerHTML.js"></script>
+    <script src="/javascript/learning/html_Chapter4-3-1.js"></script>
+</body>
+</html>

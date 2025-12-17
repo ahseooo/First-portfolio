@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Coding Monster - Play</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+    <link rel="stylesheet" href="/css/play.css" />
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+    <script src="https://accounts.google.com/gsi/client" defer></script>
+</head>
+
+<body>
+    <header>
+        <div class="header-container">
+            <a href="/"><button>
+                    <h1>코딩몬스터</h1>
+                </button></a>
+            <nav>
+                <ul>
+                    <li>
+                        <a href="/Play_on"><button>플레이</button></a>
+                    </li>
+                    <li>
+                        <a href="/LevelQuestMap"><button>레벨 퀘스트</button></a>
+                    </li>
+                    <li>
+                        <a href="/TotalRanking"><button>랭킹</button></a>
+                    </li>
+                    <li>
+                        <a href="/Community"><button>커뮤니티</button></a>
+                    </li>
+                    <li>
+                        <a href="/Setting"><button>설정</button></a>
+                    </li>
+                    <li><button id="btn_logout">로그아웃</button></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="home-section">
+        <div class="notice-banner">
+            <div class="notice-content">
+                <span class="notice-icon"><i class="fas fa-bullhorn"></i> NOTICE</span>
+                <div class="notice-scroll-wrapper">
+                    <span class="notice-text">📢 이번 주 서버 점검 안내: 12.06(토) 00:00 ~ 04:00</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid-container">
+            <div class="home-wrapper">
+                <div class="event-box dashboard-event-widget">
+                    <div class="event-header">
+                        <div class="header-title-group">
+                            <span class="event-badge">EVENT</span>
+                            <h3>진행 중인 이벤트</h3>
+                        </div>
+                        <input type="text" class="event-search" placeholder="이벤트 검색" />
+                    </div>
+                    <div class="event-list">
+                        <div class="event-item">
+                            <span>오늘 출석 체크하기 (1/1)</span>
+                            <button class="reward-btn" onclick="claimReward(this)">
+                                보상받기
+                            </button>
+                        </div>
+                        <div class="event-item">
+                            <span>코딩 문제 풀기 챌린지 (0/3)</span>
+                            <button class="reward-btn disabled" disabled>보상받기</button>
+                        </div>
+                        <div class="event-item">
+                            <span>커뮤니티에 글 작성 (0/1)</span>
+                            <button class="reward-btn disabled" disabled>보상받기</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sidebar">
+                    <div class="tabs" id="curriculum-tabs"></div>
+
+                    <div id="curriculum-content"></div>
+                </div>
+            </div>
+
+            <div class="home-wrapper">
+                <div class="profile-card">
+                    <div class="profile-header">
+                        <div class="profile-info">
+                            <div class="profile-img-wrapper">
+                                <img id="el_profile_icon" src="" alt="" />
+                            </div>
+
+                            <div class="profile-text">
+                                <div class="rank-badge">🏆 1위</div>
+                                <div class="nickname" id="el_nickname"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="level-container">
+                        <div class="level-info">
+                            <span>Lv.20</span>
+                            <span>46 / 100 XP</span>
+                        </div>
+                        <div class="level-bar">
+                            <div class="level-progress" style="width: 46%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="calendar">
+                    <div class="header">
+                        <button onclick="prevMonth()">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <div id="monthYear"></div>
+                        <button onclick="nextMonth()">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>일</th>
+                                <th>월</th>
+                                <th>화</th>
+                                <th>수</th>
+                                <th>목</th>
+                                <th>금</th>
+                                <th>토</th>
+                            </tr>
+                        </thead>
+                        <tbody id="calendarBody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="memoModal" class="modal">
+        <div class="modal-content">
+            <span id="closeMemoBtn" style="float: right; cursor: pointer">×</span>
+            <h3 id="memoDate">날짜</h3>
+            <textarea id="memoContent" placeholder="오늘의 기록을 입력하세요..."></textarea>
+            <button onclick="saveMemo()">저장</button>
+            <button onclick="deleteMemo()" class="delete-memo-btn">삭제</button>
+        </div>
+    </div>
+
+    <!-- <script src="/javascript/ThemeLoader.js"></script> -->
+    <script type="text/javascript" src="/javascript/config.js"></script>
+    <script type="text/javascript" src="/javascript/LogoutManager.js"></script>
+    <script type="text/javascript" src="/javascript/play-profile.js"></script>
+    <script type="text/javascript" src="/javascript/curriculum-chapter.js"></script>
+    <script type="text/javascript" src="/javascript/Calendar.js"></script>
+    <script type="text/javascript" src="/javascript/Event.js"></script>
+</body>
+
+</html>

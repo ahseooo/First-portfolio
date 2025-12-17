@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML4-5-1</title>
+    <link rel="stylesheet" type="text/css" href="/css/learning/html_Chapter4-5-1.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <header id="main-frame"></header>
+
+    <section class="home-section">
+        <div class="learning-card">
+
+            <button class="question-button" onclick="openQuestionBox()">
+                <i class="fa-solid fa-question"></i>
+            </button>
+
+            <div class="intro-header">
+                <h1>✅ 선택의 기술: 체크박스 vs 라디오</h1>
+            </div>
+
+            <div class="speech-bubble">
+                여러 개를 고를 때와 하나만 골라야 할 때!<br>
+                어떤 태그를 써야 할까? 직접 눌러보면서 비교해보자! 👇
+            </div>
+
+            <p class="chapter-desc">
+                <strong>체크박스</strong>는 여러 개를 동시에 선택할 수 있고,<br>
+                <strong>라디오 버튼</strong>은 여러 개 중 오직 하나만 선택할 수 있어요.
+            </p>
+
+            <div class="topic-section">
+                <h2>1. 체크박스 (Checkbox) - 다중 선택</h2>
+                <p class="topic-desc">원하는 만큼 모두 선택해보세요! (뷔페처럼 🍽️)</p>
+
+                <div class="practice-box checkbox-practice">
+                    <div class="practice-header">
+                        <i class="fa-solid fa-basket-shopping"></i> 장바구니 담기
+                    </div>
+                    <form id="checkboxForm" class="practice-form">
+                        <div class="selection-grid">
+                            <label class="option-card">
+                                <input type="checkbox" value="사과 🍎">
+                                <span class="option-content">사과 🍎</span>
+                            </label>
+                            <label class="option-card">
+                                <input type="checkbox" value="바나나 🍌">
+                                <span class="option-content">바나나 🍌</span>
+                            </label>
+                            <label class="option-card">
+                                <input type="checkbox" value="포도 🍇">
+                                <span class="option-content">포도 🍇</span>
+                            </label>
+                            <label class="option-card">
+                                <input type="checkbox" value="딸기 🍓">
+                                <span class="option-content">딸기 🍓</span>
+                            </label>
+                        </div>
+                        <button type="button" class="action-btn" onclick="submitCheckbox()">선택 완료</button>
+                    </form>
+                    <div id="checkboxResult" class="result-message hidden"></div>
+                </div>
+            </div>
+
+            <hr class="divider">
+
+            <div class="topic-section">
+                <h2>2. 라디오 버튼 (Radio) - 단일 선택</h2>
+                <p class="topic-desc">하나만 골라야 해요! 다른 걸 누르면 기존 선택이 취소돼요. (시험 문제처럼 📝)</p>
+
+                <div class="practice-box radio-practice">
+                    <div class="practice-header">
+                        <i class="fa-solid fa-graduation-cap"></i> 학년 선택하기
+                    </div>
+                    <form id="radioForm" class="practice-form">
+                        <div class="selection-grid">
+                            <label class="option-card radio-style">
+                                <input type="radio" name="grade" value="1학년">
+                                <span class="option-content">1학년</span>
+                            </label>
+                            <label class="option-card radio-style">
+                                <input type="radio" name="grade" value="2학년">
+                                <span class="option-content">2학년</span>
+                            </label>
+                            <label class="option-card radio-style">
+                                <input type="radio" name="grade" value="3학년">
+                                <span class="option-content">3학년</span>
+                            </label>
+                            <label class="option-card radio-style">
+                                <input type="radio" name="grade" value="4학년">
+                                <span class="option-content">4학년</span>
+                            </label>
+                        </div>
+                        <button type="button" class="action-btn radio-btn" onclick="submitRadio()">선택 완료</button>
+                    </form>
+                    <div id="radioResult" class="result-message hidden"></div>
+                </div>
+            </div>
+
+            <div class="comparison-section">
+                <h3>📊 한눈에 비교하기</h3>
+                <div class="compare-grid">
+                    <div class="compare-card">
+                        <div class="card-icon">☑️</div>
+                        <h4>Checkbox</h4>
+                        <p><strong>여러 개</strong> 선택 가능</p>
+                        <p class="example-text">(취미, 토핑 추가)</p>
+                    </div>
+                    <div class="vs-text">VS</div>
+                    <div class="compare-card">
+                        <div class="card-icon">🔘</div>
+                        <h4>Radio Button</h4>
+                        <p><strong>오직 하나</strong>만 선택</p>
+                        <p class="example-text">(성별, 학년)</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="navigation">
+                <button class="prev-btn" onclick="goToPreviousPage()"><i class="fa-solid fa-chevron-left"></i> 이전</button>
+
+                <div class="dots">
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span> 
+                    <span class="dot"></span> 
+                    <span class="dot active"></span> </div>
+
+                <button class="next-btn" id="nextPageBtn" onclick="goToNextPage()">
+                    챕터 완료! 🎉
+                </button>
+            </div>
+        </div>
+
+        <div class="progress-card">
+            <h3><i class="fa-solid fa-trophy"></i> 챕터 4: 표와 폼</h3>
+
+            <div class="progress-row">
+                <div class="progress-item">
+                    <div class="progress-label">표 만들기</div>
+                    <div class="progress-bar"><div class="fill" style="width: 100%;"></div></div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">표 병합</div>
+                    <div class="progress-bar"><div class="fill" style="width: 100%;"></div></div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">폼 만들기</div>
+                    <div class="progress-bar"><div class="fill" style="width: 100%;"></div></div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">입력 요소</div>
+                    <div class="progress-bar"><div class="fill" style="width: 100%;"></div></div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">선택 실습</div>
+                    <div class="progress-bar">
+                        <div class="fill" style="width: 100%;"></div> </div>
+                </div>
+            </div>
+            <div class="progress-bar-text">5 / 5 완료 (축하해요!)</div>
+        </div>
+    </section>
+
+    <div id="question-modal" class="question-modal hidden">
+        <div class="question-content">
+            <h3>선생님 질문이 있어요!</h3>
+            <textarea placeholder="여기에 질문을 입력하세요"></textarea>
+            <div class="question-buttons">
+                <button onclick="submitQuestion()">보내기</button>
+                <button onclick="closeQuestionBox()">닫기</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/javascript/InnerHTML.js"></script>
+    <script src="/javascript/learning/html_Chapter4-5-1.js"></script>
+</body>
+</html>

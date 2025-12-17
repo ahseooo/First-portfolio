@@ -1,0 +1,364 @@
+/* Rainking, MyRanking, Community, Setting, Service 페이지 사이드바 */
+/* 사이드바 시작 */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
+
+:root {
+    --neon-blue: #00FFFF;           /* 메인 네온 강조색 */
+    --neon-green: #00FF00;          /* 서브 네온 강조색 */
+    --neon-red: #FF3131;            /* 로그아웃/경고색 */
+    --dark-bg-color: #1a1a1a;       /* 사이드바 배경 */
+    --dark-bg-card: rgba(30, 30, 30, 0.7);
+    --text-color: #f0f0f0;          /* 일반 텍스트 색상 */
+    --sidebar-text: var(--neon-blue); /* 주요 아이템 텍스트/아이콘 색상 */
+    --sidebar-hover-bg: rgba(0, 255, 255, 0.15); /* 호버 시 배경색 (연한 네온 블루) */
+    --sidebar-shadow: 0 0 15px rgba(0, 255, 255, 0.2); /* 네온 그림자 */
+    --accent-color: var(--neon-green);
+    
+    /* 사이드바가 사용할 최종 변수 */
+    --sidebar-bg: var(--dark-bg-color);
+    --sidebar-hover: var(--sidebar-hover-bg);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Consolas", "Monaco", "Noto Sans KR", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    /* transition: all 0.3s ease; */
+}
+
+html,
+body {
+    color: var(--text-color);
+    height: 100%;
+    width: 100%;
+}
+
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 255px;
+    background: var(--sidebar-bg);
+    transition: all 0.3s ease;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--sidebar-shadow);
+    border-right: 1px solid var(--neon-blue);
+}
+
+.sidebar.close {
+    width: 75px;
+    z-index: 100;
+}
+
+.sidebar .logo-details {
+    height: 60px;
+    width: 100%;
+    padding: 5px 0;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    background: rgba(0, 255, 255, 0.05);
+    border-bottom: 1px solid var(--sidebar-text);
+}
+
+.sidebar .logo-details .logo-icon {     /* 사이드바 로고 */
+    font-size: 30px;
+    height: 50px;
+    min-width: 75px;
+    text-align: center;
+    line-height: 50px;
+}
+
+.sidebar .logo-details i img {
+    width: 50px;
+    height: 50px;
+    filter: drop-shadow(0 0 5px var(--sidebar-text));
+}
+
+.sidebar .logo-details label .logo_title { 
+    white-space: nowrap;                /* 텍스트 밑으로 밀림 방지 */
+    font-size: 22px;
+    color: var(--sidebar-text);
+    font-weight: 600;
+    text-shadow: 0 0 5px var(--sidebar-text);
+    transition: all 0.2s ease 0.1s;
+}
+
+.sidebar .nav-lists {
+    height: calc(100% - 110px);
+    padding: 10px 0 150px 0;
+    overflow: auto;
+}
+
+.sidebar.close .nav-lists {      /* 클로즈 상태에서 사이드바 호버 시 서브 카테고리 표시 */
+    overflow: visible;          /* 이거 설정 안 하면 호버 시 서브 카테고리가 나타나지 않음 */
+}
+
+.sidebar .nav-lists::-webkit-scrollbar {         /* 사이드바 높이 초과 시 스크롤바 표시 X */
+    display: none;
+}
+
+.sidebar .nav-lists li {
+    position: relative;
+    color: var(--sidebar-text);
+    list-style: none;
+    transition: all 0.2s ease;
+}
+
+.sidebar .nav-lists li:hover {
+    background: var(--sidebar-hover);
+    text-shadow: 0 0 3px var(--sidebar-hover-text);
+}
+
+.sidebar .nav-lists li:hover .sub-category {
+    background: rgba(0, 0, 0, 0.6); 
+}
+
+.sidebar .nav-lists li .icon-list {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.sidebar .nav-lists li i {
+    height: 50px;
+    min-width: 75px;
+    text-align: center;
+    line-height: 50px;
+    font-size: 20px;
+    color: var(--sidebar-text);
+    text-shadow: 0 0 3px var(--neon-blue);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+.sidebar .nav-lists li a {
+    text-decoration: none;
+    color: var(--sidebar-text);
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    opacity: 0.8;
+}
+.sidebar .nav-lists li:hover a {
+    opacity: 1;
+}
+
+.sidebar .nav-lists li a .nav-name {     /* 메인 카테고리 글자 설정 */
+    font-size: 18px;
+    font-weight: 400;
+    white-space: nowrap;
+    color: var(--sidebar-text);
+    transition: all 0.2s ease 0.1s;
+    min-width: 100px;
+}
+
+/* 서브 카테고리 */
+.sidebar .nav-lists li .sub-category {
+    background: rgba(0, 0, 0, 0.6);
+    box-shadow: inset 0 0 10px rgba(0, 255, 255, 0.1);
+    padding: 10px 6px 10px 78px;
+    margin-top: 0;
+    /* background: var(--sidebar-hover); */
+    display: none;
+}
+
+.sidebar .nav-lists li.showCategory .sub-category {  /* 화살표 클릭 시 서브 카테고리 표시 */
+    display: block;
+}
+
+.sidebar .nav-lists li .sub-category a {
+    color: var(--text-color);
+    font-size: 15px;
+    padding: 6px 0;
+    white-space: nowrap;
+    opacity: 0.6;
+    transition: all 0.3s ease;
+    background: transparent;
+}
+
+.sidebar .nav-lists li .sub-category a:hover {
+    color: var(--accent-color); /* 네온 그린 호버 */
+    text-shadow: 0 0 3px var(--accent-color);
+    opacity: 1;
+    background: transparent;
+}
+
+.sidebar .nav-lists li .sub-category li:hover {
+    background: none;
+}
+
+.sidebar.close .nav-lists li .sub-category {     /* 호버 시 서브 카테고리 표시 */
+    position: absolute;
+    left: 100%;
+    top: -8px;
+    margin-top: 0;
+    padding: 10px 20px;
+    border-radius: 0 6px 6px 0;
+    transition: all 0.3s ease;
+    opacity: 0;
+    display: block;
+    pointer-events: none;
+    border: 1px solid var(--neon-blue);
+    box-shadow: var(--sidebar-shadow);
+}
+
+.sidebar.close .nav-lists li:hover .sub-category {
+    top: 0px;
+    opacity: 1;
+    display: block;
+    pointer-events: auto;
+    transition: all 0.2s ease;
+}
+
+.sidebar .nav-lists li .sub-category .nav-name {
+    display: none;
+}
+
+.sidebar.close .nav-lists li .sub-category .nav-name {   /* 사이드바에 마우스 커서 위치 시 메인 카테고리 제목 표시 */
+    font-size: 18px;
+    opacity: 1;
+    display: block;
+    color: var(--neon-green);
+    text-shadow: 0 0 5px var(--neon-green);
+    margin-bottom: 5px;
+}
+
+.sidebar .nav-lists li .sub-category.blank {
+    top: -8px;
+    padding: 6px 20px 6px 16px;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.sidebar .nav-lists li:hover .sub-category.blank {
+    top: 0;
+}
+
+
+.sidebar .log-out-details {          /* 로그아웃 파트 */
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.sidebar .log-out-details a {
+    color: var(--sidebar-text);
+    text-decoration: none;
+    text-align: center;
+    opacity: 0.6;
+    transition: all 0.3s ease;
+}
+
+.sidebar .log-out-details a:hover {
+    opacity: 1;
+}
+
+.sidebar .log-out-details a i {
+    height: 50px;
+    min-width: 75px;
+    text-align: center;
+    line-height: 50px;
+    color: var(--sidebar-text);
+    font-size: 20px;
+}
+
+.sidebar .log-out-details a span {
+    font-size: 18px;
+    font-weight: 400;
+    white-space: nowrap;
+    opacity: 1;
+    color: var(--sidebar-text);
+    transition: all 0.2s ease 0.1s;
+}
+
+.sidebar.close .logo-details label .logo_title,
+.sidebar.close .nav-lists .arrow,
+.sidebar.close .nav-lists li a .nav-name,
+.sidebar.close .log-out-details a span {
+    transition: all 0.3s ease;
+    transition-delay: 0s;
+    display: none;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.sidebar.is-closing .nav-lists li .sub-category {
+    display: none;
+}
+/* 사이드바 끝 */
+
+
+/* 헤더 섹션 */
+.header-section {
+    position: relative;
+    left: 255px;
+    width: calc(100% - 255px);
+    height: 60px;
+    /* 사이버 펑크 스타일 적용 */
+    background: var(--dark-bg-color);
+    border-bottom: 2px solid var(--neon-blue);
+    box-shadow: 0 2px 8px rgba(0, 255, 255, 0.3);
+    transition: all 0.3s ease;
+}
+
+.sidebar.close~.header-section {
+    left: 75px;
+    width: calc(100% - 75px);
+    transition: all 0.3s ease;
+    transition-delay: 0s;
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    padding: 0 24px;
+    height: 100%;
+    gap: 20px;
+}
+
+.header-content .fa-bars {
+    color: var(--neon-blue); /* 네온 블루 */
+    font-size: 22px;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.header-content .fa-bars:hover {
+    transform: scale(1.15);
+    box-shadow: 0 2px 8px rgba(255, 255, 255, 0.2);
+}
+
+.header-content .title {
+    color: var(--neon-blue); /* 네온 블루 */
+    font-size: 22px;
+    font-weight: 600;
+    text-shadow: 0 0 5px var(--neon-blue);
+}
+
+/* 메인 섹션 */
+.home-section {
+    position: relative;
+    left: 255px;
+    width: calc(100vw - 255px);
+    height: calc(100vh - 60px);
+    transition: all 0.3s ease;
+    padding: 30px;
+    /* 사이버 펑크 배경 */
+    /* background: var(--bg-secondary); */
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+}
+
+.sidebar.close~.home-section {
+    left: 75px;
+    width: calc(100% - 75px);
+}

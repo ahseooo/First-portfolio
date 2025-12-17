@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Chapter 2-4</title>
+    <link rel="stylesheet" type="text/css" href="/css/learning/Javascript_Chapter2-4-1.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <header id="main-frame"></header>
+
+    <section class="home-section">
+        <div class="learning-card">
+
+            <button class="question-button" onclick="openQuestionBox()">
+                <i class="fa-solid fa-question"></i>
+            </button>
+
+            <div class="intro-header">
+                <h1>💬 조건문 (if, else, switch)</h1>
+            </div>
+
+            <div class="speech-bubble">
+                컴퓨터에게 <strong>생각하는 법</strong>을 알려주자! 🧠<br>
+                "비가 오면 우산을 쓰고, 안 오면 그냥 가!" 처럼 상황에 따라 다르게 행동하게 할 수 있어.
+            </div>
+
+            <p class="chapter-desc">
+                조건문은 주어진 조건이 <strong>참(true)</strong>인지 <strong>거짓(false)</strong>인지에 따라<br>
+                서로 다른 코드를 실행하는 <strong>제어문</strong>이에요.
+            </p>
+
+            <div class="topic-section">
+                <h2>1. 만약에... (if)</h2>
+                <p class="topic-desc">조건이 <strong>참(True)</strong>일 때만 실행해요.</p>
+
+                <div class="code-preview-container">
+                    <div class="code-side">
+                        <div class="code-header">
+                            <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
+                            <span>JavaScript</span>
+                        </div>
+                        <pre class="code-box"><code><span class="keyword">let</span> isRainy = <span class="boolean">true</span>;
+
+<span class="keyword">if</span> (isRainy) {
+  <span class="js-func">console.log</span>(<span class="string">"우산을 써요 ☔"</span>);
+}</code></pre>
+                    </div>
+                    <div class="preview-side">
+                        <div class="preview-header">
+                            <i class="fa-solid fa-terminal"></i> Result
+                        </div>
+                        <div class="preview-content center-content">
+                            <div class="result-msg">우산을 써요 ☔</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="divider">
+
+            <div class="topic-section">
+                <h2>2. 그게 아니면... (if - else)</h2>
+                <p class="topic-desc">조건이 참이면 A를, <strong>거짓이면 B</strong>를 실행해요. (양자택일)</p>
+
+                <div class="flowchart-box">
+                    <div class="flow-step condition">날씨가 맑은가?</div>
+                    <div class="flow-branches">
+                        <div class="branch true">
+                            <span class="branch-label">YES (True)</span>
+                            <div class="flow-step action">🌞 산책 가기</div>
+                        </div>
+                        <div class="branch false">
+                            <span class="branch-label">NO (False)</span>
+                            <div class="flow-step action">🏠 집에 있기</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="code-box">
+<code><span class="keyword">if</span> (isSunny) {
+  <span class="js-func">console.log</span>(<span class="string">"산책 가요 🌞"</span>);
+} <span class="keyword">else</span> {
+  <span class="js-func">console.log</span>(<span class="string">"집에 있어요 🏠"</span>);
+}</code>
+                </div>
+            </div>
+
+            <hr class="divider">
+
+            <div class="topic-section">
+                <h2>3. 여러 조건 따지기 (else if)</h2>
+                <p class="topic-desc">조건이 여러 개일 때 순서대로 물어봐요.</p>
+
+                <div class="code-preview-container">
+                    <div class="code-side">
+                        <div class="code-header">
+                            <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
+                            <span>JavaScript</span>
+                        </div>
+                        <pre class="code-box"><code><span class="keyword">let</span> score = <span class="number">85</span>;
+
+<span class="keyword">if</span> (score >= <span class="number">90</span>) {
+  <span class="js-func">console.log</span>(<span class="string">"A학점 🎉"</span>);
+} <span class="keyword">else if</span> (score >= <span class="number">80</span>) {
+  <span class="js-func">console.log</span>(<span class="string">"B학점 👍"</span>);
+} <span class="keyword">else</span> {
+  <span class="js-func">console.log</span>(<span class="string">"C학점 💪"</span>);
+}</code></pre>
+                    </div>
+                    <div class="preview-side">
+                        <div class="preview-header">
+                            <i class="fa-solid fa-terminal"></i> Result
+                        </div>
+                        <div class="preview-content center-content">
+                            <div class="score-badge b-grade">B학점 👍</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="divider">
+
+            <div class="topic-section">
+                <h2>4. 딱 떨어지는 값 고르기 (switch)</h2>
+                <p class="topic-desc">조건이 많고, 값이 명확할 때(예: 메뉴 선택) 사용하면 깔끔해요.</p>
+
+                <div class="vending-machine-box">
+                    <div class="vm-screen">선택: 사과</div>
+                    <div class="vm-buttons">
+                        <button class="vm-btn active">🍎 사과</button>
+                        <button class="vm-btn">🍌 바나나</button>
+                        <button class="vm-btn">🍇 포도</button>
+                    </div>
+                    <div class="vm-code">
+                        <code>case "사과": console.log("빨간 사과"); break;</code>
+                    </div>
+                </div>
+            </div>
+
+            <div class="fact-box">
+                <div class="fact-title">
+                    <i class="fa-solid fa-code-branch"></i> 조건문 핵심 정리
+                </div>
+                <ul class="fact-list">
+                    <li>
+                        <div class="icon-box">☔</div>
+                        <div class="text-box">
+                            <strong>if</strong><br>조건이 맞을 때만 실행
+                        </div>
+                    </li>
+                    <li>
+                        <div class="icon-box">⚖️</div>
+                        <div class="text-box">
+                            <strong>else</strong><br>조건이 틀렸을 때 실행 (그 외 나머지)
+                        </div>
+                    </li>
+                    <li>
+                        <div class="icon-box">🚦</div>
+                        <div class="text-box">
+                            <strong>switch</strong><br>값이 딱 떨어지는 경우 (메뉴 선택 등)
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="navigation">
+                <button class="prev-btn" onclick="goToPreviousPage()"><i class="fa-solid fa-chevron-left"></i> 이전 (연산자)</button>
+
+                <div class="dots">
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot active"></span> </div>
+
+                <button class="next-btn" id="nextPageBtn" onclick="goToNextPage()">
+                    다음 (반복문) <i class="fa-solid fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="progress-card">
+            <h3><i class="fa-solid fa-bolt"></i> 챕터 2: 변수와 자료형, 제어문</h3>
+
+            <div class="progress-row">
+                <div class="progress-item">
+                    <div class="progress-label">변수</div>
+                    <div class="progress-bar"><div class="fill" style="width: 100%;"></div></div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">자료형</div>
+                    <div class="progress-bar"><div class="fill" style="width: 100%;"></div></div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">연산자</div>
+                    <div class="progress-bar"><div class="fill" style="width: 100%;"></div></div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">조건문</div>
+                    <div class="progress-bar">
+                        <div class="fill" style="width: 50%;"></div> </div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">반복문</div>
+                    <div class="progress-bar"><div class="fill" style="width: 0%;"></div></div>
+                </div>
+            </div>
+            <div class="progress-bar-text">4 / 5 진행중</div>
+        </div>
+    </section>
+
+    <div id="question-modal" class="question-modal hidden">
+        <div class="question-content">
+            <h3>선생님 질문이 있어요!</h3>
+            <textarea placeholder="여기에 질문을 입력하세요"></textarea>
+            <div class="question-buttons">
+                <button onclick="submitQuestion()">보내기</button>
+                <button onclick="closeQuestionBox()">닫기</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/javascript/InnerHTML.js"></script>
+    <script src="/javascript/learning/Javascript_Chapter2-4-1.js"></script>
+</body>
+</html>

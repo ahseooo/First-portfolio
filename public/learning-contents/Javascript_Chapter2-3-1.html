@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Chapter 2-3</title>
+    <link rel="stylesheet" type="text/css" href="/css/learning/Javascript_Chapter2-3-1.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <header id="main-frame"></header>
+
+    <section class="home-section">
+        <div class="learning-card">
+
+            <button class="question-button" onclick="openQuestionBox()">
+                <i class="fa-solid fa-question"></i>
+            </button>
+
+            <div class="intro-header">
+                <h1>➕ 연산자 (Operator)</h1>
+            </div>
+
+            <div class="speech-bubble">
+                컴퓨터는 계산기야! 🧮<br>
+                더하고 빼는 <strong>산술 연산</strong>과, 누가 더 큰지 따지는 <strong>비교 연산</strong>을 배워보자.
+            </div>
+
+            <p class="chapter-desc">
+                연산자는 프로그래밍의 <strong>계산 버튼</strong>과 같아요.<br>
+                숫자를 계산하거나(산술), 두 값을 비교해서 참/거짓을 판단할 때(비교) 사용합니다.
+            </p>
+
+            <div class="topic-section">
+                <h2>1. 산술 연산자 (Arithmetic)</h2>
+                <p class="topic-desc">사칙연산과 비슷해요. <strong>나머지 연산(%)</strong>은 코딩에서 정말 자주 쓰이니 꼭 기억하세요!</p>
+
+                <div class="operator-grid">
+                    <div class="op-card">
+                        <div class="op-symbol">+</div>
+                        <div class="op-desc">더하기</div>
+                        <div class="op-code">2 + 3 = <strong>5</strong></div>
+                    </div>
+                    <div class="op-card">
+                        <div class="op-symbol">-</div>
+                        <div class="op-desc">빼기</div>
+                        <div class="op-code">5 - 2 = <strong>3</strong></div>
+                    </div>
+                    <div class="op-card">
+                        <div class="op-symbol">*</div>
+                        <div class="op-desc">곱하기</div>
+                        <div class="op-code">3 * 4 = <strong>12</strong></div>
+                    </div>
+                    <div class="op-card">
+                        <div class="op-symbol">/</div>
+                        <div class="op-desc">나누기</div>
+                        <div class="op-code">10 / 2 = <strong>5</strong></div>
+                    </div>
+                    <div class="op-card highlight">
+                        <div class="op-symbol">%</div>
+                        <div class="op-desc">나머지</div>
+                        <div class="op-code">10 % 3 = <strong>1</strong></div>
+                    </div>
+                </div>
+
+                <div class="code-preview-container">
+                    <div class="code-side">
+                        <div class="code-header">
+                            <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
+                            <span>JavaScript</span>
+                        </div>
+                        <pre class="code-box"><code><span class="keyword">let</span> a = <span class="number">10</span>;
+<span class="keyword">let</span> b = <span class="number">3</span>;
+<span class="js-func">console.log</span>(a % b); <span class="comment">// 10 나누기 3의 나머지</span></code></pre>
+                    </div>
+                    <div class="preview-side">
+                        <div class="preview-header">
+                            <i class="fa-solid fa-calculator"></i> Result
+                        </div>
+                        <div class="preview-content center-content">
+                            <p class="result-number">1</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="divider">
+
+            <div class="topic-section">
+                <h2>2. 비교 연산자 (Comparison)</h2>
+                <p class="topic-desc">두 값을 비교해서 <strong>참(true)</strong> 또는 <strong>거짓(false)</strong>을 알려줘요.</p>
+
+                <div class="comparison-list">
+                    <div class="comp-row">
+                        <div class="comp-symbol">&gt;</div>
+                        <div class="comp-text">크다</div>
+                        <div class="comp-example">5 &gt; 3</div>
+                        <div class="comp-result true">true</div>
+                    </div>
+                    <div class="comp-row">
+                        <div class="comp-symbol">&lt;</div>
+                        <div class="comp-text">작다</div>
+                        <div class="comp-example">2 &lt; 8</div>
+                        <div class="comp-result true">true</div>
+                    </div>
+                    <div class="comp-row">
+                        <div class="comp-symbol">&gt;=</div>
+                        <div class="comp-text">크거나 같다</div>
+                        <div class="comp-example">3 &gt;= 3</div>
+                        <div class="comp-result true">true</div>
+                    </div>
+                    <div class="comp-row">
+                        <div class="comp-symbol">==</div>
+                        <div class="comp-text">같다 (값만)</div>
+                        <div class="comp-example">5 == 5</div>
+                        <div class="comp-result true">true</div>
+                    </div>
+                    <div class="comp-row">
+                        <div class="comp-symbol">===</div>
+                        <div class="comp-text">완전 같다 (타입까지)</div>
+                        <div class="comp-example">5 === "5"</div>
+                        <div class="comp-result false">false</div>
+                    </div>
+                    <div class="comp-row">
+                        <div class="comp-symbol">!=</div>
+                        <div class="comp-text">다르다</div>
+                        <div class="comp-example">5 != 3</div>
+                        <div class="comp-result true">true</div>
+                    </div>
+                </div>
+
+                <div class="analogy-box">
+                    <div class="analogy-icon">⚖️</div>
+                    <div class="analogy-text">
+                        <strong>비유:</strong> 양팔 저울에 물건을 올리는 것과 같아요.<br>
+                        "왼쪽이 더 무거운가?"라고 물어보면 저울이 <strong>YES(true)</strong>나 <strong>NO(false)</strong>로 답해주는 거죠!
+                    </div>
+                </div>
+            </div>
+
+            <div class="navigation">
+                <button class="prev-btn" onclick="goToPreviousPage()"><i class="fa-solid fa-chevron-left"></i> 이전 (자료형)</button>
+
+                <div class="dots">
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot active"></span> <span class="dot"></span>
+                </div>
+
+                <button class="next-btn" id="nextPageBtn" onclick="goToNextPage()">
+                    다음 (형변환) <i class="fa-solid fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="progress-card">
+            <h3><i class="fa-solid fa-bolt"></i> 챕터 2: 변수와 자료형</h3>
+
+            <div class="progress-row">
+                <div class="progress-item">
+                    <div class="progress-label">변수선언</div>
+                    <div class="progress-bar"><div class="fill" style="width: 100%;"></div></div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">자료형</div>
+                    <div class="progress-bar"><div class="fill" style="width: 100%;"></div></div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">연산자</div>
+                    <div class="progress-bar">
+                        <div class="fill" style="width: 50%;"></div> </div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">형변환</div>
+                    <div class="progress-bar"><div class="fill" style="width: 0%;"></div></div>
+                </div>
+            </div>
+            <div class="progress-bar-text">3 / 4 진행중</div>
+        </div>
+    </section>
+
+    <div id="question-modal" class="question-modal hidden">
+        <div class="question-content">
+            <h3>선생님 질문이 있어요!</h3>
+            <textarea placeholder="여기에 질문을 입력하세요"></textarea>
+            <div class="question-buttons">
+                <button onclick="submitQuestion()">보내기</button>
+                <button onclick="closeQuestionBox()">닫기</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/javascript/InnerHTML.js"></script>
+    <script src="/javascript/learning/Javascript_Chapter2-3-1.js"></script>
+</body>
+</html>

@@ -1,0 +1,187 @@
+/* Event.css */
+/* ==========================================================================
+   1. 초기화 및 변수 (Base & Variables)
+   ========================================================================== */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap");
+@import url("./sub_frame.css");
+
+/* 사이버 펑크 테마 변수 재정의 및 설정 */
+:root {
+	/* 네온 색상 */
+	--neon-blue: #00FFFF;
+	--neon-green: #00FF00;
+	--neon-red: #FF3131;
+
+	/* 배경 및 텍스트 */
+	--dark-bg-color: #1a1a1a; /* 헤더, 검색창 배경 */
+	--dark-bg-card: rgba(30, 30, 30, 0.8); /* 이벤트 박스 배경 */
+	--bg-primary: #0d0d0d; /* 전체 바디 배경 */
+	--text-primary: #f0f0f0; /* 밝은 텍스트 */
+	--text-secondary: #00FF00; /* 네온 그린 (강조 텍스트) */
+	--text-muted: #00FFFF; /* 네온 블루 (보조 텍스트) */
+
+	/* 네온 그림자 및 테두리 */
+	--border-neon-blue: 2px solid var(--neon-blue);
+	--border-neon-green: 2px solid var(--neon-green);
+	--shadow-neon-blue: 0 0 10px rgba(0, 255, 255, 0.4);
+	--shadow-neon-green: 0 0 10px rgba(0, 255, 0, 0.4);
+	
+	/* Radius (원본 유지) */
+	--radius-md: 8px;
+	--radius-lg: 12px;
+	--radius-xl: 16px;
+
+	/* 기존 Glassmorphism 변수는 사용하지 않음 */
+}
+
+html,
+body {
+    color: var(--text-primary);
+	background: var(--bg-primary);
+}
+
+.event-container {
+	display: flex;
+	justify-content: center;
+	width: 100%;
+}
+
+.event-box {
+	width: 100%;
+	max-width: 1200px;
+	/* Glassmorphism 제거 및 사이버 펑크 적용 */
+	background-color: var(--dark-bg-card);
+	padding: 20px;
+	border-radius: var(--radius-xl);
+	box-shadow: 0 0 20px rgba(0, 255, 0, 0.2);
+	transition: all 0.3s ease;
+	display: flex;
+	flex-direction: column;
+	border: 2px solid var(--neon-green);
+	backdrop-filter: blur(5px);
+}
+
+.event-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 10px;
+	border-bottom: 2px solid var(--neon-blue); /* 네온 블루 라인 */
+}
+
+.event-header h2 {
+	font-size: 28px;
+	font-weight: 700;
+	color: var(--neon-green);
+	text-shadow: 0 0 5px var(--neon-green);
+	letter-spacing: -0.5px;
+}
+
+/* 검색창 */
+.event-search {
+	width: 30%;
+	max-width: 600px;
+	padding: 8px 12px;
+	border: 2px solid var(--neon-blue); /* 네온 블루 테두리 */
+	border-radius: var(--radius-md);
+	background: var(--dark-bg-color);
+	color: var(--text-primary);
+}
+
+.event-search:focus {
+	outline: none;
+	border-color: var(--neon-green);
+	box-shadow: 0 0 8px var(--neon-green);
+}
+
+.close-btn {
+	background: transparent;
+	border: none;
+	font-size: 20px;
+	cursor: pointer;
+	color: var(--text-primary);
+}
+
+.event-list {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	padding: 30px;
+	gap: 15px; /* 항목 간 간격 추가 */
+}
+
+.event-item {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%; /* 너비 조정 */
+	background: rgba(40, 40, 40, 0.8); /* 항목 배경 */
+	padding: 15px;
+	border-radius: var(--radius-md);
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	transition: all 0.2s ease;
+}
+
+.event-item:hover {
+	background: rgba(0, 255, 255, 0.1);
+	border-color: var(--neon-blue);
+	box-shadow: 0 0 8px var(--neon-blue);
+}
+
+.event-item span {
+	white-space: nowrap;
+	font-size: 16px;
+	text-align: left; /* 왼쪽 정렬 */
+	color: var(--text-primary);
+	flex-grow: 1;
+	padding-right: 20px;
+}
+
+.event-text {
+	flex: 1;
+	text-align: left;
+}
+
+/* 보상 버튼 */
+.reward-btn {
+	padding: 10px 20px;
+	border: none;
+	border-radius: var(--radius-md);
+	background-color: var(--neon-green);
+	color: var(--dark-bg-color); /* 글씨 어둡게 */
+	font-weight: 700;
+	cursor: pointer;
+	white-space: nowrap;
+	box-shadow: 0 0 10px var(--neon-green);
+	transition: all 0.2s ease;
+}
+
+.reward-btn:hover:not(.disabled) {
+	transform: translateY(-2px);
+	box-shadow: 0 0 15px var(--neon-green);
+}
+
+/* 완료된/비활성화 버튼 */
+.reward-btn.disabled {
+	background-color: #444;
+	color: #999;
+	cursor: not-allowed;
+	box-shadow: none;
+}
+
+/* 기존 테이블 헤더 색상 설정 (유지 및 사이버 펑크 변수로 대체) */
+thead th:nth-child(6) {
+	color: var(--neon-yellow); /* 노란색 계열 */
+}
+
+thead th:nth-child(7) {
+	color: var(--neon-green);
+}
+
+thead th:nth-child(8) {
+	color: var(--neon-blue);
+}
+
+thead th:nth-child(9) {
+	color: var(--neon-red); /* HTML을 레드로 */
+}

@@ -1,0 +1,580 @@
+/* Total_Ranking.css */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap");
+@import url("./sub_frame.css");
+
+/* 사이버 펑크 테마 변수 재정의 및 설정 */
+:root {
+    --neon-blue: #00FFFF;
+    --neon-green: #00FF00;
+    --neon-red: #FF3131;
+    --neon-yellow: #FFFF00;
+    
+    --dark-bg-color: #1a1a1a;
+    --dark-bg-card: rgba(30, 30, 30, 0.7);
+    --bg-primary: #0d0d0d;
+    
+    --text-primary: #f0f0f0;
+    --text-secondary: var(--neon-green);
+    --text-muted: var(--neon-blue);
+    --text-white: #ffffff;
+    
+    --shadow-neon-blue: 0 0 10px rgba(0, 255, 255, 0.5);
+    --shadow-neon-green: 0 0 10px rgba(0, 255, 0, 0.5);
+    
+    --glass-bg: rgba(30, 30, 30, 0.7);
+    --glass-border: rgba(0, 255, 255, 0.2);
+    --glass-shadow: 0 0 20px rgba(0, 255, 255, 0.15);
+    
+    --accent-gold: var(--neon-yellow);
+    --primary-gradient: linear-gradient(135deg, #121212 0%, #252525 100%); /* 어두운 배경 그라데이션 */
+
+    /* 기존 Glassmorphism 변수는 사용하지 않음 */
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --radius-xl: 16px;
+    --topbar-h: 60px;
+}
+
+html,
+body {
+    background: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+
+/* ========== 메인 섹션 ========== */
+.home-section {
+    position: relative;
+    left: 255px;
+    width: calc(100vw - 255px);
+    height: calc(100vh - var(--topbar-h));
+    transition: all 0.3s ease;
+    background: var(--bg-primary);
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* 중앙 정렬 대신 상단 정렬 */
+    overflow-y: auto;
+    gap: 20px;
+}
+
+/* 랭킹 컨테이너 */
+.ranking-container {
+    background: var(--primary-gradient);
+    border-radius: var(--radius-xl);
+    padding: 20px;
+    box-shadow: var(--glass-shadow);
+    max-width: 1400px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    animation: fadeIn 0.8s ease-out;
+    color: var(--text-white);
+    border: 2px solid var(--neon-green);
+    /* height: 100%; */
+    overflow-y: visible; /* 컨테이너 내부에 스크롤바가 생기지 않도록 */
+    margin: 0 auto;
+}
+
+/* 스크롤바 스타일 (홈 섹션이 아닌 랭킹 컨테이너에 적용) */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    margin: 2px 0;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(0, 255, 0, 0.4);
+    border-radius: 4px;
+    border: 1px solid rgba(0, 255, 0, 0.1);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 255, 0, 0.7);
+}
+
+
+/* --- 내 랭킹 카드 (Glass Card) --- */
+.my-rank-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid var(--neon-blue);
+    border-radius: var(--radius-xl);
+    padding: 24px;
+    box-shadow: var(--shadow-neon-blue);
+    display: flex;
+    flex-direction: column;
+}
+
+@media (min-width: 768px) {
+    .my-rank-card {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+}
+
+.profile-section {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.character {
+    width: 60px;
+    height: 60px;
+    background: rgba(0, 255, 255, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    box-shadow: inset 0 0 10px rgba(0, 255, 255, 0.3);
+    padding: 5px;
+}
+
+.character img {
+    width: 100%;
+    height: fit-content;
+}
+
+.profile-label {
+    font-size: 0.8rem;
+    color: var(--neon-green);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-shadow: 0 0 2px var(--neon-green);
+}
+
+.profile-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-primary);
+}
+
+.level-badge {
+    font-size: 0.8rem;
+    background: var(--neon-green);
+    color: var(--dark-bg-color);
+    padding: 0.2rem 0.6rem;
+    border-radius: 12px;
+    border: 1px solid var(--neon-green);
+    font-weight: 700;
+}
+
+.stats-section {
+    display: flex;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.4);
+    padding: 1rem 1.5rem;
+    border-radius: 12px;
+    justify-content: space-around;
+    flex-grow: 1;
+    max-width: 600px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.stat-item {
+    text-align: center;
+    flex: 1;
+}
+
+.stat-label {
+    font-size: 0.75rem;
+    color: var(--neon-blue);
+    margin-bottom: 0.2rem;
+}
+
+.stat-value {
+    font-size: 1.25rem;
+    font-weight: 700;
+    text-shadow: 0 0 5px var(--neon-blue);
+}
+
+.stat-unit {
+    font-size: 0.8rem;
+    font-weight: 400;
+    margin-left: 2px;
+    opacity: 0.8;
+}
+
+.stat-divider {
+    width: 1px;
+    height: 30px;
+    background: rgba(0, 255, 255, 0.3);
+    margin: 0 1rem;
+}
+
+/* --- 테이블 (Glass Table) --- */
+.table-container {
+    background: var(--glass-bg);
+    border: 1px solid var(--neon-blue);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-neon-blue);
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.table-wrapper {
+    overflow-x: auto;
+}
+
+.ranking-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    table-layout: fixed;
+}
+
+/* 컬럼 너비 (원본 유지) */
+.ranking-table .col-rank {
+    width: 8%;
+}
+
+.ranking-table .col-nickname {
+    width: 26%;
+}
+
+.ranking-table .col-badges {
+    width: 24%;
+}
+
+.ranking-table .col-level {
+    width: 10%;
+}
+
+.ranking-table .col-tier {
+    width: 10%;
+}
+
+.ranking-table .col-exp {
+    width: 12%;
+}
+
+.ranking-table .col-score {
+    width: 10%;
+}
+
+.ranking-table th {
+    background: rgba(0, 255, 255, 0.15); /* 네온 블루 배경 */
+    color: var(--neon-blue);
+    padding: 12px;
+    text-align: center;
+    font-weight: 600;
+    border-bottom: 1px solid var(--neon-blue);
+    overflow: hidden;
+    text-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
+}
+
+.ranking-table th:first-child {
+    border-top-left-radius: var(--radius-xl);
+}
+
+.ranking-table th:last-child {
+    border-top-right-radius: var(--radius-xl);
+}
+
+.ranking-table td {
+    padding: 14px;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-primary);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.ranking-table td.badges-cell {
+    text-align: left;
+}
+
+.ranking-table td.badges-cell .badges-container {
+    display: flex;
+    gap: 5px;
+}
+
+.ranking-table tbody tr:last-child td:first-child {
+    border-bottom-left-radius: var(--radius-xl);
+}
+
+.ranking-table tbody tr:last-child td:last-child {
+    border-bottom-right-radius: var(--radius-xl);
+}
+
+.ranking-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.ranking-table tbody tr:hover td {
+    background: rgba(0, 255, 0, 0.1);
+    transform: translateX(3px);
+    transition: all 0.15s;
+}
+
+.ranking-table tbody tr:hover td:first-child {
+    box-shadow: inset 4px 0 0 0 var(--neon-green);
+}
+
+/* 내 랭킹 하이라이트 행 */
+.ranking-table tbody tr.my-rank-row td {
+    background: rgba(255, 215, 0, 0.1);
+}
+
+.ranking-table tbody tr.my-rank-row:hover td {
+    background: rgba(255, 215, 0, 0.2);
+}
+
+.ranking-table tbody tr.my-rank-row td:first-child {
+    box-shadow: inset 4px 0 0 0 var(--accent-gold); /* 네온 옐로우 강조 */
+}
+
+.user-character {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--neon-green);
+    flex-shrink: 0;
+}
+
+.nickname-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    justify-content: flex-start;
+    padding-left: 1rem;
+}
+
+.me-badge {
+    display: none;
+    background: var(--accent-gold);
+    color: var(--dark-bg-color);
+    font-size: 0.65rem;
+    font-weight: 800;
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+.my-rank-row .me-badge {
+    display: inline-block;
+}
+
+.my-rank-row .user-nickname {
+    font-weight: 600;
+    font-size: 18px;
+    color: var(--accent-gold);
+}
+
+.rank-medal {
+    font-size: 36px;
+    filter: drop-shadow(0 0 5px var(--neon-yellow));
+    color: var(--neon-yellow);
+}
+
+.rank-number {
+    font-weight: bold;
+    color: var(--text-primary);
+}
+
+.score-value {
+    font-weight: bold;
+    color: var(--neon-green);
+    text-shadow: 0 0 3px var(--neon-green);
+}
+
+/* --- 페이지네이션 --- */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.pagination-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid var(--neon-blue);
+    background: rgba(0, 255, 255, 0.1);
+    color: var(--neon-blue);
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pagination-btn:hover:not(:disabled) {
+    background: var(--neon-blue);
+    color: var(--dark-bg-color);
+    transform: translateY(-2px);
+    box-shadow: 0 0 10px var(--neon-blue);
+}
+
+.pagination-btn:disabled {
+    opacity: 0.3;
+    cursor: default;
+}
+
+.page_number {
+    font-weight: bold;
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+    color: var(--neon-green);
+}
+
+/* 탭 메뉴 (Language Ranking에서 사용될 수 있음) */
+.tab-menu {
+    background: var(--dark-bg-card);
+    display: flex;
+    justify-content: flex-start;
+    gap: 15px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 10px;
+    border-radius: var(--radius-xl);
+    max-width: 1400px;
+    border: 1px solid var(--neon-blue);
+}
+
+.tab-btn {
+    padding: 10px 24px;
+    border-radius: 30px;
+    border: 1px solid var(--neon-blue);
+    background: rgba(0, 255, 255, 0.1);
+    color: var(--neon-blue);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    backdrop-filter: blur(5px);
+}
+
+.tab-btn i {
+    font-size: 1.1rem;
+}
+
+/* 탭 호버 효과 */
+.tab-btn:hover {
+    background: var(--neon-blue);
+    color: var(--dark-bg-color);
+    transform: translateY(-2px);
+    box-shadow: 0 0 10px var(--neon-blue);
+}
+
+/* 활성화된 탭 (선택됨) */
+.tab-btn.active {
+    background: var(--accent-gold);
+    color: var(--dark-bg-color);
+    border-color: transparent;
+    box-shadow: 0 0 15px var(--accent-gold);
+    transform: scale(1.05);
+}
+
+/* 모바일 대응 */
+@media (max-width: 768px) {
+    .tab-menu {
+        gap: 8px;
+    }
+
+    .tab-btn {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+    }
+}
+
+.tier-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.tier-icon {
+    font-size: 1.5rem;
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.3));
+    color: var(--text-primary);
+}
+
+/* 티어별 색상 */
+.tier-diamond-text {
+    color: #00b5e2; /* 다이아몬드 블루 */
+    text-shadow: 0 0 8px rgba(0, 181, 226, 0.6);
+}
+
+.tier-platinum-text {
+    color: #e5e7eb; /* 플래티넘 화이트 */
+    text-shadow: 0 0 5px rgba(229, 231, 235, 0.4);
+}
+
+.tier-gold-text {
+    color: #ffd700; /* 골드 */
+    text-shadow: 0 0 5px rgba(255, 215, 0, 0.6);
+}
+
+.tier-silver-text {
+    color: #cbd5e1; /* 실버 */
+}
+
+.tier-bronze-text {
+    color: #cd7f32; /* 브론즈 */
+}
+
+.tier-icon {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.3));
+    display: block;
+}
+
+.badge-icon {
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 5px var(--neon-green));
+    display: block;
+    border-radius: 50%;
+    border: 1px solid var(--neon-green);
+}
+
+/* 애니메이션 */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 반응형 숨김 처리 (원본 유지) */
+@media (max-width: 768px) {
+
+    .col-badges,
+    .badges-cell,
+    .col-exp,
+    .exp-cell {
+        display: none;
+    }
+}

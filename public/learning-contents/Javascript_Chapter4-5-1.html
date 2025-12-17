@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Chapter 4-5</title>
+    <link rel="stylesheet" type="text/css" href="/css/learning/Javascript_Chapter4-5-1.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <header id="main-frame"></header>
+
+    <section class="home-section">
+        <div class="learning-card">
+
+            <button class="question-button" onclick="openQuestionBox()">
+                <i class="fa-solid fa-question"></i>
+            </button>
+
+            <div class="intro-header">
+                <h1>⚡ 이벤트 처리 (Event Handling)</h1>
+            </div>
+
+            <div class="speech-bubble">
+                클릭! 🖱️ 키보드 타닥! ⌨️<br>
+                사용자가 무언가 할 때, <strong>"짠!" 하고 반응하게</strong> 만들어볼까?
+            </div>
+
+            <p class="chapter-desc">
+                이벤트(Event)는 웹페이지에서 일어나는 모든 사건을 말해요.<br>
+                이벤트가 발생했을 때 실행할 코드를 연결하는 것을 <strong>이벤트 처리</strong>라고 합니다.
+            </p>
+
+            <div class="topic-section">
+                <h2>1. 자주 쓰는 이벤트 종류</h2>
+                <p class="topic-desc">웹페이지에서 어떤 일들이 일어날 수 있을까요?</p>
+
+                <div class="event-grid">
+                    <div class="event-card">
+                        <div class="event-icon">🖱️</div>
+                        <h3>click</h3>
+                        <p>딸깍! 클릭했을 때</p>
+                    </div>
+                    <div class="event-card">
+                        <div class="event-icon">👆</div>
+                        <h3>mouseover</h3>
+                        <p>마우스를 올렸을 때</p>
+                    </div>
+                    <div class="event-card">
+                        <div class="event-icon">⌨️</div>
+                        <h3>keydown</h3>
+                        <p>키보드를 눌렀을 때</p>
+                    </div>
+                    <div class="event-card">
+                        <div class="event-icon">📝</div>
+                        <h3>input</h3>
+                        <p>글자를 입력할 때</p>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="divider">
+
+            <div class="topic-section">
+                <h2>2. 이벤트 연결하기 (addEventListener)</h2>
+                <p class="topic-desc">요소에게 <strong>"이런 일이 생기면, 저 일을 해!"</strong> 라고 귀띔해주는 거예요.</p>
+
+                <div class="code-preview-container">
+                    <div class="code-side">
+                        <div class="code-header">
+                            <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
+                            <span>JavaScript</span>
+                        </div>
+                        <pre class="code-box"><code><span class="keyword">let</span> btn = <span class="object">document</span>.<span class="method">querySelector</span>(<span class="string">"#myBtn"</span>);
+
+<span class="comment">// 클릭하면 알림창 띄우기</span>
+btn.<span class="method">addEventListener</span>(<span class="string">"click"</span>, <span class="keyword">function</span>() {
+  <span class="js-func">alert</span>(<span class="string">"버튼 클릭됨! 🎉"</span>);
+});</code></pre>
+                    </div>
+                    <div class="preview-side">
+                        <div class="preview-header">
+                            <i class="fa-solid fa-bolt"></i> Action
+                        </div>
+                        <div class="preview-content center-content">
+                            <button id="alert-btn" class="action-btn">나를 눌러봐! 👇</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="analogy-box">
+                    <div class="analogy-icon">👂</div>
+                    <div class="analogy-text">
+                        <strong>비유:</strong> <code>addEventListener</code>는 <strong>"귀를 기울이고 있어라!"</strong>는 명령이에요.<br>
+                        "누가 클릭하면(click), 알려줘!" 라고 시키는 거죠.
+                    </div>
+                </div>
+            </div>
+
+            <hr class="divider">
+
+            <div class="topic-section">
+                <h2>3. 실전: 마우스에 반응하는 상자 📦</h2>
+                <p class="topic-desc">마우스를 올리면 색이 바뀌고, 떼면 원래대로 돌아오게 해볼까요?</p>
+
+                <div class="code-preview-container">
+                    <div class="code-side">
+                        <div class="code-header">
+                            <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
+                            <span>JavaScript</span>
+                        </div>
+                        <pre class="code-box"><code><span class="keyword">let</span> box = <span class="object">document</span>.<span class="method">querySelector</span>(<span class="string">"#box"</span>);
+
+box.<span class="method">addEventListener</span>(<span class="string">"mouseover"</span>, <span class="keyword">function</span>() {
+  box.<span class="property">style</span>.<span class="property">background</span> = <span class="string">"orange"</span>;
+  box.<span class="property">textContent</span> = <span class="string">"올라왔다! 😮"</span>;
+});
+
+box.<span class="method">addEventListener</span>(<span class="string">"mouseout"</span>, <span class="keyword">function</span>() {
+  box.<span class="property">style</span>.<span class="property">background</span> = <span class="string">"lightblue"</span>;
+  box.<span class="property">textContent</span> = <span class="string">"나갔다... 😐"</span>;
+});</code></pre>
+                    </div>
+                    <div class="preview-side">
+                        <div class="preview-header">
+                            <i class="fa-solid fa-gamepad"></i> Interactive Demo
+                        </div>
+                        <div class="preview-content center-content">
+                            <div id="interactive-box" class="demo-box">
+                                마우스를 올려봐! 👆
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="fact-box">
+                <div class="fact-title">
+                    <i class="fa-solid fa-list-check"></i> 핵심 문법
+                </div>
+                <div class="syntax-highlight">
+                    <code>요소.<strong>addEventListener</strong>("<strong>이벤트이름</strong>", <strong>함수</strong>);</code>
+                </div>
+                <ul class="fact-list">
+                    <li><strong>요소:</strong> 이벤트를 받을 대상 (버튼, 박스 등)</li>
+                    <li><strong>이벤트이름:</strong> click, mouseover, keydown 등</li>
+                    <li><strong>함수:</strong> 이벤트가 생기면 실행할 코드</li>
+                </ul>
+            </div>
+
+            <div class="navigation">
+                <button class="prev-btn" onclick="goToPreviousPage()"><i class="fa-solid fa-chevron-left"></i> 이전 (요소 조작)</button>
+
+                <div class="dots">
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span> 
+                    <span class="dot active"></span> </div>
+
+                <button class="next-btn" id="nextPageBtn" onclick="goToNextPage()">
+                    챕터 4 완료! (다음 단계) <i class="fa-solid fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="progress-card">
+            <h3><i class="fa-solid fa-cube"></i> 챕터 4: DOM과 웹 브라우저</h3>
+
+            <div class="progress-row">
+                <div class="progress-item">
+                    <div class="progress-label">객체기초</div>
+                    <div class="progress-bar"><div class="fill" style="width: 100%;"></div></div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">메서드</div>
+                    <div class="progress-bar"><div class="fill" style="width: 100%;"></div></div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">DOM이해</div>
+                    <div class="progress-bar"><div class="fill" style="width: 100%;"></div></div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">이벤트</div>
+                    <div class="progress-bar">
+                        <div class="fill" style="width: 100%;"></div> </div>
+                </div>
+            </div>
+            <div class="progress-bar-text">4 / 4 완료 (수고하셨습니다!)</div>
+        </div>
+    </section>
+
+    <div id="question-modal" class="question-modal hidden">
+        <div class="question-content">
+            <h3>선생님 질문이 있어요!</h3>
+            <textarea placeholder="여기에 질문을 입력하세요"></textarea>
+            <div class="question-buttons">
+                <button onclick="submitQuestion()">보내기</button>
+                <button onclick="closeQuestionBox()">닫기</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/javascript/InnerHTML.js"></script>
+    <script src="/javascript/learning/Javascript_Chapter4-5-1.js"></script>
+</body>
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Java_Chapter1-2-3</title>
+
+    <link rel="stylesheet" href="/css/learning/Java_Chapter1-2-3.css" />
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+</head>
+
+<body>
+    <header id="main-frame"></header> <!--상단 헤더 부분-->
+
+    <section class="home-section">
+
+        <!--메인 카드 -->
+        <div class="content-card">
+
+            <!-- 제목 -->
+            <div class="intro-header">
+                <h1>🧱 객체지향이 뭐야?</h1>
+            </div>
+
+            <!-- 말풍선 -->
+            <div class="story-bubble">
+                객체지향은 레고 블록 놀이랑 비슷해!
+            </div>
+
+            <!-- 레고 블록 섹션 -->
+            <div class="lego-section">
+
+                <h2 class="section-title">🎯 레고 블록으로 이해하기</h2>
+
+                <div class="lego-grid">
+
+                    <div class="lego-item">
+                        <div class="num-circle">1</div>
+                        <h3>블록 설계 (클래스)</h3>
+                        <p>먼저 어떤 블록을 만들지 설계도를 그려.</p>
+                    </div>
+
+                    <div class="lego-item">
+                        <div class="num-circle">2</div>
+                        <h3>블록 생성 (객체)</h3>
+                        <p>설계도대로 실제 블록을 만들어.</p>
+                    </div>
+
+                    <div class="lego-item">
+                        <div class="num-circle">3</div>
+                        <h3>조립하기</h3>
+                        <p>만든 블록들을 조립해서 집, 차, 로봇 등을 만들어.</p>
+                    </div>
+
+                    <div class="lego-item">
+                        <div class="num-circle">4</div>
+                        <h3>재사용</h3>
+                        <p>한 번 만든 블록은 다른 작품에서도 쓸 수 있어.</p>
+                    </div>
+
+                </div>
+
+                <div class="lego-note">
+                    프로그래밍도 똑같아! 자동차 클래스를 만들면,
+                    빨간 자동차 객체, 파란 자동차 객체를 여러 개 만들 수 있어.
+                </div>
+
+            </div>
+
+            <!-- 실생활 예시 -->
+            <div class="example-section">
+
+                <h2 class="section-title">💡 실생활 예시</h2>
+
+                <div class="example-card">
+                    <div class="icon">🚗</div>
+                    <div>
+                        <h3>자동차 클래스</h3>
+                        <p>현대, 기아, 벤츠</p>
+                    </div>
+                </div>
+
+                <div class="example-card">
+                    <div class="icon">🐶</div>
+                    <div>
+                        <h3>강아지 클래스</h3>
+                        <p>진돗개, 푸들, 리트리버</p>
+                    </div>
+                </div>
+
+                <div class="example-card">
+                    <div class="icon">📱</div>
+                    <div>
+                        <h3>스마트폰 클래스</h3>
+                        <p>갤럭시, 아이폰 …</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- 네비 -->
+            <div class="navigation inside">
+                <button class="prev-btn">
+                    <i class="fa-solid fa-chevron-left"></i> 이전
+                </button>
+
+                <div class="dots">
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot active"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+
+                <button class="next-btn" id="nextPageBtn">
+                    다음 <i class="fa-solid fa-chevron-right"></i>
+                </button>
+            </div>
+
+        </div>
+
+        <!-- 학습 진행 상황 -->
+        <div class="progress-card">
+            <h3><i class="fa-solid fa-trophy"></i> 학습 진행 상황</h3>
+
+            <div class="progress-row">
+
+                <div class="progress-item">
+                    <div class="progress-label">자바의 특징</div>
+                    <div class="progress-bar">
+                        <div class="fill" style="width: 100%;"></div>
+                    </div>
+                </div>
+
+                <div class="progress-item">
+                    <div class="progress-label">플랫폼 독립성</div>
+                    <div class="progress-bar">
+                        <div class="fill" style="width: 100%;"></div>
+                    </div>
+                </div>
+
+                <div class="progress-item">
+                    <div class="progress-label">객체지향</div>
+                    <div class="progress-bar">
+                        <div class="fill" style="width: 50%;"></div>
+                    </div>
+                </div>
+
+                <div class="progress-item">
+                    <div class="progress-label">자바는 어떻게 안전할까</div>
+                    <div class="progress-bar">
+                        <div class="fill" style="width: 0%;"></div>
+                    </div>
+                </div>
+
+                <div class="progress-item">
+                    <div class="progress-label">자바의 뛰어난 성능</div>
+                    <div class="progress-bar">
+                        <div class="fill" style="width: 0%;"></div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="progress-bar-text">3 / 5  진행 중</div>
+        </div>
+
+    </section>
+
+    <script src="/javascript/learning/Java_Chapter1-2-3.js"></script>
+    <script src="/javascript/InnerHTML.js"></script>
+
+</body>
+</html>

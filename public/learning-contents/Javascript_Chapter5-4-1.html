@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Chapter 5-4</title>
+    <link rel="stylesheet" type="text/css" href="/css/learning/Javascript_Chapter5-4-1.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <header id="main-frame"></header>
+
+    <section class="home-section">
+        <div class="learning-card">
+
+            <button class="question-button" onclick="openQuestionBox()">
+                <i class="fa-solid fa-question"></i>
+            </button>
+
+            <div class="intro-header">
+                <h1>💾 로컬 스토리지 (localStorage)</h1>
+            </div>
+
+            <div class="speech-bubble">
+                브라우저를 껐다 켜도 <strong>기억하고 싶은 정보</strong>가 있니? 🤔<br>
+                그럴 땐 나만의 비밀 창고, <strong>로컬 스토리지</strong>를 써봐!
+            </div>
+
+            <p class="chapter-desc">
+                로컬 스토리지는 웹 브라우저 안에 있는 <strong>작은 저장소</strong>예요.<br>
+                여기에 데이터를 저장하면 브라우저를 닫아도 사라지지 않고 계속 남아있어요.
+            </p>
+
+            <div class="topic-section">
+                <h2>1. 로컬 스토리지 특징</h2>
+                <p class="topic-desc">왜 로컬 스토리지를 쓸까요?</p>
+
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🔒</div>
+                        <h3>영구 저장</h3>
+                        <p>지우기 전까지는 브라우저를 꺼도 계속 남아있어요.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📝</div>
+                        <h3>문자열만</h3>
+                        <p>오직 <strong>글자(String)</strong>만 저장할 수 있어요.<br>(객체는 JSON으로 변환 필요!)</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🏠</div>
+                        <h3>사이트별 저장</h3>
+                        <p>네이버에 저장한 건 네이버에서만 볼 수 있어요.</p>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="divider">
+
+            <div class="topic-section">
+                <h2>2. 사용 방법 (CRUD)</h2>
+                <p class="topic-desc">저장하고, 꺼내고, 지우는 3가지 방법만 알면 돼요!</p>
+
+                <div class="method-list">
+                    <div class="method-item">
+                        <div class="method-name">setItem()</div>
+                        <div class="method-desc">
+                            <strong>저장하기</strong>
+                            <code>localStorage.setItem("key", "value");</code>
+                        </div>
+                        <div class="method-icon">📥</div>
+                    </div>
+
+                    <div class="method-item">
+                        <div class="method-name">getItem()</div>
+                        <div class="method-desc">
+                            <strong>꺼내오기</strong>
+                            <code>localStorage.getItem("key");</code>
+                        </div>
+                        <div class="method-icon">📤</div>
+                    </div>
+
+                    <div class="method-item">
+                        <div class="method-name">removeItem()</div>
+                        <div class="method-desc">
+                            <strong>삭제하기</strong>
+                            <code>localStorage.removeItem("key");</code>
+                        </div>
+                        <div class="method-icon">🗑️</div>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="divider">
+
+            <div class="topic-section">
+                <h2>3. 실전: 나만의 창고 📦</h2>
+                <p class="topic-desc">직접 데이터를 저장하고 확인해보세요. (새로고침 해도 남아있어요!)</p>
+
+                <div class="demo-container">
+                    <div class="input-group">
+                        <input type="text" id="storageKey" placeholder="이름 (Key)">
+                        <input type="text" id="storageValue" placeholder="값 (Value)">
+                    </div>
+                    
+                    <div class="button-group">
+                        <button class="action-btn save" onclick="saveData()">저장 📥</button>
+                        <button class="action-btn load" onclick="loadData()">불러오기 📤</button>
+                        <button class="action-btn clear" onclick="clearData()">비우기 🗑️</button>
+                    </div>
+
+                    <div class="result-display" id="resultArea">
+                        <span class="placeholder">결과가 여기에 표시됩니다.</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="fact-box">
+                <div class="fact-title">
+                    <i class="fa-solid fa-lightbulb"></i> 꿀팁!
+                </div>
+                <ul class="fact-list">
+                    <li><strong>객체 저장할 때:</strong> <code>JSON.stringify(객체)</code>로 문자로 바꿔서 저장!</li>
+                    <li><strong>객체 꺼낼 때:</strong> <code>JSON.parse(문자열)</code>로 다시 객체로 변환!</li>
+                </ul>
+            </div>
+
+            <div class="navigation">
+                <button class="prev-btn" onclick="goToPreviousPage()"><i class="fa-solid fa-chevron-left"></i> 이전 (조건부 렌더링)</button>
+
+                <div class="dots">
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot active"></span> </div>
+
+                <button class="next-btn" id="nextPageBtn" onclick="goToNextPage()">
+                    챕터 5 완료! (다음 단계) <i class="fa-solid fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="progress-card">
+            <h3><i class="fa-solid fa-wand-magic-sparkles"></i> 챕터 5: 고급 기능</h3>
+
+            <div class="progress-row">
+                <div class="progress-item">
+                    <div class="progress-label">이벤트</div>
+                    <div class="progress-bar"><div class="fill" style="width: 100%;"></div></div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">데이터구조</div>
+                    <div class="progress-bar"><div class="fill" style="width: 100%;"></div></div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">API/저장소</div>
+                    <div class="progress-bar">
+                        <div class="fill" style="width: 100%;"></div> </div>
+                </div>
+            </div>
+            <div class="progress-bar-text">3 / 3 완료 (축하해요!)</div>
+        </div>
+    </section>
+
+    <div id="question-modal" class="question-modal hidden">
+        <div class="question-content">
+            <h3>선생님 질문이 있어요!</h3>
+            <textarea placeholder="여기에 질문을 입력하세요"></textarea>
+            <div class="question-buttons">
+                <button onclick="submitQuestion()">보내기</button>
+                <button onclick="closeQuestionBox()">닫기</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/javascript/InnerHTML.js"></script>
+    <script src="/javascript/learning/Javascript_Chapter5-4-1.js"></script>
+</body>
+</html>

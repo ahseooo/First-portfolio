@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>파이썬1-1-1</title>
+    <link rel="stylesheet" href="/css/learning/Python_Chapter1-1-2.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+
+<body>
+    <header id="main-frame"></header> <!--상단 헤더 부분-->
+
+    <!-- 메인 콘텐츠 -->
+    <section class="home-section">
+        <div class="java-story-card">
+
+            <div class="intro-header">
+                <h1>🐍 파이썬의 탄생 이야기</h1>
+            </div>
+
+            <!-- 말풍선 -->
+            <div class="story-bubble">
+                파이썬은 언제 어떻게 태어났을까? 재미있는 이야기를 들려줄게!
+            </div>
+
+            <!-- 타임라인 -->
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-left">
+                        <div class="timeline-dot">
+                            <i class="fa-solid fa-lightbulb"></i>
+                        </div>
+                        <div class="timeline-line"></div>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="timeline-tag year">1989년</div>
+                        <div class="timeline-title">프로젝트 시작</div>
+                        <div class="timeline-desc">
+                            귀도 반 로섬(Guido van Rossum)이 “재미있고 쉬운 언어를 만들자!”라는 생각으로 파이썬을 개발하기 시작했어.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-left">
+                        <div class="timeline-dot">
+                            <i class="fa-solid fa-bolt"></i>
+                        </div>
+                        <div class="timeline-line"></div>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="timeline-tag year">1991년</div>
+                        <div class="timeline-title">파이썬 탄생!</div>
+                        <div class="timeline-desc">
+                            파이썬 0.9.0 버전이 세상에 처음 소개되었어!
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-left">
+                        <div class="timeline-dot">
+                            <i class="fa-solid fa-bolt"></i>
+                        </div>
+                        <div class="timeline-line last"></div>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="timeline-tag year">2008</div>
+                        <div class="timeline-title">파이썬3 등장</div>
+                        <div class="timeline-desc">
+                            구조를 대대적으로 바꾼 Python3 버전이 나오면서 지금 우리가 사용하고 있는 파이썬의 모습이 완성되었어.
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-left">
+                        <div class="timeline-dot">
+                            <i class="fa-solid fa-rocket"></i>
+                        </div>
+                        <div class="timeline-line last"></div>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="timeline-tag now">현재</div>
+                        <div class="timeline-title">계속 발전 중</div>
+                        <div class="timeline-desc">
+                            파이썬은 인공지능, 데이터 분석, 웹 개발 분야에서 가장 많이 쓰이고 있어.<br>
+                            현재 Python 3.x이며 지금도 꾸준히 업데이트되고 있어.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 질문 카드 -->
+            <div class="question-card" id="questionToggle">
+                <div class="question-left">
+                    <div class="question-icon">
+                        <i class="fa-solid fa-question"></i>
+                    </div>
+                    <span>왜 이름이 '파이썬'일까?</span>
+                </div>
+                <div class="question-arrow">
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+            </div>
+
+            <div class="question-answer">
+                <p>
+                    파이썬(Python)의 로고는 뱀 모양이야.<br>
+                    하지만 진짜 뱀 이름에서 따온 것이 아니라 귀도 반 로섬이 좋아하던 영국 코미디 프로그램 “Monkey Python”에서 따왔어!<br>
+                    그래서 파이썬 예제에서는 농담이나 유머가 자주 등장해!
+
+                </p>
+            </div>
+
+            <!-- 하단 네비 -->
+            <div class="navigation">
+                <button class="prev-btn">
+                    <i class="fa-solid fa-chevron-left"></i> 이전
+                </button>
+
+                <div class="dots">
+                    <span class="dot"></span>
+                    <span class="dot active"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+
+                <button class="next-btn" id="nextPageBtn">
+                    다음 <i class="fa-solid fa-chevron-right"></i>
+                </button>
+            </div>
+
+        </div>
+
+        <!-- 학습 진행 상황 -->
+        <div class="progress-card">
+            <h3><i class="fa-solid fa-trophy"></i> 학습 진행 상황</h3>
+
+            <div class="progress-row">
+
+                <div class="progress-item">
+                    <div class="progress-label">파이썬이란?</div>
+                    <div class="progress-bar">
+                        <div class="fill" style="width: 100%;"></div>
+                    </div>
+                </div>
+
+                <div class="progress-item">
+                    <div class="progress-label">파이썬의 탄생 이야기</div>
+                    <div class="progress-bar">
+                        <div class="fill" style="width: 50%;"></div>
+                    </div>
+                </div>
+
+                <div class="progress-item">
+                    <div class="progress-label">무엇을 만들 수 있을까?</div>
+                    <div class="progress-bar">
+                        <div class="fill" style="width: 0%;"></div>
+                    </div>
+                </div>
+
+                <div class="progress-item">
+                    <div class="progress-label">파이썬의 인기 비결</div>
+                    <div class="progress-bar">
+                        <div class="fill" style="width: 0%;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="progress-bar-text">2 / 4  진행 중</div>
+        </div>
+    </section>
+
+    <script src="/javascript/learning/Python_Chapter1-1-2.js"></script>
+    <script src="/javascript/InnerHTML.js"></script>
+</body>
+
+</html>

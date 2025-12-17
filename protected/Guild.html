@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>길드</title>
+    <link rel="stylesheet" type="text/css" href="/css/Guild.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+</head>
+
+<body>
+    <div class="sidebar" id="side-bar"></div> <!-- 사이드바 -->
+    <!-- 헤더 -->
+    <header class="header-section">
+        <div class="header-content">
+            <i class="fa-solid fa-bars"></i>
+            <span class="title">길드</span>
+        </div>
+    </header>
+
+    <!-- 메인 콘텐츠 -->
+    <section class="home-section">
+
+        <div class="guild-wrapper">
+            <div class="guild-board">
+                <div class="guild-container">
+                    <div class="guild-header">
+                        <div class="guild-info">
+                            <div class="guild-right"></div>
+                            <div class="guild-emblem"></div>
+                            <div class="guild-details">
+                                <div class="guild-title">코딩 천재들 모임</div>
+                                <div class="guild-meta">
+                                    <div><strong>길드 마스터:</strong> 코딩 짱</div>
+                                    <div><strong>가입 인원:</strong> 5/50</div>
+                                    <div><strong>길드 창단일:</strong> 2025-06-01</div>
+                                    <div class="guild-level"></div>
+                                    <span><strong>길드 명예 레벨:</strong></span>
+                                    <span class="level-number">Lv.15</span>
+                                    <div class="exp-bar">
+                                        <div class="exp-fill" style="width: 35%;"></div>
+                                    </div>
+                                    <div class="guild-notice">
+                                        <h4>📢 <span>길드 공지사항</span> <button id="editBtn">✏️</button></h4>
+                                        <div id="noticeEdit" style="display: none;"></div>
+                                        <textarea id="noticeTextarea" rows="5"></textarea>
+                                        <button id="saveBtn" class="save-btn">✅ 저장</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="online-list">
+                            <h4>🟢 접속 중</h4>
+                            <ul>
+                                <li>코딩 짱</li>
+                                <li>강아지</li>
+                                <li>와플 먹고 싶다</li>
+                                <li>고양이</li>
+                                <li>늑대</li>
+                                <li>여우</li>
+                            </ul>
+                        </div>
+                        <div class="guild-tabs"></div>
+                    </div>
+
+                    <div class="guild-body">
+                        <div class="table-header-bar">
+                            <button onclick="showGuildView('table')" class="guild-message-btn active">길드원</button>
+                            <button onclick="showGuildView('message')" class="guild-message-btn">길드 메시지</button>
+                            <button onclick="showGuildView('search')" class="guild-search-btn">길드 검색</button>
+                        </div>
+
+
+
+                        <div id="table-view">
+                            <table class="guild-table">
+                                <thead>
+                                    <tr>
+                                        <th>닉네임</th>
+                                        <th>접속 여부</th>
+                                        <th>인사말</th>
+                                        <th>레벨</th>
+                                        <th>JAVA<br>문제 해결 수</th>
+                                        <th>PYTHON<br>문제 해결 수</th>
+                                        <th>JAVASCRIPT<br>문제 해결 수</th>
+                                        <th>HTML<br>문제 해결 수</th>
+                                        <th>등급</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+
+                            <button class="join-request-btn">가입 신청 내역</button>
+
+                            <div id="joinRequestModal" class="modal-overlay">
+                                <div class="modal-content">
+                                    <h2>가입 신청 내역</h2>
+                                    <ul id="join-request-list"></ul>
+                                    <button id="closeJoinRequestModal" class="close-btn">닫기</button>
+                                </div>
+                            </div>
+
+                            <div id="pagination" class="pagination"></div>
+                            <div class="pagination">
+                                <button class="page-btn" data-page="prev">&lt;</button>
+                                <button class="page-btn" data-page="1">1</button>
+                                <button class="page-btn" data-page="2">2</button>
+                                <button class="page-btn" data-page="3">3</button>
+                                <button class="page-btn" data-page="4">4</button>
+                                <button class="page-btn" data-page="5">5</button>
+                                <button class="page-btn" data-page="6">6</button>
+                                <button class="page-btn" data-page="next">&gt;</button>
+                            </div>
+
+                            <div class="guild-footer">
+                                <button class="guild-leave-button">길드 탈퇴</button>
+                                <button class="guild-invite-button">길드 초대</button>
+                            </div>
+                        </div>
+
+                        <div id="guildMessagesSection" style="display: none;">
+                            <div class="guild-message-box">
+                                <h3><i class="fa-regular fa-comments"></i> 길드 메시지</h3>
+                                <div style="display: flex; gap: 10px;"></div>
+                                <input type="text" id="messageInput" placeholder="메시지를 입력하세요." />
+                                <button id="sendMessageBtn">보내기</button>
+                                <div class="message-log" id="messageLog">
+                                    <div class="message-item">
+                                        <div class="nickname">코딩 짱</div>
+                                        <div class="bubble">안녕하세요~</div>
+                                        <div class="bubble">저 오늘 자바 다 풀었어요!</div>
+                                        <div class="message-item">
+                                            <div class="nickname">자바 조아</div>
+                                            <div class="bubble">헉 저 모르는 문제 있는데 알려주실 수 있으신가요?!</div>
+                                            <div class="nickname">코딩 짱</div>
+                                            <div class="bubble">그럼요~</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="guild-search-container" id="guildSearchPage" style="display: none;">
+                            <div class="guild-search-bar">
+                                <input type="text" id="guildNameInput" class="guild-search-input"
+                                    placeholder="길드 이름 검색" />
+                                <button class="guild-search-button">검색</button>
+                                <button class="guild-join-button" onclick="joinGuild()">길드 가입하기</button>
+                            </div>
+                            <div class="guild-table-wrapper">
+                                <table class="guild-search-table">
+                                    <thead>
+                                        <tr>
+                                            <th>길드 레벨</th>
+                                            <th>길드 이름</th>
+                                            <th>인원</th>
+                                            <th>길드 마스터</th>
+                                            <th>창설일</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>10</td>
+                                            <td>떡잎마을방범대</td>
+                                            <td>1</td>
+                                            <td>짱구</td>
+                                            <td>2025-01-01</td>
+                                        </tr>
+                                        <tr>
+                                            <td>8</td>
+                                            <td>별의커비</td>
+                                            <td>2</td>
+                                            <td>커비</td>
+                                            <td>2025-03-12</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>먼작귀</td>
+                                            <td>7</td>
+                                            <td>치이카와</td>
+                                            <td>2025-03-12</td>
+                                        </tr>
+                                        <tr>
+                                            <td>6</td>
+                                            <td>모코코의모험</td>
+                                            <td>9</td>
+                                            <td>모코코</td>
+                                            <td>2025-03-12</td>
+                                        </tr>
+                                        <tr>
+                                            <td>10</td>
+                                            <td>떡잎마을방범대</td>
+                                            <td>1</td>
+                                            <td>짱구</td>
+                                            <td>2025-01-01</td>
+                                        </tr>
+                                        <tr>
+                                            <td>10</td>
+                                            <td>떡잎마을방범대</td>
+                                            <td>1</td>
+                                            <td>짱구</td>
+                                            <td>2025-01-01</td>
+                                        </tr>
+                                        <tr>
+                                            <td>10</td>
+                                            <td>떡잎마을방범대</td>
+                                            <td>1</td>
+                                            <td>짱구</td>
+                                            <td>2025-01-01</td>
+                                        </tr>
+                                        <tr>
+                                            <td>10</td>
+                                            <td>떡잎마을방범대</td>
+                                            <td>1</td>
+                                            <td>짱구</td>
+                                            <td>2025-01-01</td>
+                                        </tr>
+                                        <tr>
+                                            <td>10</td>
+                                            <td>떡잎마을방범대</td>
+                                            <td>1</td>
+                                            <td>짱구</td>
+                                            <td>2025-01-01</td>
+                                        </tr>
+                                        <tr>
+                                            <td>10</td>
+                                            <td>떡잎마을방범대</td>
+                                            <td>1</td>
+                                            <td>짱구</td>
+                                            <td>2025-01-01</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="/javascript/ThemeLoader.js"></script>
+    <script src="/javascript/InnerHTML.js"></script>
+    <script src="/javascript/Guild2.js" defer></script>
+    <script src="/javascript/Guild.js" defer></script>
+
+</body>
+
+</html>

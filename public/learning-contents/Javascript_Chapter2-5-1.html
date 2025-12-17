@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Chapter 2-5</title>
+    <link rel="stylesheet" type="text/css" href="/css/learning/Javascript_Chapter2-5-1.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <header id="main-frame"></header>
+
+    <section class="home-section">
+        <div class="learning-card">
+
+            <button class="question-button" onclick="openQuestionBox()">
+                <i class="fa-solid fa-question"></i>
+            </button>
+
+            <div class="intro-header">
+                <h1>🔁 반복문 (Loop)</h1>
+            </div>
+
+            <div class="speech-bubble">
+                같은 일을 100번 반복해야 한다면? 😱<br>
+                <strong>반복문</strong>을 쓰면 단 몇 줄로 끝낼 수 있어!
+            </div>
+
+            <p class="chapter-desc">
+                반복문은 코드를 <strong>원하는 횟수만큼</strong> 또는 <strong>조건이 맞을 때까지</strong><br>
+                계속해서 실행시켜주는 문법이에요.
+            </p>
+
+            <div class="topic-section">
+                <h2>1. 횟수가 정해져 있을 때 (for)</h2>
+                <p class="topic-desc">"사탕 5개 포장해!" 처럼 <strong>횟수</strong>가 명확할 때 사용해요.</p>
+
+                <div class="code-preview-container">
+                    <div class="code-side">
+                        <div class="code-header">
+                            <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
+                            <span>JavaScript</span>
+                        </div>
+                        <pre class="code-box"><code><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">1</span>; i <= <span class="number">5</span>; i++) {
+  <span class="js-func">console.log</span>(<span class="string">"사탕 포장 "</span> + i + <span class="string">"개 🍬"</span>);
+}</code></pre>
+                    </div>
+                    <div class="preview-side">
+                        <div class="preview-header">
+                            <i class="fa-solid fa-terminal"></i> Result
+                        </div>
+                        <div class="preview-content">
+                            <ul class="result-list">
+                                <li>사탕 포장 1개 🍬</li>
+                                <li>사탕 포장 2개 🍬</li>
+                                <li>사탕 포장 3개 🍬</li>
+                                <li>사탕 포장 4개 🍬</li>
+                                <li>사탕 포장 5개 🍬</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="syntax-box">
+                    <div class="syntax-item">
+                        <span class="syntax-badge start">1. 초기식 (let i=1)</span>
+                        <p>시작 숫자</p>
+                    </div>
+                    <div class="syntax-arrow">→</div>
+                    <div class="syntax-item">
+                        <span class="syntax-badge cond">2. 조건식 (i<=5)</span>
+                        <p>언제까지?</p>
+                    </div>
+                    <div class="syntax-arrow">→</div>
+                    <div class="syntax-item">
+                        <span class="syntax-badge inc">3. 증감식 (i++)</span>
+                        <p>얼마씩 증가?</p>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="divider">
+
+            <div class="topic-section">
+                <h2>2. 조건이 중요할 때 (while)</h2>
+                <p class="topic-desc">"사탕이 다 떨어질 때까지" 처럼 <strong>조건</strong>이 참인 동안 계속 반복해요.</p>
+
+                <div class="code-preview-container">
+                    <div class="code-side">
+                        <div class="code-header">
+                            <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
+                            <span>JavaScript</span>
+                        </div>
+                        <pre class="code-box"><code><span class="keyword">let</span> candy = <span class="number">1</span>;
+
+<span class="keyword">while</span> (candy <= <span class="number">3</span>) {
+  <span class="js-func">console.log</span>(<span class="string">"먹은 사탕 "</span> + candy + <span class="string">"개 🍭"</span>);
+  candy++; <span class="comment">// 잊지 말고 증가시켜야 해요!</span>
+}</code></pre>
+                    </div>
+                    <div class="preview-side">
+                        <div class="preview-header">
+                            <i class="fa-solid fa-terminal"></i> Result
+                        </div>
+                        <div class="preview-content">
+                            <ul class="result-list">
+                                <li>먹은 사탕 1개 🍭</li>
+                                <li>먹은 사탕 2개 🍭</li>
+                                <li>먹은 사탕 3개 🍭</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="loop-animation-box">
+                    <div class="loop-circle">
+                        <i class="fa-solid fa-rotate-right loop-icon"></i>
+                        <span class="loop-text">조건 확인 🔄 실행</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="fact-box">
+                <div class="fact-title">
+                    <i class="fa-solid fa-list-check"></i> 반복문 비교
+                </div>
+                <table class="summary-table">
+                    <thead>
+                        <tr>
+                            <th>종류</th>
+                            <th>특징</th>
+                            <th>비유</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>for</code></td>
+                            <td>횟수가 정해져 있음</td>
+                            <td>🏃 운동장 5바퀴 돌기</td>
+                        </tr>
+                        <tr>
+                            <td><code>while</code></td>
+                            <td>조건이 참일 동안</td>
+                            <td>🔋 배터리 다 될 때까지 쓰기</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="navigation">
+                <button class="prev-btn" onclick="goToPreviousPage()"><i class="fa-solid fa-chevron-left"></i> 이전 (조건문)</button>
+
+                <div class="dots">
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot active"></span> </div>
+
+                <button class="next-btn" id="nextPageBtn" onclick="goToNextPage()">
+                    챕터 2 완료! (다음 챕터로) <i class="fa-solid fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="progress-card">
+            <h3><i class="fa-solid fa-bolt"></i> 챕터 2: 변수와 자료형, 제어문</h3>
+
+            <div class="progress-row">
+                <div class="progress-item">
+                    <div class="progress-label">변수</div>
+                    <div class="progress-bar"><div class="fill" style="width: 100%;"></div></div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">자료형</div>
+                    <div class="progress-bar"><div class="fill" style="width: 100%;"></div></div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">연산자</div>
+                    <div class="progress-bar"><div class="fill" style="width: 100%;"></div></div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">조건문</div>
+                    <div class="progress-bar"><div class="fill" style="width: 100%;"></div></div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">반복문</div>
+                    <div class="progress-bar">
+                        <div class="fill" style="width: 100%;"></div> </div>
+                </div>
+            </div>
+            <div class="progress-bar-text">5 / 5 완료 (수고하셨습니다!)</div>
+        </div>
+    </section>
+
+    <div id="question-modal" class="question-modal hidden">
+        <div class="question-content">
+            <h3>선생님 질문이 있어요!</h3>
+            <textarea placeholder="여기에 질문을 입력하세요"></textarea>
+            <div class="question-buttons">
+                <button onclick="submitQuestion()">보내기</button>
+                <button onclick="closeQuestionBox()">닫기</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/javascript/InnerHTML.js"></script>
+    <script src="/javascript/learning/Javascript_Chapter2-5-1.js"></script>
+</body>
+</html>

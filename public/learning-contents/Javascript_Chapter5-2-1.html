@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Chapter 5-2</title>
+    <link rel="stylesheet" type="text/css" href="/css/learning/Javascript_Chapter5-2-1.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <header id="main-frame"></header>
+
+    <section class="home-section">
+        <div class="learning-card">
+
+            <button class="question-button" onclick="openQuestionBox()">
+                <i class="fa-solid fa-question"></i>
+            </button>
+
+            <div class="intro-header">
+                <h1>🗂️ JSON과 데이터 구조</h1>
+            </div>
+
+            <div class="speech-bubble">
+                컴퓨터끼리 대화할 때 쓰는 <strong>공통 언어</strong>가 있다고? 🗣️<br>
+                정보를 깔끔하게 포장해서 주고받는 <strong>JSON</strong>을 알아보자!
+            </div>
+
+            <p class="chapter-desc">
+                JSON은 데이터를 저장하거나 주고받을 때 사용하는 <strong>텍스트 형식</strong>이에요.<br>
+                사람도 읽기 쉽고 컴퓨터도 이해하기 쉬워서 전 세계적으로 쓰인답니다.
+            </p>
+
+            <div class="topic-section">
+                <h2>1. JSON의 생김새</h2>
+                <p class="topic-desc"><strong>이름(Key)</strong>과 <strong>값(Value)</strong>이 쌍으로 이루어져 있어요.</p>
+
+                <div class="code-preview-container">
+                    <div class="code-side">
+                        <div class="code-header">JSON Format</div>
+                        <pre class="code-box"><code>{
+  <span class="key">"name"</span>: <span class="string">"철수"</span>,
+  <span class="key">"age"</span>: <span class="number">10</span>,
+  <span class="key">"likes"</span>: [<span class="string">"게임"</span>, <span class="string">"축구"</span>],
+  <span class="key">"isStudent"</span>: <span class="boolean">true</span>
+}</code></pre>
+                    </div>
+                    <div class="preview-side">
+                        <div class="preview-header">
+                            <i class="fa-solid fa-list"></i> Information
+                        </div>
+                        <div class="preview-content center-content">
+                            <div class="profile-card">
+                                <div class="profile-img">👦</div>
+                                <ul class="profile-info">
+                                    <li><strong>이름:</strong> 철수</li>
+                                    <li><strong>나이:</strong> 10세</li>
+                                    <li><strong>취미:</strong> 게임, 축구</li>
+                                    <li><strong>학생:</strong> 네 (True)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="divider">
+
+            <div class="topic-section">
+                <h2>2. 데이터 구조 (Data Structure)</h2>
+                <p class="topic-desc">데이터를 <strong>어떤 모양으로 정리</strong>해서 보관할지 결정하는 방법이에요.</p>
+
+                <div class="structure-grid">
+                    <div class="structure-card">
+                        <div class="struct-icon">🔢</div>
+                        <h3>배열 (Array)</h3>
+                        <p>순서대로 줄 세우기</p>
+                        <div class="analogy-text">예: 번호순 출석부</div>
+                    </div>
+                    <div class="structure-card">
+                        <div class="struct-icon">🏷️</div>
+                        <h3>객체 (Object)</h3>
+                        <p>이름표 붙여서 담기</p>
+                        <div class="analogy-text">예: 이름표 붙은 사물함</div>
+                    </div>
+                    <div class="structure-card">
+                        <div class="struct-icon">📚</div>
+                        <h3>리스트 (List)</h3>
+                        <p>목록 만들기</p>
+                        <div class="analogy-text">예: 할 일 목록(To-Do)</div>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="divider">
+
+            <div class="topic-section">
+                <h2>3. JSON vs 데이터 구조</h2>
+                <p class="topic-desc">둘은 짝꿍이지만 역할이 달라요!</p>
+
+                <div class="comparison-box">
+                    <div class="comp-item">
+                        <div class="comp-icon">📄</div>
+                        <h3>JSON</h3>
+                        <p>데이터를 적는 <strong>형식(Format)</strong></p>
+                        <span class="tag">규칙</span>
+                    </div>
+                    <div class="comp-arrow">🤝</div>
+                    <div class="comp-item">
+                        <div class="comp-icon">🗂️</div>
+                        <h3>데이터 구조</h3>
+                        <p>데이터를 정리하는 <strong>방법(Method)</strong></p>
+                        <span class="tag">정리 정돈</span>
+                    </div>
+                </div>
+
+                <div class="highlight-box">
+                    <i class="fa-solid fa-lightbulb"></i>
+                    <span>
+                        <strong>JSON 안에서도</strong> 배열 <code>[]</code>과 객체 <code>{}</code> 구조를<br>
+                        자유롭게 섞어서 사용할 수 있어요!
+                    </span>
+                </div>
+            </div>
+
+            <div class="fact-box">
+                <div class="fact-title">
+                    <i class="fa-solid fa-check-double"></i> 핵심 요약
+                </div>
+                <ul class="fact-list">
+                    <li>
+                        <strong>JSON:</strong> 데이터를 텍스트로 표현하는 규칙 (이름표: 값).
+                    </li>
+                    <li>
+                        <strong>배열:</strong> 순서가 중요한 데이터 (1번, 2번, 3번...).
+                    </li>
+                    <li>
+                        <strong>객체:</strong> 이름(Key)으로 데이터를 찾는 구조.
+                    </li>
+                </ul>
+            </div>
+
+            <div class="navigation">
+                <button class="prev-btn" onclick="goToPreviousPage()"><i class="fa-solid fa-chevron-left"></i> 이전 (이벤트)</button>
+
+                <div class="dots">
+                    <span class="dot"></span>
+                    <span class="dot active"></span> <span class="dot"></span>
+                </div>
+
+                <button class="next-btn" id="nextPageBtn" onclick="goToNextPage()">
+                    다음 (비동기와 API) <i class="fa-solid fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="progress-card">
+            <h3><i class="fa-solid fa-wand-magic-sparkles"></i> 챕터 5: 고급 기능</h3>
+
+            <div class="progress-row">
+                <div class="progress-item">
+                    <div class="progress-label">이벤트</div>
+                    <div class="progress-bar"><div class="fill" style="width: 100%;"></div></div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">데이터구조</div>
+                    <div class="progress-bar">
+                        <div class="fill" style="width: 50%;"></div> </div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">API</div>
+                    <div class="progress-bar"><div class="fill" style="width: 0%;"></div></div>
+                </div>
+            </div>
+            <div class="progress-bar-text">2 / 3 진행중</div>
+        </div>
+    </section>
+
+    <div id="question-modal" class="question-modal hidden">
+        <div class="question-content">
+            <h3>선생님 질문이 있어요!</h3>
+            <textarea placeholder="여기에 질문을 입력하세요"></textarea>
+            <div class="question-buttons">
+                <button onclick="submitQuestion()">보내기</button>
+                <button onclick="closeQuestionBox()">닫기</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/javascript/InnerHTML.js"></script>
+    <script src="/javascript/learning/Javascript_Chapter5-2-1.js"></script>
+</body>
+</html>

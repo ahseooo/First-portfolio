@@ -1,0 +1,397 @@
+/* ==========================================================================
+   파일명: Javascript_Chapter3-5-1.css
+   ========================================================================== */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap");
+@import url("./main_frame.css");
+
+:root {
+    --primary-color: #F7DF1E;
+    /* JS 옐로우 */
+    --primary-light: #FFF9C4;
+    --primary-dark: #F0DB4F;
+    --text-primary: #323330;
+    --bg-secondary: #f9f9f9;
+    --bg-code: #282a36;
+
+    /* 테마 컬러 */
+    --string-color: #ff9f43;
+    /* 문자열: 주황 */
+    --array-color: #54a0ff;
+    /* 배열: 파랑 */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    font-family: "Noto Sans KR", sans-serif;
+    height: 100%;
+    width: 100%;
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+/* ========== 메인 레이아웃 ========== */
+.home-section {
+    position: relative;
+    height: calc(100vh - 65px);
+    width: 100%;
+    padding: 40px 70px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.learning-card {
+    width: 100%;
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 40px;
+    position: relative;
+    max-width: 1500px;
+}
+
+.intro-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 35px;
+    background-color: #323330;
+    border-radius: 15px;
+    color: var(--primary-color);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.intro-header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    padding: 20px;
+    margin: 0;
+}
+
+.speech-bubble {
+    padding: 20px;
+    border-radius: 12px;
+    border: 2px solid var(--primary-color);
+    font-size: 18px;
+    margin-bottom: 20px;
+    background-color: #fffde7;
+    position: relative;
+}
+
+.speech-bubble::after {
+    content: '';
+    position: absolute;
+    left: 30px;
+    bottom: -12px;
+    border: 12px solid transparent;
+    border-top-color: #fffde7;
+    border-bottom: 0;
+}
+
+.chapter-desc {
+    font-size: 17px;
+    color: #444;
+    margin-left: 20px;
+    margin-bottom: 30px;
+}
+
+/* ========== 섹션 뱃지 ========== */
+.section-badge {
+    display: inline-block;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 20px;
+    margin-left: 15px;
+}
+
+.string-badge {
+    background: var(--string-color);
+}
+
+.array-badge {
+    background: var(--array-color);
+}
+
+.topic-section h2 {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+/* ========== 함수 그리드 (Function Grid) ========== */
+.function-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.func-card {
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.03);
+    transition: transform 0.2s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.func-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--primary-color);
+}
+
+.func-card.highlight {
+    border: 2px solid #ff6b6b;
+    background: #fff5f5;
+}
+
+.func-card.full-width {
+    grid-column: 1 / -1;
+}
+
+.func-header {
+    font-family: 'Fira Code', monospace;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 8px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 5px;
+}
+
+.func-desc {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.func-code {
+    background: #f8f9fa;
+    padding: 8px;
+    border-radius: 6px;
+    font-family: 'Fira Code', monospace;
+    font-size: 13px;
+    color: #d63384;
+    margin-bottom: 5px;
+    border: 1px solid #ddd;
+}
+
+.func-result {
+    font-weight: bold;
+    color: #2ecc71;
+    font-size: 14px;
+    text-align: right;
+}
+
+.divider {
+    border: 0;
+    height: 1px;
+    background: #ddd;
+    margin: 40px 0;
+}
+
+/* ========== 요약 정리 (Pair Grid) ========== */
+.fact-box {
+    background: #fff;
+    border: 3px solid #eee;
+    border-radius: 15px;
+    padding: 25px;
+    margin-top: 20px;
+}
+
+.fact-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.pair-grid {
+    display: flex;
+    gap: 20px;
+}
+
+.pair-card {
+    flex: 1;
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 12px;
+    border: 1px dashed #ccc;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.pair-icon {
+    font-size: 30px;
+}
+
+.pair-text {
+    font-size: 15px;
+    line-height: 1.5;
+    color: #444;
+}
+
+.pair-text strong {
+    color: #333;
+    font-size: 16px;
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* ========== 네비게이션 & 진행바 ========== */
+.navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.prev-btn,
+.next-btn {
+    background: #f8f8f8;
+    border: 1px solid #ddd;
+    padding: 12px 20px;
+    border-radius: 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 15px;
+    transition: all 0.2s;
+}
+
+.next-btn {
+    background: #323330;
+    border: none;
+    color: var(--primary-color);
+}
+
+.prev-btn:hover,
+.next-btn:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+}
+
+.dots {
+    display: flex;
+    gap: 10px;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    background: #ddd;
+    border-radius: 50%;
+}
+
+.dot.active {
+    background: var(--primary-color);
+}
+
+/* 모달 및 질문 버튼 */
+.question-button {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    background: var(--primary-color);
+    border: none;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    color: #323330;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    transition: transform 0.3s;
+}
+
+.question-button:hover {
+    transform: scale(1.1);
+}
+
+.question-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.question-modal.hidden {
+    display: none;
+}
+
+.question-content {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 500px;
+}
+
+.question-content textarea {
+    width: 100%;
+    height: 120px;
+    padding: 15px;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    resize: vertical;
+}
+
+.question-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.question-buttons button {
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    border: none;
+}
+
+.question-buttons button:first-child {
+    background: var(--primary-color);
+    color: #323330;
+}
+
+/* 모바일 대응 */
+@media (max-width: 768px) {
+    .function-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .pair-grid {
+        flex-direction: column;
+    }
+}

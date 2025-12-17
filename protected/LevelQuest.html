@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>레벨 퀘스트</title>
+    <link rel="stylesheet" type="text/css" href="/css/LevelQuest.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- 여기에 css 추가 -->
+</head>
+
+<body>
+    <div class="sidebar close" id="side-bar"></div> <!-- 사이드바 -->
+
+    <!-- 헤더 -->
+    <header class="header-section">
+        <div class="header-content">
+            <i class="fa-solid fa-bars"></i>
+            <span class="title">레벨 퀘스트</span>
+        </div>
+    </header>
+
+    <section class="home-section">
+        <!-- 여기부터 콘텐츠 코딩 -->
+        <div class="quest-container">
+            <div class="quest-header">
+                <div class="quest-header-box">
+                    <span id="quest-progress">QUEST 1 / ?</span>
+                </div>
+
+                <div id="quest-header-tier-container"></div>
+            </div>
+            <!-- 왼쪽: 문제 설명 -->
+            <div id="quest-content" class="quest-description" data-title="퀘스트 설명"></div>
+
+            <!-- 오른쪽 상단: 코드 작성 -->
+            <div class="editor-area" data-title="CODE">
+                <div id="editor"></div>
+            </div>
+
+            <!-- 오른쪽 하단: 실행결과 -->
+            <div class="result-area" data-title="실행 결과">
+                <div class="loading" id="loading">
+                    <div class="spinner"></div>
+                    <p>코드 실행 중...</p>
+                </div>
+                <div id="output" class="output">여기에 실행 결과가 표시됩니다.</div>
+                <iframe class="html-output" id="htmlOutput" style="display:none;"></iframe>
+            </div>
+
+            <!-- 코드 채점 로딩 오버레이 -->
+            <div id="loadingOverlay" class="loading-overlay hidden">
+                <div class="loading-spinner"></div>
+                <div class="loading-text">AI가 코드를 채점하고 있습니다...</div>
+                <div class="loading-subtext">잠시만 기다려주세요</div>
+            </div>
+
+            <div class="quest-buttons">
+                <div class="left-buttons">
+                    <button>힌트</button>
+                </div>
+                <div class="right-buttons">
+                    <button id="reset">초기화</button>
+                    <button id="run-code">▶ 코드실행</button>
+                    <button id="submit" class="submit-btn">제출 후 채점하기</button>
+                    <button id="next" class="next-btn hidden">다음 문제 풀기</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 언어 변경 모달 -->
+    <!-- <div class="modal-overlay" id="languagaChangeModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="warning-icon">⚠️</div>
+                <h1>Warning</h1>
+            </div>
+            <div class="modal-body">
+                <p class="message">
+                    다른 언어로 변경하면 현재 진행 중인<br>
+                    <strong>모든 퀘스트 진행 사항이 초기화</strong>됩니다.
+                </p>
+                <div class="language-info">
+                    <p><strong>현재 언어:</strong> <span id="modalCurrentLang">JAVA</span></p>
+                    <p><strong>변경할 언어:</strong> <span id="modalselectedLang">PYTHON</span></p>
+                </div>
+                <p class="sub-message sbm02">정말로 언어를 변경하시겠습니까?</p>
+            </div>
+            <div class="modal-footer">
+                <button class="modal-btn btn-confirm" id="btnConfirm">변경</button>
+                <button class="modal-btn btn-cancel" id="btnCancel">취소</button>
+            </div>
+        </div>
+    </div> -->
+
+    <!-- 피드백 모달 -->
+    <div id="feedbackModal" class="feedback-modal-overlay hidden">
+        <div class="feedback-modal">
+            <div class="feedback-modal-header">
+                <h2>AI 피드백</h2>
+                <button class="feedback-close-btn" onclick="closeFeedback()">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="feedback-modal-content">
+                <div class="feedback-section">
+                    <div class="feedback-summary">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        <p id="feedbackSummary"></p>
+                    </div>
+                </div>
+
+                <div class="feedback-section strengths-section" id="strengthsSection">
+                    <h4>👍 잘한 점</h4>
+                    <ul class="feedback-list" id="strengthsList"></ul>
+                </div>
+
+                <div class="feedback-section improvements-section" id="improvementsSection">
+                    <h4>💪 이렇게 하면 더 좋아요</h4>
+                    <ul class="feedback-list" id="improvementsList"></ul>
+                </div>
+
+                <div class="feedback-section suggestions-section">
+                    <h4>💡 도전해보면 좋을 것들</h4>
+                    <ul class="feedback-list" id="suggestionsList"></ul>
+                </div>
+            </div>
+            <div class="feedback-modal-footer">
+                <button class="feedback-close" onclick="closeFeedback()">닫기</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 획득 점수 표시 -->
+    <div class="upgrade-modal-overlay" id="scoreModal">
+        <div class="upgrade-modal">
+            <div class="score-content">
+                <div class="score-header">QUEST COMPLETE</div>
+                <div class="score-body">
+                    <span class="score-plus">+</span>
+                    <span class="score-text" id="scoreText">00</span>
+                    <span class="score-unit">point</span>
+                </div>
+                <div class="score-footer">SYSTEM MESSAGE // SAVE_SUCCESS</div>
+
+                <button class="upgrade-close-btn" id="scoreConfirmBtn">점수 획득</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 승급 모달 -->
+    <div class="upgrade-modal-overlay" id="upgradeModal">
+        <div class="upgrade-modal">
+            <div class="upgrade-content">
+                <h1 class="upgrade-title">승급 완료!</h1>
+                <div class="upgrade-tier-display">
+                    <img src="" alt="tier" class="upgrade-tier-image" id="upgradeTierImage">
+                </div>
+                <p class="upgrade-message">
+                    <strong id="upgradeTierName"></strong> 티어로 승급하셨습니다!
+                </p>
+                <button class="upgrade-close-btn">확인</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 뱃지 획득 모달 -->
+    <div class="upgrade-modal-overlay" id="badgeModal">
+        <div class="upgrade-modal">
+            <div class="upgrade-content">
+                <h1 class="upgrade-title">뱃지 획득!</h1>
+
+                <div class="upgrade-tier-display">
+                    <div class="badge-display">
+                        <div class="badge-img-wrapper">
+                            <img id="dynamicBadgeImage" src="" alt="뱃지 이미지" class="badge-image-style">
+                        </div>
+                        <!-- <span class="tier-name" style="margin-top: 15px; display:block;"></span> -->
+                    </div>
+                </div>
+
+                <p class="upgrade-message">
+                    축하합니다!<b>첫 번째 퀘스트</b>를 완료하여<br>
+                    <strong id="dynamicBadgeName" style="color: #667eea;">[첫걸음]</strong>뱃지를 획득하셨습니다.
+                </p>
+
+                <button class="upgrade-close-btn" id="badgeConfirmBtn">확인</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- <script src="/javascript/ThemeLoader.js"></script> -->
+    <script src="/javascript/InnerHTML.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.34.1/min/vs/loader.min.js"></script>
+    <script src="/javascript/code-editor.js" defer></script>
+    <script src="/javascript/gemini.js" defer></script>
+    <!-- <script src="/javascript/LevelQuest.js" defer></script> -->
+    <script src="/javascript/LevelQuest-tier.js" defer></script>
+
+</body>
+
+</html>

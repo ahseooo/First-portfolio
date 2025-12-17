@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Java_Chapter1-2-4</title>
+
+    <link rel="stylesheet" href="/css/learning/Java_Chapter1-2-4.css" />
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+</head>
+
+<body>
+    <header id="main-frame"></header> <!--상단 헤더 부분-->
+
+    <section class="home-section">
+
+        <!-- 메인 카드 -->
+        <div class="content-card">
+
+            <!-- 제목 -->
+            <div class="intro-header">
+                <h1>🛡️ 자바는 어떻게 안전할까?</h1>
+            </div>
+
+            <!-- 설명 말풍선 -->
+            <div class="story-bubble">
+                자바가 안전한 이유를 알려줄게!
+            </div>
+
+            <!-- 2 × 2 안전성 특징 박스 -->
+            <div class="safe-grid">
+
+                <!-- 1. 자동 메모리 관리 -->
+                <div class="safe-box">
+                    <h2><span class="icon">🤖</span> 자동 메모리 관리</h2>
+                    <ul>
+                        <li>사용 안 하는 메모리를 자동으로 청소해줘.</li>
+                        <li>메모리 누수 걱정도 없어!</li>
+                    </ul>
+                    <div class="tip">💡 방을 쓰고 나면 자동으로 정리해주는 로봇 같아.</div>
+                </div>
+
+                <!-- 2. 엄격한 타입 체크 -->
+                <div class="safe-box">
+                    <h2><span class="icon">🔍</span> 엄격한 타입 체크</h2>
+                    <ul>
+                        <li>컴파일할 때 에러를 미리 찾아줘.</li>
+                        <li>실행 중에 멈출 일이 적어!</li>
+                    </ul>
+                    <div class="tip">💡 출발하기 전에 차를 점검해주는 정비사 같아.</div>
+                </div>
+
+                <!-- 3. 포인터 없음 -->
+                <div class="safe-box">
+                    <h2><span class="icon">🚫</span> 포인터 없음</h2>
+                    <ul>
+                        <li>C 언어의 복잡한 포인터가 없어서 메모리 실수를 방지할 수 있어!</li>
+                    </ul>
+                    <div class="tip">💡 위험한 도구를 치워두고 안전한 도구만 쓰는 것 같아.</div>
+                </div>
+
+                <!-- 4. 보안 기능 -->
+                <div class="safe-box">
+                    <h2><span class="icon">🔒</span> 보안 기능</h2>
+                    <ul>
+                        <li>바이러스나 해킹을 막는 다양한 보안 기능이 내장돼 있어!</li>
+                    </ul>
+                    <div class="tip">💡 문단속을 자동으로 해주는 스마트 도어락 같아.</div>
+                </div>
+
+            </div>
+
+            <!-- 네비게이션 -->
+            <div class="navigation inside">
+                <button class="prev-btn">
+                    <i class="fa-solid fa-chevron-left"></i> 이전
+                </button>
+
+                <div class="dots">
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot active"></span>
+                    <span class="dot"></span>
+                </div>
+
+                <button class="next-btn" id="nextPageBtn">
+                    다음 <i class="fa-solid fa-chevron-right"></i>
+                </button>
+            </div>
+
+        </div>
+
+        <!-- 학습 진행 상황 -->
+        <div class="progress-card">
+            <h3><i class="fa-solid fa-trophy"></i> 학습 진행 상황</h3>
+
+            <div class="progress-row">
+
+                <div class="progress-item">
+                    <div class="progress-label">자바의 특징</div>
+                    <div class="progress-bar">
+                        <div class="fill" style="width: 100%;"></div>
+                    </div>
+                </div>
+
+                <div class="progress-item">
+                    <div class="progress-label">플랫폼 독립성</div>
+                    <div class="progress-bar">
+                        <div class="fill" style="width: 100%;"></div>
+                    </div>
+                </div>
+
+                <div class="progress-item">
+                    <div class="progress-label">객체지향</div>
+                    <div class="progress-bar">
+                        <div class="fill" style="width: 100%;"></div>
+                    </div>
+                </div>
+
+                <div class="progress-item">
+                    <div class="progress-label">자바는 어떻게 안전할까</div>
+                    <div class="progress-bar">
+                        <div class="fill" style="width: 50%;"></div>
+                    </div>
+                </div>
+
+                <div class="progress-item">
+                    <div class="progress-label">자바의 뛰어난 성능</div>
+                    <div class="progress-bar">
+                        <div class="fill" style="width: 0%;"></div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="progress-bar-text">4 / 5  진행 중</div>
+        </div>
+
+    </section>
+
+    <script src="/javascript/learning/Java_Chapter1-2-4.js"></script>
+    <script src="/javascript/InnerHTML.js"></script>
+
+</body>
+</html>

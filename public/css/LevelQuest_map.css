@@ -1,0 +1,320 @@
+/* LevelQuest_map.css */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap");
+@import url("./sub_frame.css");
+
+/* 💡 사이버 펑크 테마 변수 (sub_frame.css에서 가져옴) */
+:root {
+    --neon-blue: #00FFFF;
+    --neon-green: #00FF00;
+    --neon-yellow: #FFFF00;
+    --neon-red: #FF3131;
+    --dark-bg-color: #1a1a1a;
+    --dark-bg-card: rgba(30, 30, 30, 0.7);
+    --shadow-neon-blue: 0 0 10px rgba(0, 255, 255, 0.5);
+    --shadow-neon-green: 0 0 10px rgba(0, 255, 0, 0.5);
+    --shadow-neon-red: 0 0 10px rgba(255, 49, 49, 0.5);
+    --text-primary: #f0f0f0;
+    --text-secondary: #00FF00; /* 네온 그린 */
+    --text-muted: #00FFFF; /* 네온 블루 */
+    --bg-primary: #121212;
+    --bg-secondary: #0a0a0a;
+    --border-neon-blue: 2px solid #00FFFF;
+    --border-neon-green: 2px solid #00FF00;
+
+    /* 기존 Glassmorphism 변수는 사용하지 않음 */
+    --primary-color: #667eea;
+}
+
+html,
+body {
+    color: var(--text-primary);
+    background: var(--bg-primary);
+}
+
+.map-container {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+h1 {
+    color: var(--text-secondary); /* 네온 그린 */
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    text-shadow: 0 0 10px var(--neon-green); /* 네온 그림자 */
+    animation: fadeIn 1s ease-out; /* 애니메이션 유지 */
+}
+
+.subtitle {
+    color: var(--text-primary); /* 밝은 텍스트 */
+    font-size: 1.3rem;
+    margin-bottom: 3rem;
+    animation: fadeIn 1.5s ease-out; /* 애니메이션 유지 */
+}
+
+/* 세계지도 컨테이너 */
+.world-map {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    animation: fadeIn 2s ease-out; /* 애니메이션 유지 */
+}
+
+/* 대륙 카드 */
+.continent {
+    /* 사이버 펑크 카드 배경 */
+    background: var(--dark-bg-card);
+    backdrop-filter: blur(5px);
+    border: 2px solid var(--neon-blue);
+    border-radius: 10px; /* 원본 20px에서 약간 줄임 */
+    padding: 40px 30px;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* 애니메이션 유지 */
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.1); /* 초기 네온 그림자 */
+}
+
+.continent::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    /* 네온 효과로 변경 */
+    background: radial-gradient(circle, rgba(0, 255, 255, 0.3) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.4s; /* 애니메이션 유지 */
+}
+
+.continent:hover::before {
+    opacity: 1; /* 애니메이션 유지 */
+}
+
+.continent:hover {
+    transform: translateY(-10px) scale(1.05); /* 애니메이션 유지 */
+    border-color: var(--neon-green); /* 호버 테두리 변경 */
+    box-shadow: 0 0 30px var(--neon-green); /* 호버 네온 그림자 강화 */
+}
+
+.continent-icon {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    display: block;
+    color: var(--neon-green); /* 네온 그린 */
+    text-shadow: 0 0 8px var(--neon-green);
+    animation: float 3s ease-in-out infinite; /* 애니메이션 유지 */
+}
+
+/* 애니메이션 딜레이 유지 */
+.continent:nth-child(1) .continent-icon {
+    animation-delay: 0s;
+}
+
+.continent:nth-child(2) .continent-icon {
+    animation-delay: 0.5s;
+}
+
+.continent:nth-child(3) .continent-icon {
+    animation-delay: 1s;
+}
+
+.continent:nth-child(4) .continent-icon {
+    animation-delay: 1.5s;
+}
+
+@keyframes float { /* 애니메이션 유지 */
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.continent-name {
+    color: var(--text-primary); /* 밝은 텍스트 */
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+}
+
+.continent-desc {
+    color: var(--text-secondary); /* 네온 그린 */
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+/* 프롤로그 모달 */
+.prologue-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9); /* 더 어두운 배경 */
+    backdrop-filter: blur(5px);
+    z-index: 1000;
+    animation: fadeIn 0.3s ease; /* 애니메이션 유지 */
+}
+
+.prologue-modal.show {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.prologue-content {
+    /* 사이버 펑크 배경 */
+    background: var(--dark-bg-color);
+    border-radius: 10px;
+    padding: 30px;
+    max-width: 700px;
+    width: 90%;
+    box-shadow: 0 0 30px var(--shadow-neon-blue); /* 네온 그림자 */
+    animation: slideUp 0.5s ease; /* 애니메이션 유지 */
+    position: relative;
+    border: 2px solid var(--neon-blue);
+}
+
+@keyframes slideUp { /* 애니메이션 유지 */
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.prologue-header {
+    text-align: center;
+    margin-bottom: 20px;
+    border-bottom: 2px solid var(--neon-green); /* 테두리 추가 */
+    padding-bottom: 15px;
+}
+
+.prologue-icon {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    color: var(--neon-green);
+    text-shadow: 0 0 10px var(--neon-green);
+}
+
+.prologue-title {
+    color: var(--text-primary);
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    text-shadow: 0 0 5px var(--neon-blue);
+}
+
+.prologue-subtitle {
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+}
+
+.prologue-story {
+    color: var(--text-primary);
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 20px;
+    text-align: left;
+    padding: 20px;
+    /* 사이버 펑크 블록 강조 */
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 5px;
+    border-left: 4px solid var(--neon-green);
+    box-shadow: inset 0 0 10px rgba(0, 255, 0, 0.2);
+    white-space: pre-wrap;
+}
+
+.prologue-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.btn {
+    padding: 10px 30px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease; /* 애니메이션 유지 */
+}
+
+.btn-start {
+    /* 네온 그린 버튼 */
+    background: var(--neon-green);
+    color: var(--dark-bg-color);
+    box-shadow: 0 0 10px var(--neon-green);
+}
+
+.btn-start:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 20px var(--neon-green);
+}
+
+.btn-cancel {
+    /* 네온 블루 테두리 버튼 */
+    background: transparent;
+    color: var(--neon-blue);
+    border: 2px solid var(--neon-blue);
+}
+
+.btn-cancel:hover {
+    background: var(--neon-red); /* 취소는 네온 레드로 강조 */
+    color: var(--dark-bg-color);
+    border-color: var(--neon-red);
+    box-shadow: 0 0 15px var(--neon-red);
+}
+
+@keyframes fadeIn { /* 애니메이션 유지 */
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* 미디어 쿼리 원본 구조 유지 */
+@media (max-width: 1024px) {
+    .world-map {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    .subtitle {
+        font-size: 1rem;
+    }
+
+    .world-map {
+        grid-template-columns: 1fr;
+    }
+
+    .prologue-content {
+        padding: 30px;
+    }
+}

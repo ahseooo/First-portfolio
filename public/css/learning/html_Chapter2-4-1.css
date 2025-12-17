@@ -1,0 +1,627 @@
+/* ========== 1. 기본 설정 및 변수 (보내주신 코드 기반) ========== */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap");
+@import url("./main_frame.css");
+
+:root {
+    --primary-color: #667eea;
+    --primary-light: #a5b4fc;
+    --primary-dark: #5a67d8;
+    --secondary-color: #48bb78;
+    --secondary-light: #9ae6b4;
+    --accent-color: #ed8936;
+    --accent-light: #fbb660;
+    --text-primary: #2d3748;
+    --text-secondary: #4a5568;
+    --text-muted: #718096;
+    --bg-primary: #ffffff;
+    --bg-secondary: #f7fafc;
+    --bg-tertiary: #edf2f7;
+    --bg-code: #282a36;
+    /* 다크 모드 배경 (추가) */
+    --border-light: #e2e8f0;
+    --border-medium: #cbd5e1;
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+    --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1);
+    --radius-sm: 6px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --radius-xl: 16px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    font-family: "Noto Sans KR", sans-serif;
+    height: 100%;
+    width: 100%;
+    background-color: var(--bg-secondary);
+}
+
+/* ========== 2. 메인 레이아웃 (공통) ========== */
+.home-section {
+    position: relative;
+    height: calc(100vh - 65px);
+    width: 100%;
+    padding: 40px 70px;
+    transition: all 0.3s ease;
+    overflow-x: hidden;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* 학습 카드 */
+.learning-card {
+    width: 100%;
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: var(--shadow-lg);
+    margin-bottom: 40px;
+    position: relative;
+    max-width: 1500px;
+}
+
+/* 헤더 */
+.intro-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 35px;
+    background-color: #e1e9ff;
+    border-radius: 15px;
+}
+
+.intro-header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    padding: 20px;
+    color: var(--text-primary);
+}
+
+/* 말풍선 & 설명 */
+.speech-bubble {
+    padding: 20px;
+    border-radius: 12px;
+    border: 2px solid #e1e9ff;
+    font-size: 18px;
+    margin-bottom: 20px;
+    background-color: #fcfdff;
+}
+
+.chapter-desc {
+    font-size: 17px;
+    color: #444;
+    line-height: 1.6;
+    margin-left: 20px;
+    margin-bottom: 30px;
+}
+
+
+/* ========== 3. 코드 & 미리보기 (HTML 2-2-1 전용) ========== */
+/* 설명 텍스트 섹션 */
+.topic-section {
+    margin-bottom: 50px;
+}
+
+.topic-section h2 {
+    font-size: 22px;
+    color: var(--primary-dark);
+    margin-bottom: 15px;
+    border-left: 5px solid var(--primary-light);
+    padding-left: 15px;
+}
+
+.topic-desc {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 20px;
+    padding-left: 20px;
+}
+
+/* 구분선 */
+.divider {
+    border: 0;
+    height: 1px;
+    background: #ddd;
+    margin: 40px 0;
+}
+
+/* 코드 + 미리보기 컨테이너 */
+.code-preview-container {
+    display: flex;
+    gap: 30px;
+    align-items: stretch;
+}
+
+/* 왼쪽: 코드 영역 */
+.code-side {
+    flex: 1;
+    background: var(--bg-code);
+    /* 다크 모드 */
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.code-header {
+    background: #1e1f29;
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 1px solid #444;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+/* .navigation .dot과 충돌 방지를 위해 아래에서 재정의됨 */
+.code-header .dot.red {
+    background: #ff5f56;
+}
+
+.code-header .dot.yellow {
+    background: #ffbd2e;
+}
+
+.code-header .dot.green {
+    background: #27c93f;
+}
+
+.code-header span {
+    color: #888;
+    font-size: 12px;
+    margin-left: auto;
+}
+
+.code-box {
+    padding: 20px;
+    margin: 0;
+    color: #f8f8f2;
+    font-family: 'Fira Code', 'Consolas', monospace;
+    font-size: 15px;
+    line-height: 1.6;
+    overflow-x: auto;
+    border: none;
+    /* 기존 border 제거 */
+    background: transparent;
+    /* 배경 투명 */
+}
+
+/* 코드 하이라이팅 */
+.tag {
+    color: #ff79c6;
+}
+
+.text {
+    color: #f1fa8c;
+}
+
+/* 오른쪽: 미리보기 영역 */
+.preview-side {
+    flex: 1;
+    background: #fff;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+}
+
+.preview-header {
+    background: #f1f5f9;
+    padding: 10px 15px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #64748b;
+    border-bottom: 1px solid #e2e8f0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.preview-content {
+    padding: 20px;
+    flex: 1;
+    overflow-y: auto;
+}
+
+/* 미리보기 내부 (실제 브라우저처럼 보이게) */
+.preview-content h1 {
+    font-size: 2em;
+    margin-bottom: 0.5em;
+    border-bottom: 1px solid #eee;
+    padding: 0;
+    color: black;
+}
+
+.preview-content h2 {
+    font-size: 1.5em;
+    margin-bottom: 0.5em;
+    color: black;
+}
+
+.preview-content h3 {
+    font-size: 1.17em;
+    margin-bottom: 0.5em;
+    color: black;
+}
+
+.preview-content h4 {
+    font-size: 1em;
+    margin-bottom: 0.5em;
+    color: black;
+}
+
+.preview-content h5 {
+    font-size: 0.83em;
+    margin-bottom: 0.5em;
+    color: #555;
+}
+
+.preview-content h6 {
+    font-size: 0.67em;
+    margin-bottom: 0.5em;
+    color: #777;
+}
+
+.preview-content p {
+    margin-bottom: 1em;
+    line-height: 1.6;
+    color: #333;
+}
+
+
+/* ========== 4. 요약 정리 (Fact Box - 보내주신 코드 적용) ========== */
+.fact-box {
+    background: #eef2ff;
+    border: 3px solid #e1e9ff;
+    border-radius: 15px;
+    padding: 25px;
+    margin-bottom: 30px;
+}
+
+.fact-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.fact-list {
+    list-style: none;
+    padding: 0;
+}
+
+.fact-list li {
+    background: white;
+    padding: 18px 20px;
+    border-radius: 12px;
+    margin-bottom: 12px;
+    font-size: 16px;
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    border: 1px solid #eee;
+    line-height: 1.5;
+}
+
+.icon-box {
+    background: #f0f4ff;
+    color: var(--primary-color);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+}
+
+.text-box strong {
+    color: var(--text-primary);
+    font-size: 17px;
+}
+
+.text-box em {
+    font-style: normal;
+    color: var(--primary-dark);
+    font-weight: 600;
+    background: linear-gradient(120deg, #e0e7ff 0%, #e0e7ff 100%);
+    background-size: 100% 40%;
+    background-position: 0 100%;
+    padding: 0 4px;
+}
+
+
+/* ========== 5. 네비게이션 & 진행바 (공통) ========== */
+.navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 25px;
+}
+
+.prev-btn,
+.next-btn {
+    background: #f8f8f8;
+    border: 1px solid #ddd;
+    padding: 12px 20px;
+    border-radius: 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 15px;
+    transition: all 0.2s;
+}
+
+.next-btn {
+    background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+    border: none;
+    color: white;
+}
+
+.prev-btn:hover,
+.next-btn:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+}
+
+.dots {
+    display: flex;
+    gap: 10px;
+}
+
+.navigation .dot {
+    width: 12px;
+    height: 12px;
+    background: #ddd;
+    border-radius: 50%;
+}
+
+/* 점 스타일 */
+.navigation .dot.active {
+    background: #ff8f2b;
+}
+
+.progress-card {
+    width: 100%;
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: var(--shadow-lg);
+    margin-bottom: 40px;
+    max-width: 1500px;
+}
+
+.progress-card h3 {
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: #667eea;
+}
+
+.progress-row {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.progress-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 23%;
+    text-align: center;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background: #e6e9f1;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 8px;
+}
+
+.progress-bar .fill {
+    height: 100%;
+    background: #667eea;
+    border-radius: 10px;
+    transition: width 0.3s ease-in-out;
+}
+
+.progress-bar-text {
+    text-align: center;
+    font-size: 16px;
+    color: #444;
+}
+
+
+/* ========== 6. 질문 버튼 & 모달 (공통) ========== */
+.question-button {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    background: #667eea;
+    border: none;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(102, 126, 234, 0.3);
+    color: white;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    transition: transform 0.3s;
+}
+
+.question-button:hover {
+    background: #5a67d8;
+    transform: scale(1.1);
+}
+
+.question-button img {
+    display: none;
+}
+
+.question-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.question-modal.hidden {
+    display: none;
+}
+
+.question-content {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.question-content h3 {
+    margin-top: 0;
+    font-size: 24px;
+    color: #667eea;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.question-content textarea {
+    width: 100%;
+    height: 120px;
+    padding: 15px;
+    font-size: 15px;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    font-family: inherit;
+    resize: vertical;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+}
+
+.question-content textarea:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+.question-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.question-buttons button {
+    background: #667eea;
+    border: none;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 15px;
+    transition: all 0.3s ease;
+}
+
+.question-buttons button:hover {
+    background: #5568d3;
+    transform: translateY(-2px);
+}
+
+
+/* ========== 7. 반응형 ========== */
+@media (max-width: 768px) {
+    .code-preview-container {
+        flex-direction: column;
+    }
+
+    .progress-item {
+        width: 45%;
+        margin-bottom: 10px;
+    }
+
+    .progress-row {
+        flex-wrap: wrap;
+    }
+}
+
+/* 특수문자 표 스타일 */
+.table-container {
+    overflow-x: auto;
+    margin-bottom: 30px;
+}
+
+.styled-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.styled-table th {
+    background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 15px;
+    text-align: left;
+    font-weight: 600;
+}
+
+.styled-table td {
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+    color: #444;
+}
+
+.styled-table tr:last-child td { border-bottom: none; }
+.styled-table tr:hover { background-color: #f8f9ff; }
+
+.symbol { font-weight: bold; color: var(--primary-dark); font-size: 18px; text-align: center; width: 80px;}
+.code-cell { font-family: 'Fira Code', monospace; color: #d63384; background: #fdf2f8; padding: 5px 10px; border-radius: 6px; display: inline-block;}
+
+
+/* 들여쓰기 비교 스타일 */
+.bad-code { border: 2px solid #ffcccc; }
+.bad-code .code-header { background: #5a1e1e; }
+
+.good-code { border: 2px solid #ccffcc; }
+.good-code .code-header { background: #1e5a1e; }
+
+
+/* 정렬 코드 하이라이팅 추가 */
+.attr { color: #50fa7b; font-style: italic; } /* 속성명 (style) */
+.string { color: #f1fa8c; } /* 속성값 */

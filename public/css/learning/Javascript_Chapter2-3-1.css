@@ -1,0 +1,563 @@
+/* ==========================================================================
+   파일명: Javascript_Chapter2-3-1.css
+   ========================================================================== */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap");
+@import url("./main_frame.css");
+
+:root {
+    --primary-color: #F7DF1E;
+    /* JS 옐로우 */
+    --primary-light: #FFF9C4;
+    --primary-dark: #F0DB4F;
+    --text-primary: #323330;
+    /* JS 블랙 */
+    --text-secondary: #555;
+    --bg-secondary: #f9f9f9;
+    --bg-code: #282a36;
+
+    /* 연산자 테마 */
+    --op-bg: #f8f9fa;
+    --op-border: #e9ecef;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    font-family: "Noto Sans KR", sans-serif;
+    height: 100%;
+    width: 100%;
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+}
+
+/* ========== 메인 레이아웃 ========== */
+.home-section {
+    position: relative;
+    height: calc(100vh - 65px);
+    width: 100%;
+    padding: 40px 70px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.learning-card {
+    width: 100%;
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 40px;
+    position: relative;
+    max-width: 1500px;
+}
+
+.intro-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 35px;
+    background-color: #323330;
+    border-radius: 15px;
+    color: var(--primary-color);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.intro-header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    padding: 20px;
+    margin: 0;
+}
+
+.speech-bubble {
+    padding: 20px;
+    border-radius: 12px;
+    border: 2px solid var(--primary-color);
+    font-size: 18px;
+    margin-bottom: 20px;
+    background-color: #fffde7;
+    position: relative;
+}
+
+.speech-bubble::after {
+    content: '';
+    position: absolute;
+    left: 30px;
+    bottom: -12px;
+    border: 12px solid transparent;
+    border-top-color: #fffde7;
+    border-bottom: 0;
+}
+
+.chapter-desc {
+    font-size: 17px;
+    color: #444;
+    line-height: 1.6;
+    margin-left: 20px;
+    margin-bottom: 30px;
+}
+
+/* ========== 1. 산술 연산자 그리드 ========== */
+.operator-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.op-card {
+    background: var(--op-bg);
+    border: 1px solid var(--op-border);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.2s;
+}
+
+.op-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--primary-color);
+}
+
+.op-card.highlight {
+    background: #fff9c4;
+    border-color: #fbc02d;
+}
+
+/* 나머지 연산자 강조 */
+
+.op-symbol {
+    font-size: 32px;
+    font-weight: bold;
+    color: var(--primary-dark);
+    margin-bottom: 5px;
+    font-family: 'Fira Code', monospace;
+}
+
+.op-desc {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.op-code {
+    font-family: 'Fira Code', monospace;
+    font-size: 13px;
+    background: white;
+    padding: 5px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+}
+
+.op-code strong {
+    color: #d63384;
+}
+
+/* ========== 2. 비교 연산자 리스트 ========== */
+.comparison-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.comp-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #fff;
+    border: 1px solid #eee;
+    padding: 15px 25px;
+    border-radius: 10px;
+    font-family: 'Fira Code', monospace;
+}
+
+.comp-row:hover {
+    background: #f8f9fa;
+}
+
+.comp-symbol {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    width: 50px;
+    font-family: 'Fira Code', monospace;
+}
+
+.comp-text {
+    font-family: "Noto Sans KR", sans-serif;
+    font-size: 15px;
+    color: #666;
+    flex: 1;
+}
+
+.comp-example {
+    color: #555;
+    background: #eee;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-right: 15px;
+    font-family: 'Fira Code', monospace;
+}
+
+.comp-result {
+    font-weight: bold;
+    font-family: 'Fira Code', monospace;
+}
+
+.comp-result.true {
+    color: #2ecc71;
+}
+
+.comp-result.false {
+    color: #e74c3c;
+}
+
+/* ========== 코드 프리뷰 ========== */
+.code-preview-container {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 20px;
+}
+
+.code-side {
+    flex: 1;
+    background: var(--bg-code);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.code-header {
+    background: #1e1f29;
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 1px solid #444;
+    color: #888;
+    font-size: 12px;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.red {
+    background: #ff5f56;
+}
+
+.yellow {
+    background: #ffbd2e;
+}
+
+.green {
+    background: #27c93f;
+}
+
+.code-box {
+    padding: 20px;
+    color: #f8f8f2;
+    font-family: 'Fira Code', monospace;
+    line-height: 1.6;
+    overflow-x: auto;
+}
+
+.keyword {
+    color: #ff79c6;
+    font-weight: bold;
+}
+
+.number {
+    color: #bd93f9;
+}
+
+.js-func {
+    color: #8be9fd;
+}
+
+.comment {
+    color: #6272a4;
+}
+
+.preview-side {
+    flex: 1;
+    background: #fff;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+}
+
+.preview-header {
+    background: #f1f5f9;
+    padding: 10px 15px;
+    font-weight: bold;
+    color: #555;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.preview-content {
+    padding: 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.center-content {
+    text-align: center;
+}
+
+.result-number {
+    font-size: 32px;
+    font-weight: bold;
+    color: #333;
+    font-family: 'Fira Code', monospace;
+}
+
+/* 비유 박스 */
+.analogy-box {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: #f0f4ff;
+    border: 2px dashed #a5b4fc;
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 40px;
+}
+
+.analogy-icon {
+    font-size: 36px;
+}
+
+.analogy-text {
+    font-size: 16px;
+    color: #444;
+    line-height: 1.6;
+}
+
+.analogy-text strong {
+    color: var(--text-primary);
+}
+
+.divider {
+    border: 0;
+    height: 1px;
+    background: #ddd;
+    margin: 40px 0;
+}
+
+/* ========== 네비게이션 & 진행바 ========== */
+.navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.prev-btn,
+.next-btn {
+    background: #f8f8f8;
+    border: 1px solid #ddd;
+    padding: 12px 20px;
+    border-radius: 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 15px;
+    transition: all 0.2s;
+}
+
+.next-btn {
+    background: #323330;
+    border: none;
+    color: var(--primary-color);
+}
+
+.prev-btn:hover,
+.next-btn:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+}
+
+.dots {
+    display: flex;
+    gap: 10px;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    background: #ddd;
+    border-radius: 50%;
+}
+
+.dot.active {
+    background: var(--primary-color);
+}
+
+.progress-card {
+    width: 100%;
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 40px;
+    max-width: 1500px;
+}
+
+.progress-card h3 {
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: var(--text-primary);
+}
+
+.progress-row {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.progress-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 23%;
+    text-align: center;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background: #e6e9f1;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 8px;
+}
+
+.progress-bar .fill {
+    height: 100%;
+    background: var(--primary-color);
+    border-radius: 10px;
+}
+
+.progress-bar-text {
+    text-align: center;
+    font-size: 16px;
+    color: #444;
+}
+
+/* 모달 및 질문 버튼 */
+.question-button {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    background: var(--primary-color);
+    border: none;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    color: #323330;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    transition: transform 0.3s;
+}
+
+.question-button:hover {
+    transform: scale(1.1);
+}
+
+.question-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.question-modal.hidden {
+    display: none;
+}
+
+.question-content {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 500px;
+}
+
+.question-content textarea {
+    width: 100%;
+    height: 120px;
+    padding: 15px;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    resize: vertical;
+}
+
+.question-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.question-buttons button {
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    border: none;
+}
+
+.question-buttons button:first-child {
+    background: var(--primary-color);
+    color: #323330;
+}
+
+/* 모바일 대응 */
+@media (max-width: 768px) {
+    .code-preview-container {
+        flex-direction: column;
+    }
+
+    .progress-row {
+        flex-wrap: wrap;
+    }
+
+    .progress-item {
+        width: 45%;
+        margin-bottom: 10px;
+    }
+
+    .operator-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}

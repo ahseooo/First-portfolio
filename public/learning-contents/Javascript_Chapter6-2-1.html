@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Chapter 6-2</title>
+    <link rel="stylesheet" type="text/css" href="/css/learning/Javascript_Chapter6-2-1.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <header id="main-frame"></header>
+
+    <section class="home-section">
+        <div class="learning-card">
+
+            <button class="question-button" onclick="openQuestionBox()">
+                <i class="fa-solid fa-question"></i>
+            </button>
+
+            <div class="intro-header">
+                <h1>🔢 미니 프로젝트: 숫자 순서 맞추기</h1>
+            </div>
+
+            <div class="speech-bubble">
+                이번엔 조금 더 어려운 게임이야! 🤯<br>
+                뒤죽박죽 섞인 숫자들을 <strong>1부터 16까지 순서대로</strong> 찾아보자.
+            </div>
+
+            <p class="chapter-desc">
+                배열을 활용해 숫자를 섞고, 클릭할 때마다 정답인지 확인하는 로직을 만들어봅니다.<br>
+                [Image of 4x4 Number Grid Game UI]
+            </p>
+
+            <hr class="divider">
+
+            <div class="topic-section">
+                <h2>1. 오늘의 미션 📋</h2>
+                <div class="mission-grid">
+                    <div class="mission-item">
+                        <span class="mission-num">1</span>
+                        <p><strong>화면 구성:</strong> 4x4 형태의 네모칸(Grid) 만들기</p>
+                    </div>
+                    <div class="mission-item">
+                        <span class="mission-num">2</span>
+                        <p><strong>숫자 배치:</strong> 1~16 숫자를 배열에 넣고 <strong>섞기(Shuffle)</strong></p>
+                    </div>
+                    <div class="mission-item">
+                        <span class="mission-num">3</span>
+                        <p><strong>클릭 이벤트:</strong> 숫자를 누르면 다음 순서인지 확인하기</p>
+                    </div>
+                    <div class="mission-item">
+                        <span class="mission-num">4</span>
+                        <p><strong>피드백:</strong> 맞으면 <span style="color:green">초록색</span>, 틀리면 <span style="color:red">빨간색</span> 표시</p>
+                    </div>
+                    <div class="mission-item">
+                        <span class="mission-num">5</span>
+                        <p><strong>게임 종료:</strong> 16까지 다 누르면 "성공!" 알림 띄우기</p>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="divider">
+
+            <div class="topic-section">
+                <h2>2. 코드 작성하기 ⌨️</h2>
+                <p class="topic-desc">왼쪽 에디터에 코드를 작성하고 실행해 보세요.</p>
+
+                <div class="playground-container">
+                    <div class="editor-pane">
+                        <div class="pane-header">
+                            <span><i class="fa-brands fa-html5"></i> HTML + <i class="fa-brands fa-js"></i> JS</span>
+                        </div>
+                        <textarea id="code-input" spellcheck="false" placeholder="<style>
+  #game-board {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5px;
+    width: 300px;
+  }
+  .box {
+    background: #eee;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+</style>
+
+<h2>1부터 순서대로 누르세요!</h2>
+<div id='game-board'></div>
+
+<script>
+  let numbers = [];
+  // 1. 1~16 숫자 채우기
+  for(let i=1; i<=16; i++) numbers.push(i);
+  
+  // 2. 섞기 (힌트: sort와 Math.random)
+  numbers.sort(() => Math.random() - 0.5);
+
+  // 3. 화면에 그리기
+  const board = document.getElementById('game-board');
+  
+  numbers.forEach(num => {
+    let box = document.createElement('div');
+    box.className = 'box';
+    box.textContent = num;
+    // 클릭 이벤트 추가하기...
+    board.appendChild(box);
+  });
+</script>"></textarea>
+                        <button class="run-btn" onclick="runCode()">실행하기 ▶</button>
+                    </div>
+
+                    <div class="preview-pane">
+                        <div class="pane-header">
+                            <span><i class="fa-solid fa-desktop"></i> 결과 화면</span>
+                        </div>
+                        <iframe id="preview-frame"></iframe>
+                    </div>
+                </div>
+                
+                <div class="hint-box">
+                    <div class="hint-title"><i class="fa-solid fa-lightbulb"></i> 힌트: 다음 숫자 기억하기</div>
+                    <p>
+                        변수 <code>let current = 1;</code>을 만들어서,<br>
+                        클릭한 숫자가 <code>current</code>와 같은지 비교해보세요!
+                    </p>
+                </div>
+            </div>
+
+            <div class="navigation">
+                <button class="prev-btn" onclick="goToPreviousPage()"><i class="fa-solid fa-chevron-left"></i> 이전 (주사위 게임)</button>
+
+                <div class="dots">
+                    <span class="dot"></span>
+                    <span class="dot active"></span> </div>
+
+                <button class="next-btn" id="nextPageBtn" onclick="goToNextPage()">
+                    다음 (최종 점검) <i class="fa-solid fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="progress-card">
+            <h3><i class="fa-solid fa-flag-checkered"></i> 챕터 6: 마무리</h3>
+
+            <div class="progress-row">
+                <div class="progress-item">
+                    <div class="progress-label">주사위</div>
+                    <div class="progress-bar"><div class="fill" style="width: 100%;"></div></div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">숫자게임</div>
+                    <div class="progress-bar">
+                        <div class="fill" style="width: 50%;"></div> </div>
+                </div>
+            </div>
+            <div class="progress-bar-text">2 / 2 진행중</div>
+        </div>
+    </section>
+
+    <div id="question-modal" class="question-modal hidden">
+        <div class="question-content">
+            <h3>선생님 질문이 있어요!</h3>
+            <textarea placeholder="여기에 질문을 입력하세요"></textarea>
+            <div class="question-buttons">
+                <button onclick="submitQuestion()">보내기</button>
+                <button onclick="closeQuestionBox()">닫기</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/javascript/InnerHTML.js"></script>
+    <script src="/javascript/learning/Javascript_Chapter6-2-1.js"></script>
+</body>
+</html>

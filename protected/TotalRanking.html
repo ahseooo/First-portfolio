@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>전체 랭킹</title>
+    <link rel="stylesheet" type="text/css" href="/css/Total_Ranking.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <!-- 사이드바 -->
+    <div class="sidebar" id="side-bar"></div>
+
+    <!-- 헤더 -->
+    <header class="header-section">
+        <div class="header-content">
+            <i class="fa-solid fa-bars"></i>
+            <span class="title">전체 랭킹</span>
+        </div>
+    </header>
+
+    <section class="home-section">
+        <!-- 전체 랭킹 -->
+        <div class="ranking-container" id="all_ranking">
+            <!-- 내 랭킹 정보 -->
+            <div id="my-rank-card" class="my-rank-card">
+                <div class="profile-section">
+                    <div class="character">
+                        <img src="/images/Logo.png" alt="">
+                    </div>
+                    <div>
+                        <div class="profile-label">내 프로필</div>
+                        <div class="profile-name">
+                            <span id="my-nickname"></span>
+                            <span class="level-badge">
+                                Lv.<span id="my-level"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="stats-section">
+                    <div class="stat-item">
+                        <div class="stat-label">RANK</div>
+                        <div class="stat-value">
+                            <span id="my-rank"></span><span class="stat-unit">위</span>
+                        </div>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <div class="stat-label">SCORE</div>
+                        <div class="stat-value" id="my-score"></div>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <div class="stat-label">EXP</div>
+                        <div class="stat-value" id="my-exp"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 랭킹 테이블 -->
+            <div class="table-container">
+                <div class="table-wrapper">
+                    <table class="ranking-table">
+                        <thead>
+                            <tr>
+                                <th class="col-rank">순위</th>
+                                <th class="col-nickname">닉네임</th>
+                                <th class="col-badges">대표 뱃지</th>
+                                <th class="col-level">레벨</th>
+                                <th class="col-tier">티어</th>
+                                <th class="col-exp">경험치</th>
+                                <th class="col-score">퀘스트 점수</th>
+                            </tr>
+                        </thead>
+                        <tbody id="ranking-tbody">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 페이지네이션 -->
+            <div class="pagination">
+                <button id="prev-btn" class="pagination-btn">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <span class="page_number" id="page-info">1 / ?</span>
+                <button id="next-btn" class="pagination-btn">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- 테이블 행 템플릿 -->
+        <template id="rank-row-template">
+            <tr>
+                <td>
+                    <div class="rank-cell">
+                        <span class="rank-display"></span>
+                    </div>
+                </td>
+                <td class="nickname-cell">
+                    <div class="nickname-wrapper">
+                        <img class="user-character" src="" alt="">
+                        <span class="user-nickname"></span>
+                        <span class="me-badge">ME</span>
+                    </img>
+                </td>
+                <td class="badges-cell">
+                    <div class="badges-wrapper">
+                        <div class="badges-container"></div>
+                    </div>
+                </td>
+                <td>
+                    <span class="level-display user-level"></span>
+                </td>
+                <td class="tier-cell">
+                    <div class="tier-wrapper">
+                        <i class="tier-icon"></i> 
+                    </div>
+                </td>
+                <td class="exp-cell">
+                    <span class="user-exp"></span>
+                </td>
+                <td>
+                    <span class="score-value user-score"></span>
+                </td>
+            </tr>
+        </template>
+
+        <!-- 메달 템플릿 -->
+        <template id="medal-template">
+            <span class="rank-medal"></span>
+        </template>
+
+        <!-- 순위 번호 템플릿 -->
+        <template id="rank-number-template">
+            <span class="rank-number"></span>
+        </template>
+
+        <!-- 뱃지 템플릿 -->
+        <template id="badge-template">
+            <i class="fas fa-medal badge-icon"></i>
+        </template>
+
+    </section>
+
+    <!-- 스크립트 -->
+    <!-- <script src="/javascript/ThemeLoader.js"></script> -->
+    <script src="/javascript/InnerHTML.js"></script>
+    <script src="/javascript/TotalRanking.js"></script>
+</body>
+
+</html>

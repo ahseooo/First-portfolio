@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Chapter 3-1</title>
+    <link rel="stylesheet" type="text/css" href="/css/learning/Javascript_Chapter3-1-1.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <header id="main-frame"></header>
+
+    <section class="home-section">
+        <div class="learning-card">
+
+            <button class="question-button" onclick="openQuestionBox()">
+                <i class="fa-solid fa-question"></i>
+            </button>
+
+            <div class="intro-header">
+                <h1>📦 함수 선언과 호출</h1>
+            </div>
+
+            <div class="speech-bubble">
+                똑같은 일을 매번 다시 적기 힘들지? 😫<br>
+                <strong>명령을 모아놓은 상자(함수)</strong>를 만들어서 필요할 때마다 꺼내 쓰자!
+            </div>
+
+            <p class="chapter-desc">
+                함수는 특정 작업을 수행하는 코드 묶음이에요.<br>
+                마치 <strong>"특별한 일을 하는 로봇"</strong>을 미리 만들어두고, 필요할 때마다 부르는 것과 같아요.
+            </p>
+
+            <div class="topic-section">
+                <h2>1. 로봇 만들기 (함수 선언)</h2>
+                <p class="topic-desc">"쿠키 굽는 로봇"을 만들어볼까요? 할 일을 순서대로 적어주면 돼요.</p>
+
+                <div class="code-preview-container">
+                    <div class="code-side">
+                        <div class="code-header">
+                            <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
+                            <span>JavaScript</span>
+                        </div>
+                        <pre class="code-box"><code><span class="keyword">function</span> <span class="js-func">bakeCookie</span>() {
+  <span class="js-func">console.log</span>(<span class="string">"1. 밀가루 넣기"</span>);
+  <span class="js-func">console.log</span>(<span class="string">"2. 설탕 넣기"</span>);
+  <span class="js-func">console.log</span>(<span class="string">"3. 굽기 🔥"</span>);
+}</code></pre>
+                    </div>
+                    <div class="preview-side">
+                        <div class="preview-header">
+                            <i class="fa-solid fa-robot"></i> Robot Status
+                        </div>
+                        <div class="preview-content center-content">
+                            <div class="robot-visual">
+                                <i class="fa-solid fa-robot"></i>
+                                <p>쿠키 굽는 로봇 대기중...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="analogy-box">
+                    <div class="analogy-icon">🤖</div>
+                    <div class="analogy-text">
+                        <strong>비유:</strong> "이런 로봇이 있어!" 하고 <strong>설계도</strong>를 만든 상태예요.<br>
+                        아직 일은 안 해요. 부를 때까지 기다리고 있죠.
+                    </div>
+                </div>
+            </div>
+
+            <hr class="divider">
+
+            <div class="topic-section">
+                <h2>2. 로봇 부르기 (함수 호출)</h2>
+                <p class="topic-desc">만들어둔 로봇에게 <strong>"일해!"</strong> 하고 명령을 내려야 비로소 움직여요.</p>
+
+                <div class="code-preview-container">
+                    <div class="code-side">
+                        <div class="code-header">
+                            <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
+                            <span>JavaScript</span>
+                        </div>
+                        <pre class="code-box"><code><span class="js-func">bakeCookie</span>(); <span class="comment">// 로봇 작동!</span>
+<span class="js-func">bakeCookie</span>(); <span class="comment">// 한 번 더!</span></code></pre>
+                    </div>
+                    <div class="preview-side">
+                        <div class="preview-header">
+                            <i class="fa-solid fa-terminal"></i> Result
+                        </div>
+                        <div class="preview-content">
+                            <ul class="result-list">
+                                <li>1. 밀가루 넣기</li>
+                                <li>2. 설탕 넣기</li>
+                                <li>3. 굽기 🔥</li>
+                                <li class="divider-line">---</li>
+                                <li>1. 밀가루 넣기</li>
+                                <li>2. 설탕 넣기</li>
+                                <li>3. 굽기 🔥</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="analogy-box">
+                    <div class="analogy-icon">📢</div>
+                    <div class="analogy-text">
+                        <strong>비유:</strong> 로봇의 <strong>이름을 부르는 것</strong>(호출)이에요.<br>
+                        이름 뒤에 <code>()</code>를 붙여야 실행된답니다!
+                    </div>
+                </div>
+            </div>
+
+            <div class="fact-box">
+                <div class="fact-title">
+                    <i class="fa-solid fa-list-check"></i> 함수 핵심 정리
+                </div>
+                <table class="summary-table">
+                    <thead>
+                        <tr>
+                            <th>용어</th>
+                            <th>의미</th>
+                            <th>코드 예시</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>선언</strong> (Declaration)</td>
+                            <td>함수 만들기</td>
+                            <td><code>function 이름() { ... }</code></td>
+                        </tr>
+                        <tr>
+                            <td><strong>호출</strong> (Call)</td>
+                            <td>함수 실행하기</td>
+                            <td><code>이름();</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="navigation">
+                <button class="prev-btn" onclick="goToPreviousPage()"><i class="fa-solid fa-chevron-left"></i> 이전 (반복문)</button>
+
+                <div class="dots">
+                    <span class="dot active"></span> <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+
+                <button class="next-btn" id="nextPageBtn" onclick="goToNextPage()">
+                    다음 (화살표 함수) <i class="fa-solid fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="progress-card">
+            <h3><i class="fa-solid fa-layer-group"></i> 챕터 3: 함수와 배열</h3>
+
+            <div class="progress-row">
+                <div class="progress-item">
+                    <div class="progress-label">함수기초</div>
+                    <div class="progress-bar">
+                        <div class="fill" style="width: 50%;"></div> </div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">화살표함수</div>
+                    <div class="progress-bar"><div class="fill" style="width: 0%;"></div></div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">배열</div>
+                    <div class="progress-bar"><div class="fill" style="width: 0%;"></div></div>
+                </div>
+            </div>
+            <div class="progress-bar-text">1 / 3 진행중</div>
+        </div>
+    </section>
+
+    <div id="question-modal" class="question-modal hidden">
+        <div class="question-content">
+            <h3>선생님 질문이 있어요!</h3>
+            <textarea placeholder="여기에 질문을 입력하세요"></textarea>
+            <div class="question-buttons">
+                <button onclick="submitQuestion()">보내기</button>
+                <button onclick="closeQuestionBox()">닫기</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/javascript/InnerHTML.js"></script>
+    <script src="/javascript/learning/Javascript_Chapter3-1-1.js"></script>
+</body>
+</html>

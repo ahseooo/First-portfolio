@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Chapter 4-3</title>
+    <link rel="stylesheet" type="text/css" href="/css/learning/Javascript_Chapter4-3-1.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <header id="main-frame"></header>
+
+    <section class="home-section">
+        <div class="learning-card">
+
+            <button class="question-button" onclick="openQuestionBox()">
+                <i class="fa-solid fa-question"></i>
+            </button>
+
+            <div class="intro-header">
+                <h1>🌳 DOM (Document Object Model)</h1>
+            </div>
+
+            <div class="speech-bubble">
+                웹페이지는 사실 <strong>거대한 나무(Tree)</strong>처럼 생겼어! 🌲<br>
+                자바스크립트로 이 나무의 가지를 흔들고 잎을 바꿔보자.
+            </div>
+
+            <p class="chapter-desc">
+                DOM은 HTML 문서를 <strong>객체(Object)로 구조화</strong>한 모델이에요.<br>
+                자바스크립트는 이 DOM을 통해 HTML 태그를 찾고, 내용을 바꾸고, 스타일을 꾸밀 수 있답니다.
+            </p>
+
+            <div class="topic-section">
+                <h2>1. DOM 트리 구조</h2>
+                <p class="topic-desc">HTML 태그들은 부모와 자식 관계로 연결되어 있어요.</p>
+
+                <div class="tree-visual-box">
+                    <div class="tree-level">
+                        <div class="node root">document</div>
+                    </div>
+                    <div class="connector-vertical">│</div>
+                    <div class="tree-level">
+                        <div class="node html">html</div>
+                    </div>
+                    <div class="connector-vertical">│</div>
+                    <div class="tree-level">
+                        <div class="node body">body</div>
+                    </div>
+                    <div class="connector-branch">
+                        <div class="branch-line left"></div>
+                        <div class="branch-line right"></div>
+                    </div>
+                    <div class="tree-level">
+                        <div class="node element">h1</div>
+                        <div class="node element">p</div>
+                    </div>
+                </div>
+
+                <div class="analogy-box">
+                    <div class="analogy-icon">🌳</div>
+                    <div class="analogy-text">
+                        <strong>비유:</strong> 뿌리(Root)에서 시작해 가지가 뻗어나가는 <strong>나무</strong>와 같아요.<br>
+                        각각의 태그(h1, p 등)는 나무의 <strong>잎사귀(Node)</strong>랍니다.
+                    </div>
+                </div>
+            </div>
+
+            <hr class="divider">
+
+            <div class="topic-section">
+                <h2>2. 요소 찾고 바꾸기</h2>
+                <p class="topic-desc">자바스크립트로 HTML 요소를 콕 집어서 내용을 바꿔볼까요?</p>
+
+                <div class="code-preview-container">
+                    <div class="code-side">
+                        <div class="code-header">
+                            <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
+                            <span>JavaScript</span>
+                        </div>
+                        <pre class="code-box"><code><span class="comment">// 1. h1 태그를 찾는다</span>
+<span class="keyword">let</span> title = <span class="object">document</span>.<span class="method">querySelector</span>(<span class="string">"h1"</span>);
+
+<span class="comment">// 2. 내용을 바꾼다</span>
+title.<span class="property">textContent</span> = <span class="string">"반가워요! JS"</span>;
+
+<span class="comment">// 3. 색깔을 바꾼다</span>
+title.<span class="property">style</span>.<span class="property">color</span> = <span class="string">"blue"</span>;</code></pre>
+                    </div>
+                    <div class="preview-side">
+                        <div class="preview-header">
+                            <i class="fa-solid fa-wand-magic-sparkles"></i> Preview
+                        </div>
+                        <div class="preview-content center-content">
+                            <h1 id="preview-h1" style="color: blue;">반가워요! JS</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="divider">
+
+            <div class="topic-section">
+                <h2>3. 자주 쓰는 DOM 도구들</h2>
+                <p class="topic-desc">이 도구들만 알면 웹페이지를 마음대로 조종할 수 있어요!</p>
+
+                <div class="method-grid">
+                    <div class="method-card">
+                        <div class="method-icon">🔍</div>
+                        <div class="method-info">
+                            <h3>querySelector()</h3>
+                            <p>원하는 태그 <strong>하나를 찾아요.</strong></p>
+                            <code>document.querySelector("p")</code>
+                        </div>
+                    </div>
+                    <div class="method-card">
+                        <div class="method-icon">✏️</div>
+                        <div class="method-info">
+                            <h3>textContent</h3>
+                            <p>태그 안의 <strong>글자를 바꿔요.</strong></p>
+                            <code>el.textContent = "안녕"</code>
+                        </div>
+                    </div>
+                    <div class="method-card">
+                        <div class="method-icon">🎨</div>
+                        <div class="method-info">
+                            <h3>style</h3>
+                            <p>CSS <strong>디자인을 바꿔요.</strong></p>
+                            <code>el.style.color = "red"</code>
+                        </div>
+                    </div>
+                    <div class="method-card">
+                        <div class="method-icon">➕</div>
+                        <div class="method-info">
+                            <h3>createElement()</h3>
+                            <p>새로운 <strong>태그를 만들어요.</strong></p>
+                            <code>document.createElement("div")</code>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="divider">
+
+            <div class="topic-section">
+                <h2>4. 직접 해보기! 🎮</h2>
+                <div class="interactive-demo-box">
+                    <p id="demo-text">이 글자가 바뀔 거예요!</p>
+                    <button id="demo-btn" class="action-btn">눌러보세요 ✨</button>
+                </div>
+                <div class="code-box center-code" style="margin-top: 15px;">
+                    <code>btn.<span class="method">addEventListener</span>("click", <span class="keyword">function</span>() { ... })</code>
+                </div>
+            </div>
+
+            <div class="fact-box">
+                <div class="fact-title">
+                    <i class="fa-solid fa-check-circle"></i> 정리하기
+                </div>
+                <ul class="fact-list">
+                    <li><strong>DOM:</strong> HTML을 자바스크립트가 이해할 수 있게 만든 객체 모델.</li>
+                    <li><strong>document:</strong> 웹페이지 전체를 담당하는 가장 큰 객체.</li>
+                    <li><strong>조작 순서:</strong> 요소 찾기(querySelector) → 바꾸기(textContent, style).</li>
+                </ul>
+            </div>
+
+            <div class="navigation">
+                <button class="prev-btn" onclick="goToPreviousPage()"><i class="fa-solid fa-chevron-left"></i> 이전 (객체 메서드)</button>
+
+                <div class="dots">
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot active"></span> <span class="dot"></span>
+                </div>
+
+                <button class="next-btn" id="nextPageBtn" onclick="goToNextPage()">
+                    다음 (요소 조작하기) <i class="fa-solid fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="progress-card">
+            <h3><i class="fa-solid fa-cube"></i> 챕터 4: DOM과 웹 브라우저</h3>
+
+            <div class="progress-row">
+                <div class="progress-item">
+                    <div class="progress-label">객체기초</div>
+                    <div class="progress-bar"><div class="fill" style="width: 100%;"></div></div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">메서드</div>
+                    <div class="progress-bar"><div class="fill" style="width: 100%;"></div></div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">DOM이해</div>
+                    <div class="progress-bar">
+                        <div class="fill" style="width: 50%;"></div> </div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">DOM조작</div>
+                    <div class="progress-bar"><div class="fill" style="width: 0%;"></div></div>
+                </div>
+            </div>
+            <div class="progress-bar-text">3 / 4 진행중</div>
+        </div>
+    </section>
+
+    <div id="question-modal" class="question-modal hidden">
+        <div class="question-content">
+            <h3>선생님 질문이 있어요!</h3>
+            <textarea placeholder="여기에 질문을 입력하세요"></textarea>
+            <div class="question-buttons">
+                <button onclick="submitQuestion()">보내기</button>
+                <button onclick="closeQuestionBox()">닫기</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/javascript/InnerHTML.js"></script>
+    <script src="/javascript/learning/Javascript_Chapter4-3-1.js"></script>
+</body>
+</html>

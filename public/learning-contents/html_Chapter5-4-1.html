@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML5-4-1</title>
+    <link rel="stylesheet" type="text/css" href="/css/learning/html_Chapter5-4-1.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <header id="main-frame"></header>
+
+    <section class="home-section">
+        <div class="learning-card">
+
+            <button class="question-button" onclick="openQuestionBox()">
+                <i class="fa-solid fa-question"></i>
+            </button>
+
+            <div class="intro-header">
+                <h1>📺 멀티미디어 삽입하기</h1>
+            </div>
+
+            <div class="speech-bubble">
+                웹페이지가 너무 조용하다면? 🎵<br>
+                <strong>유튜브 영상</strong>이나 <strong>배경음악</strong>을 넣어보자!
+            </div>
+
+            <p class="chapter-desc">
+                다른 웹페이지를 불러오거나(iframe),<br>
+                오디오와 비디오 파일을 직접 재생하는 방법을 배워봅시다.
+            </p>
+
+            <div class="topic-section">
+                <h2>1. 다른 페이지 불러오기 (&lt;iframe&gt;)</h2>
+                <p class="topic-desc">내 페이지 안에 <strong>작은 창(Frame)</strong>을 뚫어서 다른 사이트나 지도를 보여줘요.</p>
+
+                <div class="code-preview-container">
+                    <div class="code-side">
+                        <div class="code-header">
+                            <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
+                            <span>HTML Code</span>
+                        </div>
+                        <pre class="code-box"><code><span class="tag">&lt;iframe</span> <span class="attr">src</span>=<span class="string">"https://youtube.com/..."</span>
+  <span class="attr">width</span>=<span class="string">"100%"</span> <span class="attr">height</span>=<span class="string">"200"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;/iframe&gt;</span></code></pre>
+                    </div>
+                    <div class="preview-side">
+                        <div class="preview-header">
+                            <i class="fa-brands fa-youtube"></i> YouTube Embed Example
+                        </div>
+                        <div class="preview-content">
+                            <div class="mock-iframe">
+                                <div class="play-icon">▶</div>
+                                <p>유튜브 영상이 여기에 나옵니다</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="divider">
+
+            <div class="topic-section">
+                <h2>2. 소리 넣기 (&lt;audio&gt;)</h2>
+                <p class="topic-desc">음악이나 효과음을 재생해요. <code>controls</code> 속성이 있어야 재생 버튼이 보입니다.</p>
+
+                <div class="code-preview-container">
+                    <div class="code-side">
+                        <div class="code-header">
+                            <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
+                            <span>HTML Code</span>
+                        </div>
+                        <pre class="code-box"><code><span class="tag">&lt;audio</span> <span class="attr">controls</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;source</span> <span class="attr">src</span>=<span class="string">"music.mp3"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;/audio&gt;</span></code></pre>
+                    </div>
+                    <div class="preview-side">
+                        <div class="preview-header">
+                            <i class="fa-solid fa-music"></i> Audio Player
+                        </div>
+                        <div class="preview-content center-content">
+                            <div class="mock-audio-player">
+                                <button class="mock-btn"><i class="fa-solid fa-play"></i></button>
+                                <div class="mock-progress">
+                                    <div class="mock-bar"></div>
+                                </div>
+                                <div class="mock-time">0:00 / 3:45</div>
+                                <button class="mock-btn"><i class="fa-solid fa-volume-high"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="divider">
+
+            <div class="topic-section">
+                <h2>3. 영상 넣기 (&lt;video&gt;)</h2>
+                <p class="topic-desc">동영상을 직접 재생해요. <code>width</code>로 크기를 조절하는 게 좋아요.</p>
+
+                <div class="code-preview-container">
+                    <div class="code-side">
+                        <div class="code-header">
+                            <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
+                            <span>HTML Code</span>
+                        </div>
+                        <pre class="code-box"><code><span class="tag">&lt;video</span> <span class="attr">controls</span> <span class="attr">width</span>=<span class="string">"100%"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;source</span> <span class="attr">src</span>=<span class="string">"movie.mp4"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;/video&gt;</span></code></pre>
+                    </div>
+                    <div class="preview-side">
+                        <div class="preview-header">
+                            <i class="fa-solid fa-film"></i> Video Player
+                        </div>
+                        <div class="preview-content">
+                            <div class="mock-video-player">
+                                <div class="big-play-btn">▶</div>
+                                <div class="video-controls">
+                                    <i class="fa-solid fa-play"></i>
+                                    <div class="mock-progress"></div>
+                                    <i class="fa-solid fa-expand"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="fact-box">
+                <div class="fact-title">
+                    <i class="fa-solid fa-list-check"></i> 핵심 속성 정리
+                </div>
+                <table class="summary-table">
+                    <thead>
+                        <tr>
+                            <th>속성</th>
+                            <th>설명</th>
+                            <th>사용 태그</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>src</code></td>
+                            <td>파일 경로/주소</td>
+                            <td>iframe, audio, video</td>
+                        </tr>
+                        <tr>
+                            <td><code>controls</code></td>
+                            <td>재생 버튼 표시</td>
+                            <td>audio, video</td>
+                        </tr>
+                        <tr>
+                            <td><code>autoplay</code></td>
+                            <td>자동 재생</td>
+                            <td>audio, video</td>
+                        </tr>
+                        <tr>
+                            <td><code>loop</code></td>
+                            <td>무한 반복</td>
+                            <td>audio, video</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="navigation">
+                <button class="prev-btn" onclick="goToPreviousPage()"><i class="fa-solid fa-chevron-left"></i> 이전</button>
+
+                <div class="dots">
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span> 
+                    <span class="dot active"></span> </div>
+
+                <button class="next-btn" id="nextPageBtn" onclick="goToNextPage()">
+                    챕터 완료! 🎉
+                </button>
+            </div>
+        </div>
+
+        <div class="progress-card">
+            <h3><i class="fa-solid fa-trophy"></i> 챕터 5: 시맨틱 & 멀티미디어</h3>
+
+            <div class="progress-row">
+                <div class="progress-item">
+                    <div class="progress-label">시맨틱 태그</div>
+                    <div class="progress-bar"><div class="fill" style="width: 100%;"></div></div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">블록/인라인</div>
+                    <div class="progress-bar"><div class="fill" style="width: 100%;"></div></div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">레이아웃</div>
+                    <div class="progress-bar"><div class="fill" style="width: 100%;"></div></div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">멀티미디어</div>
+                    <div class="progress-bar">
+                        <div class="fill" style="width: 100%;"></div> </div>
+                </div>
+            </div>
+            <div class="progress-bar-text">4 / 4 완료 (축하해요!)</div>
+        </div>
+    </section>
+
+    <div id="question-modal" class="question-modal hidden">
+        <div class="question-content">
+            <h3>선생님 질문이 있어요!</h3>
+            <textarea placeholder="여기에 질문을 입력하세요"></textarea>
+            <div class="question-buttons">
+                <button onclick="submitQuestion()">보내기</button>
+                <button onclick="closeQuestionBox()">닫기</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/javascript/InnerHTML.js"></script>
+    <script src="/javascript/learning/html_Chapter5-4-1.js"></script>
+</body>
+</html>

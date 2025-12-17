@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Chapter 3-4</title>
+    <link rel="stylesheet" type="text/css" href="/css/learning/Javascript_Chapter3-4-1.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <header id="main-frame"></header>
+
+    <section class="home-section">
+        <div class="learning-card">
+
+            <button class="question-button" onclick="openQuestionBox()">
+                <i class="fa-solid fa-question"></i>
+            </button>
+
+            <div class="intro-header">
+                <h1>🚂 배열 조작하기 (push, pop, forEach)</h1>
+            </div>
+
+            <div class="speech-bubble">
+                기차에 화물을 싣거나 내리는 것처럼,<br>
+                <strong>배열에 데이터를 추가하고 삭제</strong>하는 방법을 알아보자! 📦
+            </div>
+
+            <p class="chapter-desc">
+                이미 만들어진 배열에 새로운 값을 넣거나(<code>push</code>),<br>
+                마지막 값을 빼거나(<code>pop</code>), 하나씩 꺼내볼 수(<code>forEach</code>) 있어요.
+            </p>
+
+            <div class="topic-section">
+                <h2>1. 뒤에 추가하기 (push)</h2>
+                <p class="topic-desc">기차의 맨 뒤에 새로운 칸을 연결해요.</p>
+
+                <div class="code-preview-container">
+                    <div class="code-side">
+                        <div class="code-header">
+                            <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
+                            <span>JavaScript</span>
+                        </div>
+                        <pre class="code-box"><code><span class="keyword">let</span> train = [<span class="string">"A"</span>, <span class="string">"B"</span>];
+train.<span class="js-func">push</span>(<span class="string">"C"</span>);
+<span class="js-func">console.log</span>(train);</code></pre>
+                    </div>
+                    <div class="preview-side">
+                        <div class="preview-header">
+                            <i class="fa-solid fa-train"></i> Train Simulation
+                        </div>
+                        <div class="preview-content center-content">
+                            <div class="train-visual">
+                                <div class="train-head">🚂</div>
+                                <div class="train-car">A</div>
+                                <div class="train-car">B</div>
+                                <div class="train-car new-car">C</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="divider">
+
+            <div class="topic-section">
+                <h2>2. 마지막 빼기 (pop)</h2>
+                <p class="topic-desc">맨 뒤에 있는 칸을 떼어내요.</p>
+
+                <div class="code-preview-container">
+                    <div class="code-side">
+                        <div class="code-header">
+                            <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
+                            <span>JavaScript</span>
+                        </div>
+                        <pre class="code-box"><code><span class="keyword">let</span> train = [<span class="string">"A"</span>, <span class="string">"B"</span>, <span class="string">"C"</span>];
+train.<span class="js-func">pop</span>();
+<span class="js-func">console.log</span>(train);</code></pre>
+                    </div>
+                    <div class="preview-side">
+                        <div class="preview-header">
+                            <i class="fa-solid fa-train"></i> Train Simulation
+                        </div>
+                        <div class="preview-content center-content">
+                            <div class="train-visual">
+                                <div class="train-head">🚂</div>
+                                <div class="train-car">A</div>
+                                <div class="train-car">B</div>
+                                <div class="train-car removed-car">C</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="divider">
+
+            <div class="topic-section">
+                <h2>3. 하나씩 꺼내기 (forEach)</h2>
+                <p class="topic-desc">배열에 있는 모든 데이터를 <strong>하나씩 차례대로</strong> 확인해요.</p>
+
+                <div class="code-preview-container">
+                    <div class="code-side">
+                        <div class="code-header">
+                            <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
+                            <span>JavaScript</span>
+                        </div>
+                        <pre class="code-box"><code><span class="keyword">let</span> fruits = [<span class="string">"사과"</span>, <span class="string">"포도"</span>];
+
+fruits.<span class="js-func">forEach</span>(<span class="keyword">function</span>(<span class="param">item</span>) {
+  <span class="js-func">console.log</span>(<span class="param">item</span> + <span class="string">" 맛있다!"</span>);
+});</code></pre>
+                    </div>
+                    <div class="preview-side">
+                        <div class="preview-header">
+                            <i class="fa-solid fa-terminal"></i> Console Result
+                        </div>
+                        <div class="preview-content">
+                            <ul class="result-list">
+                                <li>🍎 사과 맛있다!</li>
+                                <li>🍇 포도 맛있다!</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="analogy-box">
+                    <div class="analogy-icon">🔄</div>
+                    <div class="analogy-text">
+                        <strong>비유:</strong> 회전초밥 레일에서 접시를 <strong>하나씩 집어서 먹는 것</strong>과 같아요! 🍣
+                    </div>
+                </div>
+            </div>
+
+            <div class="fact-box">
+                <div class="fact-title">
+                    <i class="fa-solid fa-table-list"></i> 배열 메서드 정리
+                </div>
+                <table class="summary-table">
+                    <thead>
+                        <tr>
+                            <th>메서드</th>
+                            <th>역할</th>
+                            <th>방향</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>push()</code></td>
+                            <td>데이터 <strong>추가</strong></td>
+                            <td>맨 뒤 ➕</td>
+                        </tr>
+                        <tr>
+                            <td><code>pop()</code></td>
+                            <td>데이터 <strong>제거</strong></td>
+                            <td>맨 뒤 ➖</td>
+                        </tr>
+                        <tr>
+                            <td><code>forEach()</code></td>
+                            <td><strong>반복</strong> 실행</td>
+                            <td>처음부터 끝까지 🔄</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="navigation">
+                <button class="prev-btn" onclick="goToPreviousPage()"><i class="fa-solid fa-chevron-left"></i> 이전 (배열과 객체)</button>
+
+                <div class="dots">
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot active"></span> </div>
+
+                <button class="next-btn" id="nextPageBtn" onclick="goToNextPage()">
+                    다음 (챕터 완료!) <i class="fa-solid fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="progress-card">
+            <h3><i class="fa-solid fa-layer-group"></i> 챕터 3: 함수와 배열</h3>
+
+            <div class="progress-row">
+                <div class="progress-item">
+                    <div class="progress-label">함수기초</div>
+                    <div class="progress-bar"><div class="fill" style="width: 100%;"></div></div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">매개변수</div>
+                    <div class="progress-bar"><div class="fill" style="width: 100%;"></div></div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">복합데이터</div>
+                    <div class="progress-bar"><div class="fill" style="width: 100%;"></div></div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">배열조작</div>
+                    <div class="progress-bar">
+                        <div class="fill" style="width: 100%;"></div> </div>
+                </div>
+            </div>
+            <div class="progress-bar-text">4 / 4 완료 (수고하셨습니다!)</div>
+        </div>
+    </section>
+
+    <div id="question-modal" class="question-modal hidden">
+        <div class="question-content">
+            <h3>선생님 질문이 있어요!</h3>
+            <textarea placeholder="여기에 질문을 입력하세요"></textarea>
+            <div class="question-buttons">
+                <button onclick="submitQuestion()">보내기</button>
+                <button onclick="closeQuestionBox()">닫기</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/javascript/InnerHTML.js"></script>
+    <script src="/javascript/learning/Javascript_Chapter3-4-1.js"></script>
+</body>
+</html>

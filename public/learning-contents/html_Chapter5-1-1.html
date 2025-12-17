@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML5-1-1</title>
+    <link rel="stylesheet" type="text/css" href="/css/learning/html_Chapter5-1-1.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <header id="main-frame"></header>
+
+    <section class="home-section">
+        <div class="learning-card">
+
+            <button class="question-button" onclick="openQuestionBox()">
+                <i class="fa-solid fa-question"></i>
+            </button>
+
+            <div class="intro-header">
+                <h1>🏗️ 의미 있는 태그 (Semantic Tag)</h1>
+            </div>
+
+            <div class="speech-bubble">
+                <code>&lt;div&gt;</code>만 잔뜩 쓰면 뭐가 뭔지 모르겠지? 😵‍💫<br>
+                <strong>이름표(의미)</strong>가 있는 태그를 써서 구조를 튼튼하게 만들자!
+            </div>
+
+            <p class="chapter-desc">
+                시맨틱(Semantic)은 <strong>"의미가 있는"</strong>이라는 뜻이에요.<br>
+                헤더, 메뉴, 본문처럼 각 구역의 역할에 맞는 태그를 사용하는 것이 중요합니다.
+            </p>
+
+            <div class="topic-section">
+                <h2>1. 주요 시맨틱 태그 알아보기</h2>
+                <p class="topic-desc">웹페이지를 구성하는 대표적인 7가지 태그를 소개합니다.</p>
+
+                <div class="semantic-grid">
+                    
+                    <div class="semantic-card">
+                        <div class="card-icon">🏠</div>
+                        <div class="card-info">
+                            <span class="tag-name">&lt;header&gt;</span>
+                            <span class="tag-desc">머리말 (로고, 메뉴)</span>
+                        </div>
+                    </div>
+
+                    <div class="semantic-card">
+                        <div class="card-icon">🧭</div>
+                        <div class="card-info">
+                            <span class="tag-name">&lt;nav&gt;</span>
+                            <span class="tag-desc">네비게이션 (링크 모음)</span>
+                        </div>
+                    </div>
+
+                    <div class="semantic-card highlight">
+                        <div class="card-icon">⭐</div>
+                        <div class="card-info">
+                            <span class="tag-name">&lt;main&gt;</span>
+                            <span class="tag-desc">핵심 내용 (페이지당 1개)</span>
+                        </div>
+                    </div>
+
+                    <div class="semantic-card">
+                        <div class="card-icon">📦</div>
+                        <div class="card-info">
+                            <span class="tag-name">&lt;section&gt;</span>
+                            <span class="tag-desc">구역 (주제별 묶음)</span>
+                        </div>
+                    </div>
+
+                    <div class="semantic-card">
+                        <div class="card-icon">📰</div>
+                        <div class="card-info">
+                            <span class="tag-name">&lt;article&gt;</span>
+                            <span class="tag-desc">독립적인 글 (기사, 블로그)</span>
+                        </div>
+                    </div>
+
+                    <div class="semantic-card">
+                        <div class="card-icon">📌</div>
+                        <div class="card-info">
+                            <span class="tag-name">&lt;aside&gt;</span>
+                            <span class="tag-desc">옆쪽 내용 (광고, 사이드바)</span>
+                        </div>
+                    </div>
+
+                    <div class="semantic-card full-width">
+                        <div class="card-icon">🦶</div>
+                        <div class="card-info">
+                            <span class="tag-name">&lt;footer&gt;</span>
+                            <span class="tag-desc">바닥글 (저작권, 정보)</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <hr class="divider">
+
+            <div class="topic-section">
+                <h2>2. 웹페이지 구조 시각화</h2>
+                <p class="topic-desc">실제 웹사이트에서 이 태그들이 어떻게 배치되는지 볼까요?</p>
+
+                <div class="layout-visual-box">
+                    <div class="layout-header">
+                        <code>&lt;header&gt;</code>
+                        <div class="layout-nav"><code>&lt;nav&gt;</code></div>
+                    </div>
+                    
+                    <div class="layout-body">
+                        <div class="layout-main">
+                            <code>&lt;main&gt;</code>
+                            <div class="layout-section"><code>&lt;section&gt;</code></div>
+                            <div class="layout-article"><code>&lt;article&gt;</code></div>
+                        </div>
+                        <div class="layout-aside">
+                            <code>&lt;aside&gt;</code>
+                        </div>
+                    </div>
+
+                    <div class="layout-footer">
+                        <code>&lt;footer&gt;</code>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="divider">
+
+            <div class="topic-section">
+                <h2>3. 시맨틱 태그를 쓰는 이유</h2>
+                
+                <div class="reason-grid">
+                    <div class="reason-card">
+                        <div class="reason-icon">👀</div>
+                        <h4>가독성</h4>
+                        <p>개발자가 코드를 읽을 때 구조를 쉽게 파악할 수 있어요.</p>
+                    </div>
+                    <div class="reason-card">
+                        <div class="reason-icon">🔍</div>
+                        <h4>SEO (검색엔진)</h4>
+                        <p>구글 같은 검색엔진이 중요한 내용을 더 잘 찾아내요.</p>
+                    </div>
+                    <div class="reason-card">
+                        <div class="reason-icon">♿</div>
+                        <h4>웹 접근성</h4>
+                        <p>시각장애인용 스크린 리더가 내용을 더 정확하게 읽어줘요.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="navigation">
+                <button class="prev-btn" onclick="goToPreviousPage()"><i class="fa-solid fa-chevron-left"></i> 챕터 5 목차</button>
+
+                <div class="dots">
+                    <span class="dot active"></span> <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+
+                <button class="next-btn" id="nextPageBtn" onclick="goToNextPage()">
+                    다음 <i class="fa-solid fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="progress-card">
+            <h3><i class="fa-solid fa-trophy"></i> 챕터 5: 시맨틱 & 블록/인라인</h3>
+
+            <div class="progress-row">
+                <div class="progress-item">
+                    <div class="progress-label">시맨틱 태그</div>
+                    <div class="progress-bar">
+                        <div class="fill" style="width: 50%;"></div> </div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">블록/인라인</div>
+                    <div class="progress-bar"><div class="fill" style="width: 0%;"></div></div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">div/span</div>
+                    <div class="progress-bar"><div class="fill" style="width: 0%;"></div></div>
+                </div>
+            </div>
+            <div class="progress-bar-text">1 / 3 진행중</div>
+        </div>
+    </section>
+
+    <div id="question-modal" class="question-modal hidden">
+        <div class="question-content">
+            <h3>선생님 질문이 있어요!</h3>
+            <textarea placeholder="여기에 질문을 입력하세요"></textarea>
+            <div class="question-buttons">
+                <button onclick="submitQuestion()">보내기</button>
+                <button onclick="closeQuestionBox()">닫기</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/javascript/InnerHTML.js"></script>
+    <script src="/javascript/learning/html_Chapter5-1-1.js"></script>
+</body>
+</html>

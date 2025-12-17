@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자바1-1-2</title>
+    <link rel="stylesheet" href="/css/learning/Java_Chapter1-1-2.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+
+<body>
+    <header id="main-frame"></header> <!--상단 헤더 부분-->
+
+    <!-- 메인 콘텐츠 -->
+    <section class="home-section">
+        <div class="java-story-card">
+
+            <div class="intro-header">
+                <h1>☕ 자바의 탄생 이야기</h1>
+            </div>
+
+            <!-- 말풍선 -->
+            <div class="story-bubble">
+                자바는 언제 어떻게 태어났을까? 재미있는 이야기를 들려줄게!
+            </div>
+
+            <!-- 타임라인 -->
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-left">
+                        <div class="timeline-dot">
+                            <i class="fa-solid fa-lightbulb"></i>
+                        </div>
+                        <div class="timeline-line"></div>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="timeline-tag year">1991년</div>
+                        <div class="timeline-title">프로젝트 시작</div>
+                        <div class="timeline-desc">
+                            제임스 고슬링이 'Oak'라는 언어 개발
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-left">
+                        <div class="timeline-dot">
+                            <i class="fa-solid fa-bolt"></i>
+                        </div>
+                        <div class="timeline-line"></div>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="timeline-tag year">1995년</div>
+                        <div class="timeline-title">자바 탄생!</div>
+                        <div class="timeline-desc">
+                            'Java'로 이름 변경하고 세상에 공개
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-left">
+                        <div class="timeline-dot">
+                            <i class="fa-solid fa-rocket"></i>
+                        </div>
+                        <div class="timeline-line last"></div>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="timeline-tag now">현재</div>
+                        <div class="timeline-title">계속 발전 중</div>
+                        <div class="timeline-desc">
+                            매년 새로운 기능이 추가되고 있어
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 질문 카드 -->
+            <div class="question-card" id="questionToggle">
+                <div class="question-left">
+                    <div class="question-icon">
+                        <i class="fa-solid fa-question"></i>
+                    </div>
+                    <span>왜 이름이 '자바'일까?</span>
+                </div>
+                <div class="question-arrow">
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+            </div>
+
+            <div class="question-answer">
+                <p>
+                    개발자들이 좋아하는 커피 이름에서 따왔어!
+                    그래서 자바 로고가 커피잔이야 ☕
+                </p>
+            </div>
+
+            <!-- 하단 네비 -->
+            <div class="navigation">
+
+                <button class="prev-btn">
+                    <i class="fa-solid fa-chevron-left"></i> 이전
+                </button>
+
+                <div class="dots">
+                    <span class="dot"></span>
+                    <span class="dot active"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+
+
+                <button class="next-btn" id="nextPageBtn">
+                    다음 <i class="fa-solid fa-chevron-right"></i>
+                </button>
+            </div>
+
+        </div>
+
+        <!-- 학습 진행 상황 -->
+        <div class="progress-card">
+            <h3><i class="fa-solid fa-trophy"></i> 학습 진행 상황</h3>
+
+            <div class="progress-row">
+
+                <div class="progress-item">
+                    <div class="progress-label">자바란?</div>
+                    <div class="progress-bar">
+                        <div class="fill" style="width: 100%;"></div>
+                    </div>
+                </div>
+
+                <div class="progress-item">
+                    <div class="progress-label">자바의 탄생 이야기</div>
+                    <div class="progress-bar">
+                        <div class="fill" style="width: 50%;"></div>
+                    </div>
+                </div>
+
+                <div class="progress-item">
+                    <div class="progress-label">자바의 특별한 능력</div>
+                    <div class="progress-bar">
+                        <div class="fill" style="width: 0%;"></div>
+                    </div>
+                </div>
+
+                <div class="progress-item">
+                    <div class="progress-label">무엇을 만들 수 있을까?</div>
+                    <div class="progress-bar">
+                        <div class="fill" style="width: 0%;"></div>
+                    </div>
+                </div>
+
+                <div class="progress-item">
+                    <div class="progress-label">자바의 인기 비결</div>
+                    <div class="progress-bar">
+                        <div class="fill" style="width: 0%;"></div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="progress-bar-text">2 / 5  진행 중</div>
+        </div>
+    </section>
+
+    <script src="/javascript/learning/Java_Chapter1-1-2.js"></script>
+    <script src="/javascript/InnerHTML.js"></script>
+</body>
+
+</html>

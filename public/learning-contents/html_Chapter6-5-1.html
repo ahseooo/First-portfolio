@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML6-5-1</title>
+    <link rel="stylesheet" type="text/css" href="/css/learning/html_Chapter6-5-1.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <header id="main-frame"></header>
+
+    <section class="home-section">
+        <div class="learning-card">
+
+            <button class="question-button" onclick="openQuestionBox()">
+                <i class="fa-solid fa-question"></i>
+            </button>
+
+            <div class="intro-header">
+                <h1>🧩 HTML 최종 점검 퀴즈</h1>
+            </div>
+
+            <div class="speech-bubble">
+                지금까지 배운 내용을 확인해볼까? 🧐<br>
+                문제를 모두 맞히면 <strong>HTML 마스터</strong> 인정!
+            </div>
+
+            <div class="quiz-container">
+                
+                <div class="quiz-header">
+                    <span class="q-count">Question <span id="current-q">1</span> / <span id="total-q">5</span></span>
+                    <div class="progress-track">
+                        <div class="progress-fill" id="quiz-progress"></div>
+                    </div>
+                </div>
+
+                <div id="quiz-box">
+                    <h3 id="question-text" class="question-text">문제가 여기에 나옵니다.</h3>
+                    
+                    <div class="options-grid" id="options-area">
+                        </div>
+                </div>
+
+                <div id="result-box" class="result-box hidden">
+                    <div class="score-circle">
+                        <span id="score-text">0</span>
+                        <span class="score-label">점</span>
+                    </div>
+                    <h3 id="result-msg">결과 메시지</h3>
+                    <p id="result-desc">설명 메시지</p>
+                    
+                    <div class="result-buttons">
+                        <button class="retry-btn" onclick="restartQuiz()">🔄 다시 풀기</button>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="navigation">
+                <button class="prev-btn" onclick="goToPreviousPage()"><i class="fa-solid fa-chevron-left"></i> 이전 (시간표)</button>
+
+                <div class="dots">
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot active"></span> </div>
+
+                <button class="next-btn" id="nextPageBtn" onclick="goToNextPage()">
+                    과정 종료 (홈으로) <i class="fa-solid fa-house"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <div id="question-modal" class="question-modal hidden">
+        <div class="question-content">
+            <h3>선생님 질문이 있어요!</h3>
+            <textarea placeholder="여기에 질문을 입력하세요"></textarea>
+            <div class="question-buttons">
+                <button onclick="submitQuestion()">보내기</button>
+                <button onclick="closeQuestionBox()">닫기</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/javascript/InnerHTML.js"></script>
+    <script src="/javascript/learning/html_Chapter6-5-1.js"></script>
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Python_Chapter1-4-1</title>
+
+    <link rel="stylesheet" href="/css/learning/Python_Chapter1-4-1.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+</head>
+
+<body>
+    <header id="main-frame"></header> <!--상단 헤더 부분-->
+
+    <section class="home-section">
+
+        <div class="content-card">
+
+            <!-- 제목 -->
+            <div class="intro-header">
+                <h1 id="mainTitle">💻 PyCharm이 뭐야?</h1>
+            </div>
+
+            <!-- IDE 설명 -->
+            <div class="info-section">
+
+                <div class="story-bubble">
+                    PyCharm은 파이썬 전용 IDE야.<br>
+                    코드 작성, 실행, 디버깅을 한 프로그램 안에서 편하게 할 수 있도록 도와주는 도구야!
+                </div>
+            </div>
+
+            <!-- IDE가 해주는 것들 -->
+            <div class="feature-section">
+
+                <h2 class="section-title">📌 메모장 대신 PyCharm사용하면 좋은 이유</h2>
+
+                <div class="feature-grid">
+
+                    <div class="feature-card">
+                        <div class="emoji">📝</div>
+                        <div class="card-title">문법 하이라이트 표시</div>
+                        <div class="card-desc">
+                            코드 문법의 하이라이트 기능으로 코드의 내용을 구분하기 편해.
+                        </div>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="emoji">🖥️</div>
+                        <div class="card-title">자동 완성 기능</div>
+                        <div class="card-desc">
+                            자동 완성기능으로 빠르게 입력할 수 있어.
+                        </div>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="emoji">🎯</div>
+                        <div class="card-title">오류 표시</div>
+                        <div class="card-desc">
+                            오류를 빨간 줄로 표시해서 알려줘.
+                        </div>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="emoji">📁</div>
+                        <div class="card-title">파일 관리</div>
+                        <div class="card-desc">
+                            여러 파일을 프로젝트로 깔끔하게 관리할 수 있어.
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- 설치 전 준비 -->
+            <div class="prepare-section">
+                <h2 class="section-title">✔ 설치 전 준비</h2>
+
+                <div class="check-item">
+                    <span class="check-icon">✔</span>
+                    인터넷 연결 확인
+                </div>
+
+                <div class="check-item">
+                    <span class="check-icon">✔</span>
+                    컴퓨터 운영체제 확인 (Windows / Mac / Linux)
+                </div>
+
+                <div class="check-item">
+                    <span class="check-icon">✔</span>
+                    디스크 저장 공간 남겨두기
+                </div>
+            </div>
+
+            <!-- 네비게이션 -->
+            <div class="navigation inside">
+
+                <button class="prev-btn" id="pagePrev">
+                    <i class="fa-solid fa-chevron-left"></i> 이전
+                </button>
+
+                <div class="dots" id="pagerDots">
+                    <span class="dot active"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+
+                <button class="next-btn" id="pageNext">
+                    다음 <i class="fa-solid fa-chevron-right"></i>
+                </button>
+
+            </div>
+        </div>
+
+        <!-- 학습 상황 -->
+        <div class="progress-card">
+            <h3><i class="fa-solid fa-trophy"></i> 학습 진행 상황</h3>
+
+            <div class="progress-row">
+                <div class="progress-item">
+                    <div class="progress-label">PyCharm이 뭐야?</div>
+                    <div class="progress-bar">
+                        <div class="fill" style="width: 50%;"></div>
+                    </div>
+                </div>
+
+                <div class="progress-item">
+                    <div class="progress-label">PyCharm 설치하기</div>
+                    <div class="progress-bar">
+                        <div class="fill" style="width:0%;"></div>
+                    </div>
+                </div>
+
+                <div class="progress-item">
+                    <div class="progress-label">첫 프로젝트 만들기</div>
+                    <div class="progress-bar">
+                        <div id="progressJdk" class="fill" style="width:0%;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="progressText" class="progress-bar-text">1 / 3  진행 중</div>
+        </div>
+
+    </section>
+
+    <script src="/javascript/learning/Python_Chapter1-4-1.js"></script>
+    <script src="/javascript/InnerHTML.js"></script>
+
+</body>
+
+</html>

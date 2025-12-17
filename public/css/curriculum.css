@@ -1,0 +1,904 @@
+@charset "UTF-8";
+
+/* =========================================
+   1. 기본 설정 및 변수 (Base & Variables)
+   ========================================= */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap");
+@import url("sub_frame.css");
+
+:root {
+    --primary-color: #667eea;
+    --primary-light: #a5b4fc;
+    --primary-dark: #5a67d8;
+    --secondary-color: #48bb78;
+    --secondary-light: #9ae6b4;
+    --accent-color: #ed8936;
+    --accent-light: #fbb660;
+    --text-primary: #2d3748;
+    --text-secondary: #4a5568;
+    --text-muted: #718096;
+    --bg-primary: #ffffff;
+    --bg-secondary: #f7fafc;
+    --bg-tertiary: #edf2f7;
+    --bg-code: #1a202c;
+    --border-light: #e2e8f0;
+    --border-medium: #cbd5e1;
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+    --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    font-family: "Noto Sans KR", sans-serif;
+    background: white;
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+/* =========================================
+   2. 레이아웃 (Layout: Header, Sidebar, Main)
+   ========================================= */
+/* 헤더 */
+.header-section {
+    position: relative;
+    background: #667eea;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    height: 60px;
+    min-width: var(--page-min);
+    left: 255px;
+    width: calc(100% - 255px);
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.sidebar.close~.header-section {
+    left: 75px;
+    width: calc(100% - 75px);
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0 30px;
+    gap: 15px;
+    height: 100%;
+}
+
+.header-content .fa-bars {
+    font-size: 28px;
+    color: #fff;
+    margin-right: 15px;
+    cursor: pointer;
+}
+
+.header-content .fa-bars:hover {
+    font-size: 29px;
+}
+
+.header-content .title {
+    font-size: 25px;
+    font-weight: 600;
+    color: #fff;
+}
+
+/* 메인 영역 */
+.home-section {
+    position: relative;
+    left: 255px;
+    width: calc(100vw - 255px);
+    height: calc(100vh - 60px);
+    transition: all 0.3s ease;
+    padding: 40px 70px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar.close~.home-section {
+    left: 75px;
+    width: calc(100% - 75px);
+}
+
+/* =========================================
+   3. 공통 컨테이너 및 타이틀 (Common Containers)
+   ========================================= */
+/* 모든 페이지의 메인 흰색 박스 스타일 통합 */
+.content-card,
+.java-intro-card,
+.java-story-card,
+.java-ability-card,
+.java-popularity-card,
+.java-feature-card {
+    width: 100%;
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: var(--shadow-lg);
+    margin-bottom: 20px;
+}
+
+/* 파란색 배경 타이틀 헤더 */
+.intro-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 35px;
+    background-color: #e1e9ff;
+    border-radius: 15px;
+}
+
+.intro-header h1 {
+    font-size: 30px;
+    font-weight: 700;
+    padding: 20px;
+}
+
+/* 섹션 타이틀 */
+.section-title {
+    font-size: 1.4em;
+    font-weight: 700;
+    color: #1e1b4b;
+    margin-bottom: 18px;
+}
+
+/* =========================================
+   4. 공통 컴포넌트 (Components)
+   ========================================= */
+/* 말풍선 스타일 통합 */
+.story-bubble,
+.speech-bubble {
+    padding: 18px 24px;
+    background: white;
+    border-radius: 14px;
+    border: 2px solid #e1e9ff;
+    font-size: 18px;
+    margin-bottom: 25px;
+}
+
+/* 정보/팁 박스 */
+.info-box {
+    background: #eef2ff;
+    border: 3px solid #e1e9ff;
+    padding: 18px 20px;
+    border-radius: 14px;
+    margin-bottom: 25px;
+}
+
+.tip-box {
+    background: #fff8e6;
+    border-left: 5px solid #f6c061;
+    padding: 15px 18px;
+    border-radius: 10px;
+    line-height: 1.6;
+    color: #8a6200;
+    font-size: 15px;
+    margin-bottom: 20px;
+}
+
+.tip-box h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.tip-box ul {
+    padding-left: 20px;
+}
+
+.tip-box li {
+    margin-bottom: 8px;
+    font-size: 15px;
+}
+
+/* 하단 네비게이션 */
+.navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 35px;
+}
+
+.prev-btn,
+.next-btn {
+    background: #f8f8f8;
+    border: 1px solid #ddd;
+    padding: 12px 20px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.next-btn {
+    background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+    border: none;
+    color: #ffffff;
+}
+
+.prev-btn:hover,
+.next-btn:hover {
+    opacity: 0.9;
+}
+
+.dots {
+    display: flex;
+    gap: 10px;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    background: #ddd;
+    border-radius: 50%;
+}
+
+.dot.active {
+    background: var(--accent-color);
+}
+
+/* 진행바 (Progress Bar) */
+.progress-row {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 20px;
+    gap: 25px;
+}
+
+.progress-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 18%;
+}
+
+.progress-label {
+    font-size: 14px;
+    margin-bottom: 8px;
+    color: #444;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background: #e6e9f1;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress-bar .fill {
+    height: 100%;
+    background: #667eea;
+    border-radius: 10px;
+    transition: width 0.3s ease-in-out;
+}
+
+.progress-card h3 {
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: #667eea;
+}
+
+.progress-bar-text {
+    text-align: center;
+    font-size: 16px;
+    color: #444;
+    margin-bottom: 20px;
+}
+
+
+/* =========================================
+   5. 페이지별 스타일 (Page Specific Styles)
+   ========================================= */
+
+/* --- [1-1] Hero Section (Intro) --- */
+.hero-section {
+    background: white;
+    border-radius: 20px;
+    padding: 25px 30px;
+    margin-bottom: 18px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+}
+
+.hero-content h2 {
+    font-size: 32px;
+    color: #2d3748;
+    margin-bottom: 16px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-content p {
+    font-size: 15px;
+    color: #4a5568;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+.start-button {
+    background: linear-gradient(135deg, #ff6b35 0%, #ff8c42 100%);
+    color: white;
+    border: none;
+    padding: 14px 35px;
+    font-size: 16px;
+    border-radius: 25px;
+    cursor: pointer;
+    box-shadow: 0 5px 20px rgba(255, 107, 53, 0.3);
+    transition: all 0.3s ease;
+}
+
+.start-button:hover {
+    transform: translateY(-3px);
+}
+
+.mascot {
+    width: 220px;
+    height: 220px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+.mascot-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.objectives-section {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-bottom: 18px;
+}
+
+.objective-card,
+.progress-card {
+    background: white;
+    border-radius: 15px;
+    padding: 20px 30px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+.objective-card:hover {
+    transform: translateY(-5px);
+}
+
+.objective-icon {
+    width: 38px;
+    height: 38px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    margin-right: 12px;
+}
+
+.objective-card ul {
+    list-style: none;
+}
+
+.objective-card li {
+    padding: 6px 0;
+    display: flex;
+    align-items: flex-start;
+}
+
+.objective-card li:before {
+    content: "✓";
+    color: #48bb78;
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.stat-item {
+    text-align: center;
+    padding: 15px;
+    background: #f7fafc;
+    border-radius: 12px;
+}
+
+.stat-value {
+    font-size: 22px;
+    font-weight: bold;
+    color: #667eea;
+}
+
+/* --- [1-1-1 ~ 1-1-4] Features & Timeline --- */
+.fact-box {
+    background: #eef2ff;
+    border: 3px solid #e1e9ff;
+    border-radius: 15px;
+    padding: 25px;
+    margin-bottom: 30px;
+}
+
+.fact-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #667eea;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.fact-list {
+    list-style: none;
+    padding: 0;
+}
+
+.fact-list li {
+    background: white;
+    padding: 18px 20px;
+    border-radius: 12px;
+    margin-bottom: 12px;
+    font-size: 17px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border: 1px solid #eee;
+}
+
+.timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    margin-bottom: 25px;
+}
+
+.timeline-item {
+    display: flex;
+    gap: 18px;
+}
+
+.timeline-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.timeline-dot {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--primary-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-dark);
+}
+
+.timeline-line {
+    width: 3px;
+    flex: 1;
+    background: #eef2ff;
+    margin-top: 6px;
+}
+
+.timeline-content {
+    flex: 1;
+    background: #eef2ff;
+    border-radius: 16px;
+    border: 2px solid var(--primary-light);
+    padding: 14px 18px;
+}
+
+.timeline-tag {
+    display: inline-block;
+    font-size: 13px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    margin-bottom: 6px;
+}
+
+.timeline-tag.year {
+    color: var(--primary-dark);
+    background: #dde5ff;
+}
+
+.timeline-tag.now {
+    color: #ffffff;
+    background: var(--primary-color);
+}
+
+.question-card {
+    margin-top: 10px;
+    padding: 16px 20px;
+    border-radius: 16px;
+    background: linear-gradient(90deg, #edf2ff, #f5e9ff);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+.question-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #4f46e5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.question-answer {
+    background: #faf6ff;
+    border: 2px solid #e5d9ff;
+    border-radius: 16px;
+    padding: 18px 20px;
+    margin-top: 10px;
+    color: #5a3ba8;
+    font-size: 15px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease, opacity 0.35s ease;
+    opacity: 0;
+}
+
+.question-answer.show {
+    max-height: 200px;
+    opacity: 1;
+}
+
+.hidden {
+    display: none;
+}
+
+.ability-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+    margin-bottom: 25px;
+}
+
+.ability-item {
+    background: #eef2ff;
+    border: 2px solid #e1e9ff;
+    border-radius: 16px;
+    padding: 28px 20px;
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+}
+
+.ability-item i {
+    font-size: 38px;
+    color: #667eea;
+    margin-bottom: 12px;
+}
+
+.reason-box {
+    background: #fff;
+    border: 2px solid #e1e9ff;
+    border-radius: 18px;
+    padding: 22px 20px;
+    margin-bottom: 25px;
+}
+
+.reason-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 18px;
+    color: #667eea;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.reason-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    margin-bottom: 16px;
+    padding: 20px 14px;
+    background: #e1e9ff;
+    border-radius: 12px;
+}
+
+.feature-box {
+    border: 3px solid #e1e9ff;
+    background: #eef2ff;
+    border-radius: 20px;
+    padding: 22px;
+    margin-bottom: 30px;
+}
+
+.feature-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    margin-bottom: 22px;
+}
+
+.feature-item .dot {
+    width: 12px;
+    height: 12px;
+    background: #667eea;
+    border-radius: 50%;
+    margin-top: 6px;
+}
+
+/* --- [1-3 & 1-4] Step Slides & Installation --- */
+.step-dots {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    margin-bottom: 25px;
+}
+
+.step-dots .dot {
+    width: 45px;
+    height: 45px;
+    background: #dcdcdc;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 22px;
+    font-weight: 700;
+    color: #444;
+    transition: 0.2s;
+}
+
+.step-dots .dot.active {
+    background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.step-dots .dot.completed {
+    background: #48bb78;
+    color: white;
+}
+
+.image-box {
+    background: white;
+    border: 2px dashed #ccc;
+    padding: 40px 20px;
+    text-align: center;
+    border-radius: 15px;
+    margin-bottom: 20px;
+}
+
+.slide-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 18px 0 25px 0;
+}
+
+.img-nav-btn {
+    background: #667eea;
+    color: white;
+    border: none;
+    padding: 12px 18px;
+    font-size: 18px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.img-nav-btn:hover {
+    background: #5568d9;
+}
+
+.prepare-section {
+    margin-top: 35px;
+    margin-bottom: 20px;
+}
+
+.check-item {
+    display: flex;
+    align-items: center;
+    background: #eef2ff;
+    border: 3px solid #e1e9ff;
+    padding: 12px 18px;
+    border-radius: 12px;
+    margin-bottom: 12px;
+}
+
+.check-icon {
+    font-size: 20px;
+    color: #3dbb70;
+    margin-right: 10px;
+}
+
+/* IDE Features Grid */
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+}
+
+.feature-card {
+    background: white;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+}
+
+.feature-card .emoji {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+/* --- [1-5-1] Error & Troubleshooting --- */
+.error-top-banner {
+    margin-bottom: 25px;
+    padding: 18px 24px;
+    background: white;
+    border-radius: 14px;
+    border: 2px solid #e1e9ff;
+}
+
+.error-top-banner p {
+    font-size: 16px;
+    margin: 0;
+}
+
+.error-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+    margin-bottom: 40px;
+}
+
+.error-card {
+    background: #fff;
+    border-radius: 18px;
+    padding: 25px;
+    box-shadow: 0 5px 15px #00000015;
+}
+
+.error-title {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    background: #ffe3e3;
+}
+
+/* 에러 종류별 색상 (필요시 HTML에서 클래스 추가하여 사용) */
+.error-title.pink {
+    background: #ffe3e3;
+}
+
+.error-title.purple {
+    background: #f3e3ff;
+}
+
+.error-title.orange {
+    background: #ffe8cc;
+}
+
+.error-desc {
+    margin-bottom: 14px;
+    color: #4a5568;
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+.error-example {
+    background: #21214a;
+    border-radius: 10px;
+    padding: 12px;
+    margin-bottom: 12px;
+    color: white;
+    position: relative;
+}
+
+.error-example .label {
+    font-weight: 700;
+    margin-bottom: 6px;
+    font-size: 14px;
+    display: block;
+    color: #a5b4fc;
+}
+
+.error-example.wrong {
+    border-left: 6px solid #ff8484;
+}
+
+.error-example.correct {
+    border-left: 6px solid #52c41a;
+}
+
+.error-example pre {
+    font-family: Consolas, monospace;
+    font-size: 14px;
+    margin: 0;
+    white-space: pre-wrap;
+    color: #e2e8f0;
+}
+
+.solution-box {
+    background: #f6ffed;
+    padding: 15px;
+    border-radius: 10px;
+    border-left: 6px solid #b7eb8f;
+    line-height: 1.6;
+    color: #333;
+    margin-top: 12px;
+    font-size: 15px;
+}
+
+/* =========================================
+   6. 반응형 (Media Queries)
+   ========================================= */
+@media (max-width: 1200px) {
+    .hero-section {
+        grid-template-columns: 1fr;
+        padding: 40px;
+    }
+
+    .hero-content h2 {
+        font-size: 40px;
+    }
+
+    .feature-grid,
+    .error-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .home-section {
+        padding: 20px;
+    }
+
+    .objectives-section,
+    .stats,
+    .ability-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .mascot {
+        width: 150px;
+        height: 150px;
+    }
+
+    .hero-content h2 {
+        font-size: 28px;
+    }
+}

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML2-4-1</title>
+    <link rel="stylesheet" type="text/css" href="/css/learning/html_Chapter2-4-1.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <header id="main-frame"></header>
+
+    <section class="home-section">
+        <div class="learning-card">
+
+            <button class="question-button" onclick="openQuestionBox()">
+                <i class="fa-solid fa-question"></i>
+            </button>
+
+            <div class="intro-header">
+                <h1>✨ 특수문자, 들여쓰기, 정렬</h1>
+            </div>
+
+            <div class="speech-bubble">
+                화면에 <code>&lt;</code> 같은 기호를 어떻게 쓸까?<br>
+                그리고 글씨를 <strong>가운데</strong>로 보내려면? 🤔
+            </div>
+
+            <p class="chapter-desc">
+                특수 기호를 표시하는 방법과, 코드를 깔끔하게 정리하는 들여쓰기,<br>
+                그리고 텍스트를 원하는 위치로 정렬하는 법을 배워봐요.
+            </p>
+
+            <div class="topic-section">
+                <h2>1. 특수문자 (Special Characters)</h2>
+                <p class="topic-desc">HTML에서 <code>&lt;</code>나 <code>&gt;</code>를 그냥 쓰면 태그로 오해해요. 그래서 <strong>특수 코드</strong>를 써야 합니다.</p>
+
+                <div class="table-container">
+                    <table class="styled-table">
+                        <thead>
+                            <tr>
+                                <th>기호</th>
+                                <th>HTML 코드 (이렇게 써야 해요!)</th>
+                                <th>설명</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="symbol">&lt;</td>
+                                <td class="code-cell">&amp;lt;</td>
+                                <td>작다 (Less Than)</td>
+                            </tr>
+                            <tr>
+                                <td class="symbol">&gt;</td>
+                                <td class="code-cell">&amp;gt;</td>
+                                <td>크다 (Greater Than)</td>
+                            </tr>
+                            <tr>
+                                <td class="symbol">공백</td>
+                                <td class="code-cell">&amp;nbsp;</td>
+                                <td>띄어쓰기 한 칸</td>
+                            </tr>
+                            <tr>
+                                <td class="symbol">"</td>
+                                <td class="code-cell">&amp;quot;</td>
+                                <td>큰따옴표</td>
+                            </tr>
+                            <tr>
+                                <td class="symbol">♥</td>
+                                <td class="code-cell">&amp;hearts;</td>
+                                <td>하트 모양</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <hr class="divider">
+
+            <div class="topic-section">
+                <h2>2. 들여쓰기 (Indentation)</h2>
+                <p class="topic-desc">들여쓰기는 화면엔 안 보이지만, <strong>코드를 읽기 쉽게</strong> 만들어줘요. 부모 태그 안쪽은 항상 들여쓰세요!</p>
+
+                <div class="code-preview-container">
+                    <div class="code-side bad-code">
+                        <div class="code-header">
+                            <div class="dot red"></div> <span>😵 보기 힘든 코드</span>
+                        </div>
+                        <pre class="code-box"><code><span class="tag">&lt;html&gt;</span>
+<span class="tag">&lt;body&gt;</span>
+<span class="tag">&lt;h1&gt;</span><span class="text">안녕</span><span class="tag">&lt;/h1&gt;</span>
+<span class="tag">&lt;p&gt;</span><span class="text">복잡해 보여요</span><span class="tag">&lt;/p&gt;</span>
+<span class="tag">&lt;/body&gt;</span>
+<span class="tag">&lt;/html&gt;</span></code></pre>
+                    </div>
+
+                    <div class="code-side good-code">
+                        <div class="code-header">
+                            <div class="dot green"></div> <span>😊 잘 정리된 코드</span>
+                        </div>
+                        <pre class="code-box"><code><span class="tag">&lt;html&gt;</span>
+  <span class="tag">&lt;body&gt;</span>
+    <span class="tag">&lt;h1&gt;</span><span class="text">안녕</span><span class="tag">&lt;/h1&gt;</span>
+    <span class="tag">&lt;p&gt;</span><span class="text">훨씬 보기 좋죠?</span><span class="tag">&lt;/p&gt;</span>
+  <span class="tag">&lt;/body&gt;</span>
+<span class="tag">&lt;/html&gt;</span></code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="divider">
+
+            <div class="topic-section">
+                <h2>3. 텍스트 정렬 (Text Align)</h2>
+                <p class="topic-desc"><code>style="text-align: 방향;"</code>을 사용해서 글자를 정렬할 수 있어요.</p>
+
+                <div class="code-preview-container">
+                    <div class="code-side">
+                        <div class="code-header">
+                            <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
+                            <span>HTML Code</span>
+                        </div>
+                        <pre class="code-box"><code><span class="tag">&lt;p</span> <span class="attr">style</span>=<span class="string">"text-align:left;"</span><span class="tag">&gt;</span>
+  왼쪽 정렬 (기본값)
+<span class="tag">&lt;/p&gt;</span>
+
+<span class="tag">&lt;p</span> <span class="attr">style</span>=<span class="string">"text-align:center;"</span><span class="tag">&gt;</span>
+  가운데 정렬
+<span class="tag">&lt;/p&gt;</span>
+
+<span class="tag">&lt;p</span> <span class="attr">style</span>=<span class="string">"text-align:right;"</span><span class="tag">&gt;</span>
+  오른쪽 정렬
+<span class="tag">&lt;/p&gt;</span></code></pre>
+                    </div>
+                    <div class="preview-side">
+                        <div class="preview-header">
+                            <i class="fa-solid fa-globe"></i> Browser Result
+                        </div>
+                        <div class="preview-content">
+                            <p style="text-align: left; background: #eee; padding: 5px; margin: 5px 0;">왼쪽 정렬 (기본값)</p>
+                            <p style="text-align: center; background: #eee; padding: 5px; margin: 5px 0;">가운데 정렬</p>
+                            <p style="text-align: right; background: #eee; padding: 5px; margin: 5px 0;">오른쪽 정렬</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="navigation">
+                <button class="prev-btn" onclick="goToPreviousPage()"><i class="fa-solid fa-chevron-left"></i> 이전</button>
+
+                <div class="dots">
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span> 
+                    <span class="dot active"></span> </div>
+
+                <button class="next-btn" id="nextPageBtn" onclick="goToNextPage()">
+                    챕터 완료! 🎉
+                </button>
+            </div>
+        </div>
+
+        <div class="progress-card">
+            <h3><i class="fa-solid fa-trophy"></i> 챕터 2: 문서 구조</h3>
+
+            <div class="progress-row">
+                <div class="progress-item">
+                    <div class="progress-label">기본 구조</div>
+                    <div class="progress-bar"><div class="fill" style="width: 100%;"></div></div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">제목과 문단</div>
+                    <div class="progress-bar"><div class="fill" style="width: 100%;"></div></div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">줄바꿈/주석</div>
+                    <div class="progress-bar"><div class="fill" style="width: 100%;"></div></div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">특수문자/정렬</div>
+                    <div class="progress-bar">
+                        <div class="fill" style="width: 100%;"></div> </div>
+                </div>
+            </div>
+            <div class="progress-bar-text">4 / 4 완료 (축하해요!)</div>
+        </div>
+    </section>
+
+    <div id="question-modal" class="question-modal hidden">
+        <div class="question-content">
+            <h3>선생님 질문이 있어요!</h3>
+            <textarea placeholder="여기에 질문을 입력하세요"></textarea>
+            <div class="question-buttons">
+                <button onclick="submitQuestion()">보내기</button>
+                <button onclick="closeQuestionBox()">닫기</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/javascript/InnerHTML.js"></script>
+    <script src="/javascript/learning/html_Chapter2-4-1.js"></script>
+</body>
+</html>

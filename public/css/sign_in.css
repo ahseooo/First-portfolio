@@ -1,0 +1,484 @@
+@import url(./main_frame.css);
+
+/* 사이버 펑크 변수 재정의 */
+:root {
+    --neon-blue: #00FFFF;
+    --neon-green: #00FF00;
+    --neon-red: #FF3131;
+    --neon-yellow: #FFFF00;
+    --dark-bg-color: #1a1a1a;       /* 기본 배경색 */
+    --dark-bg-card: #121212;        /* 컨테이너 배경색 */
+    --text-primary: #f0f0f0;        /* 밝은 텍스트 */
+    --text-muted: #999999;          /* 보조 텍스트 */
+    --shadow-neon-blue: 0 0 15px rgba(0, 255, 255, 0.4);
+    --shadow-neon-green: 0 0 15px rgba(0, 255, 0, 0.4);
+    --shadow-neon-red: 0 0 15px rgba(255, 49, 49, 0.4);
+    --shadow-neon-yellow: 0 0 15px rgba(255, 255, 0, 0.4);
+}
+
+*:not(.google-wrap *) {
+    box-sizing: border-box;
+}
+
+.section-contents {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 0;
+    color: var(--text-primary);
+    height: 100%;
+    position: relative;
+    width: 100%;
+    height: calc(100vh - 65px);
+    background: var(--dark-bg-color);
+}
+
+/* --- 개선된 컨테이너 스타일 유지 --- */
+.signin-container {
+    background-color: var(--dark-bg-card); 
+    color: var(--text-primary);
+    padding: 45px 35px;
+    border-radius: 4px;
+    width: 400px;
+    position: relative;
+    
+    border: 3px solid var(--neon-blue);
+    box-shadow: 
+        0 0 5px rgba(0, 255, 255, 0.6),
+        0 0 25px rgba(0, 255, 255, 0.4);
+    
+    animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.signin-container h2 {
+    color: var(--neon-green);
+    margin-bottom: 30px;
+    text-align: center;
+    font-size: 32px;
+    font-weight: 800;
+    text-shadow: 0 0 8px var(--neon-green);
+}
+
+/* INPUT 필드 */
+.signin-container input {
+    width: 100%;
+    padding: 14px;
+    margin: 10px 0;
+    font-size: 16px;
+    border: 1px solid rgba(0, 255, 255, 0.3);
+    border-radius: 4px;
+    background: var(--dark-bg-color);
+    color: var(--text-primary);
+    transition: all 0.3s;
+}
+
+.signin-container input::placeholder {
+    color: var(--text-muted);
+}
+
+.signin-container input:focus {
+    outline: none;
+    border-color: var(--neon-green);
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.6);
+}
+
+/* 로그인 버튼 */
+.signin-container button {
+    width: 100%;
+    padding: 14px;
+    background: var(--neon-blue);
+    opacity: 1;
+    color: var(--dark-bg-card);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 700;
+    margin: 30px 0 10px 0;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+    text-transform: uppercase;
+}
+
+.signin-container button:hover {
+    background: var(--neon-green);
+    box-shadow: 0 0 20px var(--neon-green);
+    transform: translateY(-2px);
+}
+
+.signin-container p {
+    font-size: 15px;
+    text-align: center;
+    margin: 15px 0;
+    color: var(--text-muted);
+}
+
+.signin-container a {
+    color: var(--neon-blue);
+    text-decoration: none;
+    font-weight: bold;
+    text-shadow: 0 0 3px rgba(0, 255, 255, 0.5);
+}
+
+.signin-container a:hover {
+    text-decoration: underline;
+    color: var(--neon-green);
+}
+
+.login-options {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+.forgot-link {
+    color: var(--text-muted);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.forgot-link:hover {
+    color: var(--neon-blue);
+    text-decoration: underline;
+}
+
+.social-login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+/* 카카오/네이버 이미지 스타일 */
+.social-login img {
+    margin-top: 5px;
+    width: 40px;
+    height: 40px;
+    transform: scale(1.1);
+    cursor: pointer;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s;
+}
+
+.social-login img:hover {
+    transform: scale(1.2);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+}
+
+.google-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: scale(1.1);
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s;
+    overflow: hidden;
+}
+
+.google-wrap:hover {
+    transform: scale(1.2);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+}
+
+.google {
+    overflow: hidden;
+}
+
+/* ========== 닉네임 생성 모달 (사이버 펑크 유지) ========== */
+.nickname-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    backdrop-filter: blur(5px);
+}
+
+.nickname-modal-content {
+    background: var(--dark-bg-card);
+    padding: 40px;
+    border-radius: 16px;
+    max-width: 450px;
+    width: 90%;
+    text-align: center;
+    border: 2px solid var(--neon-green);
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.4);
+    color: var(--text-primary);
+    animation: modalSlideIn 0.3s ease-out;
+}
+
+.nickname-modal-content h2 {
+    margin: 0 0 10px 0;
+    color: var(--neon-green);
+    font-size: 28px;
+    font-weight: 700;
+    text-shadow: 0 0 5px var(--neon-green);
+}
+
+.nickname-modal-content>p {
+    color: var(--text-muted);
+    margin-bottom: 30px;
+    font-size: 15px;
+}
+
+.nickname-input-group {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.nickname-input-group input {
+    flex: 1;
+    padding: 12px;
+    border: 1px solid var(--neon-blue);
+    border-radius: 8px;
+    font-size: 16px;
+    background: var(--dark-bg-color);
+    color: var(--text-primary);
+}
+
+.nickname-input-group input:focus {
+    outline: none;
+    border-color: var(--neon-green);
+    box-shadow: 0 0 8px rgba(0, 255, 0, 0.5);
+}
+
+.nickname-input-group button {
+    padding: 12px 20px;
+    background: var(--neon-blue);
+    color: var(--dark-bg-color);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    white-space: nowrap;
+    font-size: 15px;
+    font-weight: 600;
+    box-shadow: 0 0 8px rgba(0, 255, 255, 0.4);
+}
+
+.nickname-input-group button:hover {
+    background: var(--neon-green);
+    box-shadow: 0 0 12px var(--neon-green);
+    transform: translateY(-2px);
+}
+
+.nickname-message {
+    font-size: 14px;
+    min-height: 22px;
+    margin-bottom: 25px;
+    font-weight: 600;
+    padding: 5px;
+    border-radius: 5px;
+    color: var(--neon-red);
+}
+
+.nickname-modal-buttons button {
+    padding: 14px 50px;
+    background: var(--neon-green);
+    color: var(--dark-bg-color);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 17px;
+    font-weight: 700;
+    box-shadow: 0 0 12px var(--neon-green);
+}
+
+.nickname-modal-buttons button:disabled {
+    background: #444;
+    color: #999;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+.nickname-modal-buttons button:not(:disabled):hover {
+    background: var(--neon-blue);
+    color: var(--dark-bg-color);
+    box-shadow: 0 0 15px var(--neon-blue);
+    transform: translateY(-2px);
+}
+
+/* ========== 비밀번호 찾기 모달 (사이버 펑크 유지) ========== */
+.find-modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    backdrop-filter: blur(5px);
+}
+
+.reset-modal-content {
+    background: var(--dark-bg-card);
+    border-radius: 16px;
+    box-shadow: 0 0 25px rgba(0, 255, 255, 0.4);
+    border: 2px solid var(--neon-blue);
+    padding: 40px;
+    max-width: 450px;
+    width: 90%;
+    position: relative;
+    color: var(--text-primary);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.reset-modal-content h2 {
+    text-align: center;
+    color: var(--neon-blue);
+    margin-bottom: 30px;
+    font-size: 24px;
+    text-shadow: 0 0 5px var(--neon-blue);
+}
+
+.close-modal-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 24px;
+    color: var(--text-muted);
+    cursor: pointer;
+    background: none;
+    border: none;
+}
+
+.close-modal-btn:hover {
+    color: var(--neon-red);
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--text-primary);
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.reset-input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--neon-blue);
+    border-radius: 5px;
+    font-size: 14px;
+    transition: border-color 0.3s;
+    box-sizing: border-box;
+    background: var(--dark-bg-color);
+    color: var(--text-primary);
+}
+
+.reset-input:focus {
+    outline: none;
+    border-color: var(--neon-green);
+    box-shadow: 0 0 8px rgba(0, 255, 0, 0.5);
+}
+
+.reset-btn {
+    width: 100%;
+    padding: 12px;
+    background: var(--neon-green);
+    color: var(--dark-bg-color);
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 15px;
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.4);
+}
+
+.reset-btn:hover:not(:disabled) {
+    background: var(--neon-blue);
+    color: var(--dark-bg-color);
+    box-shadow: 0 0 15px var(--neon-blue);
+    transform: translateY(-2px);
+}
+
+.reset-btn:disabled {
+    background: #444;
+    cursor: not-allowed;
+    color: #999;
+    box-shadow: none;
+}
+
+.reset-btn-secondary {
+    background: var(--dark-bg-color);
+    border: 1px solid var(--text-muted);
+    color: var(--text-muted);
+    box-shadow: none;
+}
+
+.reset-btn-secondary:hover:not(:disabled) {
+    background: #333;
+    color: #fff;
+    border-color: #fff;
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
+}
+
+.reset-message.success {
+    background: rgba(0, 255, 0, 0.1);
+    color: var(--neon-green);
+    border: 1px solid var(--neon-green);
+    display: block;
+    text-shadow: 0 0 5px rgba(0, 255, 0, 0.3);
+}
+
+.reset-message.error {
+    background: rgba(255, 49, 49, 0.1);
+    color: var(--neon-red);
+    border: 1px solid var(--neon-red);
+    display: block;
+    text-shadow: 0 0 5px rgba(255, 49, 49, 0.3);
+}
+
+.timer {
+    font-size: 14px;
+    color: var(--neon-red);
+    margin-top: 5px;
+    text-align: right;
+    font-weight: 600;
+}
+
+.custom-btn {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-blue {
+    background: var(--neon-blue);
+    color: var(--dark-bg-color);
+    box-shadow: 0 0 10px var(--neon-blue);
+}
+
+.btn-blue:hover {
+    background: var(--neon-green);
+    box-shadow: 0 0 15px var(--neon-green);
+}

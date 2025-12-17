@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML5-2-1</title>
+    <link rel="stylesheet" type="text/css" href="/css/learning/html_Chapter5-2-1.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <header id="main-frame"></header>
+
+    <section class="home-section">
+        <div class="learning-card">
+
+            <button class="question-button" onclick="openQuestionBox()">
+                <i class="fa-solid fa-question"></i>
+            </button>
+
+            <div class="intro-header">
+                <h1>📦 div와 시맨틱 태그 비교</h1>
+            </div>
+
+            <div class="speech-bubble">
+                그냥 <strong>&lt;div&gt;</strong>만 써도 화면은 똑같이 나오는데...<br>
+                왜 굳이 시맨틱 태그를 써야 할까? 🧐
+            </div>
+
+            <p class="chapter-desc">
+                <code>&lt;div&gt;</code>는 아무 의미 없는 '상자'예요.<br>
+                반면 시맨틱 태그는 '이름표가 붙은 상자'라서 컴퓨터가 이해하기 훨씬 쉽답니다.
+            </p>
+
+            <div class="topic-section">
+                <h2>1. 코드로 비교해보기</h2>
+                <p class="topic-desc">두 코드는 화면에 똑같이 보이지만, 의미는 완전히 달라요.</p>
+
+                <div class="comparison-grid">
+                    
+                    <div class="code-card bad">
+                        <div class="card-header">
+                            <i class="fa-solid fa-xmark"></i> div만 사용 (의미 없음)
+                        </div>
+                        <pre class="code-box"><code><span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="string">"header"</span><span class="tag">&gt;</span>로고<span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="string">"nav"</span><span class="tag">&gt;</span>메뉴<span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="string">"main"</span><span class="tag">&gt;</span>본문<span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="string">"footer"</span><span class="tag">&gt;</span>바닥글<span class="tag">&lt;/div&gt;</span></code></pre>
+                        <p class="card-note">컴퓨터: "전부 다 div(상자)네? 뭐가 중요한 거지?" 🤷‍♂️</p>
+                    </div>
+
+                    <div class="code-card good">
+                        <div class="card-header">
+                            <i class="fa-solid fa-check"></i> 시맨틱 태그 사용 (의미 있음)
+                        </div>
+                        <pre class="code-box"><code><span class="tag">&lt;header&gt;</span>로고<span class="tag">&lt;/header&gt;</span>
+<span class="tag">&lt;nav&gt;</span>메뉴<span class="tag">&lt;/nav&gt;</span>
+<span class="tag">&lt;main&gt;</span>본문<span class="tag">&lt;/main&gt;</span>
+<span class="tag">&lt;footer&gt;</span>바닥글<span class="tag">&lt;/footer&gt;</span></code></pre>
+                        <p class="card-note">컴퓨터: "아하! 여기가 헤더고, 여기가 본문이구나!" 💡</p>
+                    </div>
+
+                </div>
+            </div>
+
+            <hr class="divider">
+
+            <div class="topic-section">
+                <h2>2. 왜 시맨틱 태그를 써야 할까요?</h2>
+                
+                <div class="pros-cons-container">
+                    
+                    <div class="list-card cons">
+                        <h3>❌ &lt;div&gt;의 단점</h3>
+                        <ul>
+                            <li>코드를 읽어도 무슨 역할인지 알기 힘들다.</li>
+                            <li>검색 엔진(구글)이 중요한 내용을 못 찾는다.</li>
+                            <li>시각장애인용 리더기가 구조를 파악하기 어렵다.</li>
+                        </ul>
+                    </div>
+
+                    <div class="list-card pros">
+                        <h3>✅ 시맨틱 태그의 장점</h3>
+                        <ul>
+                            <li>태그 이름만 봐도 역할을 바로 알 수 있다. (가독성 UP)</li>
+                            <li>검색 엔진 최적화(SEO)에 유리하다.</li>
+                            <li>웹 접근성(장애인 지원)이 좋아진다.</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+
+            <hr class="divider">
+
+            <div class="topic-section">
+                <h2>3. 그럼 &lt;div&gt;는 언제 쓰나요?</h2>
+                <p class="topic-desc">시맨틱 태그로 표현하기 애매한 <strong>단순한 그룹 묶기</strong>나 <strong>디자인용 컨테이너</strong>가 필요할 때 씁니다.</p>
+
+                <div class="usage-example">
+                    <div class="usage-visual">
+                        <div class="div-wrapper">
+                            <div class="label">&lt;div class="card-wrapper"&gt; (단순 묶음용)</div>
+                            <div class="inner-semantic">
+                                <div class="label">&lt;article&gt; (실제 내용)</div>
+                                <p>내용...</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="usage-desc">
+                        <ul>
+                            <li>CSS 스타일을 적용하기 위해 묶을 때</li>
+                            <li>특별한 의미 없이 레이아웃을 잡을 때</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="fact-box">
+                <div class="fact-title">
+                    <i class="fa-solid fa-lightbulb"></i> 핵심 정리
+                </div>
+                <ul class="fact-list">
+                    <li>
+                        <div class="icon-box">🥇</div>
+                        <div class="text-box">
+                            <strong>시맨틱 태그 우선!</strong><br>
+                            가능하면 header, main, section 등을 먼저 사용하세요.
+                        </div>
+                    </li>
+                    <li>
+                        <div class="icon-box">🥈</div>
+                        <div class="text-box">
+                            <strong>div는 보조적으로!</strong><br>
+                            적절한 시맨틱 태그가 없을 때만 div를 사용하세요.
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="navigation">
+                <button class="prev-btn" onclick="goToPreviousPage()"><i class="fa-solid fa-chevron-left"></i> 이전</button>
+
+                <div class="dots">
+                    <span class="dot"></span>
+                    <span class="dot active"></span> <span class="dot"></span>
+                </div>
+
+                <button class="next-btn" id="nextPageBtn" onclick="goToNextPage()">
+                    다음 <i class="fa-solid fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="progress-card">
+            <h3><i class="fa-solid fa-trophy"></i> 챕터 5: 시맨틱 & 블록/인라인</h3>
+
+            <div class="progress-row">
+                <div class="progress-item">
+                    <div class="progress-label">시맨틱 태그</div>
+                    <div class="progress-bar"><div class="fill" style="width: 100%;"></div></div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">블록/인라인</div>
+                    <div class="progress-bar">
+                        <div class="fill" style="width: 50%;"></div> </div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">div/span</div>
+                    <div class="progress-bar"><div class="fill" style="width: 0%;"></div></div>
+                </div>
+            </div>
+            <div class="progress-bar-text">2 / 3 진행중</div>
+        </div>
+    </section>
+
+    <div id="question-modal" class="question-modal hidden">
+        <div class="question-content">
+            <h3>선생님 질문이 있어요!</h3>
+            <textarea placeholder="여기에 질문을 입력하세요"></textarea>
+            <div class="question-buttons">
+                <button onclick="submitQuestion()">보내기</button>
+                <button onclick="closeQuestionBox()">닫기</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/javascript/InnerHTML.js"></script>
+    <script src="/javascript/learning/html_Chapter5-2-1.js"></script>
+</body>
+</html>

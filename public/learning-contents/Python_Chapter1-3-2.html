@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Python_Chapter1-3-2</title>
+
+    <link rel="stylesheet" href="/css/learning/Python_Chapter1-3-2.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+</head>
+
+<body>
+    <header id="main-frame"></header> <!--상단 헤더 부분-->
+
+    <section class="home-section">
+
+        <div class="content-card">
+
+            <!-- 제목 -->
+            <div class="intro-header">
+                <h1 id="mainTitle">🔧 파이썬 인터프리터 설치하기</h1>
+            </div>
+
+            <!-- STEP NAV -->
+            <div class="step-dots" id="stepDots">
+                <div class="dot">1</div>
+                <div class="dot">2</div>
+                <div class="dot">3</div>
+                <div class="dot">4</div>
+            </div>
+
+            <!-- 본문 -->
+            <div class="step-box">
+
+                <h2 class="step-title" id="slideTitle">1. Python 사이트 접속하기</h2>
+
+                <div class="info-box" id="infoBox">
+                    Python 설치 파일을 다운로드하기 위해 파이썬 웹사이트(https://www.python.org)에 접속합니다.
+                    상단의 [Download] → [Windows] / [MacOS] 메뉴를 클릭합니다.
+                </div>
+
+                <!-- 이미지 박스 -->
+                <div class="image-box">
+                    <img id="slideImage" src="/images/learning/Python1.png" style="width:100%; border-radius:10px;">
+                </div>
+
+                <!-- 사진 넘기는 버튼 -->
+                <div class="slide-buttons">
+                    <button id="imgPrev" class="img-nav-btn">
+                        <i class="fa-solid fa-chevron-left"></i>
+                    </button>
+                    <button id="imgNext" class="img-nav-btn">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </button>
+                </div>
+
+                <div class="tip-box" id="tipBox">
+                    <strong>💡 TIP:</strong> 파이썬 [Download]는 Python 공식 페이지 내 상단 메뉴에 있습니다.
+                </div>
+
+            </div>
+
+            <!-- 네비게이션 -->
+            <div class="navigation inside">
+
+                <!-- 이전 페이지 이동 -->
+                <button class="prev-btn" id="pagePrev">
+                    <i class="fa-solid fa-chevron-left"></i> 이전
+                </button>
+
+                <!-- 페이지 내부 점 -->
+                <div class="dots" id="pagerDots">
+                    <span class="dot active"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+
+                <!-- 다음 페이지 이동 -->
+                <button class="next-btn" id="pageNext">
+                    다음<i class="fa-solid fa-chevron-right"></i>
+                </button>
+
+            </div>
+        </div>
+
+        <!-- 학습 진행 상황 -->
+        <div class="progress-card">
+            <h3><i class="fa-solid fa-trophy"></i> 학습 진행 상황</h3>
+
+            <div class="progress-row">
+
+                <div class="progress-item">
+                    <div class="progress-label">파이썬 인터프리터가 뭐야?</div>
+                    <div class="progress-bar">
+                        <div class="fill" style="width: 100%;"></div>
+                    </div>
+                </div>
+
+                <div class="progress-item">
+                    <div class="progress-label">파이썬 설치하기</div>
+                    <div class="progress-bar">
+                        <div class="fill" style="width: 50%;"></div>
+                    </div>
+                </div>
+
+                <div class="progress-item">
+                    <div class="progress-label">설치 확인하기</div>
+                    <div class="progress-bar">
+                        <div class="fill" style="width: 0%;"></div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="progress-bar-text">2 / 3  진행 중</div>
+        </div>
+
+    </section>
+
+    <script src="/javascript/learning/Python_Chapter1-3-2.js"></script>
+    <script src="/javascript/InnerHTML.js"></script>
+</body>
+
+</html>

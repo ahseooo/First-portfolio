@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS1-4-1</title>
+    <link rel="stylesheet" type="text/css" href="/css/learning/Javascript_Chapter1-4-1.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <header id="main-frame"></header>
+
+    <section class="home-section">
+        <div class="learning-card">
+
+            <button class="question-button" onclick="openQuestionBox()">
+                <i class="fa-solid fa-question"></i>
+            </button>
+
+            <div class="intro-header">
+                <h1>🐞 자바스크립트 에러 해결하기</h1>
+            </div>
+
+            <div class="speech-bubble">
+                빨간색 에러 글씨가 떴다고? 😱 당황하지 마!<br>
+                에러 메시지만 잘 읽어도 금방 고칠 수 있어.
+            </div>
+
+            <p class="chapter-desc">
+                개발자들도 매일 에러를 만나요.<br>
+                자주 발생하는 에러 6가지를 알고 있으면 훨씬 빨리 문제를 해결할 수 있어요!
+            </p>
+
+            <div class="topic-section">
+                <h2>1. 문법이나 변수가 틀렸을 때</h2>
+                
+                <div class="error-grid">
+                    <div class="error-card">
+                        <div class="error-header">
+                            <i class="fa-solid fa-triangle-exclamation"></i>
+                            <span>SyntaxError: Unexpected token</span>
+                        </div>
+                        <div class="error-body">
+                            <p class="meaning">👉 문법이 어딘가 이상해요! (괄호, 따옴표 등)</p>
+                            <div class="code-example bad">
+                                <code>if (x > 10 <span class="highlight-error">{</span></code>
+                            </div>
+                            <div class="solution">
+                                <strong>✅ 해결:</strong> 닫는 괄호 <code>)</code>가 빠졌네요!
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="error-card">
+                        <div class="error-header">
+                            <i class="fa-solid fa-triangle-exclamation"></i>
+                            <span>ReferenceError: is not defined</span>
+                        </div>
+                        <div class="error-body">
+                            <p class="meaning">👉 변수를 안 만들고 썼어요!</p>
+                            <div class="code-example bad">
+                                <code>console.log(name);</code>
+                            </div>
+                            <div class="solution">
+                                <strong>✅ 해결:</strong> <code>let name = "지우";</code> 처럼 먼저 선언하세요.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="error-card">
+                        <div class="error-header">
+                            <i class="fa-solid fa-triangle-exclamation"></i>
+                            <span>TypeError: Cannot read property...</span>
+                        </div>
+                        <div class="error-body">
+                            <p class="meaning">👉 없는 것(undefined)에서 무언가를 찾으려 했어요.</p>
+                            <div class="code-example bad">
+                                <code>let user; console.log(user.name);</code>
+                            </div>
+                            <div class="solution">
+                                <strong>✅ 해결:</strong> 변수에 값이 잘 들어있는지 확인하세요.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="divider">
+
+            <div class="topic-section">
+                <h2>2. 계산이나 값이 이상할 때</h2>
+
+                <div class="error-grid">
+                    <div class="error-card">
+                        <div class="error-header">
+                            <i class="fa-solid fa-triangle-exclamation"></i>
+                            <span>TypeError: ... is not a function</span>
+                        </div>
+                        <div class="error-body">
+                            <p class="meaning">👉 함수가 아닌데 함수처럼 실행(...)했어요.</p>
+                            <div class="code-example bad">
+                                <code>let num = 10; num();</code>
+                            </div>
+                            <div class="solution">
+                                <strong>✅ 해결:</strong> 변수 이름이나 타입을 확인하세요.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="error-card">
+                        <div class="error-header warning">
+                            <i class="fa-solid fa-circle-exclamation"></i>
+                            <span>NaN (Not a Number)</span>
+                        </div>
+                        <div class="error-body">
+                            <p class="meaning">👉 숫자가 아닌 걸로 계산했어요.</p>
+                            <div class="code-example bad">
+                                <code>"안녕" * 5</code>
+                            </div>
+                            <div class="solution">
+                                <strong>✅ 해결:</strong> 계산하려는 값이 진짜 숫자인지 확인하세요.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="error-card">
+                        <div class="error-header critical">
+                            <i class="fa-solid fa-bomb"></i>
+                            <span>Infinite Loop (무한 루프)</span>
+                        </div>
+                        <div class="error-body">
+                            <p class="meaning">👉 반복문이 안 멈추고 계속 돌아요! (브라우저 멈춤)</p>
+                            <div class="solution">
+                                <strong>✅ 해결:</strong> <code>while</code>이나 <code>for</code>문의 종료 조건이 맞는지 꼭 확인!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="final-tip">
+                <div class="tip-icon">🕵️‍♂️</div>
+                <div class="tip-content">
+                    <strong>꿀팁: console.log()를 활용하세요!</strong><br>
+                    코드가 어디까지 실행되는지, 변수 값이 무엇인지 궁금할 땐<br>
+                    <code>console.log(변수명);</code>을 적어서 확인해보는 게 최고예요!
+                </div>
+            </div>
+
+            <div class="navigation">
+                <button class="prev-btn" onclick="goToPreviousPage()"><i class="fa-solid fa-chevron-left"></i> 이전 (만들기)</button>
+
+                <div class="dots">
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span> 
+                    <span class="dot active"></span> </div>
+
+                <button class="next-btn" id="nextPageBtn" onclick="goToNextPage()">
+                    챕터 완료! 🎉
+                </button>
+            </div>
+        </div>
+
+        <div class="progress-card">
+            <h3><i class="fa-solid fa-bolt"></i> 챕터 1: 자바스크립트의 시작</h3>
+
+            <div class="progress-row">
+                <div class="progress-item">
+                    <div class="progress-label">JS란?</div>
+                    <div class="progress-bar"><div class="fill" style="width: 100%;"></div></div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">특징</div>
+                    <div class="progress-bar"><div class="fill" style="width: 100%;"></div></div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">만들기</div>
+                    <div class="progress-bar"><div class="fill" style="width: 100%;"></div></div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">에러해결</div>
+                    <div class="progress-bar">
+                        <div class="fill" style="width: 100%;"></div> </div>
+                </div>
+            </div>
+            <div class="progress-bar-text">4 / 4 완료 (축하해요!)</div>
+        </div>
+    </section>
+
+    <div id="question-modal" class="question-modal hidden">
+        <div class="question-content">
+            <h3>선생님 질문이 있어요!</h3>
+            <textarea placeholder="여기에 질문을 입력하세요"></textarea>
+            <div class="question-buttons">
+                <button onclick="submitQuestion()">보내기</button>
+                <button onclick="closeQuestionBox()">닫기</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/javascript/InnerHTML.js"></script>
+    <script src="/javascript/learning/Javascript_Chapter1-4-1.js"></script>
+</body>
+</html>

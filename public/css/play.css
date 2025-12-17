@@ -1,0 +1,1638 @@
+@import url(./main_frame.css);
+
+/* --- 사이버 펑크 테마를 위한 CSS 변수 추가 --- */
+:root {
+    --neon-blue: #00FFFF;
+    --neon-green: #00FF00;
+    --dark-bg-color: #1a1a1a;
+    --dark-bg-card: rgba(30, 30, 30, 0.7);
+    --neon-shadow-blue: 0 0 8px var(--neon-blue), 0 0 15px rgba(0, 255, 255, 0.5);
+    --neon-shadow-green: 0 0 8px var(--neon-green), 0 0 15px rgba(0, 255, 0, 0.5);
+    --text-color: #f0f0f0; /* 밝은 텍스트 */
+    --hover-color: var(--neon-green);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    overflow: hidden;
+}
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.home-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: center; */
+    height: calc(100vh - 65px);
+    overflow-y: auto;
+    padding: 30px;
+    width: 100%;
+    gap: 40px;
+}
+
+/* 공지사항 */
+.notice-banner {
+    width: 100%;
+    max-width: 1400px; /* 그리드 컨테이너와 너비 맞춤 */
+    background: rgba(255, 255, 255, 0.4); /* 유리 효과 배경 */
+    border-radius: 15px;
+    padding: 15px 25px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    animation: slideDown 0.5s ease; /* 부드럽게 내려오는 효과 */
+}
+
+.notice-content {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: #2d3748;
+    font-size: 15px;
+    flex: 1;      /* 남은 공간을 모두 차지함 */
+    min-width: 0; /* Flexbox 내에서 말줄임/넘침 방지 필수 속성 */
+    margin-right: 20px; /* 더보기 버튼과 간격 확보 */
+}
+
+/* [추가] 텍스트가 지나갈 '무대' (넘치는 부분 자르기) */
+.notice-scroll-wrapper {
+    flex: 1;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.notice-text {
+    display: inline-block;
+    font-weight: 700;
+    color: var(--nerf-grey);
+    animation: scroll-left 10s linear infinite;
+    padding-left: 100%;
+}
+
+.notice-banner:hover .notice-text {
+    animation-play-state: paused;
+}
+
+@keyframes scroll-left {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+.notice-icon {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.notice-text {
+    font-weight: 500;
+}
+
+.notice-more {
+    color: #718096;
+    font-size: 13px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.notice-more:hover {
+    color: #667eea;
+}
+
+/* ========== 메인 컨테이너 ========== */
+.grid-container {
+    /* padding: 30px; */
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    width: 100%;
+    /* height: 100%; */
+    max-width:1400px;
+    /* margin: 0 auto; */
+    /* overflow: hidden; */
+}
+
+.home-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background: rgba(255, 255, 255, 0.3);
+    padding: 25px;
+    border-radius: 20px;
+    height: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* 1. 이벤트 박스 (기존 .event-box 대체) */
+.dashboard-event-widget {
+    background: rgba(255, 255, 255, 0.6); /* Glassmorphism 유지 */
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    width: 100%;
+    height: auto; /* 고정 높이 제거 (내용물에 맞춤) */
+    margin: 0;    /* 불필요한 마진 제거 */
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* 2. 헤더 영역 (제목 + 검색창) */
+.dashboard-event-widget .event-header {
+    display: flex;
+    flex-direction: column; /* 공간이 좁으므로 위아래 배치 */
+    gap: 15px;
+    margin-bottom: 10px;
+    border-bottom: 2px solid rgba(102, 126, 234, 0.1);
+    padding-bottom: 15px;
+}
+
+.dashboard-event-widget .header-title-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.dashboard-event-widget .event-badge {
+    background: linear-gradient(135deg, #FF6B6B 0%, #FF8E53 100%);
+    color: white;
+    padding: 5px 12px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.dashboard-event-widget h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #2d3748;
+    margin: 0;
+}
+
+/* 3. 검색창 최적화 */
+.dashboard-event-widget .event-search {
+    width: 100%; /* 부모 너비에 맞춤 */
+    max-width: none;
+    padding: 10px 15px;
+    border: 1px solid rgba(0,0,0,0.1);
+    border-radius: 10px;
+    background: rgba(255,255,255,0.8);
+    font-size: 14px;
+    outline: none;
+    transition: all 0.3s;
+}
+
+.dashboard-event-widget .event-search:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+}
+
+/* 4. 이벤트 리스트 & 아이템 */
+.dashboard-event-widget .event-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.dashboard-event-widget .event-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.5);
+    padding: 10px 12px;
+    border-radius: 12px;
+    transition: all 0.2s ease;
+}
+
+.dashboard-event-widget .event-item:hover {
+    background: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.dashboard-event-widget .event-item span {
+    font-size: 14px;
+    color: #4a5568;
+    font-weight: 500;
+    /* 긴 글자 말줄임 처리 */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 60%; 
+}
+
+/* 5. 보상 버튼 스타일 */
+.dashboard-event-widget .reward-btn {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 8px;
+    /* 테마 색상 적용 (초록색 원하시면 #8fd494 로 변경 가능) */
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+}
+
+.dashboard-event-widget .reward-btn:hover {
+    opacity: 0.9;
+    transform: scale(1.05);
+}
+
+.dashboard-event-widget .reward-btn.disabled {
+    background: #cbd5e0; /* 회색 */
+    cursor: not-allowed;
+    transform: none;
+    opacity: 1;
+}
+
+.sidebar button {
+    border: none;
+}
+
+/* ========== 커리큘럼 ========== */
+.sidebar {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    /* overflow-y: auto; */
+    height: fit-content;
+}
+
+/* .sidebar::-webkit-scrollbar {
+    width: 8px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+    background: #f7fafc;
+    border-radius: 10px;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 10px;
+} */
+
+.tabs {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.tabs button {
+    background: rgba(255, 255, 255, 0.6);
+    /* border: 2px solid transparent; */
+    width: 100%;
+    padding: 12px;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #718096;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.tabs button:hover {
+    background: rgba(102, 126, 234, 0.2);
+    color: #667eea;
+}
+
+.tabs button.active {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #fcfcfc;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+.chapter-group { display: none; }
+
+.chapter-wrapper {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 15px;
+}
+
+.chapter-list {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.chapter {
+    background: rgba(255, 255, 255, 0.6);
+    /* border: 2px solid transparent; */
+    padding: 14px 8px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #718096;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.chapter:hover {
+    background: rgba(102, 126, 234, 0.1);
+    border-color: #667eea;
+    color: #667eea;
+}
+
+.chapter.active {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #fcfcfc;
+    box-shadow: 0 2px 10px rgba(102, 126, 234, 0.3);
+}
+
+.subchapter-list {
+    position: relative;
+}
+
+.subchapters {
+    display: none;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 12px;
+    padding: 15px;
+    height: 100%;
+}
+
+.subchapters.active {
+    display: block;
+    animation: slideDown 0.3s ease;
+    background: rgba(255, 255, 255, 0.6);
+}
+
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.chapter-title {
+    color: #667eea;
+    font-size: 16px;
+    margin-bottom: 12px;
+    font-weight: 700;
+}
+
+.subchapter {
+    width: 100%;
+    /* border: 1px solid #e2e8f0; */
+    padding: 10px 15px;
+    margin-bottom: 8px;
+    border-radius: 8px;
+    font-size: 13px;
+    color: #2d3748;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: left;
+}
+
+.subchapter:hover {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    transform: translateX(5px);
+    box-shadow: 0 2px 10px rgba(102, 126, 234, 0.3);
+}
+
+/* ========== 캘린더 영역 ========== */
+
+.profile-card {
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    /* height: 25%; */
+}
+
+.profile-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.profile-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+}
+
+.profile-img-wrapper {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 1px solid var(--border-color); /* 연한 테두리로 깔끔하게 */
+    background-color: #f1f3f5; /* 이미지가 없을 때 배경색 */
+    flex-shrink: 0; /* 화면이 줄어도 이미지 찌그러짐 방지 */
+    display: flex;
+    justify-content: center;
+}
+
+.profile-img-wrapper img {
+    width: 90%;
+    height: 90%;
+    object-fit: cover; /* 이미지가 찌그러지지 않고 꽉 차게 */
+    display: block;
+}
+
+.profile-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 4px;
+}
+
+.rank-badge {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    width: fit-content;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.nickname {
+    font-size: 18px;
+    font-weight: 700;
+    color: #2d3748;
+}
+
+.level-container {
+    background: #f7fafc;
+    border-radius: 12px;
+    padding: 15px;
+}
+
+.level-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: #718096;
+    font-weight: 600;
+}
+
+.level-bar {
+    background: #e2e8f0;
+    height: 10px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.level-progress {
+    background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+    height: 100%;
+    width: 45%;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(102, 126, 234, 0.5);
+    transition: width 0.5s ease;
+}
+
+/* ===== 캘린더 ===== */
+.calendar {
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* overflow-y: auto; */
+}
+
+.calendar .header {
+    display: flex; 
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.calendar .header button {
+    background: rgba(102, 126, 234, 0.1);
+    border: none;
+    padding: 8px 15px;
+    border-radius: 8px;
+    font-size: 18px;
+    color: #667eea;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.calendar .header button:hover {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+#monthYear {
+    font-size: 20px;
+    font-weight: 700;
+    color: #2d3748;
+}
+
+.calendar table {
+    width: 100%;
+    height: fit-content;
+}
+
+.calendar th {
+    padding: 10px;
+    font-weight: 600;
+    color: #718096;
+    font-size: 14px;
+}
+
+.calendar tr {
+    width: 100%;
+    height: 100%;
+}
+
+.calendar td {
+    background: rgba(255, 255, 255, 0.6);
+    padding: 10px;
+    position: relative;
+    text-align: center;
+    border-radius: 8px;
+    cursor: default;
+    transition: all 0.25s ease;
+    height: 65px;
+    vertical-align: top;
+}
+
+.calendar td .day-number {
+    display: block;
+    color: #2d3748;
+    font-size: 14px;
+    font-weight: 500;
+    transition: opacity 0.25s ease;
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+}
+
+.calendar td.attended-day {
+    background: #a9caf9;
+    color: #ffffff;
+    transform: scale(1.02);
+}
+
+.calendar td.attended-day .day-number {
+    color: white;
+    font-weight: 700;
+}
+
+.calendar td.today:not(.attended-day) {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 5px 1px;
+    font-weight: 700;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+
+.calendar td.today:not(.attended-day):hover {
+    background: rgba(102, 126, 234, 0.3);
+    cursor: pointer;
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+.calendar td.today:not(.attended-day):hover .day-number {
+    opacity: 0;
+}
+
+.calendar td.future-day {
+    background: #e2e8f0;
+    cursor: default;
+    pointer-events: none;
+}
+
+.calendar td.future-day .day-number {
+    color: #a0aec0;
+}
+
+/* 출석 버튼 컨테이너 */
+.attendance-controls {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+    pointer-events: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.calendar td.today:hover .attendance-controls {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.calendar td.today.attended-day:hover .attendance-controls {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.calendar td.attended-day .attendance-controls {
+    display: none;
+}
+
+
+.calendar td.attended-day {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-radius: 8px;
+}
+.calendar td.today {
+    box-shadow: 0 0 0 2px red inset;
+    border-radius: 8px;
+}
+.calendar td.attended-day.today {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    box-shadow: 0 0 0 2px rgb(119, 0, 255) inset;
+}
+
+.icon-container {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    bottom: 5px;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 2px;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon-container:hover {
+    cursor: pointer;
+    scale: calc(1.1);
+}
+
+.memo-icon {
+    font-size: 20px;
+    line-height: 1;
+    vertical-align: middle;
+    color: #fae157;
+    pointer-events: none;
+}
+
+.attendance-controls .btn-attended {
+    border: none;
+    border-radius: 8px;
+    font-size: 13px;
+    cursor: pointer;
+    color: white;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    opacity: 0.85;
+    transition: all 0.25s ease;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 1;
+}
+
+.attendance-controls .btn-attended:hover {
+    transform: scale(1.05);
+}
+
+/* ========== 메모 모달 ========== */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    max-width: 500px;
+    width: 90%;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.modal-content h3 {
+    color: #667eea;
+    margin-bottom: 20px;
+    font-size: 22px;
+}
+
+.modal-content textarea {
+    width: 100%;
+    min-height: 150px;
+    padding: 15px;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    font-size: 14px;
+    resize: vertical;
+    margin-bottom: 15px;
+    font-family: inherit;
+}
+
+.modal-content textarea:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+.modal-content button {
+    width: 100%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.delete-memo-btn {
+    width: 100%;
+    background: #c7c7c7 !important;
+    color: white !important;
+    border: none;
+    padding: 12px;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: all 0.3s ease;
+}
+
+.modal-content .delete-memo-btn:hover {
+    background: #c53030 !important;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(229, 62, 62, 0.4);
+}
+
+.modal-content button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+}
+
+#closeMemoBtn,
+#closeAttendanceBtn {
+    font-size: 28px;
+    color: #718096;
+    cursor: pointer;
+    float: right;
+    line-height: 1;
+}
+
+#closeMemoBtn:hover,
+#closeAttendanceBtn:hover {
+    color: #667eea;
+}
+
+
+
+/* ========== 반응형 ========== */
+@media (max-width: 1200px) {
+    .container {
+        grid-template-columns: 1fr;
+    }
+
+    .home-wrapper {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        padding: 10px 15px;
+    }
+
+    .header-container {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .header-container h1 {
+        font-size: 24px;
+    }
+
+    nav ul {
+        flex-wrap: wrap;
+        gap: 8px;
+        justify-content: center;
+    }
+
+    nav button {
+        padding: 8px 12px;
+        font-size: 13px;
+    }
+
+    .notice-banner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        padding: 15px;
+    }
+    
+    .notice-more {
+        align-self: flex-end; /* 더보기 버튼 오른쪽 끝으로 */
+    }
+}
+
+/* 전체 스크롤바 너비 */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+/* 스크롤바 트랙 (배경) - 투명하게 */
+::-webkit-scrollbar-track {
+    background: transparent;
+    margin-block: 1px; /* 위아래 여백을 주어 둥근 모서리와 겹치지 않게 */
+}
+
+/* 스크롤바 핸들 (움직이는 부분) */
+::-webkit-scrollbar-thumb {
+    background: rgba(160, 174, 192, 0.4); /* 부드러운 회색, 반투명 */
+    border-radius: 4px;
+}
+
+/* 호버 시 조금 더 진하게 */
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(160, 174, 192, 0.7);
+}
+
+/* 코너 부분 (가로/세로 스크롤바 만나는 곳) */
+::-webkit-scrollbar-corner {
+    background: transparent;
+}
+
+
+/* ... (기존 flex-center, home-section 스타일 유지) ... */
+
+/* 공지사항 */
+.notice-banner {
+    width: 100%;
+    max-width: 1400px;
+    /* 어두운 반투명 배경 및 네온 테두리 */
+    background: rgba(30, 30, 30, 0.7); 
+    border-radius: 15px;
+    padding: 15px 25px;
+    box-shadow: 0 0 10px rgba(255, 0, 255, 0.3); /* 핑크 네온 그림자 */
+    border: 1px solid var(--neon-pink); /* 핑크 네온 테두리 */
+    backdrop-filter: blur(5px);
+    animation: slideDown 0.5s ease;
+}
+
+.notice-content {
+    color: var(--text-color); /* 밝은 텍스트 */
+}
+
+.notice-scroll-wrapper {
+    /* overflow: hidden; */
+    /* white-space: nowrap; */
+}
+
+.notice-text {
+    /* 텍스트 네온 색상 */
+    color: var(--neon-blue); 
+    font-weight: 700;
+}
+
+.notice-banner:hover .notice-text {
+    animation: scroll-left 15s linear infinite; /* hover 시 애니메이션 복원 */
+    padding-left: 100%;
+}
+
+.notice-icon {
+    /* 기존 그라데이션 제거, 네온 색상 사용 */
+    background: var(--neon-pink); 
+    color: var(--dark-bg-color); /* 배경과 대비되는 어두운 색 */
+    box-shadow: 0 0 8px var(--neon-pink);
+}
+
+.notice-more {
+    color: var(--neon-blue);
+    font-weight: 700;
+}
+
+.notice-more:hover {
+    color: var(--neon-pink);
+}
+
+/* ========== 메인 컨테이너 ========== */
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    width: 100%;
+    max-width:1400px;
+}
+
+.home-wrapper {
+    /* 본문 래퍼도 어두운 배경과 네온 테두리 적용 */
+    background: rgba(30, 30, 30, 0.7);
+    padding: 25px;
+    border-radius: 20px;
+    border: 1px solid rgba(0, 255, 255, 0.1);
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.15); 
+}
+
+/* 1. 이벤트 박스 */
+.dashboard-event-widget {
+    background: var(--dark-bg-card); /* 어두운 배경 유지 */
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 0 15px rgba(255, 0, 255, 0.1);
+    border: 1px solid rgba(255, 0, 255, 0.2);
+}
+
+/* 2. 헤더 영역 (제목 + 검색창) */
+.dashboard-event-widget .event-header {
+    border-bottom: 2px solid var(--neon-blue); /* 네온 색상 테두리 */
+}
+
+.dashboard-event-widget .event-badge {
+    /* 강렬한 핑크 네온 강조 */
+    background: var(--neon-pink);
+    color: var(--dark-bg-color);
+    font-weight: 800;
+    box-shadow: 0 0 5px var(--neon-pink);
+}
+
+.dashboard-event-widget h3 {
+    color: var(--text-color);
+}
+
+/* 3. 검색창 최적화 */
+.dashboard-event-widget .event-search {
+    border: 1px solid rgba(0,0,0,0.3);
+    background: rgba(255,255,255,0.1); /* 어두운 투명 배경 */
+    color: var(--text-color);
+}
+
+.dashboard-event-widget .event-search::placeholder {
+    color: #a0aec0;
+}
+
+.dashboard-event-widget .event-search:focus {
+    border-color: var(--neon-blue);
+    box-shadow: 0 0 8px rgba(0, 255, 255, 0.5); /* 네온 포커스 */
+}
+
+/* 4. 이벤트 리스트 & 아이템 */
+.dashboard-event-widget .event-item {
+    background: rgba(255, 255, 255, 0.05); /* 더 어둡게 */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dashboard-event-widget .event-item:hover {
+    background: rgba(0, 255, 255, 0.1); /* 네온 색상으로 호버 효과 */
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 255, 255, 0.1);
+}
+
+.dashboard-event-widget .event-item span {
+    color: var(--text-color);
+}
+
+/* 5. 보상 버튼 스타일 */
+.dashboard-event-widget .reward-btn {
+    background: var(--neon-blue); /* 네온 블루 버튼 */
+    color: var(--dark-bg-color);
+    box-shadow: 0 0 5px var(--neon-blue);
+}
+
+.dashboard-event-widget .reward-btn:hover {
+    opacity: 1;
+    box-shadow: var(--neon-shadow-blue);
+}
+
+.dashboard-event-widget .reward-btn.disabled {
+    background: #333; /* 회색 대신 어두운 회색 */
+    color: #777;
+    box-shadow: none;
+}
+
+/* ========== 커리큘럼 ========== */
+.sidebar {
+    background: var(--dark-bg-card);
+    border-radius: 20px;
+    box-shadow: 0 0 15px rgba(255, 0, 255, 0.1);
+}
+
+.tabs button {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-color);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.tabs button:hover {
+    background: rgba(0, 255, 255, 0.2);
+    color: var(--neon-blue);
+}
+
+.tabs button.active {
+    /* 네온 블루 액티브 탭 */
+    background: var(--neon-blue);
+    color: var(--dark-bg-color);
+    box-shadow: var(--neon-shadow-blue);
+}
+
+.chapter {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-color);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.chapter:hover {
+    background: rgba(255, 0, 255, 0.1);
+    border-color: var(--neon-pink);
+    color: var(--neon-pink);
+}
+
+.chapter.active {
+    /* 네온 핑크 액티브 챕터 */
+    background: var(--neon-pink);
+    color: var(--dark-bg-color);
+    box-shadow: var(--neon-shadow-pink);
+}
+
+.subchapters.active {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.chapter-title {
+    color: var(--neon-blue);
+    text-shadow: 0 0 3px rgba(0, 255, 255, 0.5);
+}
+
+.subchapter {
+    color: var(--text-color);
+}
+
+.subchapter:hover {
+    background: var(--neon-pink);
+    color: var(--dark-bg-color);
+    transform: translateX(5px);
+    box-shadow: var(--neon-shadow-pink);
+}
+
+/* ========== 캘린더 영역 & 프로필 ========== */
+
+.profile-card,
+.calendar {
+    background: var(--dark-bg-card);
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.1);
+    border: 1px solid rgba(0, 255, 255, 0.2);
+}
+
+.rank-badge {
+    background: var(--neon-blue);
+    color: var(--dark-bg-color);
+    box-shadow: 0 0 5px var(--neon-blue);
+}
+
+.nickname {
+    color: var(--text-color);
+}
+
+.level-container {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.level-info {
+    color: var(--neon-pink);
+}
+
+.level-bar {
+    background: #333;
+}
+
+.level-progress {
+    background: linear-gradient(90deg, var(--neon-pink) 0%, var(--neon-blue) 100%);
+    box-shadow: 0 0 10px rgba(255, 0, 255, 0.5);
+}
+
+/* ===== 캘린더 ===== */
+
+.calendar .header button {
+    background: rgba(0, 255, 255, 0.1);
+    color: var(--neon-blue);
+}
+
+.calendar .header button:hover {
+    background: var(--neon-blue);
+    color: var(--dark-bg-color);
+    box-shadow: var(--neon-shadow-blue);
+}
+
+#monthYear {
+    color: var(--text-color);
+}
+
+.calendar th {
+    color: var(--neon-pink);
+}
+
+.calendar td {
+    background: rgba(255, 255, 255, 0.05); /* 날짜 배경 어둡게 */
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.calendar td .day-number {
+    color: var(--text-color);
+}
+
+/* 출석 완료일 */
+.calendar td.attended-day {
+    background: var(--neon-blue);
+    color: var(--dark-bg-color);
+    box-shadow: 0 0 10px var(--neon-blue);
+}
+
+.calendar td.attended-day .day-number {
+    color: var(--dark-bg-color);
+}
+
+/* 오늘 날짜 (미출석 시) */
+.calendar td.today:not(.attended-day) {
+    background: rgba(255, 0, 255, 0.1);
+    box-shadow: 0 0 0 2px var(--neon-pink) inset; /* 네온 핑크 테두리 */
+}
+
+.calendar td.today:not(.attended-day):hover {
+    background: var(--neon-pink);
+    color: var(--dark-bg-color);
+    box-shadow: var(--neon-shadow-pink);
+}
+
+.calendar td.future-day {
+    background: #333; /* 미래 날짜는 어두운 회색 */
+    color: #777;
+    pointer-events: none;
+}
+
+.calendar td.future-day .day-number {
+    color: #777;
+}
+
+/* 출석 버튼 */
+.attendance-controls .btn-attended {
+    background: var(--neon-blue);
+    color: var(--dark-bg-color);
+    box-shadow: 0 0 5px var(--neon-blue);
+}
+
+.attendance-controls .btn-attended:hover {
+    transform: scale(1.05);
+    box-shadow: var(--neon-shadow-blue);
+}
+
+.memo-icon {
+    /* 메모 아이콘 색상 변경 */
+    color: var(--neon-pink); 
+    text-shadow: 0 0 5px var(--neon-pink);
+}
+
+
+/* ========== 메모 모달 ========== */
+.modal-content {
+    background: #1f1f1f; /* 모달 배경 어둡게 */
+    border: 2px solid var(--neon-blue);
+    box-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
+}
+
+.modal-content h3 {
+    color: var(--neon-blue);
+    text-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
+}
+
+.modal-content textarea {
+    background: #333;
+    color: var(--text-color);
+    border: 2px solid #555;
+}
+
+.modal-content textarea:focus {
+    border-color: var(--neon-pink);
+    box-shadow: 0 0 8px rgba(255, 0, 255, 0.5);
+}
+
+.modal-content button {
+    background: var(--neon-blue);
+    color: var(--dark-bg-color);
+}
+
+.delete-memo-btn {
+    background: #4a004a !important; /* 어두운 마젠타 */
+    color: var(--neon-pink) !important;
+    border: 1px solid var(--neon-pink);
+}
+
+.modal-content .delete-memo-btn:hover {
+    background: var(--neon-pink) !important;
+    color: var(--dark-bg-color) !important;
+    box-shadow: var(--neon-shadow-pink);
+}
+
+.modal-content button:hover {
+    box-shadow: var(--neon-shadow-blue);
+}
+
+#closeMemoBtn {
+    color: var(--neon-pink);
+}
+
+#closeMemoBtn:hover {
+    color: var(--neon-blue);
+}
+
+
+/* ... (기존 반응형, 스크롤바 스타일은 유지하거나 테마에 맞게 변경 가능) ... */
+
+/* 스크롤바 핸들 (움직이는 부분) 네온 색상 적용 */
+::-webkit-scrollbar-thumb {
+    background: rgba(0, 255, 255, 0.4); 
+    border-radius: 4px;
+}
+
+/* 호버 시 조금 더 진하게 */
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 255, 255, 0.7);
+}
+
+/* ... (tabs 버튼 스타일은 유지) ... */
+
+.chapter-group { display: none; }
+
+.chapter-wrapper {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 15px;
+}
+
+.chapter-list {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.chapter {
+    background: rgba(255, 255, 255, 0.05); /* 어두운 투명 배경 */
+    color: var(--text-color);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 14px 8px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+/* ... (chapter:hover, chapter.active 스타일 유지) ... */
+
+.subchapter-list {
+    position: relative;
+}
+
+.subchapters {
+    display: none;
+    background: var(--dark-bg-card); 
+    border-radius: 12px;
+    padding: 15px;
+    height: 100%;
+}
+
+.subchapters.active {
+    display: block;
+    animation: slideDown 0.3s ease;
+    background: rgba(255, 255, 255, 0.05); 
+    border: 1px solid rgba(0, 255, 255, 0.1);
+}
+
+/* ... (chapter-title 스타일 유지) ... */
+
+.subchapter {
+    width: 100%;
+    /* 텍스트가 안보이는 문제를 해결하기 위해 네온 블루로 강제 설정 */
+    color: var(--neon-blue);
+    padding: 10px 15px;
+    margin-bottom: 8px;
+    border-radius: 8px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: left;
+}
+
+.subchapter:hover {
+    background: var(--neon-pink);
+    color: var(--dark-bg-color); /* 호버 시에는 대비를 위해 어두운 색상 사용 */
+    transform: translateX(5px);
+    box-shadow: var(--neon-shadow-pink);
+}
+
+.subchapter-list {
+    position: relative;
+}
+
+.subchapters {
+    display: none;
+    /* 서브챕터 배경을 카드 배경색과 유사하게 어둡게 유지 */
+    background: var(--dark-bg-card); 
+    border-radius: 12px;
+    padding: 15px;
+    height: 100%;
+}
+
+.subchapters.active {
+    display: block;
+    animation: slideDown 0.3s ease;
+    /* **** 문제 해결 ****: 배경이 밝게 보이는 것을 방지하기 위해 
+       가장 어두운 단색 배경을 강제 적용합니다. (배경색: #1a1a1a) */
+    background: var(--dark-bg-color); 
+    border: 1px solid rgba(0, 255, 255, 0.1); 
+}
+
+/* ... (chapter-title 스타일 유지) ... */
+
+.subchapter {
+    width: 100%;
+    /* **** 문제 해결 ****: 어두운 배경 위에서 확실히 보이도록 네온 블루로 강제 지정 */
+    color: var(--neon-blue);
+    background: rgba(255, 255, 255, 0.05); /* 서브챕터 아이템 배경도 살짝 어둡게 */
+    padding: 10px 15px;
+    margin-bottom: 8px;
+    border-radius: 8px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: left;
+}
+
+.subchapter:hover {
+    /* 호버 시에는 네온 핑크 배경에 대비되는 어두운 텍스트를 사용하여 가독성 확보 */
+    background: var(--neon-pink);
+    color: var(--dark-bg-color); 
+    transform: translateX(5px);
+    box-shadow: var(--neon-shadow-pink);
+}
+
+/* ... (import, *, body, flex-center 스타일 유지) ... */
+
+/* 공지사항 */
+.notice-banner {
+    /* 1. 핑크 네온 그림자를 그린 네온 그림자로 변경 */
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.3); 
+    /* 2. 핑크 네온 테두리를 그린 네온 테두리로 변경 */
+    border: 1px solid var(--neon-green); 
+    /* ... */
+}
+
+/* ... (notice-content, notice-scroll-wrapper, notice-text 스타일 유지) ... */
+
+.notice-icon {
+    /* 3. 핑크 배경을 그린 배경으로 변경 */
+    background: var(--neon-green); 
+    color: var(--dark-bg-color); 
+    box-shadow: 0 0 8px var(--neon-green);
+}
+
+.notice-more:hover {
+    /* 4. 호버 색상을 그린으로 변경 */
+    color: var(--neon-green);
+}
+
+/* ========== 메인 컨테이너 ========== */
+/* ... (grid-container, home-wrapper 스타일 유지 - blue) ... */
+
+/* 1. 이벤트 박스 */
+.dashboard-event-widget {
+    /* 5. 핑크 네온 그림자를 그린 네온 그림자로 변경 */
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.1);
+    /* 6. 핑크 네온 테두리를 그린 네온 테두리로 변경 */
+    border: 1px solid rgba(0, 255, 0, 0.2);
+    /* ... */
+}
+
+/* 2. 헤더 영역 (제목 + 검색창) */
+.dashboard-event-widget .event-badge {
+    /* 7. 강렬한 핑크 네온 강조를 그린으로 변경 */
+    background: var(--neon-green);
+    color: var(--dark-bg-color);
+    box-shadow: 0 0 5px var(--neon-green);
+}
+
+/* ... (event-search, event-item 스타일 유지) ... */
+
+.dashboard-event-widget .event-item:hover {
+    /* 8. 호버 시 네온 그린으로 변경 */
+    background: rgba(0, 255, 0, 0.1); 
+    box-shadow: 0 4px 10px rgba(0, 255, 0, 0.1);
+}
+
+/* ... (reward-btn 스타일 유지 - blue) ... */
+
+/* ========== 커리큘럼 ========== */
+.sidebar {
+    /* 9. 핑크 네온 그림자를 그린 네온 그림자로 변경 */
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.1);
+}
+
+.tabs button:hover {
+    /* ... (blue 유지) ... */
+}
+
+.tabs button.active {
+    /* ... (blue 유지) ... */
+}
+
+.chapter:hover {
+    /* 10. 핑크 네온 호버 효과를 그린으로 변경 */
+    background: rgba(0, 255, 0, 0.1);
+    border-color: var(--neon-green);
+    color: var(--neon-green);
+}
+
+.chapter.active {
+    /* 11. 핑크 네온 액티브 챕터를 그린으로 변경 */
+    background: var(--neon-green);
+    color: var(--dark-bg-color);
+    box-shadow: var(--neon-shadow-green);
+}
+
+/* ... (subchapter-list, subchapters 스타일 유지) ... */
+
+.subchapter:hover {
+    /* 12. 호버 시 네온 핑크 배경을 그린으로 변경 */
+    background: var(--neon-green);
+    color: var(--dark-bg-color);
+    box-shadow: var(--neon-shadow-green);
+}
+
+/* ========== 캘린더 영역 & 프로필 ========== */
+/* ... (profile-card, calendar 스타일 유지 - blue) ... */
+
+.level-info {
+    /* 13. 레벨 정보 텍스트를 그린으로 변경 */
+    color: var(--neon-green);
+}
+
+.level-progress {
+    /* 14. 레벨 바 그라데이션을 핑크→블루에서 그린→블루로 변경 */
+    background: linear-gradient(90deg, var(--neon-green) 0%, var(--neon-blue) 100%);
+    /* 15. 그림자를 그린으로 변경 */
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+}
+
+/* ===== 캘린더 ===== */
+/* ... (header, monthYear, th 스타일 유지) ... */
+
+/* 오늘 날짜 (미출석 시) */
+.calendar td.today:not(.attended-day) {
+    /* 16. 네온 핑크 테두리를 그린으로 변경 */
+    background: rgba(0, 255, 0, 0.1);
+    box-shadow: 0 0 0 2px var(--neon-green) inset; 
+}
+
+.calendar td.today:not(.attended-day):hover {
+    /* 17. 호버 시 네온 그린 배경 적용 */
+    background: var(--neon-green);
+    color: var(--dark-bg-color);
+    box-shadow: var(--neon-shadow-green);
+}
+
+.memo-icon {
+    font-size: 24px; 
+    line-height: 1;
+    vertical-align: middle;
+    /* **** 최종 수정 ****: 네온 블루 배경과 가장 대비가 높은 네온 옐로우로 변경 */
+    color: #FFFF00; 
+    /* 네온 옐로우 그림자 적용 (가장 강력하게) */
+    text-shadow: 0 0 8px #FFFF00, 0 0 15px rgba(255, 255, 0, 0.7); 
+    pointer-events: none;
+}
+
+/* ========== 메모 모달 ========== */
+/* ... (modal-content 스타일 유지 - blue) ... */
+
+.modal-content textarea:focus {
+    /* 19. 포커스 테두리를 그린으로 변경 */
+    border-color: var(--neon-green);
+    box-shadow: 0 0 8px rgba(0, 255, 0, 0.5);
+}
+
+.delete-memo-btn {
+    /* 20. 어두운 마젠타 배경을 어두운 그린으로 변경 */
+    background: #004a00 !important; 
+    /* 21. 텍스트를 그린으로 변경 */
+    color: var(--neon-green) !important;
+    border: 1px solid var(--neon-green);
+}
+
+.modal-content .delete-memo-btn:hover {
+    /* 22. 호버 색상을 그린으로 변경 */
+    /* background: var(--neon-green) !important; */
+    /* color: var(--dark-bg-color) !important; */
+    box-shadow: var(--neon-shadow-green);
+}
+
+#closeMemoBtn {
+    /* 23. 닫기 버튼을 그린으로 변경 */
+    color: var(--neon-green);
+}
+
+#closeMemoBtn:hover {
+    /* 24. 호버 색상은 블루 유지 (대비) */
+    color: var(--neon-blue);
+}
+
+.modal-content button {
+    width: 100%;
+    /* 저장 버튼 (네온 블루 유지) */
+    background: linear-gradient(135deg, var(--neon-blue) 0%, #00aaff 100%);
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.delete-memo-btn {
+    width: 100%;
+    /* **** 수정 ****: 어두운 레드 배경 */
+    background: #8B0000 !important; 
+    /* **** 수정 ****: 네온 레드 텍스트 */
+    color: #FF3131 !important; 
+    border: 1px solid #FF3131;
+    padding: 12px;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: all 0.3s ease;
+}
+
+.modal-content .delete-memo-btn:hover {
+    /* **** 수정 ****: 호버 시 밝은 네온 레드 배경 */
+    background: #FF3131 !important;; 
+    color: var(--dark-bg-color);
+    transform: translateY(-2px);
+    /* 네온 레드 그림자 */
+    box-shadow: 0 8px 20px rgba(255, 49, 49, 0.5); 
+}
+
+.modal-content button:hover {
+    box-shadow: var(--neon-shadow-blue);
+}

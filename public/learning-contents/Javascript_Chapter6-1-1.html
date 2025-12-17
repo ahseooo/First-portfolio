@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Chapter 6-1</title>
+    <link rel="stylesheet" type="text/css" href="/css/learning/Javascript_Chapter6-1-1.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <header id="main-frame"></header>
+
+    <section class="home-section">
+        <div class="learning-card">
+
+            <button class="question-button" onclick="openQuestionBox()">
+                <i class="fa-solid fa-question"></i>
+            </button>
+
+            <div class="intro-header">
+                <h1>🎲 미니 프로젝트: 주사위 게임</h1>
+            </div>
+
+            <div class="speech-bubble">
+                축하해! 드디어 6챕터야! 🎉<br>
+                지금까지 배운 <strong>변수, 함수, 이벤트, DOM</strong>을 모두 써서 게임을 만들어보자!
+            </div>
+
+            <p class="chapter-desc">
+                이번 미션은 <strong>"주사위 굴리기 게임"</strong>을 만드는 거예요.<br>
+                아래 5가지 미션을 하나씩 해결하면서 완성해 보세요!
+            </p>
+
+            <hr class="divider">
+
+            <div class="topic-section">
+                <h2>1. 오늘의 미션 📋</h2>
+                <div class="mission-grid">
+                    <div class="mission-item">
+                        <span class="mission-num">1</span>
+                        <p><strong>화면 구성:</strong> "주사위를 굴려보세요" 문구 만들기</p>
+                    </div>
+                    <div class="mission-item">
+                        <span class="mission-num">2</span>
+                        <p><strong>버튼 추가:</strong> 주사위 굴리기 버튼 만들기</p>
+                    </div>
+                    <div class="mission-item">
+                        <span class="mission-num">3</span>
+                        <p><strong>이벤트 연결:</strong> 버튼 클릭 시 동작하는 함수 만들기</p>
+                    </div>
+                    <div class="mission-item">
+                        <span class="mission-num">4</span>
+                        <p><strong>랜덤 숫자:</strong> 1~6 사이의 랜덤 숫자 뽑기</p>
+                    </div>
+                    <div class="mission-item">
+                        <span class="mission-num">5</span>
+                        <p><strong>결과 출력:</strong> 화면에 나온 숫자 보여주기</p>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="divider">
+
+            <div class="topic-section">
+                <h2>2. 코드 작성하기 ⌨️</h2>
+                <p class="topic-desc">왼쪽에 코드를 입력하고 <strong>[실행하기]</strong> 버튼을 눌러보세요.</p>
+                
+
+                <div class="playground-container">
+                    <div class="editor-pane">
+                        <div class="pane-header">
+                            <span><i class="fa-brands fa-html5"></i> HTML + <i class="fa-brands fa-js"></i> JS</span>
+                        </div>
+                        <textarea id="code-input" spellcheck="false" placeholder="<h1>주사위 게임</h1>
+<p id='result'>주사위를 굴려보세요!</p>
+<button onclick='rollDice()'>굴리기</button>
+
+<script>
+  function rollDice() {
+    // 여기에 코드를 채워보세요!
+    alert('아직 미완성이에요!');
+  }
+</script>"></textarea>
+                        <button class="run-btn" onclick="runCode()">실행하기 ▶</button>
+                    </div>
+
+                    <div class="preview-pane">
+                        <div class="pane-header">
+                            <span><i class="fa-solid fa-desktop"></i> 결과 화면</span>
+                        </div>
+                        <iframe id="preview-frame"></iframe>
+                    </div>
+                </div>
+                
+                <div class="hint-box">
+                    <div class="hint-title"><i class="fa-solid fa-lightbulb"></i> 힌트가 필요하신가요?</div>
+                    <p>랜덤 숫자는 <code>Math.floor(Math.random() * 6) + 1</code>을 사용하면 돼요!</p>
+                </div>
+            </div>
+
+            <div class="navigation">
+                <button class="prev-btn" onclick="goToPreviousPage()"><i class="fa-solid fa-chevron-left"></i> 이전 (시간 다루기)</button>
+
+                <div class="dots">
+                    <span class="dot active"></span> <span class="dot"></span> </div>
+
+                <button class="next-btn" id="nextPageBtn" onclick="goToNextPage()">
+                    다음 (퀴즈 풀기) <i class="fa-solid fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="progress-card">
+            <h3><i class="fa-solid fa-flag-checkered"></i> 챕터 6: 마무리</h3>
+
+            <div class="progress-row">
+                <div class="progress-item">
+                    <div class="progress-label">프로젝트</div>
+                    <div class="progress-bar">
+                        <div class="fill" style="width: 50%;"></div> </div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">퀴즈</div>
+                    <div class="progress-bar"><div class="fill" style="width: 0%;"></div></div>
+                </div>
+            </div>
+            <div class="progress-bar-text">1 / 2 진행중</div>
+        </div>
+    </section>
+
+    <div id="question-modal" class="question-modal hidden">
+        <div class="question-content">
+            <h3>선생님 질문이 있어요!</h3>
+            <textarea placeholder="여기에 질문을 입력하세요"></textarea>
+            <div class="question-buttons">
+                <button onclick="submitQuestion()">보내기</button>
+                <button onclick="closeQuestionBox()">닫기</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/javascript/InnerHTML.js"></script>
+    <script src="/javascript/learning/Javascript_Chapter6-1-1.js"></script>
+</body>
+</html>
