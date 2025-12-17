@@ -70,6 +70,12 @@
 ### 커뮤니티 페이지
 ![커뮤니티 게시판 스크린샷](./assets/cdmst-community-board.png)
 
+### 커뮤니티 게시글 작성
+![게시글 작성 스크린샷](./assets/cdmst-community-board-write-post.png)
+
+### 커뮤니티 게시글
+![게시글 스크린샷](./assets/cdmst-community-board-post.png)
+
 ---
 ### 이벤트 페이지
 ![이벤트 페이지 스크린샷](./assets/cdmst-event.png)
