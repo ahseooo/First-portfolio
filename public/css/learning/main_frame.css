@@ -1,16 +1,31 @@
 /* Play_on, Play_off, sign_in, sign_up 페이지 헤더 */
+:root {
+    --ow-dark-bg: #121212; /* 배경 (거의 검정) */
+    --ow-primary: #F7931E;
+    --ow-secondary: #FFFFFF;
+    --ow-shadow: 0 0 10px rgba(247, 147, 30, 0.4);
+    --ow-radius: 4px; /* 깔끔한 곡선 */
+    --neon-blue: #00FFFF;
+    --neon-green: #00FF00; 
+    --dark-bg-color: #1a1a1a;
+    --dark-bg-card: #2d2d2d; /* 배경색을 조금 더 어둡게 */
+    /* 픽셀 그림자 (예: 2px offset) */
+    --pixel-shadow-blue: 2px 2px 0 var(--neon-blue); 
+    --pixel-shadow-green: 2px 2px 0 var(--neon-green); 
+    --text-color: #ffffff; 
+    --radius-pixel: 0px; /* 모든 모서리를 직각으로 */
+    --border-pixel: 2px solid; /* 두꺼운 테두리 */
+}
+
 * {
     margin: 0;
     padding: 0;
-    /* box-sizing: border-box; */
-    font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: 'Noto Sans KR', 'Roboto', sans-serif;
 }
 
 body {
-    background: linear-gradient(90deg, #FFF5D7, #FFF6D6);
-    /* height: 100vh; */
-    color: #2d3748;
-    /* overflow: hidden; */
+    background: #0d0d0d; /* 전체 배경은 어둡게 유지 */
+    color: var(--ow-secondary);
     width: 100%;
     height: 100%;
     display: flex;
@@ -27,13 +42,14 @@ li{
 
 /* ========== 헤더 ========== */
 header {
-    background: var(--header-bg, rgba(255, 255, 255, 0.95));
-    backdrop-filter: blur(10px);
-    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+    /* 오버워치 스타일: 어둡고 단단한 배경, 깊이감 부여 */
+    background: var(--ow-dark-bg);
+    backdrop-filter: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    border-bottom: 2px solid var(--ow-primary); /* 강조색 라인 */
     padding: 10px 30px;
     position: sticky;
     top: 0;
-    /* z-index: 100; */
     height: 65px;
 }
 
@@ -47,12 +63,14 @@ header {
 }
 
 .header-container h1 {
-    background: var(--header-gradient, linear-gradient(135deg, #667eea 0%, #764ba2 100%));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    font-size: 28px;
-    font-weight: 700;
+    background: none;
+    -webkit-background-clip: unset; 
+    -webkit-text-fill-color: var(--ow-primary);
+    background-clip: unset;
+    color: var(--ow-primary);
+    text-shadow: 2px 2px 0 rgba(247, 147, 30, 0.4); 
+    font-size: 32px;
+    font-weight: 800; 
 }
 
 .header-container button {
@@ -68,30 +86,52 @@ nav ul {
 
 nav button {
     background: transparent;
-    border: 2px solid transparent;
-    padding: 10px 20px;
-    border-radius: 12px;
-    color: var(--header-text, #2d3748);
+    border: none;
+    padding: 10px 18px;
+    /* border-radius: var(--ow-radius); */
+    color: var(--ow-secondary); /* 흰색 텍스트 */
     font-size: 15px;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.1s linear;
 }
 
 nav button:hover {
-    background: var(--header-gradient, linear-gradient(135deg, #667eea 0%, #764ba2 100%));
-    color: white;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+    background: rgba(247, 147, 30, 0.1);
+    color: var(--ow-primary);
+    border-bottom: 2px solid var(--ow-primary);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
 
+/* 로그인/회원가입 버튼 */
+nav button#btn_login, 
+nav button#btn_register {
+    background: transparent;
+    border: 2px solid var(--ow-primary); /* 주황색 테두리 */
+    color: var(--ow-primary); 
+    /* border-radius: var(--ow-radius); */
+    padding: 8px 16px;
+}
+
+nav button#btn_login:hover,
+nav button#btn_register:hover {
+    background: var(--ow-primary);
+    color: var(--ow-dark-bg); /* 어두운 배경색 텍스트 */
+    border-bottom: 2px solid var(--ow-primary);
+    box-shadow: var(--ow-shadow); /* 주황색 광원 효과 */
+}
+
+/* 로그아웃 버튼 */
 nav button#btn_logout {
-    background: rgba(102, 126, 234, 0.1);
-    border: 2px solid #667eea;
-    color: #667eea;
+    border: 2px solid var(--ow-secondary);
+    color: var(--ow-secondary);
+    background: transparent;
+    padding: 8px 16px;
 }
 
 nav button#btn_logout:hover {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
+    background: var(--ow-secondary);
+    color: var(--ow-dark-bg);
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
 }
+
